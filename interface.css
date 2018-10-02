@@ -6,3 +6,38 @@ html{
 header{
     text-align: center;
 }
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+  }
+  .main {
+    display: flex;
+    flex: 1;
+  }
+  .main > .middle-tab {
+    flex: 1;
+  }
+  .main > nav, 
+  .main > .right-tab {
+    flex: 0 0 20vw;
+    border: solid white;
+  }
+  .main > nav {
+    order: -1;
+  }
+  header{
+      height: 7.5vh;
+      border: solid white;
+  }
+  .bottom-tab{
+    height: 15vh;
+    border: solid
+   }
+  header, .bottom-tab, .middle-tab, nav, .right-tab {
+    padding: 1em;
+  }
+  #era{
+      font-weight: bold;
+  }

@@ -63,4 +63,4 @@ window.setInterval(function(){
     getFood(foragers);
     getWood(lumberjacks);
     getStone(miners);
-}, 1000);
+}, 500);

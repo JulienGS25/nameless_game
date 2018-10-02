@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,42 +9,35 @@
     <link rel="stylesheet" type="text/css" href="interface.css" />
 </head>
 
-
-
 <body>
+    <header>
+        <p>Nameless Game - Julien GS 2018</p>
+        <p id="era">Current Era</p>
+    </header>
 
-    <header>Nameless Game - Julien GS 2018</header>
-    
-
-    <p>
-    <button type="button" onClick="getFood(1)">Gather some food</button>
-    <button type="button" onClick="getWood(1)">Chop some wood</button>
-    <button type="button" onClick="getStone(1)">Mine some stone</button>
-    </p>
-    <button type="button" onClick="hireForager(0)">Hire a forager</button>
-    <button type="button" onClick="hireLumberjack(0)">Hire a lumberjack</button>
-    <button type="button" onClick="hireMiner(0)">Hire a miner</button>
-
-    <br/>
-    <br />
-    <br />
-    Foragers: <span id="foragers">0</span> - 
-    Cost: <span id="foragerCost">10 food</span>
-    <br />
-    <br />
-    Lumberjacks: <span id="lumberjacks">0</span> - 
-    Cost: <span id="lumberjackCost">10 wood</span>
-    <br />
-    <br />
-    Miners: <span id="miners">0</span> - 
-    Cost: <span id="minerCost">10 stone</span>
-    <br />
-
-
-    <hr>
-    <p>Amount of food: <span id="food"></span></p>
-    <p>Amount of wood: <span id="wood"></span></p>
-    <p>Amount of stone: <span id="stone"></span></p>
+    <div class="main">
+        <div class="middle-tab">
+            <button type="button" onClick="getFood(1)">Gather some food</button>
+            <button type="button" onClick="getWood(1)">Chop some wood</button>
+            <button type="button" onClick="getStone(1)">Mine some stone</button>
+        </div>
+        <nav class="left-tab">
+            <button type="button" onClick="hireForager(0)">Hire a forager</button>
+            <button type="button" onClick="hireLumberjack(0)">Hire a lumberjack</button>
+            <button type="button" onClick="hireMiner(0)">Hire a miner</button>
+        </nav>
+        <div class="right-tab">
+            <p>Text 1</p>
+            <p>Text 2</p>
+            <p>Text 3</p>
+        </div>
+    </div>
+    <div class="bottom-tab">
+        <p>Food: <span id="food"></span></p>
+        <p>Wood: <span id="wood"></span></p>
+        <p>Stone: <span id="stone"></span></p>
+    </div>
     <script type="text/javascript" src="main.js"></script>
 </body>
+
 </html>
