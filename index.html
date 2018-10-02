@@ -4,20 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Game</title>
+    <title>Nameless Game</title>
     <link rel="stylesheet" type="text/css" href="interface.css" />
 </head>
+
+
+
 <body>
 
-    <p>Number of cookies: <span id="cookies"></span></p>
-    <button type="button" onClick="cookieClick(1)">Bake a cookie</button>
-    <button type="button" onClick="buyCursor(0)">Buy a cursor</button>
+    <header>Nameless Game - Julien GS 2018</header>
+    
+
+    <p>
+    <button type="button" onClick="getFood(1)">Gather some food</button>
+    <button type="button" onClick="getWood(1)">Chop some wood</button>
+    <button type="button" onClick="getStone(1)">Mine some stone</button>
+    </p>
+    <button type="button" onClick="hireForager(0)">Hire a forager</button>
+    <button type="button" onClick="hireLumberjack(0)">Hire a lumberjack</button>
+    <button type="button" onClick="hireMiner(0)">Hire a miner</button>
 
     <br/>
-    Cursors: <span id="cursors">0</span>
     <br />
-    Cost: <span id="cursorCost">10</span>
+    <br />
+    Foragers: <span id="foragers">0</span> - 
+    Cost: <span id="foragerCost">10 food</span>
+    <br />
+    <br />
+    Lumberjacks: <span id="lumberjacks">0</span> - 
+    Cost: <span id="lumberjackCost">10 wood</span>
+    <br />
+    <br />
+    Miners: <span id="miners">0</span> - 
+    Cost: <span id="minerCost">10 stone</span>
+    <br />
 
+
+    <hr>
+    <p>Amount of food: <span id="food"></span></p>
+    <p>Amount of wood: <span id="wood"></span></p>
+    <p>Amount of stone: <span id="stone"></span></p>
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

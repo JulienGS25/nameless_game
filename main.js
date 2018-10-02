@@ -1,26 +1,66 @@
-var cookies = 0;
-var cursors = 0;
+var food = 0;
+var foragers = 0;
+var wood = 0;
+var lumberjacks = 0;
+var stone = 0;
+var miners = 0;
 
-function cookieClick(number){
-    cookies = cookies + number;
-    document.getElementById("cookies").innerHTML = cookies;
+function getFood(number){
+    food = food + number;
+    document.getElementById("food").innerHTML = food;
+}
+function getWood(number){
+    wood = wood + number;
+    document.getElementById("wood").innerHTML = wood;
+}
+function getStone(number){
+    stone = stone + number;
+    document.getElementById("stone").innerHTML = stone;
 }
 
 
-function buyCursor(){
-    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
-    if(cookies >= cursorCost){                                   //checks that the player can afford the cursor
-        cursors = cursors + 1;                                   //increases number of cursors
-    	cookies = cookies - cursorCost;                          //removes the cookies spent
-        document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the user
-        document.getElementById('cookies').innerHTML = cookies;  //updates the number of cookies for the user
+function hireForager(){
+    var workerCost = Math.floor(10 * Math.pow(1.1,foragers));       
+    if(food >= workerCost){                                        
+        foragers = foragers + 1;                                  
+    	food = food - workerCost;                                   
+        document.getElementById('foragers').innerHTML = foragers;  
+        document.getElementById('food').innerHTML = food;           
     };
-    var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
-    document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the user
+    var nextCost = Math.floor(10 * Math.pow(1.1,foragers));         
+    document.getElementById('foragerCost').innerHTML = nextCost;    
+};
+
+function hireLumberjack(){
+    var workerCost = Math.floor(10 * Math.pow(1.1,lumberjacks));         //works out the cost of this lumberjack
+    if(wood >= workerCost){                                              //checks that the player can afford the lumberjack
+        lumberjacks = lumberjacks + 1;                                   //increases number of lumberjacks
+    	wood = wood - workerCost;                                        //removes the wood spent
+        document.getElementById('lumberjacks').innerHTML = lumberjacks;  //updates the number of lumberjacks for the user
+        document.getElementById('wood').innerHTML = wood;                //updates the number of wood for the user
+    };
+    var nextCost = Math.floor(10 * Math.pow(1.1,lumberjacks));           //works out the cost of the next lumberjack
+    document.getElementById('lumberjackCost').innerHTML = nextCost;      //updates the lumberjack cost for the user
+};
+
+function hireMiner(){
+    var workerCost = Math.floor(10 * Math.pow(1.1,miners));        
+    if(stone >= workerCost){                                       
+        miners = miners + 1;                               
+    	stone = stone - workerCost;                                
+        document.getElementById('miners').innerHTML = miners;
+        document.getElementById('stone').innerHTML = stone;        
+    };
+    var nextCost = Math.floor(10 * Math.pow(1.1,miners));          
+    document.getElementById('minerCost').innerHTML = nextCost;     
 };
 
 
-// Game loop
-window.setInterval(function(){
 
+// Game loop
+// Do not put anything below this line
+window.setInterval(function(){
+    getFood(foragers);
+    getWood(lumberjacks);
+    getStone(miners);
 }, 1000);
