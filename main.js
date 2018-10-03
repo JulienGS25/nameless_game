@@ -55,6 +55,20 @@ function hireMiner(){
     document.getElementById('minerCost').innerHTML = nextCost;     
 };
 
+//Makes tabs resizable
+$(".left-tab, .middle-tab, .right-tab").resizable({containment: ".main"});
+
+
+
+
+$('.left-tab').resize(function(){
+   $('.middle-tab').width($(".main").width()-$(".left-tab").width()); 
+});
+$(window).resize(function(){
+   $('.middle-tab').width($(".main").width()-$(".left-tab").width()); 
+   $('.left-tab').width($(".main").width()); 
+});
+
 
 
 // Game loop

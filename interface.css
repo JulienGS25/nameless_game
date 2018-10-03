@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin: 0;
+    overflow-y: scroll;
   }
   .main {
     display: flex;
@@ -18,6 +19,7 @@ body {
   }
   .main > .middle-tab {
     flex: 1;
+    border: solid white;
   }
   .main > nav, 
   .main > .right-tab {
@@ -32,11 +34,12 @@ body {
       border: solid white;
   }
   .bottom-tab{
-    height: 15vh;
-    border: solid
-   }
+    height: 25vh;
+    border: solid;
+  }
   header, .bottom-tab, .middle-tab, nav, .right-tab {
     padding: 1em;
+    margin: 5px;
   }
   #era{
       font-weight: bold;
