@@ -26,6 +26,14 @@ body {
     flex: 0 0 20vw;
     border: solid white;
   }
+  .right-tab{
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 60vh;
+  }
+  .right-tab > p{
+    font-style: italic;
+  }
   .main > nav {
     order: -1;
   }
@@ -44,3 +52,43 @@ body {
   #era{
       font-weight: bold;
   }
+.hidden{
+  opacity: 0;
+  display: none;
+  pointer-events: none;
+}
+#people-resource{
+  color: white;
+}
+#food-resource{
+  color: red;
+}
+#wood-resource{
+  color: rosybrown;
+}
+#stone-resource{
+  color: grey;
+}
+.action-button{
+  display: block;
+  padding: 5px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: solid white;
+  width: 13vh;
+  height: 2vh;
+  text-align: center;
+  background-color: rgba(169, 169, 169, 0.479);
+  transition: background-color 0.25s;
+  user-select: none;
+}
+.action-button:hover{
+  background-color: darkgrey;
+  cursor: pointer;
+}
+.action-button:active{
+  transform: translateY(2px);
+}
+.log-text{
+  width: 35vh;
+}
