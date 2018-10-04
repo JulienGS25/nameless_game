@@ -1,3 +1,3 @@
 # nameless_game
 
-Nameless incremental game
+Nameless web based incremental game
