@@ -13,17 +13,38 @@ var foodStorage = 5;
 var woodStorage = 5;
 var stoneStorage = 5;
 
+//Discoveries
+var learnedFire = 0;
+var learnedCooking = 0;
+var learnedFurClothes = 0;
+var learnedPrimitiveConstruction = 0;
+var learnedStoneCarving = 0;
+var learnedStoneTools = 0;
+var learnedDomestication = 0;
+var learnedAnimalHusbandry = 0;
+var learnedSmelting = 0;
+var learnedCopperSmelting = 0;
+var learnedTinSmelting = 0;
+var learnedBronzeSmelting = 0;
+var learnedIronSmelting = 0;
+var learnedAgriculture = 0;
+var learnedWheel = 0;
+var learnedEarlyWriting = 0;
+
 //Other
 var exploredArea = 0;
 var passedTime = 0;
 var currentTemp = 20;
 
 //Exploration
+document.getElementById("scout-btn").addEventListener("click", scout);
+
 function scout(){
     exploredArea++;
     document.getElementById('explored').innerHTML = exploredArea; 
     unveilStuff(exploredArea); 
 };
+
 
 function unveilStuff(exploredArea){
     if (exploredArea == 1){
@@ -47,8 +68,68 @@ function unveilStuff(exploredArea){
         $('#gather-stone-btn').removeClass("hidden");
     }
 };
-    
-    
+
+var fireAppeared = 0;
+document.getElementById("various-action-btn").addEventListener("click", observe);
+
+var callFunction = 1;
+function observeOne(){
+    $('#various-action-btn').text('Stare');
+    $('.right-tab').append("<p class='log-text'>There is something bright moving on a nearby tree. As you get closer, you realize that it hurts!</p>");
+}
+function observeTwo(){
+    $('#various-action-btn').text('Experiment');
+    $('.right-tab').append("<p class='log-text'>You notice the tree is changing under the effects of this. You start to wonder if other things could be changed by this.</p>");
+    //$("<p class='log-text'>TEST</p>").insertBefore('.right-tab > div:first');
+}
+function observeThree(){
+    $('#various-action-btn').text('Panic');
+    $('.right-tab').append("<p class='log-text'>You take a nearby branch and stick it in this. The 'thing' jumped onto your branch!</p>");
+}
+function observeFour(){
+    $('#various-action-btn').text('Discover');
+    $('.right-tab').append("<p class='log-text'>In a panic, you drop the branch and see the 'thing' slowly disappear. Looks like it's not that dangerous after all.</p>");
+}
+function observeFive(){
+    $('.right-tab').append("<p class='log-text'>Trying again with more branches, you start assembling them into a pile. You name this new discovery:" + "<span style='color: red'> Fire!</span>");
+    $('#various-action-btn').addClass('hidden');
+    learnedFire = 1;
+}
+
+function observe(){
+  if(callFunction == 1) {observeOne(); callFunction++}
+  else if (callFunction == 2) {observeTwo(); callFunction++}
+  else if (callFunction == 3) {observeThree(); callFunction++}
+  else if (callFunction == 4) {observeFour(); callFunction++}
+  else if (callFunction == 5) {observeFive(); callFunction++}
+}
+
+
+
+//Timed events
+function lightningStrike(){
+    fireAppeared = 1;
+    $('.right-tab').append("<p class='log-text'>You hear an ear-shattering explosion nearby!</p>");
+    $('#various-action-btn').removeClass("hidden");
+    $('#various-action-btn-2').removeClass("hidden");
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Resource gathering
 function showFood(){
     {$('#food-resource').removeClass("hidden");}
@@ -59,6 +140,7 @@ function showWood(){
 function showStone(){
     {$('#stone-resource').removeClass("hidden");}
 }
+
 
 function getFood(number){
     if (food < foodStorage){
@@ -137,6 +219,9 @@ window.setInterval(function(){
     getWood(lumberjacks);
     getStone(miners);
     passedTime++;
+    if (passedTime == 1){
+        lightningStrike();
+    }
     document.getElementById('time').innerHTML = passedTime + ' seconds.'; 
     document.getElementById('temp').innerHTML = currentTemp + '°C.'; 
     document.getElementById("food").innerHTML = food;

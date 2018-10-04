@@ -1,89 +1,113 @@
-html{
-    background-color: black;
-    color: white;
-    font-family: arial;
+html {
+  background-color: black;
+  color: white;
+  font-family: arial;
 }
-header{
-    text-align: center;
+
+header {
+  text-align: center;
 }
+
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    margin: 0;
-    overflow-y: scroll;
-  }
-  .main {
-    display: flex;
-    flex: 1;
-  }
-  .main > .middle-tab {
-    flex: 1;
-    border: solid white;
-  }
-  .main > nav, 
-  .main > .right-tab {
-    flex: 0 0 20vw;
-    border: solid white;
-  }
-  .right-tab{
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: 60vh;
-  }
-  .right-tab > p{
-    font-style: italic;
-  }
-  .main > nav {
-    order: -1;
-  }
-  header{
-      height: 7.5vh;
-      border: solid white;
-  }
-  .bottom-tab{
-    height: 25vh;
-    border: solid;
-  }
-  header, .bottom-tab, .middle-tab, nav, .right-tab {
-    padding: 1em;
-    margin: 5px;
-    border-radius: 5px;
-  }
-  #era{
-      font-weight: bold;
-  }
-.hidden{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+}
+
+.main>.middle-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: solid white;
+}
+
+.main>nav, .main>.right-tab {
+  flex: 0 0 20vw;
+  border: solid white;
+  max-height: 25vw;
+}
+
+.right-tab {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 60vh;
+}
+
+.right-tab>p {
+  font-style: italic;
+}
+
+.main>nav {
+  order: -1;
+}
+
+header {
+  height: 7.5vh;
+  border: solid white;
+}
+
+.bottom-tab {
+  height: 25vh;
+  border: solid;
+}
+
+header, .bottom-tab, .middle-tab, nav, .right-tab {
+  padding: 1em;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#era {
+  font-weight: bold;
+}
+
+.hidden {
   opacity: 0;
   display: none;
   pointer-events: none;
 }
-.peopleColorText{
+
+.peopleColorText {
   color: white;
 }
-.foodColorText{
+
+.foodColorText {
   color: red;
 }
-.woodColorText{
+
+.woodColorText {
   color: rosybrown;
 }
-.stoneColorText{
+
+.stoneColorText {
   color: grey;
 }
-.peopleColorBg{
+
+.peopleColorBg {
   background-color: white;
 }
-.foodColorBg{
+
+.foodColorBg {
   background-color: red;
 }
-.woodColorBg{
+
+.woodColorBg {
   background-color: rosybrown;
 }
-.stoneColorBg{
+
+.stoneColorBg {
   background-color: grey;
 }
-.action-button{
-  display: block;
+
+.action-button {
   padding: 5px;
   margin-top: 15px;
   border-radius: 5px;
@@ -95,13 +119,16 @@ body {
   transition: background-color 0.25s;
   user-select: none;
 }
-.action-button:hover{
+
+.action-button:hover {
   background-color: darkgrey;
   cursor: pointer;
 }
-.action-button:active{
+
+.action-button:active {
   transform: translateY(2px);
 }
-.log-text{
-  width: 35vh;
+
+.log-text {
+  width: 30vh;
 }

@@ -15,15 +15,23 @@
 <body>
     <header>
         <p>Nameless Game - Julien GS 2018</p>
-        <p id="era">Current Era</p>
+        <p id="era">Ancient Era</p>
     </header>
 
     <div class="main">
         <div class="middle-tab">
-            <div class="action-button" id="scout-btn" type="button" onClick="scout()">Look around</div>
-            <div class="action-button hidden" id="forage-food-btn" type="button" onClick="getFood(1), showFood()">Forage for food</div>
-            <div class="action-button hidden" id="gather-wood-btn" type="button" onClick="getWood(1), showWood()">Gather wood</div>
-            <div class="action-button hidden" id="gather-stone-btn" type="button" onClick="getStone(1), showStone()">Gather stone</div>
+            <div class="middle-left-col">
+                <div class="action-button" id="scout-btn" type="button">Look around</div>
+                <div class="action-button hidden" id="forage-food-btn" type="button" onClick="getFood(1), showFood()">Forage for food</div>
+                <div class="action-button hidden" id="gather-wood-btn" type="button" onClick="getWood(1), showWood()">Gather wood</div>
+                <div class="action-button hidden" id="gather-stone-btn" type="button" onClick="getStone(1), showStone()">Gather stone</div>
+            </div>
+            <div class="middle-mid-col">
+                <!--<div class="action-button-left hidden" id="various-action-btn-2" type="button">Placeholder Button</div>-->
+            </div>
+            <div class="middle-right-col">
+                <div class="action-button hidden" id="various-action-btn" type="button">Observe</div>
+            </div>
         </div>
         <nav class="left-tab">
             <!--
@@ -33,7 +41,7 @@
             -->
         </nav>
         <div class="right-tab">
-            <p class="log-text">You wake up in an empty field...</p>
+            <p id="first-log" class="log-text">You wake up in an empty field...</p>
             
  </div>
     </div>
