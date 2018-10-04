@@ -48,6 +48,7 @@ body {
   header, .bottom-tab, .middle-tab, nav, .right-tab {
     padding: 1em;
     margin: 5px;
+    border-radius: 5px;
   }
   #era{
       font-weight: bold;
@@ -57,17 +58,29 @@ body {
   display: none;
   pointer-events: none;
 }
-#people-resource{
+.peopleColorText{
   color: white;
 }
-#food-resource{
+.foodColorText{
   color: red;
 }
-#wood-resource{
+.woodColorText{
   color: rosybrown;
 }
-#stone-resource{
+.stoneColorText{
   color: grey;
+}
+.peopleColorBg{
+  background-color: white;
+}
+.foodColorBg{
+  background-color: red;
+}
+.woodColorBg{
+  background-color: rosybrown;
+}
+.stoneColorBg{
+  background-color: grey;
 }
 .action-button{
   display: block;

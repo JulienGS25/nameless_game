@@ -21,9 +21,9 @@
     <div class="main">
         <div class="middle-tab">
             <div class="action-button" id="scout-btn" type="button" onClick="scout()">Look around</div>
-            <div class="action-button hidden" id="forage-food-btn" type="button" onClick="getFood(1)">Forage for food</div>
-            <div class="action-button hidden" id="gather-wood-btn" type="button" onClick="getWood(1)">Gather wood</div>
-            <div class="action-button hidden" id="gather-stone-btn" type="button" onClick="getStone(1)">Gather stone</div>
+            <div class="action-button hidden" id="forage-food-btn" type="button" onClick="getFood(1), showFood()">Forage for food</div>
+            <div class="action-button hidden" id="gather-wood-btn" type="button" onClick="getWood(1), showWood()">Gather wood</div>
+            <div class="action-button hidden" id="gather-stone-btn" type="button" onClick="getStone(1), showStone()">Gather stone</div>
         </div>
         <nav class="left-tab">
             <!--
@@ -38,11 +38,15 @@
  </div>
     </div>
     <div class="bottom-tab">
-        <p id="people-resource" class="hidden">Savages: <span id="people">1</span></p>
-        <p id="food-resource" class="hidden">Food: <span id="food"></span></p>
-        <p id="wood-resource" class="hidden">Wood: <span id="wood"></span></p>
-        <p id="stone-resource" class="hidden">Stone: <span id="stone"></span></p>
-        <p id="explored-resource" >Explored Area: <span id="explored"></span></p>
+        <div class="primary-resources">
+            <p id="people-resource" class="hidden peopleColor">Friend: <span id="people">1</span></p>
+            <p id="food-resource" class="hidden foodColorText">Food: <span id="food"></span><span> / </span><span id="food-storage"></span></p>
+            <p id="wood-resource" class="hidden woodColorText">Wood: <span id="wood"></span><span> / </span><span id="wood-storage"></span></p>
+            <p id="stone-resource" class="hidden stoneColorText">Stone: <span id="stone"></span><span> / </span><span id="stone-storage"></span></p>
+            <p id="explored-resource" >Explored Area: <span id="explored"></span></p>
+            <p id="time-passed" >Time passed: <span id="time"></span></p>
+            <p id="current-temp" >Current temperature: <span id="temp"></span></p>
+        </div>
     </div>
 
 

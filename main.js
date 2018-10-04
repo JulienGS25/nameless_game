@@ -1,14 +1,26 @@
+//Variables
+//Resources
 var food = 0;
-var foragers = 0;
 var wood = 0;
-var lumberjacks = 0;
 var stone = 0;
-var miners = 0;
-var exploredArea = 0;
 
+//Buildings
+var foragers = 0;
+var lumberjacks = 0;
+var miners = 0;
+//Storage
+var foodStorage = 5;
+var woodStorage = 5;
+var stoneStorage = 5;
+
+//Other
+var exploredArea = 0;
+var passedTime = 0;
+var currentTemp = 20;
+
+//Exploration
 function scout(){
     exploredArea++;
-    console.log('Explored area is ' + exploredArea);
     document.getElementById('explored').innerHTML = exploredArea; 
     unveilStuff(exploredArea); 
 };
@@ -19,7 +31,7 @@ function unveilStuff(exploredArea){
         $('#people-resource').removeClass("hidden");
     }
     else if (exploredArea == 2){
-        $('.right-tab').append("<p class='log-text'>You look around some more....</p>");
+        $('.right-tab').append("<p class='log-text'>You look around some more...</p>");
     }
     else if (exploredArea == 3){
         $('.right-tab').append("<p class='log-text'>You found a few bushes. They seem to have berries on them.</p>");
@@ -37,27 +49,34 @@ function unveilStuff(exploredArea){
 };
     
     
+//Resource gathering
+function showFood(){
+    {$('#food-resource').removeClass("hidden");}
+}
+function showWood(){
+    {$('#wood-resource').removeClass("hidden");}
+}
+function showStone(){
+    {$('#stone-resource').removeClass("hidden");}
+}
 
 function getFood(number){
-    if(food > 0)
-        {$('#food-resource').removeClass("hidden");}
+    if (food < foodStorage){
     food = food + number;
-    document.getElementById("food").innerHTML = food;
+    }
 }
-function getWood(number){
-    if(wood > 0)
-        {$('#wood-resource').removeClass("hidden");}
+function getWood(number){   
+    if (wood < woodStorage){
     wood = wood + number;
-    document.getElementById("wood").innerHTML = wood;
+    }
 }
 function getStone(number){
-    if(stone > 0)
-        {$('#stone-resource').removeClass("hidden");}
+    if (stone < stoneStorage){
     stone = stone + number;
-    document.getElementById("stone").innerHTML = stone;
+    }
 }
 
-
+//Worker / building purchasing
 function hireForager(){
     var workerCost = Math.floor(10 * Math.pow(1.1,foragers));       
     if(food >= workerCost){                                        
@@ -117,4 +136,13 @@ window.setInterval(function(){
     getFood(foragers);
     getWood(lumberjacks);
     getStone(miners);
+    passedTime++;
+    document.getElementById('time').innerHTML = passedTime + ' seconds.'; 
+    document.getElementById('temp').innerHTML = currentTemp + '°C.'; 
+    document.getElementById("food").innerHTML = food;
+    document.getElementById("food-storage").innerHTML = foodStorage;
+    document.getElementById("wood").innerHTML = wood;
+    document.getElementById("wood-storage").innerHTML = woodStorage;
+    document.getElementById("stone").innerHTML = stone;
+    document.getElementById("stone-storage").innerHTML = stoneStorage;
 }, 500);
