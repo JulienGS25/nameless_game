@@ -21,7 +21,7 @@ body {
   flex: 1;
 }
 
-.main>.middle-tab {
+.middle-tab, .left-tab {
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -39,8 +39,14 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 60vh;
+  opacity: 0;
 }
-
+.middle-tab{
+  opacity: 0;
+}
+.left-tab{
+  opacity: 0;
+}
 .right-tab>p {
   font-style: italic;
 }
@@ -52,11 +58,13 @@ body {
 header {
   height: 7.5vh;
   border: solid white;
+  opacity: 0;
 }
 
 .bottom-tab {
   height: 25vh;
   border: solid;
+  opacity: 0;
 }
 
 header, .bottom-tab, .middle-tab, nav, .right-tab {
@@ -107,28 +115,40 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   background-color: grey;
 }
 
-.action-button {
+.game-button{
   padding: 5px;
   margin-top: 15px;
   border-radius: 5px;
   border: solid white;
-  width: 13vh;
-  height: 2vh;
   text-align: center;
   background-color: rgba(169, 169, 169, 0.479);
   transition: background-color 0.25s;
   user-select: none;
+  
+}
+.mid-tab-button {
+  width: 13vh;
+  height: 2vh;
+  line-height: 2vh;
+}
+.left-tab-button {
+  width: 8vh;
+  height: auto;
+  line-height: 3vh;
 }
 
-.action-button:hover {
+.game-button:hover {
   background-color: darkgrey;
   cursor: pointer;
 }
 
-.action-button:active {
+.game-button:active {
   transform: translateY(2px);
 }
 
 .log-text {
   width: 30vh;
+}
+.opacity-zero{
+  opacity: 0;
 }

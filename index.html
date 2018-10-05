@@ -19,12 +19,12 @@
     </header>
 
     <div class="main">
-        <div class="middle-tab">
+        <div class="middle-tab opacity-zero">
             <div class="middle-left-col">
-                <div class="action-button" id="scout-btn" type="button">Look around</div>
-                <div class="action-button hidden" id="forage-food-btn" type="button" onClick="getFood(1), showFood()">Forage for food</div>
-                <div class="action-button hidden" id="gather-wood-btn" type="button" onClick="getWood(1), showWood()">Gather wood</div>
-                <div class="action-button hidden" id="gather-stone-btn" type="button" onClick="getStone(1), showStone()">Gather stone</div>
+                <div class="mid-tab-button game-button" id="scout-btn" type="button">Look around</div>
+                <div class="mid-tab-button game-button hidden opacity-zero" id="forage-food-btn" type="button" onClick="getFood(1), showFood()">Forage for food</div>
+                <div class="mid-tab-button game-button hidden opacity-zero" id="gather-wood-btn" type="button" onClick="getWood(1), showWood()">Gather wood</div>
+                <div class="mid-tab-button game-button hidden opacity-zero" id="gather-stone-btn" type="button" onClick="getStone(1), showStone()">Gather stone</div>
             </div>
             <div class="middle-mid-col">
                 <!--<div class="action-button-left hidden" id="various-action-btn-2" type="button">Placeholder Button</div>-->
@@ -33,16 +33,22 @@
                 <!--<div class="action-button-left hidden" id="various-action-btn-3" type="button">Placeholder Button</div>-->
             </div>
         </div>
-        <nav class="left-tab">
-            <div class="research-list">
-                
+        <nav class="left-tab opacity-zero">
+            <div class="research-list left-left-col">
+                <div class="left-tab-button game-button hidden" id="research-button" type="button">Research</div>
+            </div>
+            <div class="building-list left-mid-col">
+                <div class="left-tab-button game-button hidden" id="buildings-button" type="button">Buildings</div>
+            </div>
+            <div class="misc-list left-right-col">
+                <div class="left-tab-button game-button hidden" id="tools-button" type="button">Tools</div>
             </div>
         </nav>
         <div class="right-tab">
             
         </div>
     </div>
-    <div class="bottom-tab">
+    <div class="bottom-tab opacity-zero">
         <div class="primary-resources">
             <p id="people-resource" class="hidden peopleColor">Friend: <span id="people">1</span></p>
             <p id="food-resource" class="hidden foodColorText">Food: <span id="food"></span><span> / </span><span id="food-storage"></span></p>
@@ -51,6 +57,12 @@
             <p id="explored-resource" >Explored Area: <span id="explored"></span></p>
             <p id="time-passed" >Time passed: <span id="time"></span></p>
             <p id="current-temp" >Current temperature: <span id="temp"></span></p>
+        </div>
+        <div class="crafting-resources">
+
+        </div>
+        <div class="devtools">
+
         </div>
     </div>
 
@@ -63,7 +75,16 @@
   src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
   integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
   crossorigin="anonymous"></script>
-    <script type="text/javascript" src="main.js"></script>
+
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/discoveries.js"></script>
+  <script type="text/javascript" src="js/events.js"></script>
+  <script type="text/javascript" src="js/buildings.js"></script>
+  <script type="text/javascript" src="js/resources.js"></script>
+  <script type="text/javascript" src="js/exploration.js"></script>
+
+  
+
 </body>
 
 </html>
