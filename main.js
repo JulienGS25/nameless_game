@@ -8,6 +8,7 @@ var stone = 0;
 var foragers = 0;
 var lumberjacks = 0;
 var miners = 0;
+
 //Storage
 var foodStorage = 5;
 var woodStorage = 5;
@@ -48,23 +49,23 @@ function scout() {
 
 function unveilStuff(exploredArea) {
     if (exploredArea == 1) {
-        $('.right-tab').prepend("<p class='log-text'>You see you are not alone. Friend?</p>");
+        logText('You see you are not alone. Friend?');
         $('#people-resource').removeClass("hidden");
     }
     else if (exploredArea == 2) {
-        $('.right-tab').prepend("<p class='log-text'>You look around some more...</p>");
+        logText('You look around some more...');
     }
     else if (exploredArea == 3) {
-        $('.right-tab').prepend("<p class='log-text'>You found a few bushes. They seem to have berries on them.</p>");
+        logText('You found a few bushes. They seem to have berries on them.');
         $('#forage-food-btn').removeClass("hidden");
         $('#scout-btn').text('Scout area');
     }
     else if (exploredArea == 5) {
-        $('.right-tab').prepend("<p class='log-text'>You found some branches on the ground. You should gather a few.</p>");
+        logText('You found some branches on the ground. You should gather a few.');
         $('#gather-wood-btn').removeClass("hidden");
     }
     else if (exploredArea == 7) {
-        $('.right-tab').prepend("<p class='log-text'>You found some stones, they should be useful.</p>");
+        logText('You found some stones, they should be useful.');
         $('#gather-stone-btn').removeClass("hidden");
     }
 };
@@ -72,36 +73,37 @@ function unveilStuff(exploredArea) {
 
 // Timed events
 function wakeUp(){
-    $('.right-tab').prepend("<p class='log-text'>You wake up in an empty field...</p>");
+    logText('You wake up in an empty field...');
 }
 
 function discoverFire() {
     fireAppeared = 1;
-    $('.right-tab').prepend("<p class='log-text'>You hear an ear-shattering explosion nearby!</p>");
-    $('.middle-right-col').prepend("<div class='action-button hidden' id='various-action-btn' type='button'>Observe</div>");
+    logText('You hear an ear-shattering explosion nearby!');
+    $('.middle-right-col').append("<div class='action-button hidden' id='various-action-btn' type='button'>Observe</div>");
     $('#various-action-btn').removeClass("hidden");
     document.getElementById("various-action-btn").addEventListener("click", observe);
     var callFunction = 1;
     function observeOne() {
         $('#various-action-btn').text('Stare');
-        $('.right-tab').prepend("<p class='log-text'>There is something bright moving on a nearby tree. As you get closer, you realize that it hurts!</p>");
+        logText('There is something bright moving on a nearby tree. As you get closer, you realize that it hurts!');
     }
     function observeTwo() {
         $('#various-action-btn').text('Experiment');
-        $('.right-tab').prepend("<p class='log-text'>You notice the tree is changing under the effects of this. You start to wonder if other things could be changed by this.</p>");
+        logText('You notice the tree is changing under the effects of this. You start to wonder if other things could be changed by this.');
     }
     function observeThree() {
         $('#various-action-btn').text('Panic');
-        $('.right-tab').prepend("<p class='log-text'>You take a nearby branch and stick it in this. The 'thing' jumped onto your branch!</p>");
+        logText('You take a nearby branch and stick it in this. The \'thing\' jumped onto your branch!')
     }
     function observeFour() {
         $('#various-action-btn').text('Discover');
-        $('.right-tab').prepend("<p class='log-text'>In a panic, you drop the branch and see the 'thing' slowly disappear. Looks like it's not that dangerous after all.</p>");
+        logText('In a panic, you drop the branch and see the \'thing\' slowly disappear. Looks like it\'s not that dangerous after all.')
     }
     function observeFive() {
-        $('.right-tab').prepend("<p class='log-text'>Trying again with more branches, you start assembling them into a pile. You name this new discovery:" + "<span style='color: red'> Fire!</span>");
+        logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!')
         $('#various-action-btn').addClass('hidden');
         learnedFire = 1;
+        $('.research-list').append("<div class='action-button' id='campire' type='button'>Campire</div>");
     }
     function observe() {
         if (callFunction == 1) { observeOne(); callFunction++ }
@@ -125,9 +127,10 @@ function discoverFire() {
 
 
 
-
-
-
+//Adds text to the log
+function logText(text){
+    $('.right-tab').prepend("<p class='log-text'>" + text + "</p>");
+}
 
 //Resource gathering
 function showFood() {
