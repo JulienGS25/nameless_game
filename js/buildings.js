@@ -1,8 +1,8 @@
 //Worker / building purchasing
-/*document.getElementById("campfire").addEventListener("click", buildCampfire);
-    function buildCampfire(){
-        $('html').animate({backgroundColor:'#512300'},{duration: 1000});
-}*/
+function buildCampfire(){
+    $('html').animate({backgroundColor:'#512300'},{duration: 1000});
+};
+
 function hireForager() {
     var workerCost = Math.floor(10 * Math.pow(1.1, foragers));
     if (food >= workerCost) {

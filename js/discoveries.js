@@ -27,9 +27,9 @@ function discoverFire() {
         logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!')
         $('#observe-button').addClass('hidden');
         learnedFire = 1;
-        
         $('.left-tab').animate({opacity: 1},{duration: 1000});
         $('.research-list').append("<div class='left-tab-button game-button' id='campfire' type='button'>Build Campfire</div>");
+        document.getElementById("campfire").addEventListener("click", buildCampfire)
     }
     function observe() {
         if (callFunction == 1) { observeOne(); callFunction++ }
