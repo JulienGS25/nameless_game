@@ -1,6 +1,22 @@
 //Worker / building purchasing
 function buildCampfire(){
-    $('html').animate({backgroundColor:'#512300'},{duration: 1000});
+    if (wood >= 5 && stone >= 5){
+        $('.building-list').append("<div class='left-tab-button game-button underlined' id='campfire' type='button'>Campfire</div>");
+        $('#build-campfire').animate({opacity: 1},{duration: 500});
+        $('#build-campfire').addClass('hidden');
+        $('#buildings-title').animate({opacity: 1},{duration: 500});
+        wood = wood - 5;
+        stone = stone - 5;
+        campfireBuilt = 1;
+        logText('Now that you have a campfire, people have started gathering around it for warmth.');
+        setTimeout(function(){logText('You\'ll need to feed them.');}, 2000);
+    }
+    else if (wood < 5){
+        logText('More wood required!');
+    }
+    else if (stone < 5){
+        logText('More stone required!');
+    }
 };
 
 function hireForager() {

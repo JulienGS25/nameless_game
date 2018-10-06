@@ -2,6 +2,12 @@ function discoverFire() {
     lightningStrikeHappened = 1;
     fireAppeared = 1;
     logText('You hear an ear-shattering explosion nearby!');
+    if (disableLightningEffect == 0){
+        $('#body')
+        .animate({backgroundColor:'#ffffff'},{duration: 100})
+        .animate({backgroundColor:'#000000'},{duration: 100})
+        .animate({backgroundColor:'#ffffff'},{duration: 100})
+        .animate({backgroundColor:'#000000'},{duration: 100})};
     $('.middle-right-col').append("<div class='mid-tab-button game-button hidden opacity-zero' id='observe-button' type='button'>Observe</div>");
     $('#observe-button').removeClass("hidden");
     $('#observe-button').animate({opacity: 1},{duration: 500});
@@ -16,20 +22,22 @@ function discoverFire() {
         logText('You notice the tree is changing under the effects of this. You start to wonder if other things could be changed by this.');
     }
     function observeThree() {
+        $('.right-tab').animate({backgroundColor:'#e25822'},{duration: 250});
         $('#observe-button').text('Panic');
-        logText('You take a nearby branch and stick it in this. The \'thing\' jumped onto your branch!')
+        logText('You take a nearby branch and stick it in this. The \'thing\' jumped onto your branch!');
     }
     function observeFour() {
+        $('.right-tab').animate({backgroundColor:'black'},{duration: 1500});
         $('#observe-button').text('Discover');
-        logText('In a panic, you drop the branch and see the \'thing\' slowly disappear. Looks like it\'s not that dangerous after all.')
+        logText('In a panic, you drop the branch and see the \'thing\' slowly disappear. Looks like it\'s not that dangerous after all.');
     }
     function observeFive() {
-        logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!')
+        logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!');
         $('#observe-button').addClass('hidden');
         learnedFire = 1;
         $('.left-tab').animate({opacity: 1},{duration: 1000});
-        $('.research-list').append("<div class='left-tab-button game-button' id='campfire' type='button'>Build Campfire</div>");
-        document.getElementById("campfire").addEventListener("click", buildCampfire)
+        $('.building-list').append("<div class='left-tab-button game-button' id='build-campfire' type='button'>Build Campfire</div>");
+        document.getElementById("build-campfire").addEventListener("click", buildCampfire)
     }
     function observe() {
         if (callFunction == 1) { observeOne(); callFunction++ }

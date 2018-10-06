@@ -1,10 +1,12 @@
 //Variables
 //Resources
-var food = 0;
-var wood = 0;
-var stone = 0;
+var people = 0.0;
+var food = 0.0;
+var wood = 0.0;
+var stone = 0.0;
 
 //Buildings
+var campfireBuilt = 0;
 var foragers = 0;
 var lumberjacks = 0;
 var miners = 0;
@@ -32,6 +34,7 @@ var learnedAgriculture = 0;
 var learnedWheel = 0;
 var learnedEarlyWriting = 0;
 
+
 //Events
 var lightningStrikeHappened = 0
 var wakeUpHappened = 0;
@@ -42,13 +45,15 @@ var passedTime = 0;
 var currentTemp = 20;
 
 
+var disableLightningEffect = 1;
+
 //Adds text to the log
 function logText(text){
     $('.right-tab').prepend("<p class='log-text'>" + text + "</p>");
 }
 
 //Makes tabs resizable
-$(".left-tab, .middle-tab, .right-tab").resizable({containment: ".main" });
+/*$(".left-tab, .middle-tab, .right-tab").resizable({containment: ".main" });
 $('.left-tab').resize(function () {
     $('.middle-tab').width($(".main").width() - $(".left-tab").width());
 });
@@ -56,13 +61,17 @@ $(window).resize(function () {
     $('.middle-tab').width($(".main").width() - $(".left-tab").width());
     $('.left-tab').width($(".main").width());
 });
-
+*/
 
 //Sets the current era
 $('#era').text('Ancient Era')
 
+
+function prettify(input){
+    var output = Math.round(input * 10000000)/10000000;
+        return output;
+}
 // Game loop
-// Do not put anything below this line
 window.setInterval(function(){
     getFood(foragers);
     getWood(lumberjacks);
@@ -82,12 +91,17 @@ window.setInterval(function(){
     if (passedTime >= 10 && lightningStrikeHappened == 0) {
         discoverFire();
     }
+    if (campfireBuilt == 1 && food > 0.0){
+        people = people + 0.01;
+        food = food - 0.01;
+    }
     document.getElementById('time').innerHTML = passedTime + ' seconds.';
     document.getElementById('temp').innerHTML = currentTemp + '°C.';
-    document.getElementById("food").innerHTML = food;
+    document.getElementById("people").innerHTML = prettify(people);
+    document.getElementById("food").innerHTML = prettify(food);
     document.getElementById("food-storage").innerHTML = foodStorage;
-    document.getElementById("wood").innerHTML = wood;
+    document.getElementById("wood").innerHTML = prettify(wood);
     document.getElementById("wood-storage").innerHTML = woodStorage;
-    document.getElementById("stone").innerHTML = stone;
+    document.getElementById("stone").innerHTML = prettify(stone);
     document.getElementById("stone-storage").innerHTML = stoneStorage;
 }, 500);

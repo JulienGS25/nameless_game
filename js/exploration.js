@@ -11,6 +11,7 @@ function scout() {
 function unveilStuff(exploredArea) {
     if (exploredArea == 1) {
         logText('You see you are not alone. Friend?');
+        people++;
         $('#people-resource').removeClass("hidden");
         $('.bottom-tab').animate({opacity: 1},{duration: 500});
     }

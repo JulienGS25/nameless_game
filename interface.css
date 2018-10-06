@@ -152,3 +152,9 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
 .opacity-zero{
   opacity: 0;
 }
+.underlined{
+  text-decoration: underline;
+}
+.tab-title{
+  text-align: center;
+}
