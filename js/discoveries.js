@@ -1,6 +1,8 @@
+
 function discoverFire() {
     lightningStrikeHappened = 1;
     fireAppeared = 1;
+    state = 6;
     logText('You hear an ear-shattering explosion nearby!');
     if (disableLightningEffect == 0){
         $('#body')
@@ -9,8 +11,7 @@ function discoverFire() {
         .animate({backgroundColor:'#ffffff'},{duration: 100})
         .animate({backgroundColor:'#000000'},{duration: 100})};
     $('.middle-right-col').append("<div class='mid-tab-button game-button hidden opacity-zero' id='observe-button' type='button'>Observe</div>");
-    $('#observe-button').removeClass("hidden");
-    $('#observe-button').animate({opacity: 1},{duration: 500});
+    show('#observe-button');
     document.getElementById("observe-button").addEventListener("click", observe);
     var callFunction = 1;
     function observeOne() {
@@ -33,9 +34,11 @@ function discoverFire() {
     }
     function observeFive() {
         logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!');
-        $('#observe-button').addClass('hidden');
+        $('#observe-button').remove();
         learnedFire = 1;
-        $('.left-tab').animate({opacity: 1},{duration: 1000});
+        state = 7;
+        show('.left-tab');
+        show('#era');
         $('.building-list').append("<div class='left-tab-button game-button' id='build-campfire' type='button'>Build Campfire</div>");
         document.getElementById("build-campfire").addEventListener("click", buildCampfire)
     }
@@ -47,3 +50,4 @@ function discoverFire() {
         else if (callFunction == 5) { observeFive(); callFunction++ }
     }
 }
+

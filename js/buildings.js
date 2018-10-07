@@ -1,10 +1,10 @@
 //Worker / building purchasing
 function buildCampfire(){
     if (wood >= 5 && stone >= 5){
-        $('.building-list').append("<div class='left-tab-button game-button underlined' id='campfire' type='button'>Campfire</div>");
-        $('#build-campfire').animate({opacity: 1},{duration: 500});
-        $('#build-campfire').addClass('hidden');
+        $('.building-list').append("<div class='left-tab-button building underlined' id='campfire' type='button'>Campfire</div>");
+        $('#build-campfire').remove();
         $('#buildings-title').animate({opacity: 1},{duration: 500});
+        $('#buildings-title').removeClass('opacity-zero');
         wood = wood - 5;
         stone = stone - 5;
         campfireBuilt = 1;

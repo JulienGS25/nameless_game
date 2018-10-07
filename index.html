@@ -14,8 +14,22 @@
 
 <body id="body">
     <header>
-        <p>Nameless Game - Julien GS 2018</p>
-        <p id="era">Ancient Era</p>
+        <div id="container">
+            <div class="header-box opacity-zero" id="era">Ancient Era</div>
+            <div class="header-box"></div>
+            <div class="header-box"></div>
+            <div class="header-box" style="font-weight: bold" id="game-title">Nameless Game</div>
+            <div class="header-box"></div>
+            <div class="header-box" style="text-decoration: underline" id="reset">Reset</div>
+            <div class="header-box" style="text-decoration: underline" id="save">Save</div>
+            <div class="header-box"></div>
+            <div class="header-box"></div>
+            <div class="header-box"></div>
+            <div class="header-box">Julien GS</div>
+            <div class="header-box"></div>
+            <div class="header-box" style="text-decoration: underline">Options</div>
+            <div class="header-box" style="text-decoration: underline" id="load">Load</div>
+        </div>
     </header>
 
     <div class="main">
@@ -55,7 +69,7 @@
     </div>
     <div class="bottom-tab opacity-zero">
         <div class="primary-resources">
-            <p id="people-resource" class="hidden peopleColor">Friends: <span id="people">0</span></p>
+            <p id="people-resource" class="hidden peopleColor">Friends: <span id="people">0</span><span> / </span><span id="people-storage"></span></p></p>
             <p id="food-resource" class="hidden foodColorText">Food: <span id="food"></span><span> / </span><span id="food-storage"></span></p>
             <p id="wood-resource" class="hidden woodColorText">Wood: <span id="wood"></span><span> / </span><span id="wood-storage"></span></p>
             <p id="stone-resource" class="hidden stoneCo2053lorText">Stone: <span id="stone"></span><span> / </span><span id="stone-storage"></span></p>

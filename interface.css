@@ -6,7 +6,23 @@ html {
 
 header {
   text-align: center;
+  height: 7.5vh;
+  border: solid white;
+  opacity: 1;
+
 }
+
+#container{
+  display: grid;
+  grid-template-columns: repeat(7, 2fr);
+  grid-gap: 10px;
+}
+
+.header-box{
+  text-align: center;
+  font-style: italic;
+}
+
 
 body {
   display: flex;
@@ -55,12 +71,6 @@ body {
   order: -1;
 }
 
-header {
-  height: 7.5vh;
-  border: solid white;
-  opacity: 0;
-}
-
 .bottom-tab {
   height: 25vh;
   border: solid;
@@ -99,22 +109,6 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   color: grey;
 }
 
-.peopleColorBg {
-  background-color: white;
-}
-
-.foodColorBg {
-  background-color: red;
-}
-
-.woodColorBg {
-  background-color: rosybrown;
-}
-
-.stoneColorBg {
-  background-color: grey;
-}
-
 .game-button{
   padding: 5px;
   margin-top: 15px;
@@ -124,13 +118,25 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   background-color: rgba(169, 169, 169, 0.479);
   transition: background-color 0.25s;
   user-select: none;
-  
 }
+
+.building{
+  padding: 5px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: solid white;
+  text-align: center;
+  background-color: rgba(169, 169, 169, 0.479);
+  transition: background-color 0.25s;
+  user-select: none;
+}
+
 .mid-tab-button {
   width: 13vh;
   height: 2vh;
   line-height: 2vh;
 }
+
 .left-tab-button {
   width: 8vh;
   height: auto;
@@ -149,12 +155,16 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
 .log-text {
   width: 30vh;
 }
+
 .opacity-zero{
   opacity: 0;
+  pointer-events: none;
 }
+
 .underlined{
   text-decoration: underline;
 }
+
 .tab-title{
   text-align: center;
 }
