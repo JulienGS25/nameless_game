@@ -240,3 +240,8 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
 .tab-title{
   text-align: center;
 }
+
+.resource-icons{
+	height: 20px;
+	margin-bottom: -2px;
+}
