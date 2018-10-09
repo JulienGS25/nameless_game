@@ -12,7 +12,9 @@ function unveilStuff(exploredArea) {
     if (exploredArea == 1) {
         logText('You see you are not alone. Friends?');
         show('#people-resource');
+        peopleResourceVisible = 1;
         show('.bottom-tab');
+        bottomTabVisible = 1;
         //$('#people-resource').removeClass("hidden");
         //$('#people-resource').removeClass('opacity-zero');
         $('.bottom-tab').animate({opacity: 1},{duration: 500});
@@ -25,6 +27,7 @@ function unveilStuff(exploredArea) {
     else if (exploredArea == 3) {
         logText('You found a few bushes. They seem to have berries on them.');
         show('#forage-food-btn');
+        forageFoodButtonVisible = 1;
         /*$('#forage-food-btn').removeClass("hidden");
         $('#forage-food-btn').removeClass('opacity-zero');
         $('#forage-food-btn').animate({opacity: 1},{duration: 500});*/
@@ -34,6 +37,7 @@ function unveilStuff(exploredArea) {
     else if (exploredArea == 5) {
         logText('You found some branches on the ground. You should gather a few.');
         show('#gather-wood-btn');
+        gatherWoodButtonVisible = 1;
         /*$('#gather-wood-btn').removeClass("hidden");
         $('#gather-wood-btn').animate({opacity: 1},{duration: 500});
         $('#gather-wood-btn').removeClass('opacity-zero');*/
@@ -42,6 +46,7 @@ function unveilStuff(exploredArea) {
     else if (exploredArea == 7) {
         logText('You found some stones, they should be useful.');
         show('#gather-stone-btn');
+        gatherStoneButtonVisisble = 1;
         /*$('#gather-stone-btn').removeClass("hidden");
         $('#gather-stone-btn').animate({opacity: 1},{duration: 500});
         $('#gather-stone-btn').removeClass('opacity-zero');*/

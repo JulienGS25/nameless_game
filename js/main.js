@@ -1,58 +1,3 @@
-//Variables
-//Resources
-var people = 0.0;
-var food = 0.0;
-var wood = 0.0;
-var stone = 0.0;
-
-//Buildings
-var campfireBuilt = 0;
-var foragers = 0;
-var lumberjacks = 0;
-var miners = 0;
-
-//Storage
-var peopleStorage = 5.0
-var foodStorage = 5.0;
-var woodStorage = 5.0;
-var stoneStorage = 5.0;
-
-//Discoveries
-var learnedFire = 0;
-var learnedCooking = 0;
-var learnedFurClothes = 0;
-var learnedPrimitiveConstruction = 0;
-var learnedStoneCarving = 0;
-var learnedStoneTools = 0;
-var learnedDomestication = 0;
-var learnedAnimalHusbandry = 0;
-var learnedSmelting = 0;
-var learnedCopperSmelting = 0;
-var learnedTinSmelting = 0;
-var learnedBronzeSmelting = 0;
-var learnedIronSmelting = 0;
-var learnedAgriculture = 0;
-var learnedWheel = 0;
-var learnedEarlyWriting = 0;
-
-
-//Events
-var lightningStrikeHappened = 0
-var wakeUpHappened = 0;
-
-//Other
-var exploredArea = 0;
-var passedTime = 0;
-var currentTemp = 20;
-var speed = 50;
-
-//Progress variable
-var state = 0;
-
-//Dev tools
-var disableLightningEffect = 1;
-
-
 //Adds text to the log
 function logText(text){
     $('.right-tab').prepend("<p class='log-text'>" + text + "</p>");
@@ -63,29 +8,13 @@ function show(element){
     $(element).animate({opacity: 1},{duration: 500});
     $(element).removeClass('hidden opacity-zero');
 }
-//Makes tabs resizable
-/*$(".left-tab, .middle-tab, .right-tab").resizable({containment: ".main" });
-$('.left-tab').resize(function () {
-    $('.middle-tab').width($(".main").width() - $(".left-tab").width());
-});
-$(window).resize(function () {
-    $('.middle-tab').width($(".main").width() - $(".left-tab").width());
-    $('.left-tab').width($(".main").width());
-});
-*/
-
-
 //Sets the current era
 $('#era').text('Ancient Era')
 
 //Local Storage functions
-if (typeof(Storage) !== "undefined") {
-    // Code for localStorage/sessionStorage.
-
-} else {
+if (typeof(Storage) == "undefined") {
     document.getElementById('game-title').innerHTML = 'Web Storage Support is required for this game. Please update your browser to one of the versions shown at: https://www.w3schools.com/html/html5_webstorage.asp';
-    
-}
+};
 
 document.getElementById("save").addEventListener("click", saveGame);
 document.getElementById("load").addEventListener("click", loadGame);
@@ -134,7 +63,6 @@ window.setInterval(function(){
     getWood(lumberjacks);
     getStone(miners);
     passedTime++;
-    
     if (passedTime >= 2 && wakeUpHappened == 0){
         wakeUp();
     }

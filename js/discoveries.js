@@ -1,3 +1,11 @@
+var discovery = {
+    fire: {
+        name: 'fire',
+        message: 'You discovered fire!'
+    }
+
+}
+
 
 function discoverFire() {
     lightningStrikeHappened = 1;
@@ -38,7 +46,9 @@ function discoverFire() {
         learnedFire = 1;
         state = 7;
         show('.left-tab');
+        leftTabVisible = 1;
         show('#era');
+        eraVisible = 1;
         $('.building-list').append("<div class='left-tab-button game-button' id='build-campfire' type='button'>Build Campfire</div>");
         document.getElementById("build-campfire").addEventListener("click", buildCampfire)
     }
