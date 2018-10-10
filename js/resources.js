@@ -1,14 +1,14 @@
 //Resource gathering
 function showFood() {
-    { $('#food-resource').removeClass("hidden"); }
+    { $('#primary-res-1').removeClass("hidden"); }
     foodResourceVisible = 1;
 }
 function showWood() {
-    { $('#wood-resource').removeClass("hidden"); }
+    { $('#primary-res-2').removeClass("hidden"); }
     woodResourceVisible = 1;
 }
 function showStone() {
-    { $('#stone-resource').removeClass("hidden"); }
+    { $('#primary-res-3').removeClass("hidden"); }
     stoneResourceVisible = 1;
 }
 

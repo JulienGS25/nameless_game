@@ -86,10 +86,11 @@ window.setInterval(function(){
     document.getElementById('temp').innerHTML = currentTemp + '°C.';
     document.getElementById("people").innerHTML = prettify(people);
     document.getElementById("people-storage").innerHTML = prettify(peopleStorage);
-    document.getElementById("food").innerHTML = prettify(food);
-    document.getElementById("food-storage").innerHTML = prettify(foodStorage);
-    document.getElementById("wood").innerHTML = prettify(wood);
-    document.getElementById("wood-storage").innerHTML = prettify(woodStorage);
-    document.getElementById("stone").innerHTML = prettify(stone);
-    document.getElementById("stone-storage").innerHTML = prettify(stoneStorage);
+    document.getElementById("res-1-amt").innerHTML = prettify(food);
+    document.getElementById("res-1-storage").innerHTML = prettify(foodStorage);
+    document.getElementById("res-1-img").src = "images/Apple.png";
+    document.getElementById("res-2-amt").innerHTML = prettify(wood);
+    document.getElementById("res-2-storage").innerHTML = prettify(woodStorage);
+    document.getElementById("res-3-amt").innerHTML = prettify(stone);
+    document.getElementById("res-3-storage").innerHTML = prettify(stoneStorage);
 }, speed);
