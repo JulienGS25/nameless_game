@@ -11,7 +11,6 @@ header {
   opacity: 1;
 
 }
-
 .grid-header{
   display: grid;
   grid-template-columns: repeat(7, 2fr);
@@ -20,9 +19,11 @@ header {
 .grid-bottom{
     display: grid;
     grid-template-columns: repeat(7, 11vw);
-    grid-template-rows: repeat(9, 1vw);
+    grid-template-rows: repeat(6, 1vw);
     gap: 0.5vw;
     grid-auto-flow: column;
+    text-align: left;
+    align-items: end;
 }
 .header-box{
   text-align: center;
@@ -34,16 +35,13 @@ header {
 }
 
 #Primary-Resources-Title {
-  grid-area: 1 / 2 / 2 / 4;
-  float: left;
+  grid-area: 1 / 1 / 1 / 4;
 }
-#Crafting-Resources-Titles {
-  grid-area: 1 / 5 / 2 / 7;
-  display: inline-block;
+#Crafting-Resources-Title {
+  grid-area: 1 / 4 / 1 / 7;
 }
 #Dev-Tools {
   grid-area: 1 / 7 / 2 / 8;
-  float: right;
 }
 #time-passed  {grid-area: 2 / 7 / 2 / 8;}
 #current-temp {grid-area: 3 / 7 / 3 / 8;}
@@ -197,8 +195,4 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
 .resource-icons{
 	height: 20px;
 	margin-bottom: -2px;
-}
-
-.resource-titles{
-  text-align: center;
 }
