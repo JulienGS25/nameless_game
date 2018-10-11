@@ -18,16 +18,6 @@ header {
   grid-gap: 10px;
 }
 
-.grid-bottom {
-  display: grid;
-  grid-template-columns: repeat(7, 11vw);
-  grid-template-rows: repeat(6, 1vw);
-  gap: 0.5vw;
-  grid-auto-flow: column;
-  text-align: left;
-  align-items: end;
-}
-
 .header-box {
   text-align: center;
   font-style: italic;
@@ -38,21 +28,11 @@ header {
   color: white;
 }
 
-#Primary-Resources-Title {
-  grid-area: 1 / 1 / 1 / 4;
+header, .bottom-tab, .middle-tab, nav, .right-tab {
+  padding: 1em;
+  margin: 5px;
+  border-radius: 5px;
 }
-
-#Crafting-Resources-Title {
-  grid-area: 1 / 4 / 1 / 7;
-}
-
-#Dev-Tools {
-  grid-area: 1 / 7 / 2 / 8;
-}
-
-#time-passed {grid-area: 2 / 7 / 2 / 8;}
-#current-temp {grid-area: 3 / 7 / 3 / 8;}
-#explored-resource {grid-area: 4 / 7 / 4 / 8;}
 
 body {
   display: flex;
@@ -81,6 +61,13 @@ body {
   flex-direction: row;
   justify-content: space-between;
   border: solid white;
+  opacity: 0;
+}
+
+.left-tab-button {
+  width: 8vh;
+  height: auto;
+  line-height: 3vh;
 }
 
 .main>nav, .main>.right-tab {
@@ -100,6 +87,12 @@ body {
   opacity: 0;
 }
 
+.mid-tab-button {
+  width: 6vw;
+  height: 2vh;
+  line-height: 2vh;
+}
+
 .middle-left-col, .middle-mid-col, .middle-right-col {
   border: solid red;
 }
@@ -108,11 +101,7 @@ body {
   float: right;
 }
 
-.middle-left-col {
-  width: 15%;
-}
-
-.middle-right-col {
+.middle-left-col, .middle-right-col {
   width: 15%;
 }
 
@@ -120,9 +109,30 @@ body {
   width: 60%;
 }
 
-.left-tab {
-  opacity: 0;
+.grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(7, 11vw);
+  grid-template-rows: repeat(7, 1vw);
+  gap: 0.5vw;
+  grid-auto-flow: column;
+  text-align: left;
+  align-items: end;
 }
+
+#Primary-Resources-Title {
+  grid-area: 1 / 1 / 1 / 4;
+}
+
+#Crafting-Resources-Title {
+  grid-area: 1 / 4 / 1 / 7;
+}
+
+#Dev-Tools {
+  grid-area: 1 / 7 / 2 / 8;
+}
+#time-passed {grid-area: 2 / 7 / 2 / 8;}
+#current-temp {grid-area: 3 / 7 / 3 / 8;}
+#explored-resource {grid-area: 4 / 7 / 4 / 8;}
 
 .work-area {
   height: 95%;
@@ -215,12 +225,6 @@ body {
   opacity: 0;
 }
 
-header, .bottom-tab, .middle-tab, nav, .right-tab {
-  padding: 1em;
-  margin: 5px;
-  border-radius: 5px;
-}
-
 #era {
   font-weight: bold;
 }
@@ -247,7 +251,7 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   color: grey;
 }
 
-.game-button {
+.game-button, .building {
   padding: 5px;
   margin-top: 15px;
   border-radius: 5px;
@@ -256,29 +260,6 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   background-color: rgba(169, 169, 169, 0.479);
   transition: background-color 0.25s;
   user-select: none;
-}
-
-.building {
-  padding: 5px;
-  margin-top: 15px;
-  border-radius: 5px;
-  border: solid white;
-  text-align: center;
-  background-color: rgba(169, 169, 169, 0.479);
-  transition: background-color 0.25s;
-  user-select: none;
-}
-
-.mid-tab-button {
-  width: 6vw;
-  height: 2vh;
-  line-height: 2vh;
-}
-
-.left-tab-button {
-  width: 8vh;
-  height: auto;
-  line-height: 3vh;
 }
 
 .game-button:hover {

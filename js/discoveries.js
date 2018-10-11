@@ -8,8 +8,8 @@ var discovery = {
 
 
 function discoverFire() {
-    lightningStrikeHappened = 1;
-    fireAppeared = 1;
+    events.lightningStrike = 1;
+    events.fireAppeared = 1;
     state = 6;
     logText('You hear an ear-shattering explosion nearby!');
     if (disableLightningEffect == 0){
@@ -43,12 +43,12 @@ function discoverFire() {
     function observeFive() {
         logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!');
         $('#observe-button').remove();
-        learnedFire = 1;
+        discovery.fire = 1;
         state = 7;
         show('.left-tab');
-        leftTabVisible = 1;
+        visible.leftTab = 1;
         show('#era');
-        eraVisible = 1;
+        visible.era = 1;
         $('.building-list').append("<div class='left-tab-button game-button' id='build-campfire' type='button'>Build Campfire</div>");
         document.getElementById("build-campfire").addEventListener("click", buildCampfire)
     }

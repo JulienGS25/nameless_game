@@ -12,9 +12,9 @@ function unveilStuff(exploredArea) {
     if (exploredArea == 1) {
         logText('You see you are not alone. Friends?');
         show('#people-resource');
-        peopleResourceVisible = 1;
+        visible.peopleResource = 1;
         show('.bottom-tab');
-        bottomTabVisible = 1;
+        visible.bottomTab = 1;
         $('.bottom-tab').animate({opacity: 1},{duration: 500});
         state = 1;
     }
@@ -25,20 +25,20 @@ function unveilStuff(exploredArea) {
     else if (exploredArea == 3) {
         logText('You found a few bushes. They seem to have berries on them.');
         show('#forage-food-btn');
-        forageFoodButtonVisible = 1;
+        visible.forageFoodButton = 1;
         $('#scout-btn').text('Scout area');
         state = 3;
     }
     else if (exploredArea == 5) {
         logText('You found some branches on the ground. You should gather a few.');
         show('#gather-wood-btn');
-        gatherWoodButtonVisible = 1;
+        visible.gatherWoodButton = 1;
         state = 4;
     }
     else if (exploredArea == 7) {
         logText('You found some stones, they should be useful.');
         show('#gather-stone-btn');
-        gatherStoneButtonVisisble = 1;
+        visible.gatherStoneButton = 1;
         state = 5;
     }
 };
