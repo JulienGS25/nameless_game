@@ -10,41 +10,47 @@ header {
   height: 7.5vh;
   border: solid white;
   opacity: 1;
-
 }
-.grid-header{
+
+.grid-header {
   display: grid;
   grid-template-columns: repeat(7, 2fr);
   grid-gap: 10px;
 }
-.grid-bottom{
-    display: grid;
-    grid-template-columns: repeat(7, 11vw);
-    grid-template-rows: repeat(6, 1vw);
-    gap: 0.5vw;
-    grid-auto-flow: column;
-    text-align: left;
-    align-items: end;
+
+.grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(7, 11vw);
+  grid-template-rows: repeat(6, 1vw);
+  gap: 0.5vw;
+  grid-auto-flow: column;
+  text-align: left;
+  align-items: end;
 }
-.header-box{
+
+.header-box {
   text-align: center;
   font-style: italic;
   color: white;
 }
-.header-box > a{
+
+.header-box>a {
   color: white;
 }
 
 #Primary-Resources-Title {
   grid-area: 1 / 1 / 1 / 4;
 }
+
 #Crafting-Resources-Title {
   grid-area: 1 / 4 / 1 / 7;
 }
+
 #Dev-Tools {
   grid-area: 1 / 7 / 2 / 8;
 }
-#time-passed  {grid-area: 2 / 7 / 2 / 8;}
+
+#time-passed {grid-area: 2 / 7 / 2 / 8;}
 #current-temp {grid-area: 3 / 7 / 3 / 8;}
 #explored-resource {grid-area: 4 / 7 / 4 / 8;}
 
@@ -61,12 +67,12 @@ body {
   flex: 1;
 }
 
-.middle-tab{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border: solid white;
+.middle-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: solid white;
 }
 
 .left-tab {
@@ -89,27 +95,36 @@ body {
   max-height: 60vh;
   opacity: 0;
 }
-.middle-tab{
+
+.middle-tab {
   opacity: 0;
 }
-.middle-left-col, .middle-mid-col, .middle-right-col{
+
+.middle-left-col, .middle-mid-col, .middle-right-col {
   border: solid red;
 }
-.middle-left-col{
+
+.middle-right-col>div {
+  float: right;
+}
+
+.middle-left-col {
   width: 15%;
 }
-.middle-right-col{
+
+.middle-right-col {
   width: 15%;
 }
-.middle-mid-col{
+
+.middle-mid-col {
   width: 60%;
 }
-.left-tab{
+
+.left-tab {
   opacity: 0;
 }
 
-.work-area{
-
+.work-area {
   height: 95%;
   display: grid;
   grid-template-columns: 100%;
@@ -119,58 +134,73 @@ body {
   margin: 1vw;
   padding: 0px;
 }
-.work-area > div{
+
+.work-area>div {
   padding: 0px;
   /* Weird fix for grid gap alignment */
   border: solid transparent;
 }
 
-#tooltip-title{
+#tooltip-title {
   font-size: 1vw;
   grid-area: 1 / 1 / 2 / 1;
   text-decoration: underline;
 }
-#tooltip-desc{
+
+#tooltip-desc {
   grid-area: 2 / 1 / 6 / 1;
 }
-#tooltip-effects-title{
+
+#tooltip-effects-title {
   grid-area: 7 / 1 / 7 / 1;
   text-decoration: underline;
 }
-#tooltip-effects-1{
+
+#tooltip-effects-1 {
   grid-area: 8 / 1 / 8 / 1;
 }
-#tooltip-effects-2{
+
+#tooltip-effects-2 {
   grid-area: 9 / 1 / 9 / 1;
 }
-#tooltip-effects-3{
+
+#tooltip-effects-3 {
   grid-area: 10 / 1 / 10 / 1;
 }
-#tooltip-effects-4{
+
+#tooltip-effects-4 {
   grid-area: 11 / 1 / 11 / 1;
 }
-#tooltip-effects-5{
+
+#tooltip-effects-5 {
   grid-area: 12 / 1 / 12 / 1;
 }
-#tooltip-costs-title{
+
+#tooltip-costs-title {
   grid-area: 13 / 1 / 13 / 1;
   text-decoration: underline;
 }
-#tooltip-costs-1{
+
+#tooltip-costs-1 {
   grid-area: 14 / 1 / 14 / 1;
 }
-#tooltip-costs-2{
+
+#tooltip-costs-2 {
   grid-area: 15 / 1 / 15 / 1;
 }
-#tooltip-costs-3{
+
+#tooltip-costs-3 {
   grid-area: 16 / 1 / 16 / 1;
 }
-#tooltip-costs-4{
+
+#tooltip-costs-4 {
   grid-area: 17 / 1 / 17 / 1;
 }
-#tooltip-costs-5{
+
+#tooltip-costs-5 {
   grid-area: 18 / 1 / 18 / 1;
 }
+
 .right-tab>p {
   font-style: italic;
 }
@@ -217,7 +247,7 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   color: grey;
 }
 
-.game-button{
+.game-button {
   padding: 5px;
   margin-top: 15px;
   border-radius: 5px;
@@ -226,10 +256,9 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   background-color: rgba(169, 169, 169, 0.479);
   transition: background-color 0.25s;
   user-select: none;
-
 }
 
-.building{
+.building {
   padding: 5px;
   margin-top: 15px;
   border-radius: 5px;
@@ -241,7 +270,7 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
 }
 
 .mid-tab-button {
-  width: 13vh;
+  width: 6vw;
   height: 2vh;
   line-height: 2vh;
 }
@@ -265,20 +294,20 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   width: 30vh;
 }
 
-.opacity-zero{
+.opacity-zero {
   opacity: 0;
   pointer-events: none;
 }
 
-.underlined{
+.underlined {
   text-decoration: underline;
 }
 
-.tab-title{
+.tab-title {
   text-align: center;
 }
 
-.resource-icons{
-	height: 20px;
-	margin-bottom: -2px;
+.resource-icons {
+  height: 20px;
+  margin-bottom: -2px;
 }
