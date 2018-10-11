@@ -35,8 +35,8 @@ function saveGame(){
 }
 
 function loadGame(){
-    var test = localStorage.getItem('dataKey');
-    if (test == null){
+    var a = localStorage.getItem('dataKey');
+    if (a == null){
         console.log('No data stored!');
     }
     else {console.log('Loaded the following data: ' + test);
@@ -44,8 +44,9 @@ function loadGame(){
 }
 
 function resetGame(){
-    var test = localStorage.clear('value');
+    localStorage.clear('value');
     console.log('Cleared data. Local storage is now empty.');
+    
 }
 
 
@@ -88,9 +89,11 @@ window.setInterval(function(){
     document.getElementById("people-storage").innerHTML = prettify(peopleStorage);
     document.getElementById("res-1-amt").innerHTML = prettify(food);
     document.getElementById("res-1-storage").innerHTML = prettify(foodStorage);
-    document.getElementById("res-1-img").src = "images/Apple.png";
     document.getElementById("res-2-amt").innerHTML = prettify(wood);
     document.getElementById("res-2-storage").innerHTML = prettify(woodStorage);
     document.getElementById("res-3-amt").innerHTML = prettify(stone);
     document.getElementById("res-3-storage").innerHTML = prettify(stoneStorage);
+
+
+
 }, speed);

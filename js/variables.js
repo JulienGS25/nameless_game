@@ -4,6 +4,17 @@ var people = 0.0;
 var food = 0.0;
 var wood = 0.0;
 var stone = 0.0;
+var copperOre = 0.0;
+var copperIngot = 0.0;
+var tinOre = 0.0;
+var tinIngot = 0.0;
+var ironOre = 0.0;
+var ironIngot = 0.0;
+var goldOre = 0.0;
+var goldIngot = 0.0;
+var wheat = 0.0;
+var flour = 0.0;
+var water = 0.0;
 
 //Buildings
 var campfireBuilt = 0;

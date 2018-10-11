@@ -2,6 +2,7 @@ html {
   background-color: black;
   color: white;
   font-family: arial;
+  font-size: 0.85vw;
 }
 
 header {
@@ -60,7 +61,15 @@ body {
   flex: 1;
 }
 
-.middle-tab, .left-tab {
+.middle-tab{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid white;
+}
+
+.left-tab {
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -83,8 +92,84 @@ body {
 .middle-tab{
   opacity: 0;
 }
+.middle-left-col, .middle-mid-col, .middle-right-col{
+  border: solid red;
+}
+.middle-left-col{
+  width: 15%;
+}
+.middle-right-col{
+  width: 15%;
+}
+.middle-mid-col{
+  width: 60%;
+}
 .left-tab{
   opacity: 0;
+}
+
+.work-area{
+
+  height: 95%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(10, 1.5vw);
+  grid-auto-flow: row;
+  grid-gap: 0.10vw;
+  margin: 1vw;
+  padding: 0px;
+}
+.work-area > div{
+  padding: 0px;
+  /* Weird fix for grid gap alignment */
+  border: solid transparent;
+}
+
+#tooltip-title{
+  font-size: 1vw;
+  grid-area: 1 / 1 / 2 / 1;
+  text-decoration: underline;
+}
+#tooltip-desc{
+  grid-area: 2 / 1 / 6 / 1;
+}
+#tooltip-effects-title{
+  grid-area: 7 / 1 / 7 / 1;
+  text-decoration: underline;
+}
+#tooltip-effects-1{
+  grid-area: 8 / 1 / 8 / 1;
+}
+#tooltip-effects-2{
+  grid-area: 9 / 1 / 9 / 1;
+}
+#tooltip-effects-3{
+  grid-area: 10 / 1 / 10 / 1;
+}
+#tooltip-effects-4{
+  grid-area: 11 / 1 / 11 / 1;
+}
+#tooltip-effects-5{
+  grid-area: 12 / 1 / 12 / 1;
+}
+#tooltip-costs-title{
+  grid-area: 13 / 1 / 13 / 1;
+  text-decoration: underline;
+}
+#tooltip-costs-1{
+  grid-area: 14 / 1 / 14 / 1;
+}
+#tooltip-costs-2{
+  grid-area: 15 / 1 / 15 / 1;
+}
+#tooltip-costs-3{
+  grid-area: 16 / 1 / 16 / 1;
+}
+#tooltip-costs-4{
+  grid-area: 17 / 1 / 17 / 1;
+}
+#tooltip-costs-5{
+  grid-area: 18 / 1 / 18 / 1;
 }
 .right-tab>p {
   font-style: italic;
@@ -141,6 +226,7 @@ header, .bottom-tab, .middle-tab, nav, .right-tab {
   background-color: rgba(169, 169, 169, 0.479);
   transition: background-color 0.25s;
   user-select: none;
+
 }
 
 .building{
