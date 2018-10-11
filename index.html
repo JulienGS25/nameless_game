@@ -20,7 +20,7 @@
             <div class="header-box"></div>
             <div class="header-box" style="font-weight: bold" id="game-title">Nameless Game</div>
             <div class="header-box"></div>
-            <div class="header-box" id="reset"><a href="#">Reset</a></div>
+            <div class="header-box" id="reset"><a href="#">Restart</a></div>
             <div class="header-box" id="save"><a href="#">Save</a></div>
             <div class="header-box"></div>
             <div class="header-box"></div>
@@ -44,21 +44,28 @@
             <!-- Work area -->
             <div class="middle-mid-col">
                 <div class="work-area">
-                    <div id="tooltip-title">Tooltip Title</div>
+                    <!-- Placeholder stuff for CSS troubleshooting -->
+
+                    <!-- <div id="tooltip-title">Tooltip Title</div>
                     <div id="tooltip-desc">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
-                    <!-- <div id="tooltip-image"></div>-->
-                    <div id="tooltip-effects-title">Effects: </div>
-                    <div id="tooltip-effects-1">Effects row 1</div>
-                    <div id="tooltip-effects-2">Effects row 2</div>
-                    <div id="tooltip-effects-3">Effects row 3</div>
-                    <div id="tooltip-effects-4">Effects row 4</div>
-                    <div id="tooltip-effects-5">Effects row 5</div>
-                    <div id="tooltip-costs-title">Costs: </div>
-                    <div id="tooltip-costs-1">Costs row 1</div>
-                    <div id="tooltip-costs-2">Costs row 2</div>
-                    <div id="tooltip-costs-3">Costs row 3</div>
-                    <div id="tooltip-costs-4">Costs row 4</div>
-                    <div id="tooltip-costs-5">Costs row 5</div>
+                    <div id="tooltip-costs-container">
+                        <div id="tooltip-costs-title">Costs: </div>
+                        <div id="tooltip-costs-1">Costs row 1</div>
+                        <div id="tooltip-costs-2">Costs row 2</div>
+                        <div id="tooltip-costs-3">Costs row 3</div>
+                        <div id="tooltip-costs-4">Costs row 4</div>
+                        <div id="tooltip-costs-5">Costs row 5</div>
+                    </div>
+                    <div id="tooltip-effects-container">
+                        <div id="tooltip-effects-title">Effects: </div>
+                        <div id="tooltip-effects-1">Effects row 1</div>
+                        <div id="tooltip-effects-2">Effects row 2</div>
+                        <div id="tooltip-effects-3">Effects row 3</div>
+                        <div id="tooltip-effects-4">Effects row 4</div>
+                        <div id="tooltip-effects-5">Effects row 5</div>
+                    </div>
+                    <div id="build-button" class="game-button" type="button">Build</div>
+                -->
                 </div>
             </div>
             <!-- Contextual buttons -->
@@ -87,9 +94,9 @@
     </div>
     <div class="bottom-tab opacity-zero">
         <div class="grid-bottom">
-            <div id="Primary-Resources-Title">Primary Resources</div>
-            <div id="Crafting-Resources-Title" class="hidden opacity-zero">Crafting Resources</div>
-            <div id="Dev-Tools">Developer Tools</div>
+            <div id="primary-resources-title">Primary Resources</div>
+            <div id="crafting-resources-title" class="hidden opacity-zero">Crafting Resources</div>
+            <div id="dev-tools">Developer Tools</div>
             <div id="people-resource" class="hidden peopleColor">Friends: <span id="people">0</span><span> / </span><span id="people-storage"></span></div>
             <div class="hidden" id="primary-res-1"><img id="p-res-1-img" class="resource-icons"><span id="p-res-1-name"></span><span id="p-res-1-amt"></span><span> / </span><span id="p-res-1-storage"></span></div>
             <div class="hidden" id="primary-res-2"><img id="p-res-2-img" class="resource-icons"><span id="p-res-2-name"></span><span id="p-res-2-amt"></span><span> / </span><span id="p-res-2-storage"></span></div>

@@ -1,4 +1,21 @@
 //Worker / building purchasing
+function buildCampfire2(){
+    $('.work-area').append("<div id='tooltip-title'>Campfire</div>" + 
+    "<div id='tooltip-desc'>This builds a campfire. The cradle of civlization.</div>" + 
+    "<div id='tooltip-costs-container'>" + 
+    "<div id='tooltip-costs-title'>Costs: </div>" + 
+    "<div id='tooltip-costs-1'>Wood: 5</div>" +
+    "<div id='tooltip-costs-2'>Stone: 5</div>" +
+    "</div><div id='tooltip-effects-container'>" +
+    "<div id='tooltip-effects-title'>Effects: </div>" +
+    "<div id='tooltip-effects-1'>Effects row 1</div>" +
+    "<div id='tooltip-effects-2'>Effects row 2</div>" +
+    "<div id='tooltip-effects-3'>Effects row 3</div>" +
+    "<div id='tooltip-effects-4'>Effects row 4</div>" +
+    "<div id='tooltip-effects-5'>Effects row 5</div>" +
+    "</div><div id='build-button' class='game-button' type='button'>Build</div>");
+}
+
 function buildCampfire(){
     if (resource.wood >= 5 && resource.stone >= 5){
         $('.building-list').append("<div class='left-tab-button building underlined' id='campfire' type='button'>Campfire</div>");

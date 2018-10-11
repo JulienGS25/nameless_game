@@ -50,7 +50,7 @@ function discoverFire() {
         show('#era');
         visible.era = 1;
         $('.building-list').append("<div class='left-tab-button game-button' id='build-campfire' type='button'>Build Campfire</div>");
-        document.getElementById("build-campfire").addEventListener("click", buildCampfire)
+        document.getElementById("build-campfire").addEventListener("click", buildCampfire2)
     }
     function observe() {
         if (callFunction == 1) { observeOne(); callFunction++ }
