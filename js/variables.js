@@ -60,7 +60,7 @@ var events = {
 var exploredArea = 0;
 var passedTime = 0;
 var currentTemp = 20;
-var speed = 50;
+var gameSpeed = 50;
 var tooltipShown = 0;
 var currentLeftTab = '' //Options are research, buildings or tools
 
@@ -86,6 +86,7 @@ var visible = {
 var state = 0;
 
 //Dev tools
+var devMode = 1;
 var disableLightningEffect = 1;
 
 

@@ -14,6 +14,7 @@ var buildings = [
         effects_4: '',
         effects_5: '',
         displayable: 1,
+        built: 0
     },
     shaman_hut = {
         name: 'Shaman Hut',
@@ -29,8 +30,71 @@ var buildings = [
         effects_4: '',
         effects_5: '',
         displayable: 0,
+        built: 0
+    },
+    hunter_post = {
+        name: 'Hunter Post',
+        description: 'Hunts nearby animals for food and fur.',
+        costs_1: 'Food: 5',
+        costs_2: 'Stone: 5',
+        costs_3: 'Wood: 5',
+        costs_4: '',
+        costs_5: '',
+        effects_1: 'Provides food',
+        effects_2: 'Provides furs',
+        effects_3: '',
+        effects_4: '',
+        effects_5: '',
+        displayable: 0,
+        built: 0
     }
 ]
+
+
+//Player-built buildings
+function buildCampfire(){
+    if (buildings[0].built == 1){
+        logText('Campfire already built!');
+    }
+    else if (resource.wood < 5){
+        logText('More wood required!');
+    }
+    else if (resource.stone < 5){
+        logText('More stone required!');
+    }
+    else if (resource.wood < 5 && resource.stone < 5){
+        logText('More resources required!');
+    }
+    //Requirements are met!
+    if (resource.wood >= 5 && resource.stone >= 5 && buildings[0].built == 0){
+        //Spends resources
+        resource.wood -= 5;
+        resource.stone -= 5;
+        //Updates variables
+        buildings[0].built = 1;
+        buildings[1].displayable = 1;
+        buildings[2].displayable = 1;
+        $('#left-tab-cell-0').addClass('built');
+        logText('Built campfire. Its warmth attracts people.');
+        //Updates UI for new buildings
+        displayBuildings();
+        document.getElementById("left-tab-cell-1").addEventListener("click", showShamanHut);
+        document.getElementById("left-tab-cell-2").addEventListener("click", showHunterPost);
+        hide('#build-button', 100);
+        
+    }
+
+}
+
+function showCampfire(){
+    tooltip(campfire);
+    document.getElementById("build-button").addEventListener("click", buildCampfire);
+    console.log('Added event listener to build-button for function buildCampfire');
+}
+
+function showShamanHut(){tooltip(shaman_hut);};
+function showHunterPost(){tooltip(hunter_post);};
+
 
 //Auto-resource workers purchasing
 function hireForager() {

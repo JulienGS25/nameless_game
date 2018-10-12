@@ -13,7 +13,7 @@ var research = [
         effects_3: '',
         effects_4: '',
         effects_5: '',
-        displayable: 1,
+        displayable: 0,
     },
     wheel = {
         name: 'Wheel',
@@ -28,7 +28,7 @@ var research = [
         effects_3: '',
         effects_4: '',
         effects_5: '',
-        displayable: 1,
+        displayable: 0,
     }
 ]
 
@@ -74,7 +74,8 @@ function discoverFire() {
         visible.leftTab = 1;
         show('#era');
         visible.era = 1;
-        document.getElementById("left-tab-cell-0").addEventListener("click", buildCampfire)
+        document.getElementById("left-tab-cell-0").addEventListener("click", showCampfire);
+        
     }
     function observe() {
         if (callFunction == 1) { observeOne(); callFunction++ }

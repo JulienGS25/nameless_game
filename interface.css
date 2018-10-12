@@ -280,8 +280,18 @@ body {
   text-decoration: underline;
 }
 
-
 .resource-icons {
   height: 20px;
   margin-bottom: -2px;
+}
+
+.built{
+  background-color: rgba(169, 169, 169, 0.192);
+  text-decoration: underline;
+}
+.built:hover{
+  background-color: rgba(169, 169, 169, 0.300);
+}
+.active-button{
+  background-color: rgba(169, 169, 169, 0.192);
 }

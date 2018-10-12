@@ -16,46 +16,53 @@ function hide(element, speed){
 $('#era').text('Ancient Era')
 
 
-function buildCampfire(){
-    tooltip(campfire);
-}
+
 
 //Makes the tooltip appear or updates the text
-function tooltip(input){
-    if (tooltipShown == 0){
+function tooltip(input) {
+    if (tooltipShown == 0) {
         tooltipShown = 1;
-        $('.work-area').append("<div id='tooltip-title'>" + input.name +"</div>" + 
-        "<div id='tooltip-desc'>" + input.description + "</div>" + 
-        "<div id='tooltip-costs-container'>" + 
-        "<div id='tooltip-costs-title'>Costs: </div>" + 
-        "<div id='tooltip-costs-1'>" + input.costs_1 + "</div>" +
-        "<div id='tooltip-costs-2'>" + input.costs_2 + "</div>" +
-        "<div id='tooltip-costs-3'>" + input.costs_3 + "</div>" +
-        "<div id='tooltip-costs-4'>" + input.costs_4 + "</div>" +
-        "<div id='tooltip-costs-5'>" + input.costs_5 + "</div>" +
-        "</div><div id='tooltip-effects-container'>" +
-        "<div id='tooltip-effects-title'>Effects: </div>" +
-        "<div id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
-        "<div id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
-        "<div id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
-        "<div id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
-        "<div id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
-        "</div><div id='build-button' class='build-button game-button' type='button'>Build</div>");
+        $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>" + input.name + "</div>" +
+            "<div class='hideTooltip' id='tooltip-desc'>" + input.description + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-container'>" +
+            "<div class='hideTooltip' id='tooltip-costs-title'>Costs: </div>" +
+            "<div class='hideTooltip' id='tooltip-costs-1'>" + input.costs_1 + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-2'>" + input.costs_2 + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-3'>" + input.costs_3 + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-4'>" + input.costs_4 + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-5'>" + input.costs_5 + "</div>" +
+            "</div><div class='hideTooltip' id='tooltip-effects-container'>" +
+            "<div class='hideTooltip'id='tooltip-effects-title'>Effects: </div>" +
+            "<div class='hideTooltip'id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
+            "</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
     }
-    else{
-        console.log('update tooltip');
-        document.getElementById('tooltip-title').innerHTML = input.name;
-        document.getElementById('tooltip-desc').innerHTML = input.description;
-        document.getElementById('tooltip-costs-1').innerHTML = input.costs_1;
-        document.getElementById('tooltip-costs-2').innerHTML = input.costs_2;
-        document.getElementById('tooltip-costs-3').innerHTML = input.costs_3;
-        document.getElementById('tooltip-costs-4').innerHTML = input.costs_4;
-        document.getElementById('tooltip-costs-5').innerHTML = input.costs_5;
-        document.getElementById('tooltip-effects-1').innerHTML = input.effects_1;
-        document.getElementById('tooltip-effects-2').innerHTML = input.effects_2;
-        document.getElementById('tooltip-effects-3').innerHTML = input.effects_3;
-        document.getElementById('tooltip-effects-4').innerHTML = input.effects_4;
-        document.getElementById('tooltip-effects-5').innerHTML = input.effects_5;
+    else {
+        hide('.hideTooltip', 100);
+        setTimeout(function () {
+            document.getElementById('tooltip-title').innerHTML = input.name;
+            document.getElementById('tooltip-desc').innerHTML = input.description;
+            document.getElementById('tooltip-costs-1').innerHTML = input.costs_1;
+            document.getElementById('tooltip-costs-2').innerHTML = input.costs_2;
+            document.getElementById('tooltip-costs-3').innerHTML = input.costs_3;
+            document.getElementById('tooltip-costs-4').innerHTML = input.costs_4;
+            document.getElementById('tooltip-costs-5').innerHTML = input.costs_5;
+            document.getElementById('tooltip-effects-1').innerHTML = input.effects_1;
+            document.getElementById('tooltip-effects-2').innerHTML = input.effects_2;
+            document.getElementById('tooltip-effects-3').innerHTML = input.effects_3;
+            document.getElementById('tooltip-effects-4').innerHTML = input.effects_4;
+            document.getElementById('tooltip-effects-5').innerHTML = input.effects_5;
+            show('.hideTooltip', 100);
+        }, 100);
+        if (buildings[0].built == 0){
+            console.log('campfire is not built');
+        }
+        else if (buildings[0].built == 1){
+            console.log('campfire is built');
+        }
     }
 }
 
@@ -66,6 +73,9 @@ document.getElementById("buildings-title").addEventListener("click", displayBuil
 document.getElementById("tools-title").addEventListener("click", displayTools);
 
 function displayResearch() {
+    $('#buildings-title').removeClass('active-button');
+    $('#tools-title').removeClass('active-button');
+    $('#research-title').addClass('active-button');
     for (i = 0; i < 18; i++) {
         hide('#left-tab-cell-' + i, 100);
     }
@@ -81,6 +91,9 @@ function displayResearch() {
 }
 
 function displayBuildings() {
+    $('#research-title').removeClass('active-button');
+    $('#tools-title').removeClass('active-button');
+    $('#buildings-title').addClass('active-button');
     for (i = 0; i < 18; i++) {
         hide('#left-tab-cell-' + i, 100);
     }
@@ -97,6 +110,9 @@ function displayBuildings() {
 
 }
 function displayTools(){
+    $('#research-title').removeClass('active-button');
+    $('#buildings-title').removeClass('active-button');
+    $('#tools-title').addClass('active-button');
 //No tools created yet
 }
 
@@ -140,13 +156,22 @@ function resetGame(){
 }
 
 
+if (devMode == 1){
+    document.getElementById('dev-mode').innerHTML = 'DEV MODE';
+    resource.food = storage.food;
+    resource.wood = storage.wood;
+    resource.stone = storage.stone;
+    console.log('Dev Mode Activated. All resources maxed out');
+    console.log('Food stocks changed to: ' + resource.food + '.');
+    console.log('Wood stocks changed to: ' + resource.wood + '.');
+    console.log('Stone stocks changed to: ' + resource.stone) + '.';
+}
 
 //Fixes rogue decimals
 function prettify(input){
     var output = Math.round(input * 10000000)/10000000;
         return output;
 }
-
 
 // Game loop
 window.setInterval(function(){
@@ -184,6 +209,4 @@ window.setInterval(function(){
     document.getElementById("p-res-3-amt").innerHTML = prettify(resource.stone);
     document.getElementById("p-res-3-storage").innerHTML = prettify(storage.stone);
 
-
-
-}, speed);
+}, gameSpeed);
