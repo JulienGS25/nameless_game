@@ -4,12 +4,102 @@ function logText(text){
 }
 
 //Makes an element appear with a fadein animation
-function show(element){
-    $(element).animate({opacity: 1},{duration: 500});
+function show(element, speed){
+    $(element).animate({opacity: 1},{duration: speed});
     $(element).removeClass('hidden opacity-zero');
+}
+function hide(element, speed){
+    $(element).animate({opacity: 0},{duration: speed});
+    $(element).addClass('opacity-zero');
 }
 //Sets the current era
 $('#era').text('Ancient Era')
+
+
+function buildCampfire(){
+    tooltip(campfire);
+}
+
+//Makes the tooltip appear or updates the text
+function tooltip(input){
+    if (tooltipShown == 0){
+        tooltipShown = 1;
+        $('.work-area').append("<div id='tooltip-title'>" + input.name +"</div>" + 
+        "<div id='tooltip-desc'>" + input.description + "</div>" + 
+        "<div id='tooltip-costs-container'>" + 
+        "<div id='tooltip-costs-title'>Costs: </div>" + 
+        "<div id='tooltip-costs-1'>" + input.costs_1 + "</div>" +
+        "<div id='tooltip-costs-2'>" + input.costs_2 + "</div>" +
+        "<div id='tooltip-costs-3'>" + input.costs_3 + "</div>" +
+        "<div id='tooltip-costs-4'>" + input.costs_4 + "</div>" +
+        "<div id='tooltip-costs-5'>" + input.costs_5 + "</div>" +
+        "</div><div id='tooltip-effects-container'>" +
+        "<div id='tooltip-effects-title'>Effects: </div>" +
+        "<div id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
+        "<div id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
+        "<div id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
+        "<div id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
+        "<div id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
+        "</div><div id='build-button' class='build-button game-button' type='button'>Build</div>");
+    }
+    else{
+        console.log('update tooltip');
+        document.getElementById('tooltip-title').innerHTML = input.name;
+        document.getElementById('tooltip-desc').innerHTML = input.description;
+        document.getElementById('tooltip-costs-1').innerHTML = input.costs_1;
+        document.getElementById('tooltip-costs-2').innerHTML = input.costs_2;
+        document.getElementById('tooltip-costs-3').innerHTML = input.costs_3;
+        document.getElementById('tooltip-costs-4').innerHTML = input.costs_4;
+        document.getElementById('tooltip-costs-5').innerHTML = input.costs_5;
+        document.getElementById('tooltip-effects-1').innerHTML = input.effects_1;
+        document.getElementById('tooltip-effects-2').innerHTML = input.effects_2;
+        document.getElementById('tooltip-effects-3').innerHTML = input.effects_3;
+        document.getElementById('tooltip-effects-4').innerHTML = input.effects_4;
+        document.getElementById('tooltip-effects-5').innerHTML = input.effects_5;
+    }
+}
+
+
+//Left-tab UI Controls
+document.getElementById("research-title").addEventListener("click", displayResearch);
+document.getElementById("buildings-title").addEventListener("click", displayBuildings);
+document.getElementById("tools-title").addEventListener("click", displayTools);
+
+function displayResearch() {
+    for (i = 0; i < 18; i++) {
+        hide('#left-tab-cell-' + i, 100);
+    }
+    //Delay to give time for tabs to disappear before making new tabs appear
+    setTimeout(function () {
+        for (i = 0; i < research.length; i++) {
+            if (research[i].displayable == 1) {
+                document.getElementById('left-tab-cell-' + i).innerHTML = research[i].name;
+                show('#left-tab-cell-' + i, 100);
+            }
+        }
+    }, 100);
+}
+
+function displayBuildings() {
+    for (i = 0; i < 18; i++) {
+        hide('#left-tab-cell-' + i, 100);
+    }
+    //Delay to give time for tabs to disappear before making new tabs appear
+    setTimeout(function () {
+        for (i = 0; i < buildings.length; i++) {
+            if (buildings[i].displayable == 1) {
+                hide('#left-tab-cell-' + i, 100);
+                document.getElementById('left-tab-cell-' + i).innerHTML = buildings[i].name;
+                show('#left-tab-cell-' + i, 100);
+            }
+        }
+    }, 100);
+
+}
+function displayTools(){
+//No tools created yet
+}
+
 
 //Local Storage functions
 if (typeof(Storage) == "undefined") {
@@ -68,7 +158,7 @@ window.setInterval(function(){
         wakeUp();
     }
     if (passedTime >= 5){
-        show('.middle-tab');
+        show('.middle-tab', 500);
     }    
     if (passedTime >= 10 && events.lightningStrike == 0 && state != 7) {
         discoverFire();

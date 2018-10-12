@@ -1,41 +1,38 @@
-//Worker / building purchasing
-function buildCampfire2(){
-    $('.work-area').append("<div id='tooltip-title'>Campfire</div>" + 
-    "<div id='tooltip-desc'>This builds a campfire. The cradle of civlization.</div>" + 
-    "<div id='tooltip-costs-container'>" + 
-    "<div id='tooltip-costs-title'>Costs: </div>" + 
-    "<div id='tooltip-costs-1'>Wood: 5</div>" +
-    "<div id='tooltip-costs-2'>Stone: 5</div>" +
-    "</div><div id='tooltip-effects-container'>" +
-    "<div id='tooltip-effects-title'>Effects: </div>" +
-    "<div id='tooltip-effects-1'>Effects row 1</div>" +
-    "<div id='tooltip-effects-2'>Effects row 2</div>" +
-    "<div id='tooltip-effects-3'>Effects row 3</div>" +
-    "<div id='tooltip-effects-4'>Effects row 4</div>" +
-    "<div id='tooltip-effects-5'>Effects row 5</div>" +
-    "</div><div id='build-button' class='game-button' type='button'>Build</div>");
-}
+//Buildings
+var buildings = [
+    campfire = {
+        name: 'Campfire',
+        description: 'The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.',
+        costs_1: 'Wood: 5',
+        costs_2: 'Stone: 5',
+        costs_3: '',
+        costs_4: '',
+        costs_5: '',
+        effects_1: 'Unlocks Shaman Hut',
+        effects_2: 'Unlocks Hunter Post',
+        effects_3: '',
+        effects_4: '',
+        effects_5: '',
+        displayable: 1,
+    },
+    shaman_hut = {
+        name: 'Shaman Hut',
+        description: 'Explores and experiments with the nature that surrounds us.',
+        costs_1: 'Food: 5',
+        costs_2: 'Stone: 5',
+        costs_3: 'Wood: 5',
+        costs_4: '',
+        costs_5: '',
+        effects_1: 'Unlocks Research',
+        effects_2: '',
+        effects_3: '',
+        effects_4: '',
+        effects_5: '',
+        displayable: 0,
+    }
+]
 
-function buildCampfire(){
-    if (resource.wood >= 5 && resource.stone >= 5){
-        $('.building-list').append("<div class='left-tab-button building underlined' id='campfire' type='button'>Campfire</div>");
-        $('#build-campfire').remove();
-        $('#buildings-title').animate({opacity: 1},{duration: 500});
-        $('#buildings-title').removeClass('opacity-zero');
-        resource.wood = resource.wood - 5;
-        resource.stone = resource.stone - 5;
-        campfireBuilt = 1;
-        logText('Now that you have a campfire, people have started gathering around it for warmth.');
-        setTimeout(function(){logText('You\'ll need to feed them.');}, 2000);
-    }
-    else if (resource.wood < 5){
-        logText('More wood required!');
-    }
-    else if (resource.stone < 5){
-        logText('More stone required!');
-    }
-};
-
+//Auto-resource workers purchasing
 function hireForager() {
     var workerCost = Math.floor(10 * Math.pow(1.1, foragers));
     if (resource.food >= workerCost) {

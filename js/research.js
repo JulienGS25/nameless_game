@@ -1,10 +1,36 @@
-var discovery = {
-    fire: {
-        name: 'fire',
-        message: 'You discovered fire!'
+//Research dictionary
+var research = [
+    stoneWorking = {
+        name: 'Stone Working',
+        description: 'By carving stone into tools, you manage to improve the speed at which you perform tasks.',
+        costs_1: 'Test: 5',
+        costs_2: 'Test: 5',
+        costs_3: '',
+        costs_4: '',
+        costs_5: '',
+        effects_1: 'Unlocks Stone Tools',
+        effects_2: '',
+        effects_3: '',
+        effects_4: '',
+        effects_5: '',
+        displayable: 1,
+    },
+    wheel = {
+        name: 'Wheel',
+        description: 'Makes things go round and round.',
+        costs_1: 'Test: 5',
+        costs_2: 'Test: 5',
+        costs_3: '',
+        costs_4: '',
+        costs_5: '',
+        effects_1: 'Unlocks Wheels',
+        effects_2: '',
+        effects_3: '',
+        effects_4: '',
+        effects_5: '',
+        displayable: 1,
     }
-
-}
+]
 
 
 function discoverFire() {
@@ -43,14 +69,12 @@ function discoverFire() {
     function observeFive() {
         logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!');
         $('#observe-button').remove();
-        discovery.fire = 1;
         state = 7;
         show('.left-tab');
         visible.leftTab = 1;
         show('#era');
         visible.era = 1;
-        $('.building-list').append("<div class='left-tab-button game-button' id='build-campfire' type='button'>Build Campfire</div>");
-        document.getElementById("build-campfire").addEventListener("click", buildCampfire2)
+        document.getElementById("left-tab-cell-0").addEventListener("click", buildCampfire)
     }
     function observe() {
         if (callFunction == 1) { observeOne(); callFunction++ }

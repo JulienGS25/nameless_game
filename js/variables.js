@@ -50,27 +50,6 @@ var storage = {
     "water": 0.0
 }
 
-//Discoveries
-var discovery = {
-    "fire": 0,
-    "cooking": 0,
-    "furClothes": 0,
-    "primitiveConstruction": 0,
-    "stoneCarving": 0,
-    "stoneTools": 0,
-    "domestication": 0,
-    "animalHusbandry": 0,
-    "smelting": 0,
-    "copperSmelting": 0,
-    "tinSmelting": 0,
-    "bronzeSmelting": 0,
-    "ironSmelting": 0,
-    "agriculture": 0,
-    "wheel": 0,
-    "earlyWriting": 0
-}
-
-
 //Events
 var events = {
     "lightningStrike": 0,
@@ -82,6 +61,8 @@ var exploredArea = 0;
 var passedTime = 0;
 var currentTemp = 20;
 var speed = 50;
+var tooltipShown = 0;
+var currentLeftTab = '' //Options are research, buildings or tools
 
 //UI Visibility
 var visible = {
