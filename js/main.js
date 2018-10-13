@@ -39,7 +39,12 @@ function tooltip(input) {
             "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
             "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
             "</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
-            document.getElementById("build-button").addEventListener("click", eval('build' + input.name));
+            var el = document.getElementById('build-button');
+            elClone = el.cloneNode(true);
+            el.parentNode.replaceChild(elClone, el);
+        
+            document.getElementById("build-button").addEventListener("click", input.buildFunction);
+
             for (i = 1; i < 6; i++){
                 var curr = eval('input.costs_' + i);
                 if (curr !== ''){
@@ -66,8 +71,12 @@ function tooltip(input) {
             document.getElementById('tooltip-effects-3').innerHTML = input.effects_3;
             document.getElementById('tooltip-effects-4').innerHTML = input.effects_4;
             document.getElementById('tooltip-effects-5').innerHTML = input.effects_5;
+            var el = document.getElementById('build-button');
+            elClone = el.cloneNode(true);
+            el.parentNode.replaceChild(elClone, el);
+        
+            document.getElementById("build-button").addEventListener("click", input.buildFunction);
             show('.hideTooltip', 100);
-            // INSERT HERE
             for (i = 1; i < 6; i++){
                 curr = eval('input.costs_' + i);
                 if (curr !== ''){
@@ -178,6 +187,8 @@ function resetGame(){
     
 }
 
+
+//Activates developer mode for easier testing
 if (devMode == 1){
     activateDevMode();
 };
@@ -188,10 +199,10 @@ function activateDevMode(){
     resource.wood = storage.wood;
     resource.stone = storage.stone;
     console.log('Dev Mode Activated. All resources maxed out');
-    console.log('Food stocks changed to: ' + resource.food + '.');
-    console.log('Wood stocks changed to: ' + resource.wood + '.');
-    console.log('Stone stocks changed to: ' + resource.stone) + '.';
 }
+
+//Prevents highlighting text
+window.addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
 
 //Fixes rogue decimals
 function prettify(input){

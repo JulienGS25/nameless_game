@@ -2,6 +2,7 @@
 var buildings = [
     campfire = {
         name: 'Campfire',
+        id: 'campfire',
         description: 'The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.',
         costs_1: 'Wood',
         costs_1_amount: 5,
@@ -15,17 +16,19 @@ var buildings = [
         costs_5_amount: '',
         effects_1: 'Unlocks Shaman Hut',
         effects_2: 'Unlocks Hunter Post',
-        effects_3: '',
-        effects_4: '',
-        effects_5: '',
+        effects_3: '+10 food storage',
+        effects_4: '+10 wood storage',
+        effects_5: '+10 stone storage',
         displayable: 1,
-        built: 0
+        built: 0,
+        buildFunction: buildCampfire
     },
     shaman_hut = {
         name: 'Shaman Hut',
+        id: 'shaman_hut',
         description: 'Explores and experiments with the nature that surrounds us.',
         costs_1: 'Wood',
-        costs_1_amount: 5,
+        costs_1_amount: 10,
         costs_2: 'Stone',
         costs_2_amount: 5,
         costs_3: '',
@@ -40,13 +43,15 @@ var buildings = [
         effects_4: '',
         effects_5: '',
         displayable: 0,
-        built: 0
+        built: 0,
+        buildFunction: buildShamanHut
     },
     hunter_post = {
         name: 'Hunter Post',
+        id: 'hunter_post',
         description: 'Hunts nearby animals for food and fur.',
         costs_1: 'Wood',
-        costs_1_amount: 5,
+        costs_1_amount: 10,
         costs_2: 'Stone',
         costs_2_amount: 5,
         costs_3: '',
@@ -61,7 +66,8 @@ var buildings = [
         effects_4: '',
         effects_5: '',
         displayable: 0,
-        built: 0
+        built: 0,
+        buildFunction: buildHunterPost
     }
 ]
 
@@ -71,20 +77,23 @@ function buildCampfire(){
     if (buildings[0].built == 1){
         logText('Campfire already built!');
     }
-    else if (resource.wood < 5){
-        logText('More wood required!');
+    else if (resource.wood < buildings[0].costs_1_amount){
+        logText('More ' + buildings[0].costs_1 + ' required!');
     }
-    else if (resource.stone < 5){
-        logText('More stone required!');
+    else if (resource.stone < buildings[0].costs_2_amount){
+        logText('More ' + buildings[0].costs_2 + ' required!');
     }
-    else if (resource.wood < 5 && resource.stone < 5){
+    else if (resource.wood < buildings[0].costs_1_amount && resource.stone < buildings[0].costs_2_amount){
         logText('More resources required!');
     }
     //Requirements are met!
     if (resource.wood >= 5 && resource.stone >= 5 && buildings[0].built == 0){
         //Spends resources
-        resource.wood -= 5;
-        resource.stone -= 5;
+        resource.wood -= buildings[0].costs_1_amount;;
+        resource.stone -= buildings[0].costs_2_amount;;
+        storage.food =+ 10;
+        storage.wood =+ 10;
+        storage.stone =+ 10;
         //Updates variables
         buildings[0].built = 1;
         buildings[1].displayable = 1;
@@ -97,8 +106,33 @@ function buildCampfire(){
         document.getElementById("left-tab-cell-2").addEventListener("click", showHunterPost);
         hide('#build-button', 100);
     };
-
 };
+
+function buildShamanHut(){
+    if (buildings[1].built == 1){
+        logText('Shaman Hut already built!');
+    }
+    else if (resource.wood < buildings[1].costs_1_amount){
+        logText('More ' + buildings[1].costs_1 + ' required!');
+    }
+    else if (resource.stone < buildings[1].costs_2_amount){
+        logText('More ' + buildings[1].costs_2 + ' required!');
+    }
+    else if (resource.wood < buildings[1].costs_1_amount && resource.stone < buidlings[1].costs_2_amount){
+        logText('More resources required!');
+    }
+    if (resource.wood >= buildings[1].costs_1_amount && resource.stone >= buildings[1].costs_2_amount){
+        resource.wood -= buildings[1].costs_1_amount;
+        resource.stone -= buildings[1].costs_2_amount;
+        show('#research-title',100);
+        logText('Built Shaman Hut. The Shaman will perform research and improve our tribe.')
+        hide('#build-button', 100);
+    }
+}
+function buildHunterPost(){
+    console.log('Placeholder Text for hunter post');
+}
+
 
 function showCampfire(){
     tooltip(campfire);

@@ -114,7 +114,7 @@ body {
   grid-template-columns: repeat(3, 6vw);
   grid-template-rows: repeat(7, 5vh);
   gap: 1vh;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   text-align: center;
 }
 .grid-left>div{
