@@ -59,10 +59,9 @@ var events = {
 //Other
 var exploredArea = 0;
 var passedTime = 0;
-var currentTemp = 20;
+var currentTemp = 20.00;
 var gameSpeed = 50;
 var tooltipShown = 0;
-var currentLeftTab = '' //Options are research, buildings or tools
 
 //UI Visibility
 var visible = {

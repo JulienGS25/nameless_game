@@ -2,7 +2,7 @@
 function showFood() {
     { $('#primary-res-1').removeClass("hidden"); }
     document.getElementById("primary-res-1").classList.add("FoodColorText");
-    document.getElementById("p-res-1-img").src = "images/Apple.png";
+    document.getElementById("p-res-1-img").src = "images/Food.png";
     document.getElementById("p-res-1-name").innerHTML = "Food: ";
     visible.foodResource = 1;
 }
