@@ -59,9 +59,16 @@ var events = {
 //Other
 var exploredArea = 0;
 var passedTime = 0;
-var currentTemp = 20.00;
-var gameSpeed = 50;
+var currentTemp = 30;
+var gameSpeed = 500;
 var tooltipShown = 0;
+
+//Messages
+var coolMsgDisplayed = 0;
+var coldMsgDisplayed = 0;
+var warmerMsgDisplayed = 0;
+var warmMsgDisplayed = 0;
+var hotMsgDisplayed = 0;
 
 //UI Visibility
 var visible = {
@@ -85,7 +92,7 @@ var visible = {
 var state = 0;
 
 //Dev tools
-var devMode = 1;
+var devMode = 0;
 var disableLightningEffect = 1;
 
 

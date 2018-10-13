@@ -41,6 +41,7 @@ function tooltip(input) {
             document.getElementById("build-button").addEventListener("click", input.buildFunction);
 
             for (i = 1; i < 6; i++){
+                //To be improved. Currently forces the source image file to match the resource cost in buildings.js
                 var curr = eval('input.costs_' + i);
                 if (curr !== ''){
                     document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";

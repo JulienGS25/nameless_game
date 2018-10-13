@@ -127,6 +127,7 @@ function buildShamanHut(){
         show('#research-title',100);
         logText('Built Shaman Hut. The Shaman will perform research and improve our tribe.')
         hide('#build-button', 100);
+        buildings[1].built = 1;
     }
 }
 function buildHunterPost(){

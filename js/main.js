@@ -38,21 +38,53 @@ function resetGame(){
     localStorage.clear('value');
     console.log('Cleared data. Local storage is now empty.');
 }
-/*
-function fluctuateTemp(){
-    if (currentTemp >= 20.00){
-        currentTemp -= 0.1;
-        console.log('decreasing')
-    }
-    else if (currentTemp <= -20.00){
-        console.log('increasing')
-        currentTemp += 0.1;
-    }
-    
+
+
+
+tempDirection = 0.01;
+function fluctuateTemp() {
+  currentTemp += tempDirection;
+  if (currentTemp < -30) tempDirection = 0.01;
+  if (currentTemp > 35) tempDirection = -0.01;
 }
-*/
 
-
+function tempCheck(){
+    if (currentTemp < 0){
+        if (coolMsgDisplayed == 0){
+            logText("It's getting a little chilly.");
+            coolMsgDisplayed = 1;
+        }
+        document.getElementById("temp-message").innerHTML = "Cool";
+    }
+    if (currentTemp < -20){
+        if (coldMsgDisplayed == 0){
+           logText("Water has frozen solid, the landscape is covered in snow and ice and you can see your breath.");
+           coldMsgDisplayed = 1;
+        }
+        document.getElementById("temp-message").innerHTML = "Cold";
+    }
+    if (currentTemp > 0 && currentTemp < 15){
+        if (warmerMsgDisplayed == 0 && coldMsgDisplayed == 1){
+            logText("Snow is melting and trees are growing leaves again.");
+            warmerMsgDisplayed = 1;
+        }
+        document.getElementById("temp-message").innerHTML = "Cool";
+    }
+    if (currentTemp > 15 && currentTemp < 30){
+        if (warmMsgDisplayed == 0 && warmerMsgDisplayed == 1){
+            logText("The sun is shining and you are quite comfortable now.");
+            warmMsgDisplayed = 1;
+        }
+        document.getElementById("temp-message").innerHTML = "Warm";
+    }
+    if (currentTemp > 30){
+        if (hotMsgDisplayed == 0 && warmMsgDisplayed == 1){
+            logText("Summer is in full heat now.");
+            hotMsgDisplayed = 1;
+        }
+        document.getElementById("temp-message").innerHTML = "Hot";
+    }
+}
 
 //Activates developer mode for easier testing
 if (devMode == 1){
@@ -64,6 +96,7 @@ function activateDevMode(){
     resource.food = storage.food;
     resource.wood = storage.wood;
     resource.stone = storage.stone;
+    gameSpeed = 50;
     console.log('Dev Mode Activated. All resources maxed out');
 }
 
@@ -80,7 +113,8 @@ window.setInterval(function(){
     getWood(lumberjacks);
     getStone(miners);
     passedTime++;
-    //fluctuateTemp();
+    fluctuateTemp();
+    tempCheck();
     if (passedTime >= 2 && events.wakeUp == 0){
         wakeUp();
     }
@@ -101,7 +135,7 @@ window.setInterval(function(){
 
     }
     document.getElementById('time').innerHTML = passedTime + ' seconds.';
-    document.getElementById('temp').innerHTML = currentTemp + '°C.';
+    document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
     document.getElementById("people").innerHTML = prettify(resource.people);
     document.getElementById("people-storage").innerHTML = prettify(storage.people);
     document.getElementById("p-res-1-amt").innerHTML = prettify(resource.food);

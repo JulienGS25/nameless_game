@@ -25,15 +25,18 @@ function showStone() {
 function getFood(number) {
     if (resource.food < storage.food) {
         resource.food = resource.food + number;
+        document.getElementById("p-res-1-amt").innerHTML = resource.food;
     }
 }
 function getWood(number) {
     if (resource.wood < storage.wood) {
         resource.wood = resource.wood + number;
+        document.getElementById("p-res-2-amt").innerHTML = resource.wood;
     }
 }
 function getStone(number) {
     if (resource.stone < storage.stone) {
         resource.stone = resource.stone + number;
+        document.getElementById("p-res-3-amt").innerHTML = resource.stone;
     }
 }

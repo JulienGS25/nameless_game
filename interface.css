@@ -126,7 +126,7 @@ body {
 
 .grid-bottom {
   display: grid;
-  grid-template-columns: repeat(7, 11vw);
+  grid-template-columns: repeat(7, 12vw);
   grid-template-rows: repeat(7, 1vw);
   gap: 0.5vw;
   grid-auto-flow: column;
@@ -146,6 +146,7 @@ body {
 #time-passed {grid-area: 2 / 7 / 2 / 8;}
 #current-temp {grid-area: 3 / 7 / 3 / 8;}
 #explored-resource {grid-area: 4 / 7 / 4 / 8;}
+#temp-message {grid-area: 5 / 7 / 5 / 8;}
 
 .work-area {
   height: 95%;
