@@ -3,11 +3,16 @@ var buildings = [
     campfire = {
         name: 'Campfire',
         description: 'The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.',
-        costs_1: 'Wood: 5',
-        costs_2: 'Stone: 5',
+        costs_1: 'Wood',
+        costs_1_amount: 5,
+        costs_2: 'Stone',
+        costs_2_amount: 5,
         costs_3: '',
+        costs_3_amount: '',
         costs_4: '',
+        costs_4_amount: '',
         costs_5: '',
+        costs_5_amount: '',
         effects_1: 'Unlocks Shaman Hut',
         effects_2: 'Unlocks Hunter Post',
         effects_3: '',
@@ -19,11 +24,16 @@ var buildings = [
     shaman_hut = {
         name: 'Shaman Hut',
         description: 'Explores and experiments with the nature that surrounds us.',
-        costs_1: 'Food: 5',
-        costs_2: 'Stone: 5',
-        costs_3: 'Wood: 5',
+        costs_1: 'Wood',
+        costs_1_amount: 5,
+        costs_2: 'Stone',
+        costs_2_amount: 5,
+        costs_3: '',
+        costs_3_amount: '',
         costs_4: '',
+        costs_4_amount: '',
         costs_5: '',
+        costs_5_amount: '',
         effects_1: 'Unlocks Research',
         effects_2: '',
         effects_3: '',
@@ -35,11 +45,16 @@ var buildings = [
     hunter_post = {
         name: 'Hunter Post',
         description: 'Hunts nearby animals for food and fur.',
-        costs_1: 'Food: 5',
-        costs_2: 'Stone: 5',
-        costs_3: 'Wood: 5',
+        costs_1: 'Wood',
+        costs_1_amount: 5,
+        costs_2: 'Stone',
+        costs_2_amount: 5,
+        costs_3: '',
+        costs_3_amount: '',
         costs_4: '',
+        costs_4_amount: '',
         costs_5: '',
+        costs_5_amount: '',
         effects_1: 'Provides food',
         effects_2: 'Provides furs',
         effects_3: '',
@@ -81,19 +96,19 @@ function buildCampfire(){
         document.getElementById("left-tab-cell-1").addEventListener("click", showShamanHut);
         document.getElementById("left-tab-cell-2").addEventListener("click", showHunterPost);
         hide('#build-button', 100);
-        
-    }
+    };
 
-}
+};
 
 function showCampfire(){
     tooltip(campfire);
-    document.getElementById("build-button").addEventListener("click", buildCampfire);
-    console.log('Added event listener to build-button for function buildCampfire');
-}
-
-function showShamanHut(){tooltip(shaman_hut);};
-function showHunterPost(){tooltip(hunter_post);};
+};
+function showShamanHut(){
+    tooltip(shaman_hut);
+};
+function showHunterPost(){
+    tooltip(hunter_post);
+};
 
 
 //Auto-resource workers purchasing

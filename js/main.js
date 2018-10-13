@@ -26,11 +26,11 @@ function tooltip(input) {
             "<div class='hideTooltip' id='tooltip-desc'>" + input.description + "</div>" +
             "<div class='hideTooltip' id='tooltip-costs-container'>" +
             "<div class='hideTooltip' id='tooltip-costs-title'>Costs: </div>" +
-            "<div class='hideTooltip' id='tooltip-costs-1'>" + input.costs_1 + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-2'>" + input.costs_2 + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-3'>" + input.costs_3 + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-4'>" + input.costs_4 + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-5'>" + input.costs_5 + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-1'><img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-2'><img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-3'><img id='p-res-3-img-tt' class='resource-icons'>" + input.costs_3 + ": " + input.costs_3_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-4'><img id='p-res-4-img-tt' class='resource-icons'>" + input.costs_4 + ": " + input.costs_4_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-5'><img id='p-res-5-img-tt' class='resource-icons'>" + input.costs_5 + ": " + input.costs_5_amount + "</div>" +
             "</div><div class='hideTooltip' id='tooltip-effects-container'>" +
             "<div class='hideTooltip'id='tooltip-effects-title'>Effects: </div>" +
             "<div class='hideTooltip'id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
@@ -39,29 +39,52 @@ function tooltip(input) {
             "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
             "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
             "</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
+            document.getElementById("build-button").addEventListener("click", eval('build' + input.name));
+            for (i = 1; i < 6; i++){
+                var curr = eval('input.costs_' + i);
+                if (curr !== ''){
+                    document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";
+                    document.getElementById("tooltip-costs-" + i).classList.add(curr + "ColorText");
+                }
+                else if (curr == ''){
+                    hide('#tooltip-costs-' + i, 20);
+                }
+            }
     }
     else {
         hide('.hideTooltip', 100);
         setTimeout(function () {
             document.getElementById('tooltip-title').innerHTML = input.name;
             document.getElementById('tooltip-desc').innerHTML = input.description;
-            document.getElementById('tooltip-costs-1').innerHTML = input.costs_1;
-            document.getElementById('tooltip-costs-2').innerHTML = input.costs_2;
-            document.getElementById('tooltip-costs-3').innerHTML = input.costs_3;
-            document.getElementById('tooltip-costs-4').innerHTML = input.costs_4;
-            document.getElementById('tooltip-costs-5').innerHTML = input.costs_5;
+            document.getElementById('tooltip-costs-1').innerHTML = "<img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount;
+            document.getElementById('tooltip-costs-2').innerHTML = "<img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount;
+            document.getElementById('tooltip-costs-3').innerHTML = "<img id='p-res-3-img-tt' class='resource-icons'>" + input.costs_3 + ": " + input.costs_3_amount;
+            document.getElementById('tooltip-costs-4').innerHTML = "<img id='p-res-4-img-tt' class='resource-icons'>" + input.costs_4 + ": " + input.costs_4_amount;
+            document.getElementById('tooltip-costs-5').innerHTML = "<img id='p-res-5-img-tt' class='resource-icons'>" + input.costs_5 + ": " + input.costs_5_amount;
             document.getElementById('tooltip-effects-1').innerHTML = input.effects_1;
             document.getElementById('tooltip-effects-2').innerHTML = input.effects_2;
             document.getElementById('tooltip-effects-3').innerHTML = input.effects_3;
             document.getElementById('tooltip-effects-4').innerHTML = input.effects_4;
             document.getElementById('tooltip-effects-5').innerHTML = input.effects_5;
             show('.hideTooltip', 100);
-        }, 100);
+            // INSERT HERE
+            for (i = 1; i < 6; i++){
+                curr = eval('input.costs_' + i);
+                if (curr !== ''){
+                    document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";
+                }
+                else if (curr == ''){
+                    hide('#tooltip-costs-' + i, 1);
+                }
+            }
+            
+        }, 50);
+
         if (buildings[0].built == 0){
-            console.log('campfire is not built');
+            //TODO
         }
         else if (buildings[0].built == 1){
-            console.log('campfire is built');
+            //TODO
         }
     }
 }
@@ -155,8 +178,11 @@ function resetGame(){
     
 }
 
-
 if (devMode == 1){
+    activateDevMode();
+};
+
+function activateDevMode(){
     document.getElementById('dev-mode').innerHTML = 'DEV MODE';
     resource.food = storage.food;
     resource.wood = storage.wood;

@@ -227,13 +227,13 @@ body {
 }
 
 .peopleColorText {color: white;}
-.foodColorText {color: red;}
-.woodColorText {color: rosybrown;}
-.stoneColorText {color: grey;}
-.copperColorText{color: #e16f3e;}
-.tinColorText{color: #6c7893;}
-.ironColorText{color: #979fb3;}
-.goldColorText{color: #ffc90e;}
+.FoodColorText {color: red;}
+.WoodColorText {color: rosybrown;}
+.StoneColorText {color: grey;}
+.CopperColorText{color: #e16f3e;}
+.TinColorText{color: #6c7893;}
+.IronColorText{color: #979fb3;}
+.GoldColorText{color: #ffc90e;}
 
 .game-button{
   padding: 5px;
