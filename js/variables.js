@@ -18,18 +18,10 @@ var resource = {
     "water": 0.0
 }
 
-//Buildings
-var building = {
-    "campfire": 0,
-    "forager": 0,
-    "lumberjack": 0,
-    "miner": 0,
-}
-
-var campfireBuilt = 0;
-var foragers = 0;
-var lumberjacks = 0;
-var miners = 0;
+//Efficiency
+var forageEfficiency = 5;
+var woodGatherEfficiency = 10;
+var stoneGatherEfficiency = 15;
 
 //Storage
 var storage = {
@@ -62,6 +54,7 @@ var passedTime = 0;
 var currentTemp = 30;
 var gameSpeed = 500;
 var tooltipShown = 0;
+var pollutionLevel = 0;
 
 //Messages
 var coolMsgDisplayed = 0;
@@ -92,7 +85,7 @@ var visible = {
 var state = 0;
 
 //Dev tools
-var devMode = 0;
+var devMode = 1;
 var disableLightningEffect = 1;
 
 

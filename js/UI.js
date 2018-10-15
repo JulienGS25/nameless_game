@@ -14,7 +14,10 @@ function hide(element, speed){
 }
 
 //Makes the tooltip appear or updates the text
+//To be improved. Could just check if tooltip exists, then remove the divs if it does, or just simply create them if it doesn't
+
 function tooltip(input) {
+    //If no tooltip is not shown, creates it
     if (tooltipShown == 0) {
         tooltipShown = 1;
         $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>" + input.name + "</div>" +
@@ -34,10 +37,11 @@ function tooltip(input) {
             "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
             "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
             "</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
+            //Removes the event listeners on the build button. Prevents bug where a building is selected and Build Button builds another building
             var el = document.getElementById('build-button');
             elClone = el.cloneNode(true);
             el.parentNode.replaceChild(elClone, el);
-        
+            // Adds event listener to make the Build button build the select building
             document.getElementById("build-button").addEventListener("click", input.buildFunction);
 
             for (i = 1; i < 6; i++){
@@ -53,6 +57,7 @@ function tooltip(input) {
             }
     }
     else {
+        //If tooltip is shown, make it fade, update and reappear
         hide('.hideTooltip', 100);
         setTimeout(function () {
             document.getElementById('tooltip-title').innerHTML = input.name;

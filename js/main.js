@@ -97,8 +97,15 @@ function activateDevMode(){
     resource.wood = storage.wood;
     resource.stone = storage.stone;
     gameSpeed = 50;
-    console.log('Dev Mode Activated. All resources maxed out');
-}
+    console.log('Dev Mode Activated. All resources maxed out and buildings are free.');
+    for (i = 0; i < buildings.length; i++){
+        buildings[i].costs_1_amount = 0;
+        buildings[i].costs_2_amount = 0;
+        buildings[i].costs_3_amount = 0;
+        buildings[i].costs_4_amount = 0;
+        buildings[i].costs_5_amount = 0;
+    }
+};
 
 
 //Fixes rogue decimals
@@ -109,9 +116,9 @@ function prettify(input){
 
 // Game loop
 window.setInterval(function(){
-    getFood(foragers);
-    getWood(lumberjacks);
-    getStone(miners);
+    //getFood(foragers);
+    //getWood(lumberjacks);
+    //getStone(miners);
     passedTime++;
     fluctuateTemp();
     tempCheck();
@@ -124,7 +131,7 @@ window.setInterval(function(){
     if (passedTime >= 10 && events.lightningStrike == 0 && state != 7) {
         discoverFire();
     }
-    if (campfireBuilt == 1){
+    /*if (buildings[0].built == 1){
         if (resource.food > 0.0 && resource.people < storage.people){
             resource.people = resource.people + 0.01;
             resource.food = resource.food - 0.01;
@@ -133,7 +140,7 @@ window.setInterval(function(){
             resource.people = resource.people - 0.01;
         }
 
-    }
+    }*/
     document.getElementById('time').innerHTML = passedTime + ' seconds.';
     document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
     document.getElementById("people").innerHTML = prettify(resource.people);

@@ -147,7 +147,7 @@ function showHunterPost(){
 
 
 //Auto-resource workers purchasing
-function hireForager() {
+/*function hireForager() {
     var workerCost = Math.floor(10 * Math.pow(1.1, foragers));
     if (resource.food >= workerCost) {
         foragers = foragers + 1;
@@ -181,4 +181,4 @@ function hireMiner() {
     };
     var nextCost = Math.floor(10 * Math.pow(1.1, miners));
     document.getElementById('minerCost').innerHTML = nextCost;
-};
+};*/

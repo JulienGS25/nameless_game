@@ -23,11 +23,15 @@ function showStone() {
 
 
 function getFood(number) {
-    if (resource.food < storage.food) {
-        resource.food = resource.food + number;
-        document.getElementById("p-res-1-amt").innerHTML = resource.food;
-    }
-}
+    setTimeout(function(){
+        if (resource.food < storage.food) {
+            resource.food = resource.food + number;
+            document.getElementById("p-res-1-amt").innerHTML = resource.food;
+        }
+    },5)};
+
+
+
 function getWood(number) {
     if (resource.wood < storage.wood) {
         resource.wood = resource.wood + number;

@@ -36,9 +36,9 @@
             <!-- Permanent buttons -->
             <div class="middle-left-col">
                 <div class="mid-tab-button game-button" id="scout-btn" type="button">Look around</div>
-                <div class="mid-tab-button game-button hidden opacity-zero" id="forage-food-btn" type="button" onClick="getFood(1), showFood()">Forage for food</div>
-                <div class="mid-tab-button game-button hidden opacity-zero" id="gather-wood-btn" type="button" onClick="getWood(1), showWood()">Gather wood</div>
-                <div class="mid-tab-button game-button hidden opacity-zero" id="gather-stone-btn" type="button" onClick="getStone(1), showStone()">Gather stone</div>
+                <div class="mid-tab-button game-button hidden opacity-zero progress-button" id="forage-food-btn" data-loading="Working..." data-finished="Forage for food" type="button" onClick="getFood(1), showFood()">Forage for food</div>
+                <div class="mid-tab-button game-button hidden opacity-zero progress-button" id="gather-wood-btn" data-loading="Working..." data-finished="Gather wood" type="button" onClick="getWood(1), showWood()">Gather wood</div>
+                <div class="mid-tab-button game-button hidden opacity-zero progress-button" id="gather-stone-btn" data-loading="Working..." data-finished="Gather stones" type="button" onClick="getStone(1), showStone()">Gather stones</div>
             </div>
             <!-- Work area -->
             <div class="middle-mid-col">
@@ -118,6 +118,7 @@
             <div id="time-passed">Time passed: <span id="time"></span></div>
             <div id="current-temp">Current temperature: <span id="temp"></span></div>
             <div id="temp-message"></div>
+            <div id="pollution-message">Pollution Level: <span id="pollution-level">Clear</span></div>
         </div>
     </div>
 
@@ -132,13 +133,14 @@
   crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="js/variables.js"></script>
+  <script type="text/javascript" src="js/buildings.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/UI.js"></script>
   <script type="text/javascript" src="js/research.js"></script>
   <script type="text/javascript" src="js/events.js"></script>
-  <script type="text/javascript" src="js/buildings.js"></script>
   <script type="text/javascript" src="js/resources.js"></script>
   <script type="text/javascript" src="js/exploration.js"></script>
+  <script type="text/javascript" src="js/progress_buttons.js"></script>
 
   
 
