@@ -39,6 +39,62 @@ function resetGame(){
     console.log('Cleared data. Local storage is now empty.');
 }
 
+//Options
+document.getElementById("diff-easy").addEventListener("click", setEasyDiff);
+document.getElementById("diff-medium").addEventListener("click", setMediumDiff);
+document.getElementById("diff-hard").addEventListener("click", setHardDiff);
+document.getElementById("speed-slow").addEventListener("click", setSlowSpeed);
+document.getElementById("speed-medium").addEventListener("click", setMediumSpeed);
+document.getElementById("speed-fast").addEventListener("click", setFastSpeed);
+document.getElementById("pause-game").addEventListener("click", pauseGame);
+document.getElementById("resume-game").addEventListener("click", resumeGame);
+document.getElementById("small-font").addEventListener("click", setSmallFont);
+document.getElementById("medium-font").addEventListener("click", setMediumFont);
+document.getElementById("large-font").addEventListener("click", setLargeFont);
+document.getElementById("export-game").addEventListener("click", exportGame);
+document.getElementById("import-game").addEventListener("click", importGame);
+
+function setEasyDiff(){
+    console.log('TODO');
+}
+function setMediumDiff(){
+    console.log('TODO');
+}
+function setHardDiff(){
+    console.log('TODO');
+}
+function setSlowSpeed(){
+    console.log('TODO');
+}
+function setMediumSpeed(){
+    console.log('TODO');
+}
+function setFastSpeed(){
+    console.log('TODO');
+}
+function pauseGame(){
+    gameSpeed = 0;
+}
+function resumeGame(){
+    console.log('TODO');
+}
+function setSmallFont(){
+    $('html').css('font-size','0.65vw');
+}
+function setMediumFont(){
+    $('html').css('font-size','0.85vw');
+}
+function setLargeFont(){
+    $('html').css('font-size','1vw');
+}
+function importGame(){
+    console.log('TODO');
+}
+function exportGame(){
+    console.log('TODO');
+}
+
+
 
 
 tempDirection = 0.01;
@@ -96,7 +152,7 @@ function activateDevMode(){
     resource.food = storage.food;
     resource.wood = storage.wood;
     resource.stone = storage.stone;
-    gameSpeed = 50;
+    gameSpeed = 500;
     console.log('Dev Mode Activated. All resources maxed out and buildings are free.');
     for (i = 0; i < buildings.length; i++){
         buildings[i].costs_1_amount = 0;
@@ -114,42 +170,52 @@ function prettify(input){
         return output;
 }
 
+
+var executed = false;
 // Game loop
-window.setInterval(function(){
-    //getFood(foragers);
-    //getWood(lumberjacks);
-    //getStone(miners);
-    passedTime++;
-    fluctuateTemp();
-    tempCheck();
-    if (passedTime >= 2 && events.wakeUp == 0){
-        wakeUp();
-    }
-    if (passedTime >= 5){
-        show('.middle-tab', 500);
-    }    
-    if (passedTime >= 10 && events.lightningStrike == 0 && state != 7) {
-        discoverFire();
-    }
-    /*if (buildings[0].built == 1){
-        if (resource.food > 0.0 && resource.people < storage.people){
-            resource.people = resource.people + 0.01;
-            resource.food = resource.food - 0.01;
-        }
-        if (resource.food < 0.1 && resource.people > 0.0){
-            resource.people = resource.people - 0.01;
-        }
+function gameLoop(){
+    window.setInterval(function(){
+        console.log('Checks if this is running twice');
+        //getFood(foragers);
+        //getWood(lumberjacks);
+        //getStone(miners);
+        passedTime++;
+        fluctuateTemp();
+        tempCheck();
 
-    }*/
-    document.getElementById('time').innerHTML = passedTime + ' seconds.';
-    document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
-    document.getElementById("people").innerHTML = prettify(resource.people);
-    document.getElementById("people-storage").innerHTML = prettify(storage.people);
-    document.getElementById("p-res-1-amt").innerHTML = prettify(resource.food);
-    document.getElementById("p-res-1-storage").innerHTML = prettify(storage.food);
-    document.getElementById("p-res-2-amt").innerHTML = prettify(resource.wood);
-    document.getElementById("p-res-2-storage").innerHTML = prettify(storage.wood);
-    document.getElementById("p-res-3-amt").innerHTML = prettify(resource.stone);
-    document.getElementById("p-res-3-storage").innerHTML = prettify(storage.stone);
+        if (passedTime >= 2 && events.wakeUp == 0){
+            wakeUp();
+        }
+        if (passedTime >= 5){
+            show('.middle-tab', 500);
+        }    
+        if (passedTime >= 10 && events.lightningStrike == 0 && state != 7) {
+            discoverFire();
+        }
+        /*if (buildings[0].built == 1){
+            if (resource.food > 0.0 && resource.people < storage.people){
+                resource.people = resource.people + 0.01;
+                resource.food = resource.food - 0.01;
+            }
+            if (resource.food < 0.1 && resource.people > 0.0){
+                resource.people = resource.people - 0.01;
+            }
 
-}, gameSpeed);
+        }*/
+        document.getElementById('time').innerHTML = passedTime + ' seconds.';
+        document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
+        document.getElementById("people").innerHTML = prettify(resource.people);
+        document.getElementById("people-storage").innerHTML = prettify(storage.people);
+        document.getElementById("p-res-1-amt").innerHTML = prettify(resource.food);
+        document.getElementById("p-res-1-storage").innerHTML = prettify(storage.food);
+        document.getElementById("p-res-2-amt").innerHTML = prettify(resource.wood);
+        document.getElementById("p-res-2-storage").innerHTML = prettify(storage.wood);
+        document.getElementById("p-res-3-amt").innerHTML = prettify(resource.stone);
+        document.getElementById("p-res-3-storage").innerHTML = prettify(storage.stone);
+
+    }, gameSpeed)
+};
+
+$(document).ready(function(){
+    gameLoop()
+});
