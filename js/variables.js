@@ -19,9 +19,9 @@ var resource = {
 }
 
 //Efficiency
-var forageEfficiency = 5;
-var woodGatherEfficiency = 10;
-var stoneGatherEfficiency = 15;
+var forageSpeed = 2;
+var woodGatherSpeed = 2;
+var stoneGatherSpeed = 2;
 
 //Storage
 var storage = {

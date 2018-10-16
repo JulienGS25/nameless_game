@@ -19,15 +19,15 @@ $(document).ready(function(){
 
     $('#forage-food-btn').click(function(e){
         e.preventDefault();
-        $(this).progressTimed(forageEfficiency);
+        $(this).progressTimed(forageSpeed);
     });
     $('#gather-wood-btn').click(function(e){
         e.preventDefault();
-        $(this).progressTimed(woodGatherEfficiency);
+        $(this).progressTimed(woodGatherSpeed);
     });
     $('#gather-stone-btn').click(function(e){
         e.preventDefault();
-        $(this).progressTimed(stoneGatherEfficiency);
+        $(this).progressTimed(stoneGatherSpeed);
     });
 
 
