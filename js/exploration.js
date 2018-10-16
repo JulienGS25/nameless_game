@@ -5,8 +5,19 @@ function scout() {
     exploredArea++;
     document.getElementById('explored').innerHTML = exploredArea;
     unveilStuff(exploredArea);
+    if (forageSpeed > 1){
+        forageSpeed = forageSpeed / 1.1;
+        console.log('Foraging speed is ' + forageSpeed);
+        };
+    if (woodGatherSpeed > 1){
+        woodGatherSpeed = woodGatherSpeed / 1.1;
+        console.log('Wood gathering speed is ' + woodGatherSpeed);
+        };
+    if (stoneGatherSpeed > 1){
+        stoneGatherSpeed = stoneGatherSpeed / 1.1;
+        console.log('Stone gathering speed is ' + stoneGatherSpeed);
+        };
 };
-
 
 function unveilStuff(exploredArea) {
     if (exploredArea == 1) {

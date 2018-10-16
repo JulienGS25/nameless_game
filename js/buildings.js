@@ -121,13 +121,15 @@ function buildShamanHut(){
     else if (resource.wood < buildings[1].costs_1_amount && resource.stone < buidlings[1].costs_2_amount){
         logText('More resources required!');
     }
-    if (resource.wood >= buildings[1].costs_1_amount && resource.stone >= buildings[1].costs_2_amount){
+    if (resource.wood >= buildings[1].costs_1_amount && resource.stone >= buildings[1].costs_2_amount && buildings[1].built == 0){
         resource.wood -= buildings[1].costs_1_amount;
         resource.stone -= buildings[1].costs_2_amount;
+        $('#left-tab-cell-1').addClass('built');
         show('#research-title',100);
         logText('Built Shaman Hut. The Shaman will perform research and improve our tribe.')
         hide('#build-button', 100);
         buildings[1].built = 1;
+        displayBuildings();
     }
 }
 function buildHunterPost(){

@@ -109,6 +109,8 @@ function displayResearch() {
     $('#buildings-title').removeClass('active-button');
     $('#tools-title').removeClass('active-button');
     $('#research-title').addClass('active-button');
+    $('#research-title').css('text-decoration','underline');
+    $('#buildings-title').css('text-decoration','none');
     for (i = 0; i < 18; i++) {
         hide('#left-tab-cell-' + i, 100);
     }
@@ -127,6 +129,8 @@ function displayBuildings() {
     $('#research-title').removeClass('active-button');
     $('#tools-title').removeClass('active-button');
     $('#buildings-title').addClass('active-button');
+    $('#buildings-title').css('text-decoration','underline');
+    $('#research-title').css('text-decoration','none');
     for (i = 0; i < 18; i++) {
         hide('#left-tab-cell-' + i, 100);
     }

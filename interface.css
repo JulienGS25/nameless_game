@@ -246,7 +246,7 @@ body {
 }
 .title-button{
   font-size: 1vw;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 .build-button{
   height: 1.5vw;
