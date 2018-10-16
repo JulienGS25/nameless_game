@@ -73,6 +73,39 @@ var buildings = [
 
 
 //Player-built buildings
+function buildBuilding(input){
+    for (i=1; i < 6; i++){
+        var a = eval('input.costs_' + i + '_amount') // Amount of resources
+        var b = eval('input.costs_' + i) // Name of resource
+        
+        console.log(input.name + ' costs '  + a + ' ' + b)
+        /*lower = b.toLowerCase();
+        console.log('We currently have '  + resource[lower] + ' '  + input.costs_1);
+        // resource[lower] returns the amount of a resource that matches input.costs_1
+
+        //Checks if we have the available resources
+        if (resource[lower] <= input.costs_1_amount){
+            console.log('Not enough ' + lower);
+        }*/
+    }
+    //Checks if the building is already built or not
+
+    
+    //Spends the required resources
+
+
+    //Unlocks related stuff and effects
+
+
+    //Displays the related messages
+
+
+    //Updates UI for new buildings
+}
+
+
+
+
 function buildCampfire(){
     if (buildings[0].built == 1){
         logText('Campfire already built!');

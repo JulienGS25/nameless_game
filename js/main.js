@@ -94,9 +94,6 @@ function exportGame(){
     console.log('TODO');
 }
 
-
-
-
 tempDirection = 0.01;
 function fluctuateTemp() {
   currentTemp += tempDirection;
@@ -152,7 +149,7 @@ function activateDevMode(){
     resource.food = storage.food;
     resource.wood = storage.wood;
     resource.stone = storage.stone;
-    gameSpeed = 500;
+    gameSpeed = 50;
     console.log('Dev Mode Activated. All resources maxed out and buildings are free.');
     for (i = 0; i < buildings.length; i++){
         buildings[i].costs_1_amount = 0;
@@ -175,7 +172,6 @@ var executed = false;
 // Game loop
 function gameLoop(){
     window.setInterval(function(){
-        console.log('Checks if this is running twice');
         //getFood(foragers);
         //getWood(lumberjacks);
         //getStone(miners);

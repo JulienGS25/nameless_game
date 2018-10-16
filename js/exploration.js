@@ -1,8 +1,12 @@
 //Exploration
 document.getElementById("scout-btn").addEventListener("click", scout);
 
+
 function scout() {
     exploredArea++;
+
+    buildBuilding(buildings[0]);
+
     document.getElementById('explored').innerHTML = exploredArea;
     unveilStuff(exploredArea);
     if (forageSpeed > 1){
