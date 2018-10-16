@@ -10,3 +10,9 @@ Other than the regular web languages, this only uses JQuery for now but I'm tryi
 Private Trello board here: https://trello.com/b/b3DaYgVJ/game-app
 
 Will be shared later if this picks up 
+
+
+
+Game designed and written by Julien Galibois Sauvageau.
+
+Icons designed by Frederique Mercier.
