@@ -151,6 +151,10 @@ function activateDevMode(){
     resource.stone = storage.stone;
     gameSpeed = 50;
     console.log('Dev Mode Activated. All resources maxed out and buildings are free.');
+    setAllFree;
+};
+
+function setAllFree(){
     for (i = 0; i < buildings.length; i++){
         buildings[i].costs_1_amount = 0;
         buildings[i].costs_2_amount = 0;
@@ -158,8 +162,7 @@ function activateDevMode(){
         buildings[i].costs_4_amount = 0;
         buildings[i].costs_5_amount = 0;
     }
-};
-
+}
 
 //Fixes rogue decimals
 function prettify(input){

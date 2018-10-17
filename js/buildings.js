@@ -3,17 +3,18 @@ var buildings = [
     campfire = {
         name: 'Campfire',
         id: 'campfire',
+        number: 0,
         description: 'The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.',
         costs_1: 'Wood',
         costs_1_amount: 5,
         costs_2: 'Stone',
-        costs_2_amount: 5,
-        costs_3: '',
-        costs_3_amount: '',
-        costs_4: '',
-        costs_4_amount: '',
-        costs_5: '',
-        costs_5_amount: '',
+        costs_2_amount: 4,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
         effects_1: 'Unlocks Shaman Hut',
         effects_2: 'Unlocks Hunter Post',
         effects_3: '+10 food storage',
@@ -21,11 +22,14 @@ var buildings = [
         effects_5: '+10 stone storage',
         displayable: 1,
         built: 0,
-        buildFunction: buildCampfire
+        buildFunction: buildCampfire,
+        message: 'Built campfire. Its warmth attracts people.',
+        unlocks_buildings: [1, 2]
     },
     shaman_hut = {
         name: 'Shaman Hut',
-        id: 'shaman_hut',
+        id: 'shamanHut',
+        number: 1,
         description: 'Explores and experiments with the nature that surrounds us.',
         costs_1: 'Wood',
         costs_1_amount: 10,
@@ -44,11 +48,13 @@ var buildings = [
         effects_5: '',
         displayable: 0,
         built: 0,
-        buildFunction: buildShamanHut
+        buildFunction: buildShamanHut,
+        message: 'Built Shaman Hut. The Shaman will perform research and improve our tribe.'
     },
     hunter_post = {
         name: 'Hunter Post',
-        id: 'hunter_post',
+        id: 'hunterPost',
+        number: 2,
         description: 'Hunts nearby animals for food and fur.',
         costs_1: 'Wood',
         costs_1_amount: 10,
@@ -73,35 +79,68 @@ var buildings = [
 
 
 //Player-built buildings
-function buildBuilding(input){
-    for (i=1; i < 6; i++){
-        var a = eval('input.costs_' + i + '_amount') // Amount of resources
-        var b = eval('input.costs_' + i) // Name of resource
-        
-        console.log(input.name + ' costs '  + a + ' ' + b)
-        /*lower = b.toLowerCase();
-        console.log('We currently have '  + resource[lower] + ' '  + input.costs_1);
-        // resource[lower] returns the amount of a resource that matches input.costs_1
-
-        //Checks if we have the available resources
-        if (resource[lower] <= input.costs_1_amount){
-            console.log('Not enough ' + lower);
-        }*/
+function buildBuilding(input) {
+    //Checks if the building is already built
+    if (input.built == 1) {
+        console.log(input.name + ' already built!')
     }
-    //Checks if the building is already built or not
+    else {
+        //Checks each resource and makes sure we have enough of them
+        for (i = 1; i < 6; i++) {
+            var amt = eval('input.costs_' + i + '_amount') // Amount of resources
+            var nm = eval('input.costs_' + i) // Name of resource
+            if (nm !== undefined) {
+                //console.log(input.name + ' costs ' + amt + ' of this resource : ' + nm)
+                lower = nm.toLowerCase();
+                a = eval('input.costs_' + i)
+                //console.log('We currently have ' + resource[lower] + ' ' + a);
+                //Resource check
+                if (resource[lower] < amt) {
+                    console.log('Not enough ' + a)
+                }
+                //Spends resource
+                else {
+                    //console.log('Inventory before : ' + resource[lower])
+                    //console.log('Cost : ' + amt)
+                    resource[lower] -= amt;
+                    //console.log('Inventory after : ' + resource[lower])
+                }
+            }
+            else {
+                //console.log('Resource is undefined')
+            }
+        } // closes for loop
 
-    
-    //Spends the required resources
+        //Sets this building as built
+        buildings[input.number].built = 1;
+        //Unlocks related buildings
+        var currBld = buildings[input.number].unlocks_buildings
+        for (i=0; i<=[currBld].length; i++){
+            buildings[currBld[i]].displayable = 1;
+            var currBldId = buildings[currBld[i]].id;
+            var bldFunc = eval('show' + currBldId[0].toUpperCase() + currBldId.substr(1))
+            document.getElementById("left-tab-cell-" + currBld[i]).addEventListener("click", bldFunc);
+        }
+        
+        //Displays the related messages
+        logText(input.message);
 
+        //Updates UI for new buildings
+        displayBuildings();
+    }
 
-    //Unlocks related stuff and effects
-
-
-    //Displays the related messages
-
-
-    //Updates UI for new buildings
 }
+
+
+function showCampfire(){
+    tooltip(campfire);
+};
+function showShamanHut(){
+    tooltip(shaman_hut);
+};
+function showHunterPost(){
+    tooltip(hunter_post);
+};
 
 
 
@@ -169,16 +208,6 @@ function buildHunterPost(){
     console.log('Placeholder Text for hunter post');
 }
 
-
-function showCampfire(){
-    tooltip(campfire);
-};
-function showShamanHut(){
-    tooltip(shaman_hut);
-};
-function showHunterPost(){
-    tooltip(hunter_post);
-};
 
 
 //Auto-resource workers purchasing
