@@ -13,93 +13,8 @@ function hide(element, speed){
     $(element).addClass('opacity-zero');
 }
 
-//Makes the tooltip appear or updates the text
-//To be improved. Could just check if tooltip exists, then remove the divs if it does, or just simply create them if it doesn't
 
-function tooltip(input) {
-    //If no tooltip is not shown, creates it
-    if (tooltipShown == 0) {
-        tooltipShown = 1;
-        $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>" + input.name + "</div>" +
-            "<div class='hideTooltip' id='tooltip-desc'>" + input.description + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-container'>" +
-            "<div class='hideTooltip' id='tooltip-costs-title'>Costs: </div>" +
-            "<div class='hideTooltip' id='tooltip-costs-1'><img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-2'><img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-3'><img id='p-res-3-img-tt' class='resource-icons'>" + input.costs_3 + ": " + input.costs_3_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-4'><img id='p-res-4-img-tt' class='resource-icons'>" + input.costs_4 + ": " + input.costs_4_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-5'><img id='p-res-5-img-tt' class='resource-icons'>" + input.costs_5 + ": " + input.costs_5_amount + "</div>" +
-            "</div><div class='hideTooltip' id='tooltip-effects-container'>" +
-            "<div class='hideTooltip'id='tooltip-effects-title'>Effects: </div>" +
-            "<div class='hideTooltip'id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
-            "</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
-            //Removes the event listeners on the build button. Prevents bug where a building is selected and Build Button builds another building
-            var el = document.getElementById('build-button');
-            elClone = el.cloneNode(true);
-            el.parentNode.replaceChild(elClone, el);
-            // Adds event listener to make the Build button build the select building
-            document.getElementById("build-button").addEventListener("click", input.buildFunction);
-
-            for (i = 1; i < 6; i++){
-                //To be improved. Currently forces the source image file to match the resource cost in buildings.js
-                var curr = eval('input.costs_' + i);
-                if (curr !== ''){
-                    document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";
-                    document.getElementById("tooltip-costs-" + i).classList.add(curr + "ColorText");
-                }
-                else if (curr == ''){
-                    hide('#tooltip-costs-' + i, 20);
-                }
-            }
-    }
-    else {
-        //If tooltip is shown, make it fade, update and reappear
-        hide('.hideTooltip', 100);
-        setTimeout(function () {
-            document.getElementById('tooltip-title').innerHTML = input.name;
-            document.getElementById('tooltip-desc').innerHTML = input.description;
-            document.getElementById('tooltip-costs-1').innerHTML = "<img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount;
-            document.getElementById('tooltip-costs-2').innerHTML = "<img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount;
-            document.getElementById('tooltip-costs-3').innerHTML = "<img id='p-res-3-img-tt' class='resource-icons'>" + input.costs_3 + ": " + input.costs_3_amount;
-            document.getElementById('tooltip-costs-4').innerHTML = "<img id='p-res-4-img-tt' class='resource-icons'>" + input.costs_4 + ": " + input.costs_4_amount;
-            document.getElementById('tooltip-costs-5').innerHTML = "<img id='p-res-5-img-tt' class='resource-icons'>" + input.costs_5 + ": " + input.costs_5_amount;
-            document.getElementById('tooltip-effects-1').innerHTML = input.effects_1;
-            document.getElementById('tooltip-effects-2').innerHTML = input.effects_2;
-            document.getElementById('tooltip-effects-3').innerHTML = input.effects_3;
-            document.getElementById('tooltip-effects-4').innerHTML = input.effects_4;
-            document.getElementById('tooltip-effects-5').innerHTML = input.effects_5;
-            var el = document.getElementById('build-button');
-            elClone = el.cloneNode(true);
-            el.parentNode.replaceChild(elClone, el);
-        
-            document.getElementById("build-button").addEventListener("click", input.buildFunction);
-            show('.hideTooltip', 100);
-            for (i = 1; i < 6; i++){
-                curr = eval('input.costs_' + i);
-                if (curr !== ''){
-                    document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";
-                }
-                else if (curr == ''){
-                    hide('#tooltip-costs-' + i, 1);
-                }
-            }
-            
-        }, 50);
-
-        if (buildings[0].built == 0){
-            //TODO
-        }
-        else if (buildings[0].built == 1){
-            //TODO
-        }
-    }
-}
-
-
+//LEFT TAB
 //Left-tab UI Controls
 document.getElementById("research-title").addEventListener("click", displayResearch);
 document.getElementById("buildings-title").addEventListener("click", displayBuildings);
@@ -151,6 +66,68 @@ function displayTools(){
     $('#buildings-title').removeClass('active-button');
     $('#tools-title').addClass('active-button');
 //No tools created yet
+}
+
+function showTooltip(input){
+    if (tooltipShown == 0){
+        tooltipShown = 1;
+        show('.work-area')
+        $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>" + input.name + "</div>" +
+            "<div class='hideTooltip' id='tooltip-desc'>" + input.description + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-container'>" +
+            "<div class='hideTooltip' id='tooltip-costs-title'>Costs: </div>" +
+            "<div class='hideTooltip' id='tooltip-costs-1'><img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-2'><img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-3'><img id='p-res-3-img-tt' class='resource-icons'>" + input.costs_3 + ": " + input.costs_3_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-4'><img id='p-res-4-img-tt' class='resource-icons'>" + input.costs_4 + ": " + input.costs_4_amount + "</div>" +
+            "<div class='hideTooltip' id='tooltip-costs-5'><img id='p-res-5-img-tt' class='resource-icons'>" + input.costs_5 + ": " + input.costs_5_amount + "</div>" +
+            "</div><div class='hideTooltip' id='tooltip-effects-container'>" +
+            "<div class='hideTooltip'id='tooltip-effects-title'>Effects: </div>" +
+            "<div class='hideTooltip'id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
+            "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
+            "</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
+            //Removes the event listeners on the build button. Prevents bug where a building is selected and Build Button builds another building
+            var el = document.getElementById('build-button');
+            elClone = el.cloneNode(true);
+            el.parentNode.replaceChild(elClone, el);
+            // Adds event listener to make the Build button build the select building
+            var clickBuild = function(input) {
+                buildBuilding(input)
+              };
+            document.getElementById('build-button').addEventListener('click', clickBuild.bind(this, input));
+            //Puts a resource icon and changes the cost color to match the resource
+            for (i = 1; i < 6; i++){
+                //To be improved. Currently forces the source image file to match the resource cost in buildings.js
+                var curr = eval('input.costs_' + i);
+                if (curr !== undefined){
+                    document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";
+                    document.getElementById("tooltip-costs-" + i).classList.add(curr + "ColorText");
+                }
+                else if (curr == undefined){
+                    hide('#tooltip-costs-' + i, 20);
+                }
+                else{
+                    console.log('Issue with building costs. See Campfire in buildings.js for a valid example')
+                }
+            }
+            
+    }
+    else if (tooltipShown == 1){
+        $('.work-area').animate({opacity: 0},{duration: 150});
+        tooltipShown = 0;
+        
+        setTimeout(function(){
+            $('.work-area').empty();
+        },100)
+        
+        setTimeout(function(){
+            showTooltip(input);
+        },200)
+        
+    }
 }
 
 //Prevents highlighting text

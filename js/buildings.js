@@ -35,12 +35,12 @@ var buildings = [
         costs_1_amount: 10,
         costs_2: 'Stone',
         costs_2_amount: 5,
-        costs_3: '',
-        costs_3_amount: '',
-        costs_4: '',
-        costs_4_amount: '',
-        costs_5: '',
-        costs_5_amount: '',
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
         effects_1: 'Unlocks Research',
         effects_2: '',
         effects_3: '',
@@ -60,12 +60,12 @@ var buildings = [
         costs_1_amount: 10,
         costs_2: 'Stone',
         costs_2_amount: 5,
-        costs_3: '',
-        costs_3_amount: '',
-        costs_4: '',
-        costs_4_amount: '',
-        costs_5: '',
-        costs_5_amount: '',
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
         effects_1: 'Provides food',
         effects_2: 'Provides furs',
         effects_3: '',
@@ -82,37 +82,48 @@ var buildings = [
 function buildBuilding(input) {
     //Checks if the building is already built
     if (input.built == 1) {
-        console.log(input.name + ' already built!')
+        logText(input.name + ' already built!')
     }
-    else {
+    else if (input.built == 0) {
+        var passes = 0;
         //Checks each resource and makes sure we have enough of them
         for (i = 1; i < 6; i++) {
             var amt = eval('input.costs_' + i + '_amount') // Amount of resources
             var nm = eval('input.costs_' + i) // Name of resource
+
             if (nm !== undefined) {
-                //console.log(input.name + ' costs ' + amt + ' of this resource : ' + nm)
+                //Checks how many resource types are being used
+                passes++;
                 lower = nm.toLowerCase();
-                a = eval('input.costs_' + i)
-                //console.log('We currently have ' + resource[lower] + ' ' + a);
+                a = eval('input.costs_' + i);
+                console.log(lower)
+                console.log(a)
+                console.log('Passes: ' + passes);
+                [passes].forEach(function(inputs) {
+                    console.log('YO')
+                    console.log(inputs)
+                  });
+
+                //lower = nm.toLowerCase();
+                //a = eval('input.costs_' + i);
                 //Resource check
                 if (resource[lower] < amt) {
-                    console.log('Not enough ' + a)
+                    logText('Not enough ' + a + '!');
+                    
                 }
                 //Spends resource
-                else {
-                    //console.log('Inventory before : ' + resource[lower])
-                    //console.log('Cost : ' + amt)
+                else if (resource[lower] >= amt) {
                     resource[lower] -= amt;
-                    //console.log('Inventory after : ' + resource[lower])
+                    //Marks this building as built
+                    buildings[input.number].built = 1;
                 }
             }
             else {
-                //console.log('Resource is undefined')
+                //Resource is undefined, nothing else happens
             }
         } // closes for loop
 
-        //Sets this building as built
-        buildings[input.number].built = 1;
+
         //Unlocks related buildings
         var currBld = buildings[input.number].unlocks_buildings
         for (i=0; i<=[currBld].length; i++){
@@ -120,26 +131,25 @@ function buildBuilding(input) {
             var currBldId = buildings[currBld[i]].id;
             var bldFunc = eval('show' + currBldId[0].toUpperCase() + currBldId.substr(1))
             document.getElementById("left-tab-cell-" + currBld[i]).addEventListener("click", bldFunc);
+            $('#left-tab-cell-' + input.number).addClass('built');
         }
-        
         //Displays the related messages
         logText(input.message);
 
         //Updates UI for new buildings
         displayBuildings();
     }
-
 }
 
 
 function showCampfire(){
-    tooltip(campfire);
+    showTooltip(campfire);
 };
 function showShamanHut(){
-    tooltip(shaman_hut);
+    showTooltip(shaman_hut);
 };
 function showHunterPost(){
-    tooltip(hunter_post);
+    showTooltip(hunter_post);
 };
 
 
