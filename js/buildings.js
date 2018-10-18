@@ -82,6 +82,63 @@ var buildings = [
 ]
 
 
+function buildBuilding3(input){
+    //Checks if the building is already built
+    if (input.built == 1) {
+        logText(input.name + ' already built!');
+        return;
+    }
+    //First loop checks how many resource types are needed to build the building
+    var valid = 0;
+    var passed = 0;
+    for (i=1; i<6; i++){
+        a = eval('input.costs_' + i);
+        if (a !== undefined){
+            valid++;
+        }
+    }
+    //console.log('Number of used resources: ' + valid + '.');
+    //Second loop runs as many times as there are resource types
+
+    for (j=1; j<=valid; j++){
+        
+        var amtCost = eval('input.costs_' + j + '_amount') // Amount of resources required
+        var nmCost = eval('input.costs_' + j) // Name of resource required
+        var nmInvLower = nmCost.toLowerCase(); // Name of resource, lower case to match the inventory resource type
+        var amtInv = eval('resource.' + nmInvLower); // Amount of resource in inventory
+        if (amtInv >= amtCost){
+            passed++;
+        }
+        else{
+            //Not enough resources
+            logText('Not enough ' + nmCost + '!')
+        }
+    }
+    if (passed == valid){
+
+            //Resource check successful, proceed
+
+            //Spends the required resources - TODO
+
+            //Marks the building as built - DONE
+            buildings[input.number].built = 1;
+            $('#left-tab-cell-' + input.number).addClass('built');
+
+            //Displays the related messages - DONE
+            logText(input.message);
+
+            //Unlocks the related buildings - DONE
+            var b = buildings[input.number].unlocks_buildings; //array containing list of buildings unlocked
+            for (k=0; k<b.length; k++){
+                c = b[k]
+                buildings[c].displayable = 1;
+               
+            }
+
+            //Updates UI for new buildings - DONE
+            displayBuildings();
+    }
+}
 
 //Player-built buildings
 function buildBuilding2(input) {

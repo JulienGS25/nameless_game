@@ -5,8 +5,6 @@ document.getElementById("scout-btn").addEventListener("click", scout);
 function scout() {
     exploredArea++;
 
-    //buildBuilding2(campfire);
-
     document.getElementById('explored').innerHTML = exploredArea;
     unveilStuff(exploredArea);
     if (forageSpeed > 1){
