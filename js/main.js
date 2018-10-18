@@ -151,16 +151,26 @@ function activateDevMode(){
     resource.stone = storage.stone;
     gameSpeed = 50;
     console.log('Dev Mode Activated. All resources maxed out and buildings are free.');
-    setAllFree;
+    setAllFree();
 };
 
 function setAllFree(){
     for (i = 0; i < buildings.length; i++){
-        buildings[i].costs_1_amount = 0;
-        buildings[i].costs_2_amount = 0;
-        buildings[i].costs_3_amount = 0;
-        buildings[i].costs_4_amount = 0;
-        buildings[i].costs_5_amount = 0;
+        if (buildings[i].costs_1 !== undefined){
+            buildings[i].costs_1_amount = 0;
+        }
+        if (buildings[i].costs_2 !== undefined){
+            buildings[i].costs_2_amount = 0;
+        }
+        if (buildings[i].costs_3 !== undefined){
+            buildings[i].costs_3_amount = 0;
+        }
+        if (buildings[i].costs_4 !== undefined){
+            buildings[i].costs_4_amount = 0;
+        }
+        if (buildings[i].costs_5 !== undefined){
+            buildings[i].costs_5_amount = 0;
+        }
     }
 }
 
