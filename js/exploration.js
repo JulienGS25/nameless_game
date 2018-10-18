@@ -5,7 +5,7 @@ document.getElementById("scout-btn").addEventListener("click", scout);
 function scout() {
     exploredArea++;
 
-    buildBuilding(campfire);
+    //buildBuilding2(campfire);
 
     document.getElementById('explored').innerHTML = exploredArea;
     unveilStuff(exploredArea);

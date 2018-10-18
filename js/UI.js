@@ -95,7 +95,7 @@ function showTooltip(input){
             el.parentNode.replaceChild(elClone, el);
             // Adds event listener to make the Build button build the select building
             var clickBuild = function(input) {
-                buildBuilding(input)
+                buildBuilding2(input)
               };
             document.getElementById('build-button').addEventListener('click', clickBuild.bind(this, input));
             //Puts a resource icon and changes the cost color to match the resource
