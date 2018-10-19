@@ -175,6 +175,7 @@ function buildCampfire(){
     storage.food =+ 10;
     storage.wood =+ 10;
     storage.stone =+ 10;
+    
 };
 
 function buildShamanHut(){

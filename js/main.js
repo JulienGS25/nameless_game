@@ -150,7 +150,7 @@ function activateDevMode(){
     resource.wood = storage.wood;
     resource.stone = storage.stone;
     gameSpeed = 50;
-    console.log('Dev Mode Activated. All resources maxed out and buildings are free.');
+    console.log('Dev Mode Activated. All buildings are free.');
     setAllFree();
 };
 
@@ -177,8 +177,42 @@ function setAllFree(){
 //Fixes rogue decimals
 function prettify(input){
     var output = Math.round(input * 10000000)/10000000;
-        return output;
+        return Math.trunc(output);
 }
+
+
+
+
+
+function manageResources() {
+    var resLength = Object.keys(resource).length;
+    
+    for (j = 0; j < resLength; j++) {
+        var currResourceNm = Object.keys(resource)[j];
+        //If resources went over their storage limit, resets them to the storage limit
+        if (resource[currResourceNm] > storage[currResourceNm]){
+            console.log('Resource went over maximum. Resetting.');
+            resource[currResourceNm] = storage[currResourceNm];
+        };
+        //If resources go below zero, resets them to zero.
+        if (resource[currResourceNm] < 0){
+            console.log('Resource went below zero. Resetting.');
+            resource[currResourceNm] = 0;
+        };
+    };
+    
+
+    if (buildings[0].built == 1) {
+        //Campfire is built, people start showing
+        if (firstPersonJoined == 0) {
+            resource.people++;
+            firstPersonJoined = 1;
+        }
+
+
+    }
+}
+
 
 
 var executed = false;
@@ -191,6 +225,7 @@ function gameLoop(){
         passedTime++;
         fluctuateTemp();
         tempCheck();
+        manageResources();
 
         if (passedTime >= 2 && events.wakeUp == 0){
             wakeUp();
@@ -201,16 +236,7 @@ function gameLoop(){
         if (passedTime >= 10 && events.lightningStrike == 0 && state != 7) {
             discoverFire();
         }
-        /*if (buildings[0].built == 1){
-            if (resource.food > 0.0 && resource.people < storage.people){
-                resource.people = resource.people + 0.01;
-                resource.food = resource.food - 0.01;
-            }
-            if (resource.food < 0.1 && resource.people > 0.0){
-                resource.people = resource.people - 0.01;
-            }
 
-        }*/
         document.getElementById('time').innerHTML = passedTime + ' seconds.';
         document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
         document.getElementById("people").innerHTML = prettify(resource.people);

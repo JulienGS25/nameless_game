@@ -15,7 +15,8 @@ var resource = {
     "goldIngot": 0.0,
     "wheat": 0.0,
     "flour": 0.0,
-    "water": 0.0
+    "water": 0.0,
+    "science": 0.0
 }
 
 //Efficiency
@@ -42,7 +43,8 @@ var storage = {
     "goldIngot": 0.0,
     "wheat": 0.0,
     "flour": 0.0,
-    "water": 0.0
+    "water": 0.0,
+    "science": 0.0
 }
 
 //Events
@@ -58,6 +60,7 @@ var currentTemp = 30;
 var gameSpeed = 500;
 var tooltipShown = 0;
 var pollutionLevel = 0;
+var firstPersonJoined = 0;
 
 //Messages
 var coolMsgDisplayed = 0;
