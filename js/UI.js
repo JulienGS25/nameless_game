@@ -2,6 +2,9 @@
 function logText(text){
     $('.right-tab').prepend("<p class='log-text'>" + text + "</p>");
 }
+function logWarn(text){
+    $('.right-tab').prepend("<p class='log-warn'>" + text + "</p>");
+}
 
 //Makes an element appear with a fadein animation
 function show(element, speed){
@@ -21,47 +24,86 @@ document.getElementById("buildings-title").addEventListener("click", displayBuil
 document.getElementById("tools-title").addEventListener("click", displayTools);
 
 function displayResearch() {
+    //CSS to show active tab on title button
     $('#buildings-title').removeClass('active-button');
     $('#tools-title').removeClass('active-button');
     $('#research-title').addClass('active-button');
     $('#research-title').css('text-decoration','underline');
     $('#buildings-title').css('text-decoration','none');
+    
+    //Buttons themselves
+
     for (i = 0; i < 18; i++) {
         hide('#left-tab-cell-' + i, 100);
+        $('#left-tab-cell-' + i).removeClass('built');
     }
+    for (i = 0; i < research.length; i++){
+        if (research[i].displayable == 1){
+            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + i + ">Cell</div>");
+        }
+    }
+
+
     //Delay to give time for tabs to disappear before making new tabs appear
-    setTimeout(function () {
+    /*setTimeout(function () {
         for (i = 0; i < research.length; i++) {
             if (research[i].displayable == 1) {
                 document.getElementById('left-tab-cell-' + i).innerHTML = research[i].name;
                 show('#left-tab-cell-' + i, 100);
             }
+            if (research[i].researched == 1){
+                $('#left-tab-cell-' + i).addClass('built');
+            }
+
+
+            /*
+            var varCell = ("left-tab-cell-" + i);
+            console.log(varCell);
+
+            var cell = document.getElementById(varCell);
+            cellClone = cell.cloneNode(true);
+            cell.parentNode.replaceChild(cellClone, cell);
+
+           // document.getElementById(varCell).addEventListener("click", showShamanHut);
+           
         }
-    }, 100);
+    }, 100);*/
 }
 
 function displayBuildings() {
-    //TODO
-    //Add event handling
-
+    console.log('displayBuildings executed')
+    
+    //CSS to show active tab on title button
     $('#research-title').removeClass('active-button');
     $('#tools-title').removeClass('active-button');
     $('#buildings-title').addClass('active-button');
     $('#buildings-title').css('text-decoration','underline');
     $('#research-title').css('text-decoration','none');
-    for (i = 0; i < 18; i++) {
+
+    //Buttons themselves
+    /*for (i = 0; i < 18; i++) {
         hide('#left-tab-cell-' + i, 100);
+    }*/
+    for (j = 0; j < buildings.length; j++){
+        if (buildings[j].displayable == 1){
+            console.log('J is: ' + j)
+            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + i + "'>" + buildings[j].name + "</div>");
+        }
     }
     //Delay to give time for tabs to disappear before making new tabs appear
-    setTimeout(function () {
+    /*setTimeout(function () {
         for (i = 0; i < buildings.length; i++) {
             if (buildings[i].displayable == 1) {
                 hide('#left-tab-cell-' + i, 100);
+                $('#left-tab-cell-' + i).removeClass('built');
                 document.getElementById('left-tab-cell-' + i).innerHTML = buildings[i].name;
                 show('#left-tab-cell-' + i, 100);
             }
+            if (buildings[i].built == 1){
+                $('#left-tab-cell-' + i).addClass('built');
+            }
         }
-    }, 100);
+    }, 100);*/
 
 }
 function displayTools(){

@@ -62,12 +62,14 @@ var tooltipShown = 0;
 var pollutionLevel = 0;
 var firstPersonJoined = 0;
 
+
 //Messages
 var coolMsgDisplayed = 0;
 var coldMsgDisplayed = 0;
 var warmerMsgDisplayed = 0;
 var warmMsgDisplayed = 0;
 var hotMsgDisplayed = 0;
+var resourceSpeedMsgDisplayed = 0;
 
 //UI Visibility
 var visible = {

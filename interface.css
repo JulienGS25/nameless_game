@@ -280,6 +280,10 @@ body {
 .log-text {
   width: 30vh;
 }
+.log-warn{
+  width: 30vh;
+  color: yellow;
+}
 
 .opacity-zero {
   opacity: 0;

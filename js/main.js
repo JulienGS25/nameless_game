@@ -182,8 +182,6 @@ function prettify(input){
 
 
 
-
-
 function manageResources() {
     var resLength = Object.keys(resource).length;
     
@@ -191,25 +189,36 @@ function manageResources() {
         var currResourceNm = Object.keys(resource)[j];
         //If resources went over their storage limit, resets them to the storage limit
         if (resource[currResourceNm] > storage[currResourceNm]){
-            console.log('Resource went over maximum. Resetting.');
+            console.log('Resource ' + currResourceNm + ' went over maximum. Resetting.');
             resource[currResourceNm] = storage[currResourceNm];
         };
         //If resources go below zero, resets them to zero.
         if (resource[currResourceNm] < 0){
-            console.log('Resource went below zero. Resetting.');
+            console.log('Resource ' + currResourceNm + ' went below zero. Resetting.');
             resource[currResourceNm] = 0;
-        };
-    };
+        }
+    }
     
-
     if (buildings[0].built == 1) {
-        //Campfire is built, people start showing
+        //Campfire is built, people start joining
         if (firstPersonJoined == 0) {
             resource.people++;
             firstPersonJoined = 1;
         }
 
-
+        //If people above zero but below maximum, and food is above zero, reduce food and increase people
+        if (resource.people > 0 && resource.people < storage.people && resource.food > 0){
+            resource.people = resource.people + 0.01;
+            resource.food = resource.food - (resource.people * 0.005);
+        }
+        //If food at 0, don't reduce food but reduce people
+        if (resource.food == 0 && resource.people > 0){
+            resource.people = resource.people - 0.01
+        }
+        //If food is back above 0, increase people
+        else if (resource.people > 0 && resource.food > 0){
+            resource.food = resource.food - (resource.people * 0.005);
+        }
     }
 }
 
@@ -236,6 +245,15 @@ function gameLoop(){
         if (passedTime >= 10 && events.lightningStrike == 0 && state != 7) {
             discoverFire();
         }
+
+        if (resourceSpeedMsgDisplayed == 0){
+            if (forageSpeed > 2 || woodGatherSpeed > 2 || stoneGatherSpeed > 2){
+                logWarn('Resources are getting scarce. Exploring will help you find resources faster. [Improves gathering speed]')
+                resourceSpeedMsgDisplayed = 1;
+            }
+
+        }
+        
 
         document.getElementById('time').innerHTML = passedTime + ' seconds.';
         document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';

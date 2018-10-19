@@ -2,7 +2,6 @@
 var buildings = [
     campfire = {
         name: 'Campfire',
-        id: 'campfire',
         number: 0,
         description: 'The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.',
         costs_1: 'Wood',
@@ -23,12 +22,12 @@ var buildings = [
         displayable: 1,
         built: 0,
         buildFunction: buildCampfire,
+        showFunction: showCampfire,
         message: 'Built campfire. Its warmth attracts people.',
         unlocks_buildings: [1, 2]
     },
     shaman_hut = {
         name: 'Shaman Hut',
-        id: 'shamanHut',
         number: 1,
         description: 'Explores and experiments with the nature that surrounds us.',
         costs_1: 'Wood',
@@ -41,22 +40,22 @@ var buildings = [
         costs_4_amount: undefined,
         costs_5: undefined,
         costs_5_amount: undefined,
-        effects_1: 'Unlocks Research',
-        effects_2: '',
+        effects_1: 'Unlocks the Shaman who performs research',
+        effects_2: 'Unlocks Research tab',
         effects_3: '',
         effects_4: '',
         effects_5: '',
         displayable: 0,
         built: 0,
         buildFunction: buildShamanHut,
+        showFunction: showShamanHut,
         message: 'Built Shaman Hut. The Shaman will perform research and improve our tribe.',
         unlocks_buildings: undefined
     },
     hunter_post = {
         name: 'Hunter Post',
-        id: 'hunterPost',
         number: 2,
-        description: 'Hunts nearby animals for food and fur.',
+        description: 'Explores the nearby area and hunts animals for food.',
         costs_1: 'Wood',
         costs_1_amount: 10,
         costs_2: 'Stone',
@@ -68,13 +67,14 @@ var buildings = [
         costs_5: undefined,
         costs_5_amount: undefined,
         effects_1: 'Provides food',
-        effects_2: 'Provides furs',
+        effects_2: 'Provides exploration',
         effects_3: '',
         effects_4: '',
         effects_5: '',
         displayable: 0,
         built: 0,
         buildFunction: buildHunterPost,
+        showFunction: showHunterPost,
         message: 'Built Hunter Post. The Hunter will track and kill nearby animals for food and fur.',
         unlocks_buildings: undefined
     }
@@ -148,15 +148,13 @@ function buildBuilding(input) {
 
         //Runs the corresponding function specific to this building
         buildings[input.number].buildFunction();
-        
-        
     }
 }
 
 
 //Displaying the right tooltip according to what is clicked
-document.getElementById("left-tab-cell-1").addEventListener("click", showShamanHut);
-document.getElementById("left-tab-cell-2").addEventListener("click", showHunterPost);
+//document.getElementById("left-tab-cell-1").addEventListener("click", showShamanHut);
+//document.getElementById("left-tab-cell-2").addEventListener("click", showHunterPost);
 
 function showCampfire(){
     showTooltip(campfire);
