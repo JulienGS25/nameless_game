@@ -187,17 +187,14 @@ body {
 #tooltip-costs-container{
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(6, 1.15vw);
-  grid-template-areas: 
-  "a ." 
-  "a ." 
-  "a ." 
-  "a ." 
-  "a ." 
-  ". b";
 }
-#tooltip-effects-title, #tooltip-costs-title {
+#tooltip-effects-title, #tooltip-costs-title, {
   grid-area: 1 / 1 / 2 / 1;
   text-decoration: underline;
+}
+
+#tooltip-people-list{
+  grid-area: 4 / 1 / 4 / 1;
 }
 
 #tooltip-effects-1, #tooltip-costs-1 {grid-area: 2 / 1 / 2 / 1;}
@@ -205,6 +202,36 @@ body {
 #tooltip-effects-3, #tooltip-costs-3 {grid-area: 4 / 1 / 4 / 1;}
 #tooltip-effects-4, #tooltip-costs-4 {grid-area: 5 / 1 / 5 / 1;}
 #tooltip-effects-5, #tooltip-costs-5 {grid-area: 6 / 1 / 6 / 1;}
+
+#tooltip-job-1 {grid-area: 6 / 1 / 6 / 1;}
+#job-title-1 {text-decoration: underline;}
+.job-desc{
+  margin-top: -15px;
+  font-style: italic;
+}
+#tooltip-job-desc-1 {
+  grid-area: 7 / 1 / 7 / 1;
+}
+
+#tooltip-job-2 {grid-area: 8 / 1 / 8 / 1;}
+#job-title-2 {text-decoration: underline;}
+
+#tooltip-job-desc-2 {grid-area: 9 / 1 / 9 / 1;}
+
+#tooltip-job-3 {grid-area: 10 / 1 / 10 / 1;}
+#job-title-3 {text-decoration: underline;}
+
+#tooltip-job-desc-3 {grid-area: 11 / 1 / 11 / 1;}
+
+#tooltip-job-4 {grid-area: 12 / 1 / 12 / 1;}
+#job-title-4 {text-decoration: underline;}
+
+#tooltip-job-desc-4 {grid-area: 13 / 1 / 13 / 1;}
+
+#tooltip-job-5 {grid-area: 14 / 1 / 14 / 1;}
+#job-title-5 {text-decoration: underline;}
+
+#tooltip-job-desc-5 {grid-area: 15 / 1 / 15 / 1;}
 
 .right-tab>p {
   font-style: italic;

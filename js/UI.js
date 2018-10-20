@@ -95,101 +95,125 @@ function displayTools(){
         document.getElementById('left-tab-cell-0').addEventListener("click", manageTribe);
     }
 }
- /*
-function manageTribe(){
+ 
+function manageTribe() {
     console.log('Manage tribe');
-        $('.work-area').animate({opacity: 0},{duration: 25});
-        
-        setTimeout(function(){
-            $('.work-area').empty();
-        },25)
+    $('.work-area').animate({ opacity: 0 }, { duration: 25 });
+    tooltipShown = 0;
 
-        $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>Tribe Management</div>" +
-            "<div class='hideTooltip' id='tooltip-desc'>You can assign your tribespeople jobs here</div>" +
-            "<div class='hideTooltip' id='tooltip-job-1'>Job 1</div>" +
-            "<div class='hideTooltip' id='tooltip-job-2'>Job 2</div>" +
-            "<div class='hideTooltip' id='tooltip-job-3'>Job 3</div>" +
-            "<div class='hideTooltip' id='tooltip-job-4'>Job 4</div>" +
-            "<div class='hideTooltip' id='tooltip-job-5'>Job 5</div>");
-        }
+    setTimeout(function () {
+        $('.work-area').empty();
+    }, 25)
+
+    setTimeout(function () {
+        $('.work-area').append("<div id='tooltip-title'>Tribe Management</div>" +
+            "<div id='tooltip-desc'>You can assign your tribespeople jobs here.</div>" +
+            "<div id='tooltip-people-list'>Available tribespeople: <span id='free-people'>5</span><span> / </span></span id='total-people'></span>5</div>" + 
+            "<div id='tooltip-job-1'><span id='job-title-1'>Shaman</span><span>: </span><span id='current-shamans'>1</span><span> / </span><span id='total-shamans'>2</span></div>" + 
+            "<div class='job-desc' id='tooltip-job-desc-1'>Performs research to improve your tribe.</div>" + 
+            "<div id='tooltip-job-2'><span id='job-title-2'>Hunter</span><span>: </span><span id='current-hunters'>1</span><span> / </span><span id='total-hunters'>2</span></div>" + 
+            "<div class='job-desc' id='tooltip-job-desc-2'>Hunts animals for food and explores nearby areas.</div>" + 
+            "<div id='tooltip-job-3'><span id='job-title-3'>Wood Chopper</span><span>: </span><span id='current-woodchopper'>1</span><span> / </span><span id='total-woodchoppers'>2</span></div>" + 
+            "<div class='job-desc' id='tooltip-job-desc-3'>Gathers wood for construction.</div>" + 
+            "<div id='tooltip-job-4'><span id='job-title-4'>Miner</span><span>: </span><span id='current-miners'>1</span><span> / </span><span id='total-miners'>2</span></div>" + 
+            "<div class='job-desc' id='tooltip-job-desc-4'>Gathers stone for construction.</div>" + 
+            "<div id='tooltip-job-5'><span id='job-title-5'>Farmer</span><span>: </span><span id='current-farmers'>1</span><span> / </span><span id='total-miners'>2</span></div>" + 
+            "<div class='job-desc' id='tooltip-job-desc-5'>Gathers food from fields.</div>");
+            /*if (buildings[1].built == 1){
+                $('.work-area').append("<div id='tooltip-job-1'>Shaman</div>");
+            }
+            if (buildings[2].built == 1){
+                $('.work-area').append("<div id='tooltip-job-2'>Hunter</div>");
+            }
+            $('.work-area').append("</div>");
 */
+            
+            //To be added
+            /*"<div id='tooltip-job-3'>Farmer</div>"
+            "<div id='tooltip-job-4'>Wood Chopper</div>"
+            "<div id='tooltip-job-5'>Miner</div>"*/
+
+    }, 100)
+    show('.work-area');
+}
 
 
 
 
-function showTooltip(input){
-    if (tooltipShown == 0){
+
+function showTooltip(input) {
+    if (tooltipShown == 0) {
         tooltipShown = 1;
         show('.work-area');
-        $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>" + input.name + "</div>" +
-            "<div class='hideTooltip' id='tooltip-desc'>" + input.description + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-container'>" +
-            "<div class='hideTooltip' id='tooltip-costs-title'>Costs: </div>" +
-            "<div class='hideTooltip' id='tooltip-costs-1'><img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-2'><img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-3'><img id='p-res-3-img-tt' class='resource-icons'>" + input.costs_3 + ": " + input.costs_3_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-4'><img id='p-res-4-img-tt' class='resource-icons'>" + input.costs_4 + ": " + input.costs_4_amount + "</div>" +
-            "<div class='hideTooltip' id='tooltip-costs-5'><img id='p-res-5-img-tt' class='resource-icons'>" + input.costs_5 + ": " + input.costs_5_amount + "</div>" +
-            "</div><div class='hideTooltip' id='tooltip-effects-container'>" +
-            "<div class='hideTooltip'id='tooltip-effects-title'>Effects: </div>" +
-            "<div class='hideTooltip'id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>");
-            //Displays the appropriate button
-            if (visible.leftTabShown == 'research' && input.researched == 0){
-            $('.work-area').append("</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Research</div>");
-            };
-            if (visible.leftTabShown == 'buildings' && input.built == 0){
-            $('.work-area').append("</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
-            };
-            if (document.getElementById("build-button") !== null){
+        $('.work-area').append("<div id='tooltip-title'>" + input.name + "</div>" +
+            "<div id='tooltip-desc'>" + input.description + "</div>" +
+            "<div id='tooltip-costs-container'>" +
+            "<div id='tooltip-costs-title'>Costs: </div>" +
+            "<div id='tooltip-costs-1'><img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount + "</div>" +
+            "<div id='tooltip-costs-2'><img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount + "</div>" +
+            "<div id='tooltip-costs-3'><img id='p-res-3-img-tt' class='resource-icons'>" + input.costs_3 + ": " + input.costs_3_amount + "</div>" +
+            "<div id='tooltip-costs-4'><img id='p-res-4-img-tt' class='resource-icons'>" + input.costs_4 + ": " + input.costs_4_amount + "</div>" +
+            "<div id='tooltip-costs-5'><img id='p-res-5-img-tt' class='resource-icons'>" + input.costs_5 + ": " + input.costs_5_amount + "</div>" +
+            "</div><div id='tooltip-effects-container'>" +
+            "<div id='tooltip-effects-title'>Effects: </div>" +
+            "<div id='tooltip-effects-1'>" + input.effects_1 + "</div>" +
+            "<div id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
+            "<div id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
+            "<div id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
+            "<div id='tooltip-effects-5'>" + input.effects_5 + "</div>");
+        //Displays the appropriate button
+        if (visible.leftTabShown == 'research' && input.researched == 0) {
+            $('.work-area').append("</div><div id='build-button' class='build-button game-button' type='button'>Research</div>");
+        };
+        if (visible.leftTabShown == 'buildings' && input.built == 0) {
+            $('.work-area').append("</div><div id='build-button' class='build-button game-button' type='button'>Build</div>");
+        };
+        if (document.getElementById("build-button") !== null) {
             //Removes the event listeners on the build button. Prevents bug where a building is selected and Build Button builds another building
             var el = document.getElementById('build-button');
             elClone = el.cloneNode(true);
             el.parentNode.replaceChild(elClone, el);
-        
+
             // Adds event listener to make the Build button build the selected building
-            var clickBuild = function(input) {
-                if (visible.leftTabShown == 'buildings'){
+            var clickBuild = function (input) {
+                if (visible.leftTabShown == 'buildings') {
                     buildBuilding(input);
                 }
-                else if (visible.leftTabShown == 'research'){
+                else if (visible.leftTabShown == 'research') {
                     researchScience(input);
                 }
-              };
+            };
             document.getElementById('build-button').addEventListener('click', clickBuild.bind(this, input));
         }
-            //Puts a resource icon and changes the cost color to match the resource
-            for (i = 1; i < 6; i++){
-                //To be improved. Currently forces the source image file to match the resource cost in buildings.js
-                var curr = eval('input.costs_' + i);
-                if (curr !== undefined){
-                    document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";
-                    document.getElementById("tooltip-costs-" + i).classList.add(curr + "ColorText");
-                }
-                else if (curr == undefined){
-                    hide('#tooltip-costs-' + i, 20);
-                }
-                else{
-                    console.log('Issue with building costs. See Campfire in buildings.js for a valid example')
-                }
+        //Puts a resource icon and changes the cost color to match the resource
+        for (i = 1; i < 6; i++) {
+            //To be improved. Currently forces the source image file to match the resource cost in buildings.js
+            var curr = eval('input.costs_' + i);
+            if (curr !== undefined) {
+                document.getElementById("p-res-" + i + "-img-tt").src = "images/" + curr + ".png";
+                document.getElementById("tooltip-costs-" + i).classList.add(curr + "ColorText");
             }
-            
+            else if (curr == undefined) {
+                hide('#tooltip-costs-' + i, 20);
+            }
+            else {
+                console.log('Issue with building costs. See Campfire in buildings.js for a valid example')
+            }
+        }
     }
-    else if (tooltipShown == 1){
-        $('.work-area').animate({opacity: 0},{duration: 25});
+
+    else if (tooltipShown == 1) {
+        $('.work-area').animate({ opacity: 0 }, { duration: 25 });
         tooltipShown = 0;
-        
-        setTimeout(function(){
+
+        setTimeout(function () {
             $('.work-area').empty();
-        },25)
-        
-        setTimeout(function(){
+        }, 25)
+
+        setTimeout(function () {
             showTooltip(input);
-        },100)
-        
+        }, 100)
+
     }
 }
 
