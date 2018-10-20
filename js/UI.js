@@ -84,15 +84,43 @@ function displayTools(){
     $('#buildings-title').removeClass('active-button');
     $('#tools-title').addClass('active-button');
 
-    visible.leftTabShown == 'tools';
+    visible.leftTabShown = 'tools';
 
-//No tools created yet
+    //Swaps the cells
+    hide('.left-tab-cell',10);
+    $('.left-tab-cell').remove();
+
+    if (buildings[3].built == 1){
+        $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-0'>Manage Tribe</div>");
+        document.getElementById('left-tab-cell-0').addEventListener("click", manageTribe);
+    }
 }
+ /*
+function manageTribe(){
+    console.log('Manage tribe');
+        $('.work-area').animate({opacity: 0},{duration: 25});
+        
+        setTimeout(function(){
+            $('.work-area').empty();
+        },25)
+
+        $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>Tribe Management</div>" +
+            "<div class='hideTooltip' id='tooltip-desc'>You can assign your tribespeople jobs here</div>" +
+            "<div class='hideTooltip' id='tooltip-job-1'>Job 1</div>" +
+            "<div class='hideTooltip' id='tooltip-job-2'>Job 2</div>" +
+            "<div class='hideTooltip' id='tooltip-job-3'>Job 3</div>" +
+            "<div class='hideTooltip' id='tooltip-job-4'>Job 4</div>" +
+            "<div class='hideTooltip' id='tooltip-job-5'>Job 5</div>");
+        }
+*/
+
+
+
 
 function showTooltip(input){
     if (tooltipShown == 0){
         tooltipShown = 1;
-        show('.work-area')
+        show('.work-area');
         $('.work-area').append("<div class='hideTooltip' id='tooltip-title'>" + input.name + "</div>" +
             "<div class='hideTooltip' id='tooltip-desc'>" + input.description + "</div>" +
             "<div class='hideTooltip' id='tooltip-costs-container'>" +
@@ -112,10 +140,10 @@ function showTooltip(input){
             //Displays the appropriate button
             if (visible.leftTabShown == 'research' && input.researched == 0){
             $('.work-area').append("</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Research</div>");
-            }
+            };
             if (visible.leftTabShown == 'buildings' && input.built == 0){
             $('.work-area').append("</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
-            }
+            };
             if (document.getElementById("build-button") !== null){
             //Removes the event listeners on the build button. Prevents bug where a building is selected and Build Button builds another building
             var el = document.getElementById('build-button');

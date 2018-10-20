@@ -29,7 +29,7 @@ var research = [
     primitiveConstruction = {
         name: "Primitive Construction",
         number: 1,
-        description: "A roof over your people\"s heads.",
+        description: "A roof over your people's heads.",
         costs_1: "Stone",
         costs_1_amount: 10,
         costs_2: undefined,

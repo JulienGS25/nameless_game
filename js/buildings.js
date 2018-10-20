@@ -24,7 +24,7 @@ var buildings = [
         buildFunction: buildCampfire,
         showFunction: showCampfire,
         message: "Built campfire. Its warmth attracts people.",
-        unlocks_buildings: [1, 2]
+        unlocks_buildings: [1, 2, 3]
     },
     shaman_hut = {
         name: "Shaman Hut",
@@ -76,6 +76,32 @@ var buildings = [
         buildFunction: buildHunterPost,
         showFunction: showHunterPost,
         message: "Built Hunter Post. The Hunter will track and kill nearby animals for food.",
+        unlocks_buildings: undefined
+    },
+    village_center = {
+        name: "Village Center",
+        number: 3,
+        description: "Allows you to manage your tribe.",
+        costs_1: "Wood",
+        costs_1_amount: 10,
+        costs_2: "Stone",
+        costs_2_amount: 5,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks Village Management",
+        effects_2: "Allows job assignments",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        built: 0,
+        buildFunction: buildVillageCenter,
+        showFunction: showVillageCenter,
+        message: "Built Village Center. You can now manage your villagers.",
         unlocks_buildings: undefined
     }
 ]
@@ -156,11 +182,18 @@ function buildBuilding(input) {
 function showCampfire(){
     showTooltip(campfire);
 };
+
 function showShamanHut(){
     showTooltip(shaman_hut);
 };
+
 function showHunterPost(){
     showTooltip(hunter_post);
+};
+
+function showVillageCenter(){
+    showTooltip(village_center);
+
 };
 
 
@@ -177,10 +210,15 @@ function buildShamanHut(){
     show('#research-title',100);
     hide('#build-button', 100);
 };
-function buildHunterPost(){
-    console.log('Placeholder Text for hunter post');
-}
 
+function buildHunterPost(){
+    console.log('Placeholder text for Hunter Post');
+};
+
+function buildVillageCenter(){
+    console.log('Placeholder text for Village Center');
+    show('#tools-title',100);
+}
 
 
 //Auto-resource workers purchasing
