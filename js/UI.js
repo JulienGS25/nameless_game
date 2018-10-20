@@ -31,48 +31,27 @@ function displayResearch() {
     $('#research-title').css('text-decoration','underline');
     $('#buildings-title').css('text-decoration','none');
     
-    //Buttons themselves
+    visible.leftTabShown = 'research';
 
-    for (i = 0; i < 18; i++) {
-        hide('#left-tab-cell-' + i, 100);
-        $('#left-tab-cell-' + i).removeClass('built');
-    }
-    for (i = 0; i < research.length; i++){
-        if (research[i].displayable == 1){
-            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + i + ">Cell</div>");
-        }
-    }
-
-
-    //Delay to give time for tabs to disappear before making new tabs appear
-    /*setTimeout(function () {
-        for (i = 0; i < research.length; i++) {
-            if (research[i].displayable == 1) {
-                document.getElementById('left-tab-cell-' + i).innerHTML = research[i].name;
-                show('#left-tab-cell-' + i, 100);
-            }
-            if (research[i].researched == 1){
-                $('#left-tab-cell-' + i).addClass('built');
-            }
-
-
-            /*
-            var varCell = ("left-tab-cell-" + i);
-            console.log(varCell);
-
+    //Swaps the cells
+    hide('.left-tab-cell',10);
+    $('.left-tab-cell').remove();
+    for (j = 0; j < research.length; j++){
+        if (research[j].displayable == 1){
+            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
+            var varCell = ("left-tab-cell-" + j);
             var cell = document.getElementById(varCell);
             cellClone = cell.cloneNode(true);
             cell.parentNode.replaceChild(cellClone, cell);
-
-           // document.getElementById(varCell).addEventListener("click", showShamanHut);
-           
+            document.getElementById(varCell).addEventListener("click", research[j].showFunction);
+            if (research[j].researched == 1){
+                $("#left-tab-cell-" + j).addClass('built');
+            }
         }
-    }, 100);*/
+    }
 }
 
 function displayBuildings() {
-    console.log('displayBuildings executed')
-    
     //CSS to show active tab on title button
     $('#research-title').removeClass('active-button');
     $('#tools-title').removeClass('active-button');
@@ -80,36 +59,33 @@ function displayBuildings() {
     $('#buildings-title').css('text-decoration','underline');
     $('#research-title').css('text-decoration','none');
 
-    //Buttons themselves
-    /*for (i = 0; i < 18; i++) {
-        hide('#left-tab-cell-' + i, 100);
-    }*/
+    visible.leftTabShown = 'buildings';
+
+    //Swaps the cells
+    hide('.left-tab-cell',10);
+    $('.left-tab-cell').remove();
     for (j = 0; j < buildings.length; j++){
         if (buildings[j].displayable == 1){
-            console.log('J is: ' + j)
-            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + i + "'>" + buildings[j].name + "</div>");
+            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + buildings[j].name + "</div>");
+            var varCell = ("left-tab-cell-" + j);
+            var cell = document.getElementById(varCell);
+            cellClone = cell.cloneNode(true);
+            cell.parentNode.replaceChild(cellClone, cell);
+            document.getElementById(varCell).addEventListener("click", buildings[j].showFunction);
+            if (buildings[j].built == 1){
+                $("#left-tab-cell-" + j).addClass('built');
+            }
         }
     }
-    //Delay to give time for tabs to disappear before making new tabs appear
-    /*setTimeout(function () {
-        for (i = 0; i < buildings.length; i++) {
-            if (buildings[i].displayable == 1) {
-                hide('#left-tab-cell-' + i, 100);
-                $('#left-tab-cell-' + i).removeClass('built');
-                document.getElementById('left-tab-cell-' + i).innerHTML = buildings[i].name;
-                show('#left-tab-cell-' + i, 100);
-            }
-            if (buildings[i].built == 1){
-                $('#left-tab-cell-' + i).addClass('built');
-            }
-        }
-    }, 100);*/
-
 }
+
 function displayTools(){
     $('#research-title').removeClass('active-button');
     $('#buildings-title').removeClass('active-button');
     $('#tools-title').addClass('active-button');
+
+    visible.leftTabShown == 'tools';
+
 //No tools created yet
 }
 
@@ -132,17 +108,31 @@ function showTooltip(input){
             "<div class='hideTooltip'id='tooltip-effects-2'>" + input.effects_2 + "</div>" +
             "<div class='hideTooltip'id='tooltip-effects-3'>" + input.effects_3 + "</div>" +
             "<div class='hideTooltip'id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
-            "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>" +
-            "</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
+            "<div class='hideTooltip'id='tooltip-effects-5'>" + input.effects_5 + "</div>");
+            //Displays the appropriate button
+            if (visible.leftTabShown == 'research' && input.researched == 0){
+            $('.work-area').append("</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Research</div>");
+            }
+            if (visible.leftTabShown == 'buildings' && input.built == 0){
+            $('.work-area').append("</div><div id='build-button' class='hideTooltip build-button game-button' type='button'>Build</div>");
+            }
+            if (document.getElementById("build-button") !== null){
             //Removes the event listeners on the build button. Prevents bug where a building is selected and Build Button builds another building
             var el = document.getElementById('build-button');
             elClone = el.cloneNode(true);
             el.parentNode.replaceChild(elClone, el);
-            // Adds event listener to make the Build button build the select building
+        
+            // Adds event listener to make the Build button build the selected building
             var clickBuild = function(input) {
-                buildBuilding(input)
+                if (visible.leftTabShown == 'buildings'){
+                    buildBuilding(input);
+                }
+                else if (visible.leftTabShown == 'research'){
+                    researchScience(input);
+                }
               };
             document.getElementById('build-button').addEventListener('click', clickBuild.bind(this, input));
+        }
             //Puts a resource icon and changes the cost color to match the resource
             for (i = 1; i < 6; i++){
                 //To be improved. Currently forces the source image file to match the resource cost in buildings.js
@@ -161,16 +151,16 @@ function showTooltip(input){
             
     }
     else if (tooltipShown == 1){
-        $('.work-area').animate({opacity: 0},{duration: 150});
+        $('.work-area').animate({opacity: 0},{duration: 25});
         tooltipShown = 0;
         
         setTimeout(function(){
             $('.work-area').empty();
-        },100)
+        },25)
         
         setTimeout(function(){
             showTooltip(input);
-        },200)
+        },100)
         
     }
 }

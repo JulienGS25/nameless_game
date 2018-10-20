@@ -44,9 +44,9 @@ function discoverFire() {
         $('#observe-button').remove();
         state = 7;
         show('.left-tab');
-        visible.leftTab = 1;
+        visible.leftTab = true;
         show('#era');
-        visible.era = 1;
+        visible.era = true;
         $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-0'>Campfire</div>")
         document.getElementById("left-tab-cell-0").addEventListener("click", showCampfire);
         

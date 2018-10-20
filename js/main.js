@@ -146,11 +146,8 @@ if (devMode == 1){
 
 function activateDevMode(){
     document.getElementById('dev-mode').innerHTML = 'DEV MODE';
-    resource.food = storage.food;
-    resource.wood = storage.wood;
-    resource.stone = storage.stone;
     gameSpeed = 50;
-    console.log('Dev Mode Activated. All buildings are free.');
+    console.log('Dev Mode Activated. Everything is free.');
     setAllFree();
 };
 
@@ -170,6 +167,23 @@ function setAllFree(){
         }
         if (buildings[i].costs_5 !== undefined){
             buildings[i].costs_5_amount = 0;
+        }
+    }
+    for (j = 0; j < research.length; j++){
+        if (research[j].costs_1 !== undefined){
+            research[j].costs_1_amount = 0;
+        }
+        if (research[j].costs_2 !== undefined){
+            research[j].costs_2_amount = 0;
+        }
+        if (research[j].costs_3 !== undefined){
+            research[j].costs_3_amount = 0;
+        }
+        if (research[j].costs_4 !== undefined){
+            research[j].costs_4_amount = 0;
+        }
+        if (research[j].costs_5 !== undefined){
+            research[j].costs_5_amount = 0;
         }
     }
 }

@@ -73,19 +73,20 @@ var resourceSpeedMsgDisplayed = 0;
 
 //UI Visibility
 var visible = {
-    "leftTab": 0,
-    "midTab": 0,
-    "rightTab" : 0,
-    "bottomTab" : 0,
-    "era" : 0,
-    "peopleResource" : 0,
-    "foodResource" : 0,
-    "woodResource" : 0,
-    "stoneResource" : 0,
-    "forageFoodButton" : 0,
-    "gatherWoodButton" : 0,
-    "gatherStoneButton" : 0,
-    "exploreButton" : 0
+    "leftTab": false,
+    "midTab": false,
+    "rightTab" : false,
+    "bottomTab" : false,
+    "era" : false,
+    "peopleResource" : false,
+    "foodResource" : false,
+    "woodResource" : false,
+    "stoneResource" : false,
+    "forageFoodButton" : false,
+    "gatherWoodButton" : false,
+    "gatherStoneButton" : false,
+    "exploreButton" : false,
+    "leftTabShown": 'buildings', //can be buildings, research or tools
 }
 
 

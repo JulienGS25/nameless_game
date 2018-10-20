@@ -1,12 +1,12 @@
 //Buildings
 var buildings = [
     campfire = {
-        name: 'Campfire',
+        name: "Campfire",
         number: 0,
-        description: 'The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.',
-        costs_1: 'Wood',
+        description: "The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.",
+        costs_1: "Wood",
         costs_1_amount: 3,
-        costs_2: 'Stone',
+        costs_2: "Stone",
         costs_2_amount: 2,
         costs_3: undefined,
         costs_3_amount: undefined,
@@ -14,25 +14,25 @@ var buildings = [
         costs_4_amount: undefined,
         costs_5: undefined,
         costs_5_amount: undefined,
-        effects_1: 'Unlocks Shaman Hut',
-        effects_2: 'Unlocks Hunter Post',
-        effects_3: '+10 food storage',
-        effects_4: '+10 wood storage',
-        effects_5: '+10 stone storage',
+        effects_1: "Unlocks Shaman Hut",
+        effects_2: "Unlocks Hunter Post",
+        effects_3: "+10 food storage",
+        effects_4: "+10 wood storage",
+        effects_5: "+10 stone storage",
         displayable: 1,
         built: 0,
         buildFunction: buildCampfire,
         showFunction: showCampfire,
-        message: 'Built campfire. Its warmth attracts people.',
+        message: "Built campfire. Its warmth attracts people.",
         unlocks_buildings: [1, 2]
     },
     shaman_hut = {
-        name: 'Shaman Hut',
+        name: "Shaman Hut",
         number: 1,
-        description: 'Explores and experiments with the nature that surrounds us.',
-        costs_1: 'Wood',
+        description: "Explores and experiments with the nature that surrounds us.",
+        costs_1: "Wood",
         costs_1_amount: 10,
-        costs_2: 'Stone',
+        costs_2: "Stone",
         costs_2_amount: 5,
         costs_3: undefined,
         costs_3_amount: undefined,
@@ -40,25 +40,25 @@ var buildings = [
         costs_4_amount: undefined,
         costs_5: undefined,
         costs_5_amount: undefined,
-        effects_1: 'Unlocks the Shaman who performs research',
-        effects_2: 'Unlocks Research tab',
-        effects_3: '',
-        effects_4: '',
-        effects_5: '',
+        effects_1: "Unlocks the Shaman who performs research",
+        effects_2: "Unlocks Research tab",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         built: 0,
         buildFunction: buildShamanHut,
         showFunction: showShamanHut,
-        message: 'Built Shaman Hut. The Shaman will perform research and improve our tribe.',
+        message: "Built Shaman Hut. The Shaman will perform research and improve our tribe.",
         unlocks_buildings: undefined
     },
     hunter_post = {
-        name: 'Hunter Post',
+        name: "Hunter Post",
         number: 2,
-        description: 'Explores the nearby area and hunts animals for food.',
-        costs_1: 'Wood',
+        description: "Explores the nearby area and hunts animals for food.",
+        costs_1: "Wood",
         costs_1_amount: 10,
-        costs_2: 'Stone',
+        costs_2: "Stone",
         costs_2_amount: 5,
         costs_3: undefined,
         costs_3_amount: undefined,
@@ -66,16 +66,16 @@ var buildings = [
         costs_4_amount: undefined,
         costs_5: undefined,
         costs_5_amount: undefined,
-        effects_1: 'Provides food',
-        effects_2: 'Provides exploration',
-        effects_3: '',
-        effects_4: '',
-        effects_5: '',
+        effects_1: "Provides food",
+        effects_2: "Provides exploration",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         built: 0,
         buildFunction: buildHunterPost,
         showFunction: showHunterPost,
-        message: 'Built Hunter Post. The Hunter will track and kill nearby animals for food and fur.',
+        message: "Built Hunter Post. The Hunter will track and kill nearby animals for food.",
         unlocks_buildings: undefined
     }
 ]
@@ -86,6 +86,7 @@ var buildings = [
 //See comments to see what it does
 
 function buildBuilding(input) {
+    hide('#build-button',100);
     //Checks if the building is already built
     if (input.built == 1) {
         logText(input.name + ' already built!');
@@ -100,7 +101,7 @@ function buildBuilding(input) {
             valid++;
         }
     }
-    //Second loop runs as many times as there are resource types
+    //Second loop runs as many times as there are resource types used to build the building
 
     for (j = 1; j <= valid; j++) {
 
@@ -151,10 +152,6 @@ function buildBuilding(input) {
     }
 }
 
-
-//Displaying the right tooltip according to what is clicked
-//document.getElementById("left-tab-cell-1").addEventListener("click", showShamanHut);
-//document.getElementById("left-tab-cell-2").addEventListener("click", showHunterPost);
 
 function showCampfire(){
     showTooltip(campfire);
