@@ -24,7 +24,8 @@ var research = [
         researchFunction: researchStoneWorking,
         showFunction: showStoneWorking,
         message: "By carving stone into tools, you manage to improve the speed at which you perform tasks.",
-        unlocks_research: []
+        unlocks_research: [],
+        unlocks_buildings: []
     },
     primitiveConstruction = {
         name: "Primitive Construction",
@@ -50,7 +51,8 @@ var research = [
         researchFunction: researchPrimitiveConstruction,
         showFunction: showPrimitiveConstruction,
         message: "Placeholder",
-        unlocks_research: []
+        unlocks_research: [],
+        unlocks_buildings: [4, 5]
     },
 ]
 
@@ -107,18 +109,27 @@ function researchScience(input) {
         //Displays the related messages
         logText(input.message);
 
-        //Unlocks the related buildings
-        if (research[input.number].unlocks_research !== undefined){
-        var unlockedResearch = research[input.number].unlocks_research; //array containing list of buildings unlocked
-        for (l = 0; l < unlockedResearch.length; l++) {
-            research[unlockedResearch[l]].displayable = 1;
+        //Unlocks the related research
+        if (research[input.number].unlocks_research !== undefined) {
+            var unlockedResearch = research[input.number].unlocks_research; //array containing list of research unlocked
+            for (l = 0; l < unlockedResearch.length; l++) {
+                research[unlockedResearch[l]].displayable = 1;
+            }
+        };
+        //Unlocks the related building
+        if (research[input.number].unlocks_buildings !== undefined) {
+            var unlockedBuilding = research[input.number].unlocks_buildings; //array containing list of buildings unlocked
+            for (l = 0; l < unlockedBuilding.length; l++) {
+                buildings[unlockedBuilding[l]].displayable = 1;
             }
         }
+
+
 
         //Updates UI for new buildings
         displayResearch();
 
-        //Runs the corresponding function specific to this building
+        //Runs the corresponding function specific to this research
         research[input.number].researchFunction();
     }
 }
@@ -127,11 +138,11 @@ function researchScience(input) {
 
 function researchStoneWorking(){
 
-}
+};
 
 function researchPrimitiveConstruction(){
 
-}
+};
 
 
 function showStoneWorking(){

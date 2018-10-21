@@ -104,6 +104,84 @@ var buildings = [
         message: "Built Village Center. You can now manage your villagers.",
         unlocks_buildings: undefined
     },
+    woodchopper_post = {
+        name: "Wood Chopper Post",
+        number: 4,
+        description: "Chops nearby trees for wood.",
+        costs_1: "Wood",
+        costs_1_amount: 10,
+        costs_2: "Stone",
+        costs_2_amount: 5,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks the Wood Chopper job",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        built: 0,
+        buildFunction: buildWoodChopper,
+        showFunction: showWoodChopper,
+        message: "Built Wood Chopper Post. You can now assign people to chop wood.",
+        unlocks_buildings: undefined
+    },
+    miner_hut = {
+        name: "Miner Hut",
+        number: 5,
+        description: "Mines rocks for stone.",
+        costs_1: "Wood",
+        costs_1_amount: 10,
+        costs_2: "Stone",
+        costs_2_amount: 5,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks the Miner job",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        built: 0,
+        buildFunction: buildMinerHut,
+        showFunction: showMinerHut,
+        message: "Built Miner Hut. You can now assign people to gather stone.",
+        unlocks_buildings: undefined
+    },
+    wheat_farm = {
+        name: "Wheat Farm",
+        number: 6,
+        description: "Yields wheat when warm.",
+        costs_1: "Wood",
+        costs_1_amount: 10,
+        costs_2: "Stone",
+        costs_2_amount: 5,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks the Farmer job",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        built: 0,
+        buildFunction: buildWheatFarm,
+        showFunction: showWheatFarm,
+        message: "Prepared Wheat Farm. You can now assign people to farm wheat.",
+        unlocks_buildings: undefined
+    },
 ]
 
 
@@ -193,8 +271,16 @@ function showHunterPost(){
 
 function showVillageCenter(){
     showTooltip(village_center);
-
 };
+function showWoodChopper(){
+    showTooltip(woodchopper_post);
+};
+function showMinerHut(){
+    showTooltip(miner_hut);
+};
+function showWheatFarm(){
+    showTooltip(wheat_farm);
+}
 
 
 
@@ -212,15 +298,21 @@ function buildShamanHut(){
 };
 
 function buildHunterPost(){
-    console.log('Placeholder text for Hunter Post');
 };
 
 function buildVillageCenter(){
-    console.log('Placeholder text for Village Center');
     show('#manage-tribe-btn',100);
     document.getElementById('manage-tribe-btn').addEventListener("click", manageTribe);
-}
+};
 
+function buildWoodChopper(){
+};
+
+function buildMinerHut(){
+};
+
+function buildWheatFarm(){
+};
 
 //Auto-resource workers purchasing
 /*function hireForager() {
