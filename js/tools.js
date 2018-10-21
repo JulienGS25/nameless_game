@@ -14,7 +14,9 @@ function manageTribe() {
             "<span id='free-people'></span><span id='free-people-slash'> / </span><span id='total-people'></span>");
         if (buildings[1].built == 1) {
             $('.work-area').append("<span id='job-title-1'>Shaman</span>" +
-                "<span id='current-shamans'></span><span id='job-1-slash'> / </span><span id='total-shamans'></span>");
+                "<span id='current-shamans'></span><span id='job-1-slash'> / </span><span id='total-shamans'></span>" + 
+                "<span id='job-desc-1' class='job-desc'>Performs research to improve your tribe.</span>");
+            $('#job-desc-1').css("grid-area", "7 / 1 / 7 / 1");
             $('#job-title-1').css("grid-area", "6 / 1 / 6 / 1");
             $('#job-title-1').css("text-decoration", "underline");
             $('#job-1-slash').css("grid-area", "6 / 4 / 6 / 4");
@@ -23,7 +25,9 @@ function manageTribe() {
         };
         if (buildings[2].built == 1) {
             $('.work-area').append("<span id='job-title-2'>Hunter</span>" +
-                "<span id='current-hunters'></span><span id='job-2-slash'> / </span><span id='total-hunters'></span>");
+                "<span id='current-hunters'></span><span id='job-2-slash'> / </span><span id='total-hunters'></span>" +
+                "<span id='job-desc-2' class='job-desc'>Hunts animals and explores the area.</span>");
+            $('#job-desc-2').css("grid-area", "9 / 1 / 9 / 1");
             $('#job-title-2').css("grid-area", "8 / 1 / 8 / 1");
             $('#job-title-2').css("text-decoration", "underline");
             $('#job-2-slash').css("grid-area", "8 / 4 / 8 / 4");
@@ -32,7 +36,9 @@ function manageTribe() {
         };
         if (buildings[4].built == 1) {
             $('.work-area').append("<span id='job-title-3'>Wood Chopper</span>" +
-                "<span id='current-woodchoppers'></span><span id='job-3-slash'> / </span><span id='total-woodchoppers'></span>");
+                "<span id='current-woodchoppers'></span><span id='job-3-slash'> / </span><span id='total-woodchoppers'></span>" +
+                "<span id='job-desc-3' class='job-desc'>Cuts down trees for wood.</span>");
+            $('#job-desc-3').css("grid-area", "11 / 1 / 11 / 1");
             $('#job-title-3').css("grid-area", "10 / 1 / 10 / 1");
             $('#job-title-3').css("text-decoration", "underline");
             $('#job-3-slash').css("grid-area", "10 / 4 / 10 / 4");
@@ -41,7 +47,9 @@ function manageTribe() {
         };
         if (buildings[5].built == 1) {
             $('.work-area').append("<span id='job-title-4'>Miner</span>" +
-                "<span id='current-miners'></span><span id='job-4-slash'> / </span><span id='total-miners'></span>");
+                "<span id='current-miners'></span><span id='job-4-slash'> / </span><span id='total-miners'></span>" +
+                "<span id='job-desc-4' class='job-desc'>Mines rocks for stone.</span>");
+            $('#job-desc-4').css("grid-area", "13 / 1 / 13 / 1");
             $('#job-title-4').css("grid-area", "12 / 1 / 12 / 1");
             $('#job-title-4').css("text-decoration", "underline");
             $('#job-4-slash').css("grid-area", "12 / 4 / 12 / 4");
@@ -50,7 +58,9 @@ function manageTribe() {
         };
         if (buildings[6].built == 1) {
             $('.work-area').append("<span id='job-title-5'>Farmer</span>" +
-                "<span id='current-farmers'></span><span id='job-5-slash'> / </span><span id='total-farmers'></span>");
+                "<span id='current-farmers'></span><span id='job-5-slash'> / </span><span id='total-farmers'></span>" +
+                "<span id='job-desc-5' class='job-desc'>Harvests wheat from fields.</span>");
+            $('#job-desc-5').css("grid-area", "15 / 1 / 15 / 1");
             $('#job-title-5').css("grid-area", "14 / 1 / 14 / 1");
             $('#job-title-5').css("text-decoration", "underline");
             $('#job-5-slash').css("grid-area", "14 / 4 / 14 / 4");
