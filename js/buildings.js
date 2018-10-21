@@ -103,7 +103,7 @@ var buildings = [
         showFunction: showVillageCenter,
         message: "Built Village Center. You can now manage your villagers.",
         unlocks_buildings: undefined
-    }
+    },
 ]
 
 
@@ -217,7 +217,8 @@ function buildHunterPost(){
 
 function buildVillageCenter(){
     console.log('Placeholder text for Village Center');
-    show('#tools-title',100);
+    show('#manage-tribe-btn',100);
+    document.getElementById('manage-tribe-btn').addEventListener("click", manageTribe);
 }
 
 

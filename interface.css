@@ -70,6 +70,7 @@ body {
   line-height: 3vh;
 }
 
+
 .main>nav, .main>.right-tab {
   flex: 0 0 20vw;
   border: solid white;
@@ -107,7 +108,7 @@ body {
 
 .grid-left{
   display: grid;
-  grid-template-columns: repeat(3, 6vw);
+  grid-template-columns: repeat(4, 4.5vw);
   grid-template-rows: repeat(7, 5vh);
   gap: 1vh;
   grid-auto-flow: row;
@@ -116,9 +117,9 @@ body {
 .grid-left>div{
   height: 2.5vh
 }
-#research-title{grid-area: 1 / 1 / 1 / 2;}
-#buildings-title{grid-area: 1 / 2 / 1 / 3;}
-#tools-title{grid-area: 1 / 3 / 1 / 4;}
+#buildings-title{grid-area: 1 / 1 / 1 / 3;}
+#research-title{grid-area: 1 / 3 / 1 / 5;}
+/* #tools-title{grid-area: 1 / 3 / 1 / 4;} */ 
 
 .grid-bottom {
   display: grid;
@@ -148,7 +149,7 @@ body {
 .work-area {
   height: 95%;
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 80% 4% 4% 4% 4% 4%;
   grid-template-rows: repeat(3, 1.5vw);
   grid-auto-flow: row;
   grid-gap: 0.10vw;
@@ -171,7 +172,7 @@ body {
 }
 
 #tooltip-desc {
-  grid-area: 2 / 1 / 6 / 1;
+  grid-area: 2 / 1 / 6 / 6;
 }
 
 #tooltip-effects-container, #tooltip-costs-container{
@@ -183,10 +184,12 @@ body {
 #tooltip-effects-container{
   grid-template-columns: 100%;
   grid-template-rows: repeat(5, 1.15vw);
+  grid-area: 6 / 1 / 6 / 1;
 }
 #tooltip-costs-container{
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(6, 1.15vw);
+  grid-area: 5 / 1 / 5 / 1;
 }
 #tooltip-effects-title, #tooltip-costs-title, {
   grid-area: 1 / 1 / 2 / 1;
@@ -203,35 +206,14 @@ body {
 #tooltip-effects-4, #tooltip-costs-4 {grid-area: 5 / 1 / 5 / 1;}
 #tooltip-effects-5, #tooltip-costs-5 {grid-area: 6 / 1 / 6 / 1;}
 
-#tooltip-job-1 {grid-area: 6 / 1 / 6 / 1;}
-#job-title-1 {text-decoration: underline;}
 .job-desc{
   margin-top: -15px;
   font-style: italic;
 }
-#tooltip-job-desc-1 {
-  grid-area: 7 / 1 / 7 / 1;
-}
 
-#tooltip-job-2 {grid-area: 8 / 1 / 8 / 1;}
-#job-title-2 {text-decoration: underline;}
-
-#tooltip-job-desc-2 {grid-area: 9 / 1 / 9 / 1;}
-
-#tooltip-job-3 {grid-area: 10 / 1 / 10 / 1;}
-#job-title-3 {text-decoration: underline;}
-
-#tooltip-job-desc-3 {grid-area: 11 / 1 / 11 / 1;}
-
-#tooltip-job-4 {grid-area: 12 / 1 / 12 / 1;}
-#job-title-4 {text-decoration: underline;}
-
-#tooltip-job-desc-4 {grid-area: 13 / 1 / 13 / 1;}
-
-#tooltip-job-5 {grid-area: 14 / 1 / 14 / 1;}
-#job-title-5 {text-decoration: underline;}
-
-#tooltip-job-desc-5 {grid-area: 15 / 1 / 15 / 1;}
+#free-people{grid-area: 4 / 3 / 4 / 3;}
+#free-people-slash{grid-area: 4 / 4 / 4 / 4;}
+#total-people{grid-area: 4 / 5 / 4 / 5;}
 
 .right-tab>p {
   font-style: italic;
@@ -269,7 +251,7 @@ body {
   background-color: rgba(169, 169, 169, 0.479);
   transition: background-color 0.25s;
   user-select: none;
-  font-size: 0.75vw;
+  font-size: 78%;
 }
 .options-button{
   display: inline;
@@ -285,11 +267,11 @@ body {
 
 .title-button{
   font-size: 1vw;
-  /*text-decoration: underline;*/
 }
 .build-button{
   height: 1.5vw;
   font-size: 0.85vw;
+  grid-area: 7 / 1 / 7 / 6;
 }
 #build-button{
   border: solid white;

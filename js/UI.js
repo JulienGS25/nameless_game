@@ -21,12 +21,12 @@ function hide(element, speed){
 //Left-tab UI Controls
 document.getElementById("research-title").addEventListener("click", displayResearch);
 document.getElementById("buildings-title").addEventListener("click", displayBuildings);
-document.getElementById("tools-title").addEventListener("click", displayTools);
+//document.getElementById("tools-title").addEventListener("click", displayTools);
 
 function displayResearch() {
     //CSS to show active tab on title button
     $('#buildings-title').removeClass('active-button');
-    $('#tools-title').removeClass('active-button');
+    //$('#tools-title').removeClass('active-button');
     $('#research-title').addClass('active-button');
     $('#research-title').css('text-decoration','underline');
     $('#buildings-title').css('text-decoration','none');
@@ -54,7 +54,7 @@ function displayResearch() {
 function displayBuildings() {
     //CSS to show active tab on title button
     $('#research-title').removeClass('active-button');
-    $('#tools-title').removeClass('active-button');
+    //$('#tools-title').removeClass('active-button');
     $('#buildings-title').addClass('active-button');
     $('#buildings-title').css('text-decoration','underline');
     $('#research-title').css('text-decoration','none');
@@ -79,10 +79,10 @@ function displayBuildings() {
     }
 }
 
-function displayTools(){
+/*function displayTools(){
     $('#research-title').removeClass('active-button');
     $('#buildings-title').removeClass('active-button');
-    $('#tools-title').addClass('active-button');
+    //$('#tools-title').addClass('active-button');
 
     visible.leftTabShown = 'tools';
 
@@ -91,15 +91,14 @@ function displayTools(){
     $('.left-tab-cell').remove();
 
     if (buildings[3].built == 1){
-        $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-0'>Manage Tribe</div>");
-        document.getElementById('left-tab-cell-0').addEventListener("click", manageTribe);
+        
     }
-}
+}*/
  
 function manageTribe() {
     console.log('Manage tribe');
     $('.work-area').animate({ opacity: 0 }, { duration: 25 });
-    tooltipShown = 0;
+    tooltipShown = 1;
 
     setTimeout(function () {
         $('.work-area').empty();
@@ -108,31 +107,53 @@ function manageTribe() {
     setTimeout(function () {
         $('.work-area').append("<div id='tooltip-title'>Tribe Management</div>" +
             "<div id='tooltip-desc'>You can assign your tribespeople jobs here.</div>" +
-            "<div id='tooltip-people-list'>Available tribespeople: <span id='free-people'>5</span><span> / </span></span id='total-people'></span>5</div>" + 
-            "<div id='tooltip-job-1'><span id='job-title-1'>Shaman</span><span>: </span><span id='current-shamans'>1</span><span> / </span><span id='total-shamans'>2</span></div>" + 
-            "<div class='job-desc' id='tooltip-job-desc-1'>Performs research to improve your tribe.</div>" + 
-            "<div id='tooltip-job-2'><span id='job-title-2'>Hunter</span><span>: </span><span id='current-hunters'>1</span><span> / </span><span id='total-hunters'>2</span></div>" + 
-            "<div class='job-desc' id='tooltip-job-desc-2'>Hunts animals for food and explores nearby areas.</div>" + 
-            "<div id='tooltip-job-3'><span id='job-title-3'>Wood Chopper</span><span>: </span><span id='current-woodchopper'>1</span><span> / </span><span id='total-woodchoppers'>2</span></div>" + 
-            "<div class='job-desc' id='tooltip-job-desc-3'>Gathers wood for construction.</div>" + 
-            "<div id='tooltip-job-4'><span id='job-title-4'>Miner</span><span>: </span><span id='current-miners'>1</span><span> / </span><span id='total-miners'>2</span></div>" + 
-            "<div class='job-desc' id='tooltip-job-desc-4'>Gathers stone for construction.</div>" + 
-            "<div id='tooltip-job-5'><span id='job-title-5'>Farmer</span><span>: </span><span id='current-farmers'>1</span><span> / </span><span id='total-miners'>2</span></div>" + 
-            "<div class='job-desc' id='tooltip-job-desc-5'>Gathers food from fields.</div>");
-            /*if (buildings[1].built == 1){
-                $('.work-area').append("<div id='tooltip-job-1'>Shaman</div>");
-            }
-            if (buildings[2].built == 1){
-                $('.work-area').append("<div id='tooltip-job-2'>Hunter</div>");
-            }
-            $('.work-area').append("</div>");
-*/
-            
-            //To be added
-            /*"<div id='tooltip-job-3'>Farmer</div>"
-            "<div id='tooltip-job-4'>Wood Chopper</div>"
-            "<div id='tooltip-job-5'>Miner</div>"*/
-
+            "<span id='tooltip-people-list'>Available tribespeople: </span>" +
+            "<span id='free-people'>5</span><span id='free-people-slash'> / </span><span id='total-people'>5</span>");
+        if (buildings[1].built == 1) {
+            $('.work-area').append("<span id='job-title-1'>Shaman</span>" +
+                "<span id='current-shamans'>1</span><span id='job-1-slash'> / </span><span id='total-shamans'>2</span>");
+            $('#job-title-1').css("grid-area", "6 / 1 / 6 / 1");
+            $('#job-title-1').css("text-decoration", "underline");
+            $('#job-1-slash').css("grid-area", "6 / 4 / 6 / 4");
+            $('#current-shamans').css("grid-area", "6 / 3 / 6 / 4");
+            $('#total-shamans').css("grid-area", "6 / 5 / 6 / 5");
+        };
+        if (buildings[2].built == 1) {
+            $('.work-area').append("<span id='job-title-2'>Hunter</span>" +
+                "<span id='current-hunters'>1</span><span id='job-2-slash'> / </span><span id='total-hunters'>2</span>");
+            $('#job-title-2').css("grid-area", "8 / 1 / 8 / 1");
+            $('#job-title-2').css("text-decoration", "underline");
+            $('#job-2-slash').css("grid-area", "8 / 4 / 8 / 4");
+            $('#current-hunters').css("grid-area", "8 / 3 / 8 / 4");
+            $('#total-hunters').css("grid-area", "8 / 5 / 8 / 5");
+        };
+        if (buildings[4].built == 1) {
+            $('.work-area').append("<span id='job-title-3'>Wood Chopper</span>" +
+                "<span id='current-woodchoppers'>1</span><span id='job-3-slash'> / </span><span id='total-woodchoppers'>2</span>");
+            $('#job-title-3').css("grid-area", "10 / 1 / 10 / 1");
+            $('#job-title-3').css("text-decoration", "underline");
+            $('#job-3-slash').css("grid-area", "10 / 4 / 10 / 4");
+            $('#current-woodchoppers').css("grid-area", "10 / 3 / 10 / 4");
+            $('#total-woodchoppers').css("grid-area", "10 / 5 / 10 / 5");
+        };
+        if (buildings[5].built == 1) {
+            $('.work-area').append("<span id='job-title-4'>Miner</span>" +
+                "<span id='current-miners'>1</span><span id='job-4-slash'> / </span><span id='total-miners'>2</span>");
+            $('#job-title-4').css("grid-area", "12 / 1 / 12 / 1");
+            $('#job-title-4').css("text-decoration", "underline");
+            $('#job-4-slash').css("grid-area", "12 / 4 / 12 / 4");
+            $('#current-miners').css("grid-area", "12 / 3 / 12 / 4");
+            $('#total-miners').css("grid-area", "12 / 5 / 12 / 5");
+        };
+        if (buildings[6].built == 1) {
+            $('.work-area').append("<span id='job-title-5'>Farmer</span>" +
+                "<span id='current-farmers'>1</span><span id='job-5-slash'> / </span><span id='total-farmers'>2</span>");
+            $('#job-title-5').css("grid-area", "14 / 1 / 14 / 1");
+            $('#job-title-5').css("text-decoration", "underline");
+            $('#job-5-slash').css("grid-area", "14 / 4 / 14 / 4");
+            $('#current-farmers').css("grid-area", "14 / 3 / 14 / 4");
+            $('#total-farmers').css("grid-area", "14 / 5 / 14 / 5");
+        };
     }, 100)
     show('.work-area');
 }
