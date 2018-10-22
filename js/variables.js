@@ -103,5 +103,4 @@ var currentTemp = 30;
 var gameSpeed = 500;
 var tooltipShown = 0;
 var pollutionLevel = 0;
-var firstPersonJoined = 0;
 var foodConsumption = 0.005;

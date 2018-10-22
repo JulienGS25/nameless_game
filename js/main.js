@@ -215,25 +215,23 @@ function manageResources() {
             resource[currResourceNm] = 0;
         }
     }
-    
+    //Campfire is built, people start joining
     if (buildings[0].built == 1) {
-        //Campfire is built, people start joining
-        if (firstPersonJoined == 0) {
-            resource.people++;
-            firstPersonJoined = 1;
-        }
-
-        //If people above zero but below maximum, and food is above zero, reduce food and increase people
-        if (resource.people > 0 && resource.people < storage.people && resource.food > 0){
+        
+        //If people below maximum, and food is above zero, reduce food and increase people
+        if (resource.people < storage.people && resource.food > 0){
             resource.people = resource.people + 0.01;
             resource.food = resource.food - (resource.people * foodConsumption);
+        }
+        if (resource.people < (storage.people + 0.01)){
+            resource.people = resource.people - 0.01
         }
         //If food at 0, don't reduce food but reduce people
         if (resource.food == 0 && resource.people > 0){
             resource.people = resource.people - 0.01
         }
         //If food is back above 0, increase people
-        else if (resource.people > 0 && resource.food > 0){
+        else if (resource.food > 0){
             resource.food = resource.food - (resource.people * foodConsumption);
             resource.people = resource.people + 0.01;
         }
