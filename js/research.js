@@ -1,5 +1,3 @@
-
-
 //This function is an identical copy of buildBuilding in buildings.js, except for a few variables specific to research
 //May be removed later after making buildBuilding work for science and research
 function researchScience(input) {

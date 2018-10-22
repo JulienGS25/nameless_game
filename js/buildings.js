@@ -1,7 +1,3 @@
-
-
-
-
 //Common function to build all buildings
 //See comments to see what it does
 
@@ -88,15 +84,18 @@ function showHunterPost(){
 function showVillageCenter(){
     showTooltip(village_center);
 };
+
 function showWoodChopper(){
     showTooltip(woodchopper_post);
 };
+
 function showMinerHut(){
     showTooltip(miner_hut);
 };
+
 function showWheatFarm(){
     showTooltip(wheat_farm);
-}
+};
 
 
 
@@ -329,7 +328,7 @@ var buildings = [
     wheat_farm = {
         name: "Wheat Farm",
         number: 6,
-        description: "Yields wheat when warm.",
+        description: "Yields wheat when the weather is warm.",
         costs_1: "Wood",
         costs_1_amount: 10,
         costs_2: "Stone",

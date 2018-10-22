@@ -267,6 +267,10 @@ function gameLoop(){
             }
 
         }
+        if (document.getElementById("free-people") !== null) {
+            document.getElementById("free-people").innerHTML = prettify(resource.people) - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer);
+            document.getElementById("total-people").innerHTML = (prettify(resource.people));
+        }
         
 
         document.getElementById('time').innerHTML = passedTime + ' seconds.';

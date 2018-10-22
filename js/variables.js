@@ -89,7 +89,14 @@ var visible = {
     "leftTabShown": 'buildings', //can be buildings, research or tools
 }
 
-
+//Jobs
+var jobs = {
+    "shaman": 0,
+    "hunter": 0,
+    "woodchopper": 0,
+    "miner": 0,
+    "farmer": 0,
+}
 //Progress variable
 var state = 0;
 
