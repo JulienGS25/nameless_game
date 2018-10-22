@@ -6,6 +6,7 @@ function manageTribe() {
         $('.work-area').empty();
     }, 25)
 
+    //Creates the work area tribe management page
     setTimeout(function () {
         $('.work-area').append("<div id='tooltip-title'>Tribe Management</div>" +
             "<div id='tooltip-desc'>You can assign your tribespeople jobs here.</div>" +
@@ -27,6 +28,8 @@ function manageTribe() {
             $('#plus-btn-1').css("grid-area", "6 / 6 / 6 / 7");
             $('#current-shamans').text(jobs.shaman);
             $('#total-shamans').text(buildings[1].built);
+            document.getElementById("plus-btn-1").addEventListener("click", addJobOne);
+            document.getElementById("minus-btn-1").addEventListener("click", removeJobOne);
         };
         if (buildings[2].built == 1) {
             $('.work-area').append("<span id='job-title-2'>Hunter</span>" +
@@ -44,6 +47,8 @@ function manageTribe() {
             $('#plus-btn-2').css("grid-area", "8 / 6 / 8 / 7");
             $('#current-hunters').text(jobs.hunter);
             $('#total-hunters').text(buildings[2].built);
+            document.getElementById("plus-btn-2").addEventListener("click", addJobTwo);
+            document.getElementById("minus-btn-2").addEventListener("click", removeJobTwo);
         };
         if (buildings[4].built == 1) {
             $('.work-area').append("<span id='job-title-3'>Wood Chopper</span>" +
@@ -61,6 +66,8 @@ function manageTribe() {
             $('#plus-btn-3').css("grid-area", "10 / 6 / 10 / 7");
             $('#current-woodchoppers').text(jobs.woodchopper);
             $('#total-woodchoppers').text(buildings[4].built);
+            document.getElementById("plus-btn-3").addEventListener("click", addJobThree);
+            document.getElementById("minus-btn-3").addEventListener("click", removeJobThree);
         };
         if (buildings[5].built == 1) {
             $('.work-area').append("<span id='job-title-4'>Miner</span>" +
@@ -78,6 +85,8 @@ function manageTribe() {
             $('#plus-btn-4').css("grid-area", "12 / 6 / 12 / 7");
             $('#current-miners').text(jobs.miner);
             $('#total-miners').text(buildings[5].built);
+            document.getElementById("plus-btn-4").addEventListener("click", addJobFour);
+            document.getElementById("minus-btn-4").addEventListener("click", removeJobFour);
         };
         if (buildings[6].built == 1) {
             $('.work-area').append("<span id='job-title-5'>Farmer</span>" +
@@ -95,7 +104,61 @@ function manageTribe() {
             $('#plus-btn-5').css("grid-area", "14 / 6 / 14 / 7");
             $('#current-farmers').text(jobs.farmer);
             $('#total-farmers').text(buildings[6].built);
+            document.getElementById("plus-btn-5").addEventListener("click", addJobFive);
+            document.getElementById("minus-btn-5").addEventListener("click", removeJobFive);
         };
     }, 100)
+
     show('.work-area');
+}
+
+function addJobOne(){
+    if (jobs.shaman < buildings[1].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+        jobs.shaman++;
+    }
+}
+function removeJobOne(){
+    if (jobs.shaman > 0){
+        jobs.shaman--;
+    }
+}
+function addJobTwo(){
+    if (jobs.hunter < buildings[2].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+    jobs.hunter++;
+    }
+}
+function removeJobTwo(){
+    if (jobs.hunter > 0){
+        jobs.hunter--;
+    }
+}
+function addJobThree(){
+    if (jobs.woodchopper < buildings[4].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+        jobs.woodchopper++
+    }
+}
+function removeJobThree(){
+    if (jobs.woodchopper > 0){
+        jobs.woodchopper--
+    }
+}
+function addJobFour(){
+    if (jobs.miner < buildings[5].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+        jobs.miner++;
+    }
+}
+function removeJobFour(){
+    if (jobs.miner > 0){
+        jobs.miner--;
+    }
+}
+function addJobFive(){
+    if (jobs.farmer < buildings[6].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+        jobs.farmer++;
+    }
+}
+function removeJobFive(){
+    if (jobs.farmer > 0){
+        jobs.farmer--;
+    }
 }

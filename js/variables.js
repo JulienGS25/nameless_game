@@ -53,16 +53,6 @@ var events = {
     "wakeUp": 0
 }
 
-//Other
-var exploredArea = 0;
-var passedTime = 0;
-var currentTemp = 30;
-var gameSpeed = 500;
-var tooltipShown = 0;
-var pollutionLevel = 0;
-var firstPersonJoined = 0;
-var foodConsumption = 0.005;
-
 //Messages
 var coolMsgDisplayed = 0;
 var coldMsgDisplayed = 0;
@@ -106,6 +96,12 @@ var devMode = 1;
 var disableLightningEffect = 1;
 
 
-
-
-
+//Other
+var exploredArea = 0;
+var passedTime = 0;
+var currentTemp = 30;
+var gameSpeed = 500;
+var tooltipShown = 0;
+var pollutionLevel = 0;
+var firstPersonJoined = 0;
+var foodConsumption = 0.005;

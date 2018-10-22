@@ -5,6 +5,9 @@ function logText(text){
 function logWarn(text){
     $('.right-tab').prepend("<p class='log-warn'>" + text + "</p>");
 }
+function logAlert(text){
+    $('.right-tab').prepend("<p class='log-alert'>" + text + "</p>");
+}
 
 //Makes an element appear with a fadein animation
 function show(element, speed){
@@ -21,12 +24,10 @@ function hide(element, speed){
 //Left-tab UI Controls
 document.getElementById("research-title").addEventListener("click", displayResearch);
 document.getElementById("buildings-title").addEventListener("click", displayBuildings);
-//document.getElementById("tools-title").addEventListener("click", displayTools);
 
 function displayResearch() {
     //CSS to show active tab on title button
     $('#buildings-title').removeClass('active-button');
-    //$('#tools-title').removeClass('active-button');
     $('#research-title').addClass('active-button');
     $('#research-title').css('text-decoration','underline');
     $('#buildings-title').css('text-decoration','none');
@@ -54,7 +55,6 @@ function displayResearch() {
 function displayBuildings() {
     //CSS to show active tab on title button
     $('#research-title').removeClass('active-button');
-    //$('#tools-title').removeClass('active-button');
     $('#buildings-title').addClass('active-button');
     $('#buildings-title').css('text-decoration','underline');
     $('#research-title').css('text-decoration','none');
@@ -78,23 +78,6 @@ function displayBuildings() {
         }
     }
 }
-
-/*function displayTools(){
-    $('#research-title').removeClass('active-button');
-    $('#buildings-title').removeClass('active-button');
-    //$('#tools-title').addClass('active-button');
-
-    visible.leftTabShown = 'tools';
-
-    //Swaps the cells
-    hide('.left-tab-cell',10);
-    $('.left-tab-cell').remove();
-
-    if (buildings[3].built == 1){
-        
-    }
-}*/
-
 
 function showTooltip(input) {
     if (tooltipShown == 0) {

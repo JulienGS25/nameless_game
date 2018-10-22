@@ -4,6 +4,9 @@ html {
   font-family: roboto;
   font-size: 0.85vw;
 }
+html:hover{
+  cursor: default;
+}
 
 header {
   text-align: center;
@@ -292,6 +295,10 @@ body {
 .log-warn{
   width: 30vh;
   color: yellow;
+}
+.log-alert{
+  width: 30vh;
+  color: red;
 }
 
 .opacity-zero {

@@ -191,7 +191,7 @@ function setAllFree(){
     }
 }
 
-//Fixes rogue decimals
+//Fixes rogue decimals and truncates decimals
 function prettify(input){
     var output = Math.round(input * 10000000)/10000000;
         return Math.trunc(output);
@@ -272,8 +272,28 @@ function gameLoop(){
 
         }
         if (document.getElementById("free-people") !== null) {
-            document.getElementById("free-people").innerHTML = prettify(resource.people) - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer);
+            document.getElementById("free-people").innerHTML = prettify(resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer));
             document.getElementById("total-people").innerHTML = (prettify(resource.people));
+        }
+        if (document.getElementById("plus-btn-1") !== null) {
+            document.getElementById("current-shamans").innerHTML = jobs.shaman;
+            document.getElementById("total-shamans").innerHTML = buildings[1].built;;
+        }
+        if (document.getElementById("plus-btn-2") !== null) {
+            document.getElementById("current-hunters").innerHTML = jobs.hunter;
+            document.getElementById("total-hunters").innerHTML = buildings[2].built;;
+        }
+        if (document.getElementById("plus-btn-3") !== null) {
+            document.getElementById("current-woodchoppers").innerHTML = jobs.woodchopper;
+            document.getElementById("total-woodchoppers").innerHTML = buildings[4].built;;
+        }
+        if (document.getElementById("plus-btn-4") !== null) {
+            document.getElementById("current-miners").innerHTML = jobs.miner;
+            document.getElementById("total-miners").innerHTML = buildings[5].built;;
+        }
+        if (document.getElementById("plus-btn-5") !== null) {
+            document.getElementById("current-farmers").innerHTML = jobs.farmers;
+            document.getElementById("total-farmers").innerHTML = buildings[6].built;;
         }
         
 
