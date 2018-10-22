@@ -194,7 +194,8 @@ var buildings = [
         buildFunction: buildCampfire,
         showFunction: showCampfire,
         message: "Built campfire. Its warmth attracts people.",
-        unlocks_buildings: [1, 2, 3]
+        unlocks_buildings: [1, 2, 3],
+        unique: true,
     },
     shaman_hut = {
         name: "Shaman Hut",
@@ -220,7 +221,8 @@ var buildings = [
         buildFunction: buildShamanHut,
         showFunction: showShamanHut,
         message: "Built Shaman Hut. The Shaman will perform research and improve our tribe.",
-        unlocks_buildings: undefined
+        unlocks_buildings: undefined,
+        unique: false
     },
     hunter_post = {
         name: "Hunter Post",
@@ -246,7 +248,8 @@ var buildings = [
         buildFunction: buildHunterPost,
         showFunction: showHunterPost,
         message: "Built Hunter Post. The Hunter will track and kill nearby animals for food.",
-        unlocks_buildings: undefined
+        unlocks_buildings: undefined,
+        unique: false
     },
     village_center = {
         name: "Village Center",
@@ -272,7 +275,8 @@ var buildings = [
         buildFunction: buildVillageCenter,
         showFunction: showVillageCenter,
         message: "Built Village Center. You can now manage your villagers.",
-        unlocks_buildings: undefined
+        unlocks_buildings: undefined,
+        unique: true
     },
     woodchopper_post = {
         name: "Wood Chopper Post",
@@ -298,7 +302,8 @@ var buildings = [
         buildFunction: buildWoodChopper,
         showFunction: showWoodChopper,
         message: "Built Wood Chopper Post. You can now assign people to chop wood.",
-        unlocks_buildings: undefined
+        unlocks_buildings: undefined,
+        unique: false
     },
     miner_hut = {
         name: "Miner Hut",
@@ -324,7 +329,8 @@ var buildings = [
         buildFunction: buildMinerHut,
         showFunction: showMinerHut,
         message: "Built Miner Hut. You can now assign people to gather stone.",
-        unlocks_buildings: undefined
+        unlocks_buildings: undefined,
+        unique: false
     },
     wheat_farm = {
         name: "Wheat Farm",
@@ -350,6 +356,7 @@ var buildings = [
         buildFunction: buildWheatFarm,
         showFunction: showWheatFarm,
         message: "Prepared Wheat Farm. You can now assign people to farm wheat.",
-        unlocks_buildings: undefined
+        unlocks_buildings: undefined,
+        unique: false
     },
 ]
