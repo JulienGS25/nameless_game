@@ -232,6 +232,7 @@ function manageResources() {
         //If food is back above 0, increase people
         else if (resource.people > 0 && resource.food > 0){
             resource.food = resource.food - (resource.people * 0.005);
+            resource.people = resource.people + 0.01;
         }
     }
 }
