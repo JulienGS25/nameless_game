@@ -287,7 +287,9 @@ body {
 .game-button:active {
   transform: translateY(2px);
 }
-
+.fas:active{
+  transform: translateY(2px);
+}
 .log-text {
   width: 30vh;
 }
