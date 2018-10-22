@@ -277,7 +277,7 @@ body {
   border: solid white;
 }
 
-.game-button:hover, .options-button:hover {
+.game-button:hover, .options-button:hover, .job-button:hover {
   background-color: darkgrey;
   cursor: pointer;
 }

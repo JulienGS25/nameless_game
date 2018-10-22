@@ -147,7 +147,10 @@ if (devMode == 1){
 function activateDevMode(){
     document.getElementById('dev-mode').innerHTML = 'DEV MODE';
     gameSpeed = 50;
-    console.log('Dev Mode Activated. Everything is free.');
+
+    console.log('Dev Mode Activated. Everything is free, game speed is much faster and workers eat barely anything.');
+    foodConsumption = 0.000001;
+
     setAllFree();
 };
 
@@ -223,7 +226,7 @@ function manageResources() {
         //If people above zero but below maximum, and food is above zero, reduce food and increase people
         if (resource.people > 0 && resource.people < storage.people && resource.food > 0){
             resource.people = resource.people + 0.01;
-            resource.food = resource.food - (resource.people * 0.005);
+            resource.food = resource.food - (resource.people * foodConsumption);
         }
         //If food at 0, don't reduce food but reduce people
         if (resource.food == 0 && resource.people > 0){
@@ -231,7 +234,7 @@ function manageResources() {
         }
         //If food is back above 0, increase people
         else if (resource.people > 0 && resource.food > 0){
-            resource.food = resource.food - (resource.people * 0.005);
+            resource.food = resource.food - (resource.people * foodConsumption);
             resource.people = resource.people + 0.01;
         }
     }

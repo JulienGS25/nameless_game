@@ -61,7 +61,7 @@ var gameSpeed = 500;
 var tooltipShown = 0;
 var pollutionLevel = 0;
 var firstPersonJoined = 0;
-
+var foodConsumption = 0.005;
 
 //Messages
 var coolMsgDisplayed = 0;
@@ -97,6 +97,7 @@ var jobs = {
     "miner": 0,
     "farmer": 0,
 }
+
 //Progress variable
 var state = 0;
 
