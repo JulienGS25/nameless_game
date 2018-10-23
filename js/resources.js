@@ -1,20 +1,21 @@
 //Resource gathering
 function showFood() {
-    { $('#primary-res-1').removeClass("hidden"); }
+    show('#primary-res-1',150);
+    //$('#primary-res-1').removeClass("hidden");
     document.getElementById("primary-res-1").classList.add("FoodColorText");
     document.getElementById("p-res-1-img").src = "images/Food.png";
     document.getElementById("p-res-1-name").innerHTML = "Food: ";
     visible.foodResource = true;
 }
 function showWood() {
-    { $('#primary-res-2').removeClass("hidden"); }
+    show('#primary-res-2',150);
     document.getElementById("primary-res-2").classList.add("WoodColorText");
     document.getElementById("p-res-2-img").src = "images/Wood.png";
     document.getElementById("p-res-2-name").innerHTML = "Wood: ";
     visible.woodResource = true;
 }
 function showStone() {
-    { $('#primary-res-3').removeClass("hidden"); }
+    show('#primary-res-3',150);
     document.getElementById("primary-res-3").classList.add("StoneColorText");
     document.getElementById("p-res-3-img").src = "images/Stone.png";
     document.getElementById("p-res-3-name").innerHTML = "Stone: ";
