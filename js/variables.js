@@ -19,11 +19,12 @@ var resource = {
     "water": 0.0
 }
 
-//Efficiency
+//Speed
 var foodGatherSpeed = 2;
 var woodGatherSpeed = 2;
 var stoneGatherSpeed = 2;
 
+//Efficiency
 var foodGatherEfficiency = 1;
 var woodGatherEfficiency = 1;
 var stoneGatherEfficiency = 1;

@@ -144,6 +144,12 @@ function tempCheck(){
 //Activates developer mode for easier testing
 if (devMode == 1){
     activateDevMode();
+    show("#dev-tools");
+    show("#explored-resource");
+    show("#time-passed");
+    show("#current-temp");
+    show("#pollution-message");
+
 };
 
 function activateDevMode(){
@@ -226,16 +232,16 @@ function manageResources() {
             resource.food = resource.food - (resource.people * foodConsumption);
         }
         if (resource.people < (storage.people + 0.01)){
-            resource.people = resource.people - 0.01
+            resource.people = resource.people - 0.1
         }
         //If food at 0, don't reduce food but reduce people
         if (resource.food == 0 && resource.people > 0){
-            resource.people = resource.people - 0.01
+            resource.people = resource.people - 0.075
         }
         //If food is back above 0, increase people
         else if (resource.food > 0){
             resource.food = resource.food - (resource.people * foodConsumption);
-            resource.people = resource.people + 0.01;
+            resource.people = resource.people + 0.1;
         }
     }
 }

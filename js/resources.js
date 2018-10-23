@@ -131,7 +131,7 @@ function getStone(efficiency, mode) {
             $('#gather-stone-btn').animate({ opacity: 1 }, (stoneGatherSpeed * 250));
             if (resource.stone < storage.stone) {
                 resource.stone = resource.stone + stoneGatherEfficiency;
-                document.getElementById("p-res-2-amt").innerHTML = resource.stone;
+                document.getElementById("p-res-3-amt").innerHTML = resource.stone;
             }
         }, stoneGatherSpeed * 1000);
         stoneGatherSpeed = stoneGatherSpeed * 1.1;
