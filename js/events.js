@@ -47,7 +47,7 @@ function discoverFire() {
         visible.leftTab = true;
         show('#era');
         visible.era = true;
-        $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-0'>Campfire</div>")
+        $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-0'>Campfire</div>")
         document.getElementById("left-tab-cell-0").addEventListener("click", showCampfire);
         
     }

@@ -59,10 +59,6 @@ body {
 }
 
 .left-tab {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   border: solid white;
   opacity: 0;
 }
@@ -111,12 +107,20 @@ body {
 
 .grid-left{
   display: grid;
-  grid-template-columns: repeat(4, 4.5vw);
-  grid-template-rows: repeat(7, 5vh);
+  grid-template-columns: 4.5vw 4.5vw 4.5vw 4.5vw;
+  grid-template-rows: 5vh 30vh;
   gap: 1vh;
   grid-auto-flow: row;
   text-align: center;
 }
+#grid-left-col-1 > div, #grid-left-col-2 > div{
+  height: 2.5vh;
+}
+#grid-left-col-2{
+  grid-template-rows: repeat(7, 5vh);
+  grid-template-columns: 100%;
+}
+
 .grid-left>div{
   height: 2.5vh
 }

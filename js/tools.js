@@ -162,3 +162,4 @@ function removeJobFive(){
         jobs.farmer--;
     }
 }
+

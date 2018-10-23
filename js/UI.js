@@ -39,7 +39,12 @@ function displayResearch() {
     $('.left-tab-cell').remove();
     for (j = 0; j < research.length; j++){
         if (research[j].displayable == 1){
-            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
+            if (research[j].unique == true){
+                $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
+            }
+            else{
+                $('#grid-left-col-2').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
+            }
             var varCell = ("left-tab-cell-" + j);
             var cell = document.getElementById(varCell);
             cellClone = cell.cloneNode(true);
@@ -66,7 +71,12 @@ function displayBuildings() {
     $('.left-tab-cell').remove();
     for (j = 0; j < buildings.length; j++){
         if (buildings[j].displayable == 1){
-            $('.grid-left').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + buildings[j].name + "</div>");
+            if (buildings[j].unique == true){
+                $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + buildings[j].name + "</div>");
+            }
+            else {
+                $('#grid-left-col-2').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + buildings[j].name + "</div>");
+            }
             var varCell = ("left-tab-cell-" + j);
             var cell = document.getElementById(varCell);
             cellClone = cell.cloneNode(true);

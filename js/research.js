@@ -123,7 +123,8 @@ var research = [
         showFunction: showStoneWorking,
         message: "By carving stone into tools, you manage to improve the speed at which you perform tasks.",
         unlocks_research: [],
-        unlocks_buildings: []
+        unlocks_buildings: [],
+        unique: true
     },
     primitiveConstruction = {
         name: "Primitive Construction",
@@ -150,6 +151,7 @@ var research = [
         showFunction: showPrimitiveConstruction,
         message: "Placeholder",
         unlocks_research: [],
-        unlocks_buildings: [4, 5]
+        unlocks_buildings: [4, 5],
+        unique: true
     },
 ]
