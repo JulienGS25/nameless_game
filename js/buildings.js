@@ -135,6 +135,7 @@ function buildMinerHut(){
 function buildWheatFarm(){
 };
 
+
 //Auto-resource workers purchasing
 /*function hireForager() {
     var workerCost = Math.floor(10 * Math.pow(1.1, foragers));

@@ -1,7 +1,5 @@
-//Resource gathering
 function showFood() {
     show('#primary-res-1',150);
-    //$('#primary-res-1').removeClass("hidden");
     document.getElementById("primary-res-1").classList.add("FoodColorText");
     document.getElementById("p-res-1-img").src = "images/Food.png";
     document.getElementById("p-res-1-name").innerHTML = "Food: ";
@@ -20,6 +18,14 @@ function showStone() {
     document.getElementById("p-res-3-img").src = "images/Stone.png";
     document.getElementById("p-res-3-name").innerHTML = "Stone: ";
     visible.stoneResource = true;
+}
+
+
+//Automatic resource gathering
+function autoResource(){
+    if (jobs.hunter > 0){
+        console.log('wood')
+    }
 }
 
 //Manual resource gathering

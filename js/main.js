@@ -94,12 +94,14 @@ function exportGame(){
     console.log('TODO');
 }
 
+//Makes the temperature fluctuate between +35 and -30
 tempDirection = 0.01;
 function fluctuateTemp() {
   currentTemp += tempDirection;
   if (currentTemp < -30) tempDirection = 0.01;
   if (currentTemp > 35) tempDirection = -0.01;
 }
+
 
 function tempCheck(){
     if (currentTemp < 0){
@@ -267,8 +269,8 @@ function gameLoop(){
                 logWarn('Resources are getting scarce. Exploring will help you find resources faster. [Improves gathering speed]')
                 resourceSpeedMsgDisplayed = 1;
             }
-
         }
+
         if (document.getElementById("free-people") !== null) {
             document.getElementById("free-people").innerHTML = prettify(resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer));
             document.getElementById("total-people").innerHTML = (prettify(resource.people));
@@ -294,6 +296,7 @@ function gameLoop(){
             document.getElementById("total-farmers").innerHTML = buildings[6].built;;
         }
 
+        autoResource();
 
         document.getElementById('time').innerHTML = passedTime + ' seconds.';
         document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
