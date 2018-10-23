@@ -7,8 +7,8 @@ function scout() {
 
     document.getElementById('explored').innerHTML = exploredArea;
     unveilStuff(exploredArea);
-    if (forageSpeed > 1){
-        forageSpeed = forageSpeed / 1.1;
+    if (foodGatherSpeed > 1){
+        foodGatherSpeed = foodGatherSpeed / 1.1;
         //console.log('Foraging speed is ' + forageSpeed);
         };
     if (woodGatherSpeed > 1){

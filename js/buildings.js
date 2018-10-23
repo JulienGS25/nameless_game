@@ -115,6 +115,7 @@ function buildCampfire(){
 function buildShamanHut(){
     show('#research-title',100);
     hide('#build-button', 100);
+    storage.science = storage.science + 100;
 };
 
 function buildHunterPost(){
@@ -219,7 +220,7 @@ var buildings = [
         costs_5_amount: undefined,
         effects_1: "Unlocks the Shaman who performs research",
         effects_2: "Unlocks Research tab",
-        effects_3: "",
+        effects_3: "+100 Science storage",
         effects_4: "",
         effects_5: "",
         displayable: 0,

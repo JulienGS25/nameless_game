@@ -5,6 +5,7 @@ var resource = {
     "food": 0.0,
     "wood": 0.0,
     "stone": 0.0,
+    "science": 0.0,
     "copperOre": 0.0,
     "copperIngot": 0.0,
     "tinOre": 0.0,
@@ -15,17 +16,22 @@ var resource = {
     "goldIngot": 0.0,
     "wheat": 0.0,
     "flour": 0.0,
-    "water": 0.0,
-    "science": 0.0
+    "water": 0.0
 }
 
 //Efficiency
-var forageSpeed = 2;
+var foodGatherSpeed = 2;
 var woodGatherSpeed = 2;
 var stoneGatherSpeed = 2;
-var forageEfficiency = 1;
+
+var foodGatherEfficiency = 1;
 var woodGatherEfficiency = 1;
 var stoneGatherEfficiency = 1;
+var shamanEfficiency = 1;
+var hunterEfficiency = 1;
+var woodChopperEfficiency = 1;
+var minerEfficiency = 1;
+var farmerEfficiency = 1;
 
 //Storage
 var storage = {
@@ -33,6 +39,7 @@ var storage = {
     "food": 5.0,
     "wood": 5.0,
     "stone": 5.0,
+    "science": 0.0,
     "copperOre": 0.0,
     "copperIngot": 0.0,
     "tinOre": 0.0,
@@ -44,7 +51,6 @@ var storage = {
     "wheat": 0.0,
     "flour": 0.0,
     "water": 0.0,
-    "science": 0.0
 }
 
 //Events
@@ -72,20 +78,21 @@ var visible = {
     "foodResource" : false,
     "woodResource" : false,
     "stoneResource" : false,
+    "scienceResource" : false,
     "forageFoodButton" : false,
     "gatherWoodButton" : false,
     "gatherStoneButton" : false,
     "exploreButton" : false,
-    "leftTabShown": 'buildings', //can be buildings, research or tools
+    "leftTabShown": 'buildings', //can be buildings or research
 }
 
 //Jobs
 var jobs = {
-    "shaman": 0,
-    "hunter": 0,
-    "woodchopper": 0,
-    "miner": 0,
-    "farmer": 0,
+    "shaman": 0, //science
+    "hunter": 0, //food
+    "woodchopper": 0, //wood
+    "miner": 0, //stone
+    "farmer": 0, //food
 }
 
 //Progress variable

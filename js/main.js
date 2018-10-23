@@ -265,7 +265,7 @@ function gameLoop(){
         }
 
         if (resourceSpeedMsgDisplayed == 0){
-            if (forageSpeed > 2 || woodGatherSpeed > 2 || stoneGatherSpeed > 2){
+            if (foodGatherSpeed > 2 || woodGatherSpeed > 2 || stoneGatherSpeed > 2){
                 logWarn('Resources are getting scarce. Exploring will help you find resources faster. [Improves gathering speed]')
                 resourceSpeedMsgDisplayed = 1;
             }
@@ -308,6 +308,7 @@ function gameLoop(){
         document.getElementById("p-res-2-storage").innerHTML = prettify(storage.wood);
         document.getElementById("p-res-3-amt").innerHTML = prettify(resource.stone);
         document.getElementById("p-res-3-storage").innerHTML = prettify(storage.stone);
+        document.getElementById("p-res-4-storage").innerHTML = prettify(storage.science);
 
     }, gameSpeed)
 };
