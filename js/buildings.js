@@ -3,8 +3,8 @@
 
 function buildBuilding(input) {
     hide('#build-button',100);
-    //Checks if the building is already built
-    if (input.built == 1) {
+    //Checks if the building is already built and is not unique
+    if (input.built == 1 && input.unique) {
         logText(input.name + ' already built!');
         return;
     }
@@ -46,7 +46,12 @@ function buildBuilding(input) {
         }
 
         //Marks the building as built
-        buildings[input.number].built = 1;
+        if (input.unique == true){
+            buildings[input.number].built = 1;
+        }
+        else{
+            buildings[input.number].built++;
+        }
         $('#left-tab-cell-' + input.number).addClass('built');
 
         //Displays the related messages
@@ -220,7 +225,7 @@ var buildings = [
         built: 0,
         buildFunction: buildShamanHut,
         showFunction: showShamanHut,
-        message: "Built Shaman Hut. The Shaman will perform research and improve our tribe.",
+        message: "Built Shaman Hut.",
         unlocks_buildings: undefined,
         unique: false
     },
@@ -247,7 +252,7 @@ var buildings = [
         built: 0,
         buildFunction: buildHunterPost,
         showFunction: showHunterPost,
-        message: "Built Hunter Post. The Hunter will track and kill nearby animals for food.",
+        message: "Built Hunter Post.",
         unlocks_buildings: undefined,
         unique: false
     },
@@ -301,7 +306,7 @@ var buildings = [
         built: 0,
         buildFunction: buildWoodChopper,
         showFunction: showWoodChopper,
-        message: "Built Wood Chopper Post. You can now assign people to chop wood.",
+        message: "Built Wood Chopper Post.",
         unlocks_buildings: undefined,
         unique: false
     },
@@ -328,7 +333,7 @@ var buildings = [
         built: 0,
         buildFunction: buildMinerHut,
         showFunction: showMinerHut,
-        message: "Built Miner Hut. You can now assign people to gather stone.",
+        message: "Built Miner Hut.",
         unlocks_buildings: undefined,
         unique: false
     },
@@ -355,7 +360,7 @@ var buildings = [
         built: 0,
         buildFunction: buildWheatFarm,
         showFunction: showWheatFarm,
-        message: "Prepared Wheat Farm. You can now assign people to farm wheat.",
+        message: "Prepared Wheat Farm.",
         unlocks_buildings: undefined,
         unique: false
     },

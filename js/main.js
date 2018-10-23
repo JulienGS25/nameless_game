@@ -293,7 +293,7 @@ function gameLoop(){
             document.getElementById("current-farmers").innerHTML = jobs.farmers;
             document.getElementById("total-farmers").innerHTML = buildings[6].built;;
         }
-        
+
 
         document.getElementById('time').innerHTML = passedTime + ' seconds.';
         document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';

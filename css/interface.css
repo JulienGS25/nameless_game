@@ -181,6 +181,10 @@ body {
   grid-area: 2 / 1 / 6 / 6;
 }
 
+#tooltip-built{
+  grid-area: 4 / 1 / 4 / 6;
+}
+
 #tooltip-effects-container, #tooltip-costs-container{
   display: grid;
   grid-auto-flow: row;

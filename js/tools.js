@@ -12,7 +12,7 @@ function manageTribe() {
             "<div id='tooltip-desc'>You can assign your tribespeople jobs here.</div>" +
             "<span id='tooltip-people-list'>Available tribespeople: </span>" +
             "<span id='free-people'></span><span id='free-people-slash'> / </span><span id='total-people'></span>");
-        if (buildings[1].built == 1) {
+        if (buildings[1].built >= 1) {
             $('.work-area').append("<span id='job-title-1'>Shaman</span>" +
                 "<span id='current-shamans'></span><span id='job-1-slash'> / </span><span id='total-shamans'></span>" +
                 "<span id='job-desc-1' class='job-desc'>Performs research to improve your tribe.</span>" + 
@@ -31,7 +31,7 @@ function manageTribe() {
             document.getElementById("plus-btn-1").addEventListener("click", addJobOne);
             document.getElementById("minus-btn-1").addEventListener("click", removeJobOne);
         };
-        if (buildings[2].built == 1) {
+        if (buildings[2].built >= 1) {
             $('.work-area').append("<span id='job-title-2'>Hunter</span>" +
                 "<span id='current-hunters'></span><span id='job-2-slash'> / </span><span id='total-hunters'></span>" +
                 "<span id='job-desc-2' class='job-desc'>Hunts animals and explores the area.</span>" + 
@@ -50,7 +50,7 @@ function manageTribe() {
             document.getElementById("plus-btn-2").addEventListener("click", addJobTwo);
             document.getElementById("minus-btn-2").addEventListener("click", removeJobTwo);
         };
-        if (buildings[4].built == 1) {
+        if (buildings[4].built >= 1) {
             $('.work-area').append("<span id='job-title-3'>Wood Chopper</span>" +
                 "<span id='current-woodchoppers'></span><span id='job-3-slash'> / </span><span id='total-woodchoppers'></span>" +
                 "<span id='job-desc-3' class='job-desc'>Cuts down trees for wood.</span>" +
@@ -69,7 +69,7 @@ function manageTribe() {
             document.getElementById("plus-btn-3").addEventListener("click", addJobThree);
             document.getElementById("minus-btn-3").addEventListener("click", removeJobThree);
         };
-        if (buildings[5].built == 1) {
+        if (buildings[5].built >= 1) {
             $('.work-area').append("<span id='job-title-4'>Miner</span>" +
                 "<span id='current-miners'></span><span id='job-4-slash'> / </span><span id='total-miners'></span>" +
                 "<span id='job-desc-4' class='job-desc'>Mines rocks for stone.</span>" +
@@ -88,7 +88,7 @@ function manageTribe() {
             document.getElementById("plus-btn-4").addEventListener("click", addJobFour);
             document.getElementById("minus-btn-4").addEventListener("click", removeJobFour);
         };
-        if (buildings[6].built == 1) {
+        if (buildings[6].built >= 1) {
             $('.work-area').append("<span id='job-title-5'>Farmer</span>" +
                 "<span id='current-farmers'></span><span id='job-5-slash'> / </span><span id='total-farmers'></span>" +
                 "<span id='job-desc-5' class='job-desc'>Harvests wheat from fields.</span>" +

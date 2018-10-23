@@ -82,7 +82,7 @@ function displayBuildings() {
             cellClone = cell.cloneNode(true);
             cell.parentNode.replaceChild(cellClone, cell);
             document.getElementById(varCell).addEventListener("click", buildings[j].showFunction);
-            if (buildings[j].built == 1){
+            if (buildings[j].built >= 1){
                 $("#left-tab-cell-" + j).addClass('built');
             }
         }
@@ -94,8 +94,11 @@ function showTooltip(input) {
         tooltipShown = 1;
         show('.work-area');
         $('.work-area').append("<div id='tooltip-title'>" + input.name + "</div>" +
-            "<div id='tooltip-desc'>" + input.description + "</div>" +
-            "<div id='tooltip-costs-container'>" +
+            "<div id='tooltip-desc'>" + input.description + "</div>");
+        if (input.unique == false){
+            $('.work-area').append("<div id='tooltip-built'>Built: " + input.built + "</div>"); 
+        }
+        $('.work-area').append("<div id='tooltip-costs-container'>" +
             "<div id='tooltip-costs-title'>Costs: </div>" +
             "<div id='tooltip-costs-1'><img id='p-res-1-img-tt' class='resource-icons'>" + input.costs_1 + ": " + input.costs_1_amount + "</div>" +
             "<div id='tooltip-costs-2'><img id='p-res-2-img-tt' class='resource-icons'>" + input.costs_2 + ": " + input.costs_2_amount + "</div>" +
@@ -110,12 +113,20 @@ function showTooltip(input) {
             "<div id='tooltip-effects-4'>" + input.effects_4 + "</div>" +
             "<div id='tooltip-effects-5'>" + input.effects_5 + "</div>");
         //Displays the appropriate button
-        if (visible.leftTabShown == 'research' && input.researched == 0) {
-            $('.work-area').append("</div><div id='build-button' class='build-button game-button' type='button'>Research</div>");
-        };
-        if (visible.leftTabShown == 'buildings' && input.built == 0) {
-            $('.work-area').append("</div><div id='build-button' class='build-button game-button' type='button'>Build</div>");
-        };
+        if (visible.leftTabShown == 'research'){
+            if (input.researched == 0){
+                $('.work-area').append("</div><div id='build-button' class='build-button game-button' type='button'>Research</div>");
+            }
+        }
+        if (visible.leftTabShown == 'buildings'){
+            if (input.built == 0){
+                $('.work-area').append("</div><div id='build-button' class='build-button game-button' type='button'>Build</div>");
+            }
+            if (input.built > 0 && input.unique == false){
+                $('.work-area').append("</div><div id='build-button' class='build-button game-button' type='button'>Build</div>");
+            }
+        }
+
         if (document.getElementById("build-button") !== null) {
             //Removes the event listeners on the build button. Prevents bug where a building is selected and Build Button builds another building
             var el = document.getElementById('build-button');
@@ -125,9 +136,11 @@ function showTooltip(input) {
             // Adds event listener to make the Build button build the selected building
             var clickBuild = function (input) {
                 if (visible.leftTabShown == 'buildings') {
+                    showTooltip(input);
                     buildBuilding(input);
                 }
                 else if (visible.leftTabShown == 'research') {
+                    showTooltip(input);
                     researchScience(input);
                 }
             };
