@@ -33,6 +33,7 @@ var hunterEfficiency = 1;
 var woodChopperEfficiency = 1;
 var minerEfficiency = 1;
 var farmerEfficiency = 1;
+var exploreEfficiency = 1;
 
 //Storage
 var storage = {

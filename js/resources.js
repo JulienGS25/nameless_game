@@ -67,7 +67,7 @@ function autoResource(){
 }
 
 
-//Manual resource gathering
+//Resource gathering
 function getFood(efficiency, mode, type) {
     //efficiency is how much resources are gained per time this function is ran
     //mode is manual or automatic
@@ -88,9 +88,10 @@ function getFood(efficiency, mode, type) {
     else if (mode == 'auto') {
         if (type == 'hunter'){
             efficiency = hunterEfficiency;
+            exploredArea = exploredArea + exploreEfficiency;
         }
         else if (type == 'farmer'){
-            efficiency = farmerEfficiency
+            efficiency = farmerEfficiency;
         }
         if (resource.food < storage.food) {
             resource.food = resource.food + efficiency;
