@@ -101,7 +101,7 @@ var research = [
     stoneWorking = {
         name: "Stone Working",
         number: 0,
-        description: "Primitive tools used for everyday tasks.",
+        description: "You can use your surroundings to your advantage.",
         costs_1: "Science",
         costs_1_amount: 75,
         costs_2: undefined,
@@ -121,7 +121,7 @@ var research = [
         researched: 0,
         researchFunction: researchStoneWorking,
         showFunction: showStoneWorking,
-        message: "By carving stone into tools, you manage to improve the speed at which you perform tasks.",
+        message: "By hitting stones together, you can shape them into useful objects.",
         unlocks_research: [],
         unlocks_buildings: [],
         unique: true
