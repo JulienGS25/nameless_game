@@ -328,7 +328,17 @@ body {
 .built{
   background-color: rgba(169, 169, 169, 0.192);
   text-decoration: underline;
+  opacity: 0.40;
 }
+.built-repeatable{
+  background-color: rgba(169, 169, 169, 0.192);
+}
+
+.research{
+  color: lightskyblue;
+
+}
+
 .built:hover{
   background-color: rgba(169, 169, 169, 0.300);
 }

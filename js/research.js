@@ -45,7 +45,7 @@ function researchScience(input) {
 
         //Marks the building as built
         research[input.number].researched = 1;
-        $('#left-tab-cell-' + input.number).addClass('built');
+        //$('#left-tab-cell-' + input.number).addClass('built');
 
         //Displays the related messages
         logText(input.message);

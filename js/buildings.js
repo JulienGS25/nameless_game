@@ -48,11 +48,12 @@ function buildBuilding(input) {
         //Marks the building as built
         if (input.unique == true){
             buildings[input.number].built = 1;
+            $('#left-tab-cell-' + input.number).addClass('built');
         }
         else{
             buildings[input.number].built++;
         }
-        $('#left-tab-cell-' + input.number).addClass('built');
+        
 
         //Displays the related messages
         logText(input.message);

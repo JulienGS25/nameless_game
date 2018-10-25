@@ -45,6 +45,7 @@ function displayResearch() {
             else{
                 $('#grid-left-col-2').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
             }
+            $('#left-tab-cell-' + j).addClass('research');
             var varCell = ("left-tab-cell-" + j);
             var cell = document.getElementById(varCell);
             cellClone = cell.cloneNode(true);
@@ -82,8 +83,11 @@ function displayBuildings() {
             cellClone = cell.cloneNode(true);
             cell.parentNode.replaceChild(cellClone, cell);
             document.getElementById(varCell).addEventListener("click", buildings[j].showFunction);
-            if (buildings[j].built >= 1){
+            if (buildings[j].built >= 1 && buildings[j].unique == true){
                 $("#left-tab-cell-" + j).addClass('built');
+            }
+            else if (buildings[j].built >= 1){
+                $("#left-tab-cell-" + j).addClass('built-repeatable');
             }
         }
     }
