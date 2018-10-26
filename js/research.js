@@ -44,22 +44,22 @@ function researchScience(input) {
         }
 
         //Marks the building as built
-        research[input.number].researched = 1;
-        //$('#left-tab-cell-' + input.number).addClass('built');
+        research[input.id].researched = 1;
+        //$('#left-tab-cell-' + input.id).addClass('built');
 
         //Displays the related messages
         logText(input.message);
 
         //Unlocks the related research
-        if (research[input.number].unlocks_research !== undefined) {
-            var unlockedResearch = research[input.number].unlocks_research; //array containing list of research unlocked
+        if (research[input.id].unlocks_research !== undefined) {
+            var unlockedResearch = research[input.id].unlocks_research; //array containing list of research unlocked
             for (l = 0; l < unlockedResearch.length; l++) {
                 research[unlockedResearch[l]].displayable = 1;
             }
         };
         //Unlocks the related building
-        if (research[input.number].unlocks_buildings !== undefined) {
-            var unlockedBuilding = research[input.number].unlocks_buildings; //array containing list of buildings unlocked
+        if (research[input.id].unlocks_buildings !== undefined) {
+            var unlockedBuilding = research[input.id].unlocks_buildings; //array containing list of buildings unlocked
             for (l = 0; l < unlockedBuilding.length; l++) {
                 buildings[unlockedBuilding[l]].displayable = 1;
             }
@@ -71,7 +71,7 @@ function researchScience(input) {
         displayResearch();
 
         //Runs the corresponding function specific to this research
-        research[input.number].researchFunction();
+        research[input.id].researchFunction();
     }
 }
 
@@ -100,7 +100,7 @@ function showPrimitiveConstruction(){
 var research = [
     stoneWorking = {
         name: "Stone Working",
-        number: 0,
+        id: 0,
         description: "You can use your surroundings to your advantage.",
         costs_1: "Science",
         costs_1_amount: 75,
@@ -128,7 +128,7 @@ var research = [
     },
     primitiveConstruction = {
         name: "Primitive Construction",
-        number: 1,
+        id: 1,
         description: "A roof over your people's heads.",
         costs_1: "Science",
         costs_1_amount: 100,

@@ -47,11 +47,11 @@ function buildBuilding(input) {
 
         //Marks the building as built
         if (input.unique == true){
-            buildings[input.number].built = 1;
-            $('#left-tab-cell-' + input.number).addClass('built');
+            buildings[input.id].built = 1;
+            $('#left-tab-cell-' + input.id).addClass('built');
         }
         else{
-            buildings[input.number].built++;
+            buildings[input.id].built++;
         }
         
 
@@ -59,8 +59,8 @@ function buildBuilding(input) {
         logText(input.message);
 
         //Unlocks the related buildings
-        if (buildings[input.number].unlocks_buildings !== undefined){
-        var unlockedBuildings = buildings[input.number].unlocks_buildings; //array containing list of buildings unlocked
+        if (buildings[input.id].unlocks_buildings !== undefined){
+        var unlockedBuildings = buildings[input.id].unlocks_buildings; //array containing list of buildings unlocked
         for (l = 0; l < unlockedBuildings.length; l++) {
             buildings[unlockedBuildings[l]].displayable = 1;
             }
@@ -70,37 +70,37 @@ function buildBuilding(input) {
         displayBuildings();
 
         //Runs the corresponding function specific to this building
-        buildings[input.number].buildFunction();
+        buildings[input.id].buildFunction();
     }
 }
 
 
 function showCampfire(){
-    showTooltip(campfire);
+    showTooltip(campFire);
 };
 
 function showShamanHut(){
-    showTooltip(shaman_hut);
+    showTooltip(shamanHut);
 };
 
 function showHunterPost(){
-    showTooltip(hunter_post);
+    showTooltip(hunterPost);
 };
 
 function showVillageCenter(){
-    showTooltip(village_center);
+    showTooltip(villageCenter);
 };
 
 function showWoodChopper(){
-    showTooltip(woodchopper_post);
+    showTooltip(woodchopperPost);
 };
 
 function showMinerHut(){
-    showTooltip(miner_hut);
+    showTooltip(minerHut);
 };
 
 function showWheatFarm(){
-    showTooltip(wheat_farm);
+    showTooltip(wheatFarm);
 };
 
 
@@ -178,9 +178,9 @@ function hireMiner() {
 
 //Buildings
 var buildings = [
-    campfire = {
+    campFire = {
         name: "Campfire",
-        number: 0,
+        id: 0,
         description: "The campfire is the cradle of civilization. Provides warmth and comfort. Unlocks various buildings.",
         costs_1: "Wood",
         costs_1_amount: 3,
@@ -205,9 +205,9 @@ var buildings = [
         unlocks_buildings: [1, 2, 3],
         unique: true,
     },
-    shaman_hut = {
+    shamanHut = {
         name: "Shaman Hut",
-        number: 1,
+        id: 1,
         description: "Explores and experiments with the nature that surrounds us.",
         costs_1: "Wood",
         costs_1_amount: 10,
@@ -232,9 +232,9 @@ var buildings = [
         unlocks_buildings: undefined,
         unique: false
     },
-    hunter_post = {
+    hunterPost = {
         name: "Hunter Post",
-        number: 2,
+        id: 2,
         description: "Explores the nearby area and hunts animals for food.",
         costs_1: "Wood",
         costs_1_amount: 10,
@@ -259,9 +259,9 @@ var buildings = [
         unlocks_buildings: undefined,
         unique: false
     },
-    village_center = {
+    villageCenter = {
         name: "Village Center",
-        number: 3,
+        id: 3,
         description: "Allows you to manage your tribe.",
         costs_1: "Wood",
         costs_1_amount: 10,
@@ -286,9 +286,9 @@ var buildings = [
         unlocks_buildings: undefined,
         unique: true
     },
-    woodchopper_post = {
+    woodchopperPost = {
         name: "Wood Chopper Post",
-        number: 4,
+        id: 4,
         description: "Chops nearby trees for wood.",
         costs_1: "Wood",
         costs_1_amount: 10,
@@ -313,9 +313,9 @@ var buildings = [
         unlocks_buildings: undefined,
         unique: false
     },
-    miner_hut = {
+    minerHut = {
         name: "Miner Hut",
-        number: 5,
+        id: 5,
         description: "Mines rocks for stone.",
         costs_1: "Wood",
         costs_1_amount: 10,
@@ -340,9 +340,9 @@ var buildings = [
         unlocks_buildings: undefined,
         unique: false
     },
-    wheat_farm = {
+    wheatFarm = {
         name: "Wheat Farm",
-        number: 6,
+        id: 6,
         description: "Yields wheat when the weather is warm.",
         costs_1: "Wood",
         costs_1_amount: 10,
