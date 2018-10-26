@@ -11,7 +11,7 @@ function buildBuilding(input) {
     //First loop checks how many resource types are needed to build the building
     var valid = 0;
     var passed = 0;
-    for (i = 1; i < 6; i++) {
+    for (var i = 1; i < 6; i++) {
         a = eval('input.costs_' + i);
         if (a !== undefined) {
             valid++;
@@ -19,7 +19,7 @@ function buildBuilding(input) {
     }
     //Second loop runs as many times as there are resource types used to build the building
 
-    for (j = 1; j <= valid; j++) {
+    for (var j = 1; j <= valid; j++) {
 
         var amtCost = eval('input.costs_' + j + '_amount'); // Amount of resources required
         var nmCost = eval('input.costs_' + j); // Name of resource required
@@ -38,7 +38,7 @@ function buildBuilding(input) {
         //Resource check successful, proceed
 
         //Spends the required resources
-        for (k = 1; k <= valid; k++) {
+        for (var k = 1; k <= valid; k++) {
             var amtCost2 = eval('input.costs_' + k + '_amount'); // Amount of resources required
             var nmCost2 = eval('input.costs_' + k); // Name of resource required
             var nmInvLower2 = nmCost2.toLowerCase(); // Name of resource, lower case to match the inventory resource type
@@ -61,7 +61,7 @@ function buildBuilding(input) {
         //Unlocks the related buildings
         if (buildings[input.id].unlocks_buildings !== undefined){
         var unlockedBuildings = buildings[input.id].unlocks_buildings; //array containing list of buildings unlocked
-        for (l = 0; l < unlockedBuildings.length; l++) {
+        for (var l = 0; l < unlockedBuildings.length; l++) {
             buildings[unlockedBuildings[l]].displayable = 1;
             }
         }

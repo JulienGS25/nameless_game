@@ -37,7 +37,7 @@ function displayResearch() {
     //Swaps the cells
     hide('.left-tab-cell',10);
     $('.left-tab-cell').remove();
-    for (j = 0; j < research.length; j++){
+    for (var j = 0; j < research.length; j++){
         if (research[j].displayable == 1){
             if (research[j].unique == true){
                 $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
@@ -70,7 +70,7 @@ function displayBuildings() {
     //Swaps the cells
     hide('.left-tab-cell',10);
     $('.left-tab-cell').remove();
-    for (j = 0; j < buildings.length; j++){
+    for (var j = 0; j < buildings.length; j++){
         if (buildings[j].displayable == 1){
             if (buildings[j].unique == true){
                 $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + buildings[j].name + "</div>");
@@ -151,7 +151,7 @@ function showTooltip(input) {
             document.getElementById('build-button').addEventListener('click', clickBuild.bind(this, input));
         }
         //Puts a resource icon and changes the cost color to match the resource
-        for (i = 1; i < 6; i++) {
+        for (var i = 1; i < 6; i++) {
             //To be improved. Currently forces the source image file to match the resource cost in buildings.js
             var curr = eval('input.costs_' + i);
             if (curr !== undefined) {

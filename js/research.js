@@ -9,7 +9,7 @@ function researchScience(input) {
     //First loop checks how many resource types are needed to research this
     var valid = 0;
     var passed = 0;
-    for (i = 1; i < 6; i++) {
+    for (var i = 1; i < 6; i++) {
         a = eval('input.costs_' + i);
         if (a !== undefined) {
             valid++;
@@ -17,7 +17,7 @@ function researchScience(input) {
     }
     //Second loop runs as many times as there are resource types used to build the building
 
-    for (j = 1; j <= valid; j++) {
+    for (var j = 1; j <= valid; j++) {
 
         var amtCost = eval('input.costs_' + j + '_amount'); // Amount of resources required
         var nmCost = eval('input.costs_' + j); // Name of resource required
@@ -36,7 +36,7 @@ function researchScience(input) {
         //Resource check successful, proceed
 
         //Spends the required resources
-        for (k = 1; k <= valid; k++) {
+        for (var k = 1; k <= valid; k++) {
             var amtCost2 = eval('input.costs_' + k + '_amount'); // Amount of resources required
             var nmCost2 = eval('input.costs_' + k); // Name of resource required
             var nmInvLower2 = nmCost2.toLowerCase(); // Name of resource, lower case to match the inventory resource type
@@ -53,14 +53,14 @@ function researchScience(input) {
         //Unlocks the related research
         if (research[input.id].unlocks_research !== undefined) {
             var unlockedResearch = research[input.id].unlocks_research; //array containing list of research unlocked
-            for (l = 0; l < unlockedResearch.length; l++) {
+            for (var l = 0; l < unlockedResearch.length; l++) {
                 research[unlockedResearch[l]].displayable = 1;
             }
         };
         //Unlocks the related building
         if (research[input.id].unlocks_buildings !== undefined) {
             var unlockedBuilding = research[input.id].unlocks_buildings; //array containing list of buildings unlocked
-            for (l = 0; l < unlockedBuilding.length; l++) {
+            for (var l = 0; l < unlockedBuilding.length; l++) {
                 buildings[unlockedBuilding[l]].displayable = 1;
             }
         }

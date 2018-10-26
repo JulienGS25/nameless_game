@@ -163,7 +163,7 @@ function activateDevMode(){
 };
 
 function setAllFree(){
-    for (i = 0; i < buildings.length; i++){
+    for (var i = 0; i < buildings.length; i++){
         if (buildings[i].costs_1 !== undefined){
             buildings[i].costs_1_amount = 0;
         }
@@ -180,7 +180,7 @@ function setAllFree(){
             buildings[i].costs_5_amount = 0;
         }
     }
-    for (j = 0; j < research.length; j++){
+    for (var j = 0; j < research.length; j++){
         if (research[j].costs_1 !== undefined){
             research[j].costs_1_amount = 0;
         }
@@ -210,7 +210,7 @@ function prettify(input){
 function manageResources() {
     var resLength = Object.keys(resource).length;
     
-    for (j = 0; j < resLength; j++) {
+    for (var j = 0; j < resLength; j++) {
         var currResourceNm = Object.keys(resource)[j];
         //If resources went over their storage limit, resets them to the storage limit
         if (resource[currResourceNm] > storage[currResourceNm]){
