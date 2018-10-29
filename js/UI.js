@@ -70,7 +70,8 @@ function displayBuildings() {
     //Swaps the cells
     hide('.left-tab-cell',10);
     $('.left-tab-cell').remove();
-    for (var j = 0; j < buildings.length; j++){
+    //Variable MUST be let, due to scope
+    for (let j = 0; j < buildings.length; j++){
         if (buildings[j].displayable == 1){
             if (buildings[j].unique == true){
                 $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + buildings[j].name + "</div>");
@@ -82,15 +83,10 @@ function displayBuildings() {
             var cell = document.getElementById(varCell);
             cellClone = cell.cloneNode(true);
             cell.parentNode.replaceChild(cellClone, cell);
-            document.getElementById(varCell).addEventListener("click", buildings[j].showFunction);
+            document.getElementById(varCell).addEventListener("click", function(){
+                showTooltip(buildings[j])
+            });
             
-            /*function testFunc(){
-                console.log(buildings[j])
-            };
-            testFunc();*/
-
-            //console.log(Object.keys(buildings[0]));
-
             if (buildings[j].built >= 1 && buildings[j].unique == true){
                 $("#left-tab-cell-" + j).addClass('built');
             }
