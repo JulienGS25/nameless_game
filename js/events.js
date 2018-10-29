@@ -48,7 +48,9 @@ function discoverFire() {
         show('#era');
         visible.era = true;
         $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-0'>Campfire</div>")
-        document.getElementById("left-tab-cell-0").addEventListener("click", showCampfire);
+        document.getElementById("left-tab-cell-0").addEventListener("click", function(){
+            showTooltip(campFire);
+        });
         
     }
     function observe() {

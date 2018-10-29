@@ -86,15 +86,6 @@ function researchPrimitiveConstruction(){
 };
 
 
-function showStoneWorking(){
-    showTooltip(stoneWorking);
-}
-
-function showPrimitiveConstruction(){
-    showTooltip(primitiveConstruction)
-
-}
-
 
 //Research dictionary
 var research = [
@@ -120,7 +111,6 @@ var research = [
         displayable: 1,
         researched: 0,
         researchFunction: researchStoneWorking,
-        showFunction: showStoneWorking,
         message: "By hitting stones together, you can shape them into useful objects.",
         unlocks_research: [],
         unlocks_buildings: [],
@@ -148,7 +138,6 @@ var research = [
         displayable: 1,
         researched: 0,
         researchFunction: researchPrimitiveConstruction,
-        showFunction: showPrimitiveConstruction,
         message: "Placeholder",
         unlocks_research: [],
         unlocks_buildings: [4, 5],

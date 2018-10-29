@@ -37,7 +37,7 @@ function displayResearch() {
     //Swaps the cells
     hide('.left-tab-cell',10);
     $('.left-tab-cell').remove();
-    for (var j = 0; j < research.length; j++){
+    for (let j = 0; j < research.length; j++){
         if (research[j].displayable == 1){
             if (research[j].unique == true){
                 $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
@@ -50,7 +50,9 @@ function displayResearch() {
             var cell = document.getElementById(varCell);
             cellClone = cell.cloneNode(true);
             cell.parentNode.replaceChild(cellClone, cell);
-            document.getElementById(varCell).addEventListener("click", research[j].showFunction);
+            document.getElementById(varCell).addEventListener("click", function(){
+                showTooltip(research[j])
+            });
             if (research[j].researched == 1){
                 $("#left-tab-cell-" + j).addClass('built');
             }

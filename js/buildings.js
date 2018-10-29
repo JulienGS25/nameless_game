@@ -74,38 +74,6 @@ function buildBuilding(input) {
     }
 }
 
-
-function showCampfire(){
-    showTooltip(campFire);
-};
-
-function showShamanHut(){
-    showTooltip(shamanHut);
-};
-
-function showHunterPost(){
-    showTooltip(hunterPost);
-};
-
-function showVillageCenter(){
-    showTooltip(villageCenter);
-};
-
-function showWoodChopper(){
-    showTooltip(woodchopperPost);
-};
-
-function showMinerHut(){
-    showTooltip(minerHut);
-};
-
-function showWheatFarm(){
-    showTooltip(wheatFarm);
-};
-
-
-
-
 function buildCampfire(){
     storage.food =+ 10;
     storage.wood =+ 10;
@@ -200,7 +168,6 @@ var buildings = [
         displayable: 1,
         built: 0,
         buildFunction: buildCampfire,
-        showFunction: showCampfire,
         message: "Built campfire. Its warmth attracts people.",
         unlocks_buildings: [1, 2, 3],
         unique: true,
@@ -227,7 +194,6 @@ var buildings = [
         displayable: 0,
         built: 0,
         buildFunction: buildShamanHut,
-        showFunction: showShamanHut,
         message: "Built Shaman Hut.",
         unlocks_buildings: undefined,
         unique: false
@@ -254,7 +220,6 @@ var buildings = [
         displayable: 0,
         built: 0,
         buildFunction: buildHunterPost,
-        showFunction: showHunterPost,
         message: "Built Hunter Post.",
         unlocks_buildings: undefined,
         unique: false
@@ -281,7 +246,6 @@ var buildings = [
         displayable: 0,
         built: 0,
         buildFunction: buildVillageCenter,
-        showFunction: showVillageCenter,
         message: "Built Village Center. You can now manage your villagers.",
         unlocks_buildings: undefined,
         unique: true
@@ -308,7 +272,6 @@ var buildings = [
         displayable: 0,
         built: 0,
         buildFunction: buildWoodChopper,
-        showFunction: showWoodChopper,
         message: "Built Wood Chopper Post.",
         unlocks_buildings: undefined,
         unique: false
@@ -335,7 +298,6 @@ var buildings = [
         displayable: 0,
         built: 0,
         buildFunction: buildMinerHut,
-        showFunction: showMinerHut,
         message: "Built Miner Hut.",
         unlocks_buildings: undefined,
         unique: false
@@ -362,7 +324,6 @@ var buildings = [
         displayable: 0,
         built: 0,
         buildFunction: buildWheatFarm,
-        showFunction: showWheatFarm,
         message: "Prepared Wheat Farm.",
         unlocks_buildings: undefined,
         unique: false
