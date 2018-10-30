@@ -20,20 +20,24 @@ var resource = {
 }
 
 //Speed
-var foodGatherSpeed = 2;
-var woodGatherSpeed = 2;
-var stoneGatherSpeed = 2;
+var speed = {
+    "foodGather": 2,
+    "woodGather": 2,
+    "stoneGather": 2
+}
 
 //Efficiency
-var foodGatherEfficiency = 1;
-var woodGatherEfficiency = 1;
-var stoneGatherEfficiency = 1;
-var shamanEfficiency = 1;
-var hunterEfficiency = 1;
-var woodChopperEfficiency = 1;
-var minerEfficiency = 1;
-var farmerEfficiency = 1;
-var exploreEfficiency = 1;
+var efficiency = {
+    "foodGather": 1,
+    "woodGather": 1,
+    "stoneGather": 1,
+    "shaman": 1,
+    "hunter": 1,
+    "woodChopper": 1,
+    "miner": 1,
+    "farmer": 1,
+    "explore": 1
+}
 
 //Storage
 var storage = {
@@ -62,12 +66,14 @@ var events = {
 }
 
 //Messages
-var coolMsgDisplayed = 0;
-var coldMsgDisplayed = 0;
-var warmerMsgDisplayed = 0;
-var warmMsgDisplayed = 0;
-var hotMsgDisplayed = 0;
-var resourceSpeedMsgDisplayed = 0;
+var messages = {
+    'coolMsgDisplayed': 0,
+    'coldMsgDisplayed': 0,
+    'warmerMsgDisplayed': 0,
+    'warmMsgDisplayed': 0,
+    'hotMsgDisplayed': 0,
+    'resourceSpeedMsgDisplayed': 0,
+}
 
 //UI Visibility
 var visible = {

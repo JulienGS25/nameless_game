@@ -1,17 +1,17 @@
 document.getElementById("forage-food-btn").addEventListener("click", function(){
-    getFood(foodGatherEfficiency,'manual');
+    getFood(efficiency.foodGather,'manual');
 });
 
 document.getElementById("forage-food-btn").addEventListener("click", showFood);
 
 document.getElementById("gather-wood-btn").addEventListener("click", function(){
-    getWood(woodGatherEfficiency,'manual');
+    getWood(efficiency.woodGather,'manual');
 });
 
 document.getElementById("gather-wood-btn").addEventListener("click", showWood);
 
 document.getElementById("gather-stone-btn").addEventListener("click", function(){
-    getStone(stoneGatherEfficiency,'manual');
+    getStone(efficiency.stoneGather,'manual');
 });
 document.getElementById("gather-stone-btn").addEventListener("click", showStone);
 
@@ -50,97 +50,99 @@ function showScience(){
 //Automatic resource gathering
 function autoResource(){
     if (jobs.shaman > 0){
-        getScience(shamanEfficiency, 'auto')
+        getScience(efficiency.shaman, 'auto')
     }
     if (jobs.woodchopper > 0){
-        getWood(woodChopperEfficiency, 'auto')
+        getWood(efficiency.woodChopper, 'auto')
     }
     if (jobs.hunter > 0){
-        getFood(hunterEfficiency, 'auto')
+        getFood(efficiency.hunter, 'auto')
     }
     if (jobs.miner > 0){
-        getStone(minerEfficiency, 'auto')
+        getStone(efficiency.miner, 'auto')
     }
     if (jobs.farmer > 0){
-        getFood(farmerEfficiency, 'auto')
+        getFood(efficiency.farmer, 'auto')
     }
 }
 
 
 //Resource gathering
-function getFood(efficiency, mode, type) {
+function getFood(eff, mode, type) {
     //efficiency is how much resources are gained per time this function is ran
     //mode is manual or automatic
     //type is farmer or hunter
     if (mode == 'manual') {
         $('#forage-food-btn').css("pointer-events", "none");
-        $('#forage-food-btn').animate({ opacity: 0.25 }, (foodGatherSpeed * 250));
+        $('#forage-food-btn').animate({ opacity: 0.25 }, (speed.foodGather * 250));
         setTimeout(function () {
             $('#forage-food-btn').css("pointer-events", "auto");
-            $('#forage-food-btn').animate({ opacity: 1 }, (foodGatherSpeed * 250));
+            $('#forage-food-btn').animate({ opacity: 1 }, (speed.foodGather * 250));
             if (resource.food < storage.food) {
-                resource.food = resource.food + efficiency;
+                resource.food = resource.food + eff;
                 document.getElementById("p-res-1-amt").innerHTML = resource.food;
             }
-        }, foodGatherSpeed * 1000);
-        foodGatherSpeed = foodGatherSpeed * 1.1;
+        }, speed.foodGather * 1000);
+        speed.foodGather = speed.foodGather * 1.1;
     }
     else if (mode == 'auto') {
         if (type == 'hunter'){
-            efficiency = hunterEfficiency;
-            exploredArea = exploredArea + exploreEfficiency;
+            efficiency = efficiency.hunter;
+            exploredArea = exploredArea + efficiency.explore;
         }
         else if (type == 'farmer'){
-            efficiency = farmerEfficiency;
+            efficiency = efficiency.farmer;
         }
         if (resource.food < storage.food) {
-            resource.food = resource.food + efficiency;
+            resource.food = resource.food + eff;
             document.getElementById("p-res-1-amt").innerHTML = resource.food;
         }
     }
 };
 
-function getWood(efficiency, mode) {
+function getWood(eff, mode) {
     if (mode == 'manual') {
         $('#gather-wood-btn').css("pointer-events", "none");
-        $('#gather-wood-btn').animate({ opacity: 0.25 }, (woodGatherSpeed * 250));
+        $('#gather-wood-btn').animate({ opacity: 0.25 }, (speed.woodGather * 250));
         setTimeout(function () {
             $('#gather-wood-btn').css("pointer-events", "auto");
-            $('#gather-wood-btn').animate({ opacity: 1 }, (woodGatherSpeed * 250));
+            $('#gather-wood-btn').animate({ opacity: 1 }, (speed.woodGather * 250));
             if (resource.wood < storage.wood) {
-                resource.wood = resource.wood + woodGatherEfficiency;
+                resource.wood = resource.wood + eff;
                 document.getElementById("p-res-2-amt").innerHTML = resource.wood;
             }
-        }, woodGatherSpeed * 1000);
-        woodGatherSpeed = woodGatherSpeed * 1.1;
+        }, speed.woodGather * 1000);
+        speed.woodGather = speed.woodGather * 1.1;
     }
     else if (mode == 'auto') {
-        efficiency = woodChopperEfficiency;
+        efficiency = eff;
         if (resource.wood < storage.wood) {
-            resource.wood = resource.wood + efficiency;
+            resource.wood = resource.wood + eff;
             document.getElementById("p-res-2-amt").innerHTML = resource.wood;
         }
     }
 };
 
-function getStone(efficiency, mode) {
+
+
+function getStone(eff, mode) {
     if (mode == 'manual') {
         $('#gather-stone-btn').css("pointer-events", "none");
-        $('#gather-stone-btn').animate({ opacity: 0.25 }, (stoneGatherSpeed * 250));
+        $('#gather-stone-btn').animate({ opacity: 0.25 }, (speed.stoneGather * 250));
         setTimeout(function () {
             $('#gather-stone-btn').css("pointer-events", "auto");
-            $('#gather-stone-btn').animate({ opacity: 1 }, (stoneGatherSpeed * 250));
+            $('#gather-stone-btn').animate({ opacity: 1 }, (speed.stoneGather * 250));
             if (resource.stone < storage.stone) {
-                resource.stone = resource.stone + stoneGatherEfficiency;
+                resource.stone = resource.stone + eff;
                 document.getElementById("p-res-3-amt").innerHTML = resource.stone;
             }
-        }, stoneGatherSpeed * 1000);
-        stoneGatherSpeed = stoneGatherSpeed * 1.1;
+        }, speed.stoneGather * 1000);
+        speed.stoneGather = speed.stoneGather * 1.1;
     }
     else if (mode == 'auto') {
-        efficiency = stoneGatherEfficiency;
+        efficiency = eff;
         if (resource.stone < storage.stone) {
-            resource.stone = resource.stone + efficiency;
+            resource.stone = resource.stone + eff;
             document.getElementById("p-res-3-amt").innerHTML = resource.stone;
         }
     }
@@ -150,7 +152,7 @@ function getScience(efficiency) {
     if (visible.scienceResource == false){
         showScience();
     }
-    efficiency = shamanEfficiency;
+    efficiency = efficiency.shaman;
         if (resource.science < storage.science) {
             resource.science = resource.science + efficiency;
             document.getElementById("p-res-4-amt").innerHTML = resource.science;

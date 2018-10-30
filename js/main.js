@@ -13,16 +13,16 @@ document.getElementById("reset").addEventListener("click", resetGame);
 
 function saveGame(){
     var getData = {
-        'foodAmount':resource.food,
-        'woodAmount':resource.wood,
-        'stoneAmount':resource.stone,
-        'peopleAmount':resource.people
+        resource,
+        storage,
+        events,
+        visible,
+        jobs
     }
     //Saves the data
     localStorage.setItem('dataKey', JSON.stringify(getData));
 
-    //Outputs the data to the console for verification
-    console.log('Saved the following data: ' + getData);
+    console.log('Game data saved!');
 }
 
 function loadGame(){
@@ -30,7 +30,7 @@ function loadGame(){
     if (a == null){
         console.log('No data stored!');
     }
-    else {console.log('Loaded the following data: ' + test);
+    else {console.log('Loaded the following data: ' + a);
     }
 }
 
@@ -105,37 +105,37 @@ function fluctuateTemp() {
 
 function tempCheck(){
     if (currentTemp < 0){
-        if (coolMsgDisplayed == 0){
+        if (messages.coolMsgDisplayed == 0){
             logText("It's getting a little chilly.");
-            coolMsgDisplayed = 1;
+            messages.coolMsgDisplayed = 1;
         }
         document.getElementById("temp-message").innerHTML = "Cool";
     }
     if (currentTemp < -20){
-        if (coldMsgDisplayed == 0){
+        if (messages.coldMsgDisplayed == 0){
            logText("Water has frozen solid, the landscape is covered in snow and ice and you can see your breath.");
-           coldMsgDisplayed = 1;
+           messages.coldMsgDisplayed = 1;
         }
         document.getElementById("temp-message").innerHTML = "Cold";
     }
     if (currentTemp > 0 && currentTemp < 15){
-        if (warmerMsgDisplayed == 0 && coldMsgDisplayed == 1){
+        if (messages.warmerMsgDisplayed == 0 && messages.coldMsgDisplayed == 1){
             logText("Snow is melting and trees are growing leaves again.");
-            warmerMsgDisplayed = 1;
+            messages.warmerMsgDisplayed = 1;
         }
         document.getElementById("temp-message").innerHTML = "Cool";
     }
     if (currentTemp > 15 && currentTemp < 30){
-        if (warmMsgDisplayed == 0 && warmerMsgDisplayed == 1){
+        if (messages.warmMsgDisplayed == 0 && messages.warmerMsgDisplayed == 1){
             logText("The sun is shining and you are quite comfortable now.");
-            warmMsgDisplayed = 1;
+            messages.warmMsgDisplayed = 1;
         }
         document.getElementById("temp-message").innerHTML = "Warm";
     }
     if (currentTemp > 30){
-        if (hotMsgDisplayed == 0 && warmMsgDisplayed == 1){
+        if (messages.hotMsgDisplayed == 0 && messages.warmMsgDisplayed == 1){
             logText("Summer is in full heat now.");
-            hotMsgDisplayed = 1;
+            messages.hotMsgDisplayed = 1;
         }
         document.getElementById("temp-message").innerHTML = "Hot";
     }
@@ -270,10 +270,10 @@ function gameLoop(){
             discoverFire();
         }
 
-        if (resourceSpeedMsgDisplayed == 0){
-            if (foodGatherSpeed > 2 || woodGatherSpeed > 2 || stoneGatherSpeed > 2){
+        if (messages.resourceSpeedMsgDisplayed == 0){
+            if (speed.foodGather > 2 || speed.woodGather > 2 || speed.stoneGather > 2){
                 logWarn('Resources are getting scarce. Exploring will help you find resources faster. [Improves gathering speed]')
-                resourceSpeedMsgDisplayed = 1;
+                messages.resourceSpeedMsgDisplayed = 1;
             }
         }
 

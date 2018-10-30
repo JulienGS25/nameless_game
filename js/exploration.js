@@ -7,17 +7,17 @@ function scout() {
 
     document.getElementById('explored').innerHTML = exploredArea;
     unveilStuff(exploredArea);
-    if (foodGatherSpeed > 1){
-        foodGatherSpeed = foodGatherSpeed / 1.1;
-        //console.log('Foraging speed is ' + forageSpeed);
+    if (speed.foodGather > 1){
+        speed.foodGather = speed.foodGather / 1.1;
+        //console.log('Foraging speed is ' + speed.foodGather);
         };
-    if (woodGatherSpeed > 1){
-        woodGatherSpeed = woodGatherSpeed / 1.1;
-        //console.log('Wood gathering speed is ' + woodGatherSpeed);
+    if (speed.woodGather > 1){
+        speed.woodGather = speed.woodGather / 1.1;
+        //console.log('Wood gathering speed is ' + speed.woodGather);
         };
-    if (stoneGatherSpeed > 1){
-        stoneGatherSpeed = stoneGatherSpeed / 1.1;
-        //console.log('Stone gathering speed is ' + stoneGatherSpeed);
+    if (speed.stoneGather > 1){
+        speed.stoneGather = speed.stoneGather / 1.1;
+        //console.log('Stone gathering speed is ' + speed.stoneGather);
         };
 };
 

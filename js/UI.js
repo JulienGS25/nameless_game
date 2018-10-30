@@ -193,14 +193,10 @@ window.addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
 
 
 
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("options");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+//Modal section
+var modal = document.getElementById('myModal'); // The modal
+var btn = document.getElementById("options");  //The button that opens the modal
+var span = document.getElementsByClassName("close")[0]; //The <span> element that closes the modal
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
