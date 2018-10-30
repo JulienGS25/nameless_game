@@ -13,31 +13,218 @@ document.getElementById("reset").addEventListener("click", resetGame);
 
 function saveGame(){
     var getData = {
+        //Saves all objects
         resource,
+        speed,
+        efficiency,
         storage,
         events,
+        messages,
         visible,
-        jobs
+        jobs,
+        buildings,
+        research,
+        //Saves all global variables
+        exploredArea,
+        passedTime,
+        currentTemp,
+        gameSpeed,
+        tooltipShown,
+        pollutionLevel,
+        foodConsumption
     }
-    //Saves the data
-    localStorage.setItem('dataKey', JSON.stringify(getData));
 
+    //Saves the data
+    localStorage.setItem('gameData', JSON.stringify(getData));
     console.log('Game data saved!');
 }
 
 function loadGame(){
-    var a = localStorage.getItem('dataKey');
-    if (a == null){
+    var gameData = localStorage.getItem('gameData');
+    if (gameData == null){
         console.log('No data stored!');
     }
-    else {console.log('Loaded the following data: ' + a);
+    //Game is found, loading data
+    else {
+        var gameObject = JSON.parse(gameData);
+        //console.log(gameData)
+        //console.log(gameObject)
+
+        resource = gameObject.resource;
+        speed = gameObject.speed;
+        efficiency = gameObject.efficiency;
+        storage = gameObject.storage;
+        //events = gameObject.events;
+        //messages = gameObject.messages;
+        visible = gameObject.visible;
+        jobs = gameObject.jobs;
+
+        buildings = gameObject.buildings;
+
+        //exploredArea = gameObject.exploredArea;
+        passedTime = gameObject.passedTime;
+        currentTemp = gameObject.currentTemp;
+        gameSpeed = gameObject.gameSpeed;
+        tooltipShown = gameObject.tooltipShown;
+        pollutionLevel = gameObject.pollutionLevel;
+        foodConsumption = gameObject.foodConsumption;
+
+        //Tabs
+        if (visible.leftTab == true){
+            show('.left-tab', 25);
+        }
+        if (visible.rightTab == true){
+            show('.right-tab', 25);
+        }
+        if (visible.midTab == true){
+            show('.middle-tab', 25);
+        }
+        if (visible.bottomTab == true){
+            show('.bottom-tab', 25);
+        }
+        if (visible.leftTabShown == 'buildings'){
+            displayBuildings();
+        }
+        if (visible.leftTabShown == 'research'){
+            displayResearch();
+        }
+        if (visible.researchTitleButton == true){
+            show('#research-title', 25);
+        }
+
+        //Era
+        if (visible.era == true){
+            show('#era', 25);
+        }
+        //Resource buttons
+        if (visible.forageFoodButton == true){
+            show('#forage-food-btn', 25);
+        }
+        if (visible.gatherWoodButton == true){
+            show('#gather-wood-btn', 25);
+        }
+        if (visible.gatherStoneButton == true){
+            show('#gather-stone-btn', 25);
+        }
+        //Resources
+        if (visible.peopleResource == true){
+            show('#people-resource', 25);
+        }
     }
 }
+
+
+//Example of what is saved in local storage
+/*
+{
+    "resource":{
+        "people":0,
+        "food":0,
+        "wood":0,
+        "stone":0,
+        "science":0,
+        "copperOre":0,
+        "copperIngot":0,
+        "tinOre":0,
+        "tinIngot":0,
+        "ironOre":0,
+        "ironIngot":0,
+        "goldOre":0,
+        "goldIngot":0,
+        "wheat":0,
+        "flour":0,
+        "water":0
+    },
+    "speed":{
+        "foodGather":2,
+        "woodGather":2,
+        "stoneGather":2
+    },
+    "efficiency":{
+        "foodGather":1,
+        "woodGather":1,
+        "stoneGather":1,
+        "shaman":1,
+        "hunter":1,
+        "woodChopper":1,
+        "miner":1,
+        "farmer":1,
+        "explore":1
+    },
+    "storage":{
+        "people":5,
+        "food":5,
+        "wood":5,
+        "stone":5,
+        "science":0,
+        "copperOre":0,
+        "copperIngot":0,
+        "tinOre":0,
+        "tinIngot":0,
+        "ironOre":0,
+        "ironIngot":0,
+        "goldOre":0,
+        "goldIngot":0,
+        "wheat":0,
+        "flour":0,
+        "water":0
+        },
+    "events":{
+        "lightningStrike":1,
+        "wakeUp":1,
+        "fireAppeared":1
+    },
+    "messages":{
+        "coolMsgDisplayed":0,
+        "coldMsgDisplayed":0,
+        "warmerMsgDisplayed":0,
+        "warmMsgDisplayed":0,
+        "hotMsgDisplayed":0,
+        "resourceSpeedMsgDisplayed":0
+    },
+    "visible":{
+        "leftTab":false,
+        "midTab":false,
+        "rightTab":true,
+        "bottomTab":false,
+        "era":false,
+        "peopleResource":false,
+        "foodResource":false,
+        "woodResource":false,
+        "stoneResource":false,
+        "scienceResource":false,
+        "forageFoodButton":false,
+        "gatherWoodButton":false,
+        "gatherStoneButton":false,
+        "exploreButton":false,
+        "leftTabShown":"buildings"
+    },
+    "jobs":{
+        "shaman":0,
+        "hunter":0,
+        "woodchopper":0,
+        "miner":0,
+        "farmer":0
+    },
+    "state":6,
+    "exploredArea":0,
+    "passedTime":11,
+    "currentTemp":30.110000000000017,
+    "gameSpeed":50,
+    "tooltipShown":0,
+    "pollutionLevel":0,
+    "foodConsumption":0.000001}
+*/
+
+
+
 
 function resetGame(){
     localStorage.clear('value');
     console.log('Cleared data. Local storage is now empty.');
+    location.reload();
 }
+
 
 //Options
 document.getElementById("diff-easy").addEventListener("click", setEasyDiff);
@@ -248,7 +435,6 @@ function manageResources() {
 
 
 
-var executed = false;
 // Game loop
 function gameLoop(){
     window.setInterval(function(){
@@ -265,8 +451,9 @@ function gameLoop(){
         }
         if (passedTime >= 5){
             show('.middle-tab', 500);
+            visible.midTab = true;
         }    
-        if (passedTime >= 10 && events.lightningStrike == 0 && state != 7) {
+        if (passedTime >= 10 && events.lightningStrike == 0) {
             discoverFire();
         }
 
@@ -320,5 +507,6 @@ function gameLoop(){
 };
 
 $(document).ready(function(){
-    gameLoop()
+    loadGame();
+    gameLoop();
 });

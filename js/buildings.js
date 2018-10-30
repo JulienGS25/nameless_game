@@ -70,7 +70,9 @@ function buildBuilding(input) {
         displayBuildings();
 
         //Runs the corresponding function specific to this building
-        buildings[input.id].buildFunction();
+        var bldFunc = eval(buildings[input.id].buildFunction);
+        bldFunc();
+
     }
 }
 
@@ -83,6 +85,7 @@ function buildCampfire(){
 
 function buildShamanHut(){
     show('#research-title',100);
+    visible.researchTitleButton = true;
     hide('#build-button', 100);
     storage.science = storage.science + 100;
 };
@@ -167,7 +170,7 @@ var buildings = [
         effects_5: "+10 stone storage",
         displayable: 1,
         built: 0,
-        buildFunction: buildCampfire,
+        buildFunction: "buildCampfire",
         message: "Built campfire. Its warmth attracts people.",
         unlocks_buildings: [1, 2, 3],
         unique: true,
@@ -193,7 +196,7 @@ var buildings = [
         effects_5: "",
         displayable: 0,
         built: 0,
-        buildFunction: buildShamanHut,
+        buildFunction: "buildShamanHut",
         message: "Built Shaman Hut.",
         unlocks_buildings: undefined,
         unique: false
@@ -219,7 +222,7 @@ var buildings = [
         effects_5: "",
         displayable: 0,
         built: 0,
-        buildFunction: buildHunterPost,
+        buildFunction: "buildHunterPost",
         message: "Built Hunter Post.",
         unlocks_buildings: undefined,
         unique: false
@@ -245,7 +248,7 @@ var buildings = [
         effects_5: "",
         displayable: 0,
         built: 0,
-        buildFunction: buildVillageCenter,
+        buildFunction: "buildVillageCenter",
         message: "Built Village Center. You can now manage your villagers.",
         unlocks_buildings: undefined,
         unique: true
@@ -271,7 +274,7 @@ var buildings = [
         effects_5: "",
         displayable: 0,
         built: 0,
-        buildFunction: buildWoodChopper,
+        buildFunction: "buildWoodChopper",
         message: "Built Wood Chopper Post.",
         unlocks_buildings: undefined,
         unique: false
@@ -297,7 +300,7 @@ var buildings = [
         effects_5: "",
         displayable: 0,
         built: 0,
-        buildFunction: buildMinerHut,
+        buildFunction: "buildMinerHut",
         message: "Built Miner Hut.",
         unlocks_buildings: undefined,
         unique: false
@@ -323,7 +326,7 @@ var buildings = [
         effects_5: "",
         displayable: 0,
         built: 0,
-        buildFunction: buildWheatFarm,
+        buildFunction: "buildWheatFarm",
         message: "Prepared Wheat Farm.",
         unlocks_buildings: undefined,
         unique: false

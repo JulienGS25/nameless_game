@@ -91,6 +91,7 @@ var visible = {
     "gatherWoodButton" : false,
     "gatherStoneButton" : false,
     "exploreButton" : false,
+    "researchTitleButton": false,
     "leftTabShown": 'buildings', //can be buildings or research
 }
 
@@ -102,9 +103,6 @@ var jobs = {
     "miner": 0, //stone
     "farmer": 0, //food
 }
-
-//Progress variable
-var state = 0;
 
 //Dev tools
 var devMode = 1;

@@ -1,7 +1,7 @@
 // Timed events
 function wakeUp(){
     show('.right-tab');
-    visible.rightTab = 1;
+    visible.rightTab = true;
     logText('You wake up in an empty field...');
     events.wakeUp = 1;
 }
@@ -9,7 +9,6 @@ function wakeUp(){
 function discoverFire() {
     events.lightningStrike = 1;
     events.fireAppeared = 1;
-    state = 6;
     logText('You hear an ear-shattering explosion nearby!');
     if (disableLightningEffect == 0){
         $('#body')
@@ -42,7 +41,6 @@ function discoverFire() {
     function observeFive() {
         logText('Trying again with more branches, you start assembling them into a pile. You name this new discovery: <span style=\'color: red\'> Fire!');
         $('#observe-button').remove();
-        state = 7;
         show('.left-tab');
         visible.leftTab = true;
         show('#era');
