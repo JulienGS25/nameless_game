@@ -7,8 +7,6 @@ function wakeUp(){
 }
 
 function discoverFire() {
-    events.lightningStrike = 1;
-    events.fireAppeared = 1;
     logText('You hear an ear-shattering explosion nearby!');
     if (disableLightningEffect == 0){
         $('#body')
@@ -49,6 +47,8 @@ function discoverFire() {
         document.getElementById("left-tab-cell-0").addEventListener("click", function(){
             showTooltip(campFire);
         });
+        events.lightningStrike = 1;
+        events.fireAppeared = 1;
         
     }
     function observe() {
