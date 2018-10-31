@@ -62,7 +62,8 @@ var storage = {
 //Events
 var events = {
     "lightningStrike": 0,
-    "wakeUp": 0
+    "wakeUp": 0,
+    "fireAppeared": 0
 }
 
 //Messages

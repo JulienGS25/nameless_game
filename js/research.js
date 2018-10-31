@@ -65,13 +65,13 @@ function researchScience(input) {
             }
         }
 
-
-
         //Updates UI for new buildings
         displayResearch();
 
-        //Runs the corresponding function specific to this research
-        research[input.id].researchFunction();
+        //Runs the corresponding function specific to this building
+        var rscFunc = eval(buildings[input.id].buildFunction);
+        rscFunc();
+
     }
 }
 
@@ -110,7 +110,7 @@ var research = [
         effects_5: "",
         displayable: 1,
         researched: 0,
-        researchFunction: researchStoneWorking,
+        researchFunction: "researchStoneWorking",
         message: "By hitting stones together, you can shape them into useful objects.",
         unlocks_research: [],
         unlocks_buildings: [],
@@ -137,7 +137,7 @@ var research = [
         effects_5: "",
         displayable: 1,
         researched: 0,
-        researchFunction: researchPrimitiveConstruction,
+        researchFunction: "researchPrimitiveConstruction",
         message: "Placeholder",
         unlocks_research: [],
         unlocks_buildings: [4, 5],

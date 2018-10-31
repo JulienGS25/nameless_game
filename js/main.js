@@ -42,24 +42,24 @@ function saveGame(){
 function loadGame(){
     var gameData = localStorage.getItem('gameData');
     if (gameData == null){
-        console.log('No data stored!');
+        console.log('No data stored, starting new game.');
     }
     //Game is found, loading data
     else {
+        logText('Loaded game data.')
         var gameObject = JSON.parse(gameData);
-        //console.log(gameData)
-        //console.log(gameObject)
 
         resource = gameObject.resource;
         speed = gameObject.speed;
         efficiency = gameObject.efficiency;
         storage = gameObject.storage;
-        //events = gameObject.events;
-        //messages = gameObject.messages;
+        events = gameObject.events;
+        messages = gameObject.messages;
         visible = gameObject.visible;
         jobs = gameObject.jobs;
 
         buildings = gameObject.buildings;
+        research = gameObject.research
 
         //exploredArea = gameObject.exploredArea;
         passedTime = gameObject.passedTime;
@@ -110,114 +110,21 @@ function loadGame(){
         if (visible.peopleResource == true){
             show('#people-resource', 25);
         }
+        if (visible.foodResource == true){
+            showFood();
+        }
+        if (visible.woodResource == true){
+            showWood();
+        }
+        if(visible.stoneResource == true){
+            showStone();
+        }
+        if (visible.scienceResource == true){
+            showScience();
+        }
+
     }
 }
-
-
-//Example of what is saved in local storage
-/*
-{
-    "resource":{
-        "people":0,
-        "food":0,
-        "wood":0,
-        "stone":0,
-        "science":0,
-        "copperOre":0,
-        "copperIngot":0,
-        "tinOre":0,
-        "tinIngot":0,
-        "ironOre":0,
-        "ironIngot":0,
-        "goldOre":0,
-        "goldIngot":0,
-        "wheat":0,
-        "flour":0,
-        "water":0
-    },
-    "speed":{
-        "foodGather":2,
-        "woodGather":2,
-        "stoneGather":2
-    },
-    "efficiency":{
-        "foodGather":1,
-        "woodGather":1,
-        "stoneGather":1,
-        "shaman":1,
-        "hunter":1,
-        "woodChopper":1,
-        "miner":1,
-        "farmer":1,
-        "explore":1
-    },
-    "storage":{
-        "people":5,
-        "food":5,
-        "wood":5,
-        "stone":5,
-        "science":0,
-        "copperOre":0,
-        "copperIngot":0,
-        "tinOre":0,
-        "tinIngot":0,
-        "ironOre":0,
-        "ironIngot":0,
-        "goldOre":0,
-        "goldIngot":0,
-        "wheat":0,
-        "flour":0,
-        "water":0
-        },
-    "events":{
-        "lightningStrike":1,
-        "wakeUp":1,
-        "fireAppeared":1
-    },
-    "messages":{
-        "coolMsgDisplayed":0,
-        "coldMsgDisplayed":0,
-        "warmerMsgDisplayed":0,
-        "warmMsgDisplayed":0,
-        "hotMsgDisplayed":0,
-        "resourceSpeedMsgDisplayed":0
-    },
-    "visible":{
-        "leftTab":false,
-        "midTab":false,
-        "rightTab":true,
-        "bottomTab":false,
-        "era":false,
-        "peopleResource":false,
-        "foodResource":false,
-        "woodResource":false,
-        "stoneResource":false,
-        "scienceResource":false,
-        "forageFoodButton":false,
-        "gatherWoodButton":false,
-        "gatherStoneButton":false,
-        "exploreButton":false,
-        "leftTabShown":"buildings"
-    },
-    "jobs":{
-        "shaman":0,
-        "hunter":0,
-        "woodchopper":0,
-        "miner":0,
-        "farmer":0
-    },
-    "state":6,
-    "exploredArea":0,
-    "passedTime":11,
-    "currentTemp":30.110000000000017,
-    "gameSpeed":50,
-    "tooltipShown":0,
-    "pollutionLevel":0,
-    "foodConsumption":0.000001}
-*/
-
-
-
 
 function resetGame(){
     localStorage.clear('value');
@@ -446,16 +353,17 @@ function gameLoop(){
         tempCheck();
         manageResources();
 
-        if (passedTime >= 2 && events.wakeUp == 0){
+        if (passedTime == 5 && events.wakeUp == 0){
             wakeUp();
         }
         if (passedTime >= 5){
             show('.middle-tab', 500);
             visible.midTab = true;
         }    
-        if (passedTime >= 10 && events.lightningStrike == 0) {
+        if (passedTime == 25 && events.lightningStrike == 0){
             discoverFire();
         }
+
 
         if (messages.resourceSpeedMsgDisplayed == 0){
             if (speed.foodGather > 2 || speed.woodGather > 2 || speed.stoneGather > 2){
@@ -463,6 +371,7 @@ function gameLoop(){
                 messages.resourceSpeedMsgDisplayed = 1;
             }
         }
+
 
         if (document.getElementById("free-people") !== null) {
             document.getElementById("free-people").innerHTML = prettify(resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer));
