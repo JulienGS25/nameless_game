@@ -132,6 +132,8 @@ function resetGame(){
     location.reload();
 }
 
+//Autosaves every minute
+setInterval(function(){saveGame()}, 60000);
 
 //Options
 document.getElementById("diff-easy").addEventListener("click", setEasyDiff);
