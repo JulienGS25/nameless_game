@@ -37,7 +37,7 @@ function saveGame(){
 
     //Saves the data
     localStorage.setItem('gameData', JSON.stringify(getData));
-    logText('Game data saved!');
+    displayGameSavedNotification();
 }
 
 function loadGame(){
