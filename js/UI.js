@@ -230,7 +230,6 @@ window.onclick = function(event) {
 }
 
 
-
 function displayGameSavedNotification() {
     // Get the snackbar DIV
     var x = document.getElementById("save-game-notif");
