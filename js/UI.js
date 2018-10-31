@@ -218,11 +218,6 @@ resetButton.onclick = function() {
     resetModal.style.display = "block";
 }
 
-function resetGame() {
-    localStorage.clear('value');
-    console.log('Cleared data. Local storage is now empty.');
-    location.reload();
-}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
