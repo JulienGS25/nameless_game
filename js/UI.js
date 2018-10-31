@@ -209,3 +209,13 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+//Game reset confirmation modal
+function displayResetModal(){
+    modal = document.getElementById("reset-confirm-modal");
+    document.getElementById("reset-yes").addEventListener("click", resetGame);
+    document.getElementById("reset-no").addEventListener("click", function(){
+        modal.style.display = "none"
+    });
+    modal.style.display = "block";
+}

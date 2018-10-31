@@ -9,7 +9,8 @@ if (typeof(Storage) == "undefined") {
 
 document.getElementById("save").addEventListener("click", saveGame);
 document.getElementById("load").addEventListener("click", loadGame);
-document.getElementById("reset").addEventListener("click", resetGame);
+document.getElementById("reset").addEventListener("click", displayResetModal);
+//document.getElementById("reset-yes").addEventListener("click", resetGame);
 
 function saveGame(){
     var getData = {
@@ -125,35 +126,6 @@ function loadGame(){
 }
 
 function resetGame() {
-/*
-    $('body').append("<div id='reset-confirm-modal' class='modal'>" +
-        "<div class='modal-content'>" +
-        "<div class='modal-body'>" +
-        "<p>Are you sure?</p>" +
-        "<p class='underlined'>This will wipe ALL of your game data.</p>" +
-        "<div class='mid-tab-button options-button' id='reset-yes' type='button'>Yes</div>" +
-        "<div class='mid-tab-button options-button' id='reset-no' type='button'>No</div>" +
-        "</div>" +
-        "</div>" +
-        "</div>");
-
-    //Modal section
-    var modal = document.getElementById('reset-confirm-modal'); // The modal
-    var btn = document.getElementById("reset");  //The button that opens the modal
-
-    // When the user clicks the button, open the modal 
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }*/
-
-
     localStorage.clear('value');
     console.log('Cleared data. Local storage is now empty.');
     location.reload();
