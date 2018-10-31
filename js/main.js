@@ -9,8 +9,8 @@ if (typeof(Storage) == "undefined") {
 
 document.getElementById("save").addEventListener("click", saveGame);
 document.getElementById("load").addEventListener("click", loadGame);
-document.getElementById("reset").addEventListener("click", displayResetModal);
-//document.getElementById("reset-yes").addEventListener("click", resetGame);
+//document.getElementById("reset").addEventListener("click", displayResetModal);
+
 
 function saveGame(){
     var getData = {
@@ -130,6 +130,8 @@ function resetGame() {
     console.log('Cleared data. Local storage is now empty.');
     location.reload();
 }
+
+
 
 //Autosaves every minute
 setInterval(function(){saveGame()}, 60000);

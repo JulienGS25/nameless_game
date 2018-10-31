@@ -193,32 +193,47 @@ window.addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
 
 
 
-//Modal section
-var modal = document.getElementById('myModal'); // The modal
-var btn = document.getElementById("options");  //The button that opens the modal
-var span = document.getElementsByClassName("close")[0]; //The <span> element that closes the modal
+//Options Modal section
+var optionsModal = document.getElementById('myModal'); // The options modal
+var optionsButton = document.getElementById("options");  //The button that opens the modal
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
+optionsButton.onclick = function() {
+    optionsModal.style.display = "block";
+}
+
+//Reset confirmation modal section
+var resetModal = document.getElementById("reset-confirm-modal"); // The reset confirmation modal
+var resetButton = document.getElementById("reset"); //The button that opens the modal
+
+//Adds event handlers on Reset and Cancel buttons
+document.getElementById("reset-yes").addEventListener("click", resetGame);
+document.getElementById("reset-no").addEventListener("click", function(){
+    resetModal.style.display = "none"
+    });
+
+
+// When the user clicks the button, open the modal 
+resetButton.onclick = function() {
+    resetModal.style.display = "block";
+}
+
+function resetGame() {
+    localStorage.clear('value');
+    console.log('Cleared data. Local storage is now empty.');
+    location.reload();
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == optionsModal) {
+        optionsModal.style.display = "none";
+    }
+    if (event.target == resetModal){
+        resetModal.style.display = "none";
     }
 }
 
-//Game reset confirmation modal
-function displayResetModal(){
-    modal = document.getElementById("reset-confirm-modal");
-    document.getElementById("reset-yes").addEventListener("click", resetGame);
-    document.getElementById("reset-no").addEventListener("click", function(){
-        modal.style.display = "none"
-    });
-    modal.style.display = "block";
-}
 
 
 function displayGameSavedNotification() {
