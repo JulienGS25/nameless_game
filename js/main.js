@@ -57,11 +57,9 @@ function loadGame(){
         messages = gameObject.messages;
         visible = gameObject.visible;
         jobs = gameObject.jobs;
-
         buildings = gameObject.buildings;
         research = gameObject.research
-
-        //exploredArea = gameObject.exploredArea;
+        exploredArea = gameObject.exploredArea;
         passedTime = gameObject.passedTime;
         currentTemp = gameObject.currentTemp;
         gameSpeed = gameObject.gameSpeed;
@@ -126,7 +124,36 @@ function loadGame(){
     }
 }
 
-function resetGame(){
+function resetGame() {
+/*
+    $('body').append("<div id='reset-confirm-modal' class='modal'>" +
+        "<div class='modal-content'>" +
+        "<div class='modal-body'>" +
+        "<p>Are you sure?</p>" +
+        "<p class='underlined'>This will wipe ALL of your game data.</p>" +
+        "<div class='mid-tab-button options-button' id='reset-yes' type='button'>Yes</div>" +
+        "<div class='mid-tab-button options-button' id='reset-no' type='button'>No</div>" +
+        "</div>" +
+        "</div>" +
+        "</div>");
+
+    //Modal section
+    var modal = document.getElementById('reset-confirm-modal'); // The modal
+    var btn = document.getElementById("reset");  //The button that opens the modal
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }*/
+
+
     localStorage.clear('value');
     console.log('Cleared data. Local storage is now empty.');
     location.reload();
@@ -197,7 +224,6 @@ function fluctuateTemp() {
   if (currentTemp < -30) tempDirection = 0.01;
   if (currentTemp > 35) tempDirection = -0.01;
 }
-
 
 function tempCheck(){
     if (currentTemp < 0){
@@ -347,9 +373,6 @@ function manageResources() {
 // Game loop
 function gameLoop(){
     window.setInterval(function(){
-        //getFood(foragers);
-        //getWood(lumberjacks);
-        //getStone(miners);
         passedTime++;
         fluctuateTemp();
         tempCheck();
