@@ -1,3 +1,5 @@
+
+
 //Common function to build all buildings
 //See comments to see what it does
 
@@ -95,8 +97,9 @@ function buildHunterPost(){
 
 function buildVillageCenter(){
     show('#manage-tribe-btn',100);
-    document.getElementById('manage-tribe-btn').addEventListener("click", manageTribe);
-    document.getElementById('people-resource').innerHTML = ("Tribespeople: <span id='people'>0</span><span> / </span><span id='people-storage'></span>")
+    //document.getElementById('manage-tribe-btn').addEventListener("click", manageTribe);
+    document.getElementById('people-resource').innerHTML = ("Tribespeople: <span id='people'>0</span><span> / </span><span id='people-storage'></span>");
+    visible.manageTribeButton = true;
 };
 
 function buildWoodChopper(){

@@ -87,11 +87,11 @@ function getFood(eff, mode, type) {
     }
     else if (mode == 'auto') {
         if (type == 'hunter'){
-            efficiency = efficiency.hunter;
+            eff = efficiency.hunter;
             exploredArea = exploredArea + efficiency.explore;
         }
         else if (type == 'farmer'){
-            efficiency = efficiency.farmer;
+            eff = efficiency.farmer;
         }
         if (resource.food < storage.food) {
             resource.food = resource.food + eff;
@@ -115,7 +115,6 @@ function getWood(eff, mode) {
         speed.woodGather = speed.woodGather * 1.1;
     }
     else if (mode == 'auto') {
-        efficiency = eff;
         if (resource.wood < storage.wood) {
             resource.wood = resource.wood + eff;
             document.getElementById("p-res-2-amt").innerHTML = resource.wood;
@@ -140,7 +139,6 @@ function getStone(eff, mode) {
         speed.stoneGather = speed.stoneGather * 1.1;
     }
     else if (mode == 'auto') {
-        efficiency = eff;
         if (resource.stone < storage.stone) {
             resource.stone = resource.stone + eff;
             document.getElementById("p-res-3-amt").innerHTML = resource.stone;
@@ -148,13 +146,12 @@ function getStone(eff, mode) {
     }
 };
 
-function getScience(efficiency) {
+function getScience(eff) {
     if (visible.scienceResource == false){
         showScience();
     }
-    efficiency = efficiency.shaman;
-        if (resource.science < storage.science) {
-            resource.science = resource.science + efficiency;
-            document.getElementById("p-res-4-amt").innerHTML = resource.science;
-        }
+    if (resource.science < storage.science) {
+        resource.science = resource.science + eff;
+        document.getElementById("p-res-4-amt").innerHTML = resource.science;
+    }
 };

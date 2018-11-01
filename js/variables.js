@@ -93,6 +93,7 @@ var visible = {
     "gatherStoneButton" : false,
     "exploreButton" : false,
     "researchTitleButton": false,
+    "manageTribeButton": false,
     "leftTabShown": 'buildings', //can be buildings or research
 }
 

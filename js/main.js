@@ -90,6 +90,9 @@ function loadGame(){
         if (visible.researchTitleButton == true){
             show('#research-title', 25);
         }
+        if (visible.manageTribeButton = true){
+            show('#manage-tribe-btn', 25);
+        }
 
         //Era
         if (visible.era == true){
@@ -123,12 +126,6 @@ function loadGame(){
         }
 
     }
-}
-
-function resetGame() {
-    localStorage.clear('value');
-    console.log('Cleared data. Local storage is now empty.');
-    location.reload();
 }
 
 
@@ -409,6 +406,7 @@ function gameLoop(){
         document.getElementById("p-res-2-storage").innerHTML = prettify(storage.wood);
         document.getElementById("p-res-3-amt").innerHTML = prettify(resource.stone);
         document.getElementById("p-res-3-storage").innerHTML = prettify(storage.stone);
+        document.getElementById("p-res-4-amt").innerHTML = prettify(resource.science);
         document.getElementById("p-res-4-storage").innerHTML = prettify(storage.science);
 
     }, gameSpeed)
@@ -418,3 +416,7 @@ $(document).ready(function(){
     loadGame();
     gameLoop();
 });
+
+
+//Event handlers
+document.getElementById('manage-tribe-btn').addEventListener("click", manageTribe);

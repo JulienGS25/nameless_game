@@ -213,6 +213,12 @@ document.getElementById("reset-no").addEventListener("click", function(){
     });
 
 
+function resetGame() {
+    localStorage.clear('value');
+    console.log('Cleared data. Local storage is now empty.');
+    location.reload();
+}
+    
 // When the user clicks the button, open the modal 
 resetButton.onclick = function() {
     resetModal.style.display = "block";
