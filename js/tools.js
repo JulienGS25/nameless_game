@@ -239,6 +239,7 @@ var inputOneContent = "";
 var inputTwoContent = "";
 var outputResourceName = "";
 var outputResourceCount = "";
+var smeltInProgress = false;
 
 function toggleMode() {
   if (furnaceMode == "smelt") {
@@ -271,62 +272,98 @@ function activateFurnace() {
   var endColor = "#c66715";
   if (furnaceMode == "smelt") {
 
-    if (inputOneContent == "copper" && (outputResourceName == "copperBar" || outputResourceName == "") ){
+    if (inputOneContent == "copper" && (outputResourceName == "copperBar" || outputResourceName == "") && smeltInProgress == false){
     smeltAnimation();
       setTimeout(function() {
       outputResourceName = "copperBar";
       $("#output-resource-name").text("Copper Bar");
-      $("#output-slot").css("background-color", "#b87333");
+      $("#output-slot").addClass("furnace-copper-bar-bg");
       $("#output-slot").addClass("output-slot-filled");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
     }
-    else if (inputOneContent == "tin"){
+    if (outputResourceName !== ""){
+        if (inputOneContent == "copper" && outputResourceName !== "copperBar"){
+            logText('Please empty output slot first!')
+        }
+    }
+    else if (inputOneContent == "tin" && (outputResourceName == "tinBar" || outputResourceName == "") && smeltInProgress == false){
+    smeltAnimation();
       setTimeout(function() {
       outputResourceName = "tinBar";
       $("#output-resource-name").text("Tin Bar");
-      $("#output-slot").css("background-color", "#d3d4d5");
+      $("#output-slot").addClass("furnace-tin-bar-bg");
+      $("#output-slot").addClass("output-slot-filled");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
     }
-    else if (inputOneContent == "iron"){
+    if (outputResourceName !== ""){
+        if (inputOneContent == "tin" && outputResourceName !== "tinBar"){
+            logText('Please empty output slot first!')
+        }
+    }
+    else if (inputOneContent == "iron" && (outputResourceName == "ironBar" || outputResourceName == "") && smeltInProgress == false){
+        smeltAnimation();
       setTimeout(function() {
       outputResourceName = "ironBar";
       $("#output-resource-name").text("Iron Bar");
-      $("#output-slot").css("background-color", "rgb(108, 120, 147)");
+      $("#output-slot").addClass("furnace-iron-bar-bg");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
     }
-    else if (inputOneContent == "gold"){
+    if (outputResourceName !== ""){
+        if (inputOneContent == "iron" && outputResourceName !== "ironBar"){
+            logText('Please empty output slot first!')
+        }
+    }
+    else if (inputOneContent == "gold" && (outputResourceName == "goldBar" || outputResourceName == "") && smeltInProgress == false){
+        smeltAnimation();
       setTimeout(function() {
       outputResourceName = "goldBar";
       $("#output-resource-name").text("Gold Bar");
-      $("#output-slot").css("background-color", "rgb(255, 201, 14)");
+      $("#output-slot").addClass("furnace-gold-bar-bg");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
     }
-    else if (inputOneContent == "sand"){
+    if (outputResourceName !== ""){
+        if (inputOneContent == "gold" && outputResourceName !== "goldBar"){
+            logText('Please empty output slot first!')
+        }
+    }
+    else if (inputOneContent == "sand" && (outputResourceName == "glassPanel" || outputResourceName == "") && smeltInProgress == false){
+        smeltAnimation();
       setTimeout(function() {
       outputResourceName = "glassPanel";
       $("#output-resource-name").text("Glass Panel");
-      $("#output-slot").css("background-color", "lightblue");
+      $("#output-slot").addClass("furnace-glass-panel-bg");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
     }
-    else if (inputOneContent == "titanium"){
+    if (outputResourceName !== ""){
+        if (inputOneContent == "sand" && outputResourceName !== "glassPanel"){
+            logText('Please empty output slot first!')
+        }
+    }
+    else if (inputOneContent == "titanium" && (outputResourceName == "titaniumBar" || outputResourceName == "") && smeltInProgress == false){
+        smeltAnimation();
       setTimeout(function() {
       outputResourceName = "titaniumBar";
       $("#output-resource-name").text("Titanium Bar");
-      $("#output-slot").css("background-color", "rgb(47, 86, 242)");
+      $("#output-slot").addClass("furnace-titanium-bar-bg");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
-    }    
+    }
+    if (outputResourceName !== ""){
+        if (inputOneContent == "titanium" && outputResourceName !== "titaniumBar"){
+            logText('Please empty output slot first!')
+        }
+    }
     
   } 
   
@@ -342,8 +379,10 @@ function activateFurnace() {
 
   function smeltAnimation() {
     //Removes the progress bar after it has finished
+    smeltInProgress = true;
     setTimeout(function() {
       $("#progress-1 svg").remove();
+      smeltInProgress = false;
     }, smeltTime);
     
     //Creates the progress bar
@@ -404,7 +443,12 @@ function clearInput2() {
 function clearOutput(){
   $("#output-resource-name").text("");
   $("#output-resource-count").text("");
-  $("#output-slot").css("background-color","black");
+  $("#output-slot").removeClass("furnace-copper-bar-bg");
+  $("#output-slot").removeClass("furnace-tin-bar-bg");
+  $("#output-slot").removeClass("furnace-iron-bar-bg");
+  $("#output-slot").removeClass("furnace-gold-bar-bg");
+  $("#output-slot").removeClass("furnace-glass-panel-bg");
+  $("#output-slot").removeClass("furnace-titanium-bar-bg");
   outputResourceCount = 0;
   outputResourceName = "";
   
