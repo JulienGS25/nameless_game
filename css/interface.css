@@ -631,10 +631,12 @@ grid-column-end
 .furnace-titanium-bg{
   background-image: url("../images/Titanium Ore.png");
 }
-.furnace-titanium-bar-bg{
+.furnace-titanium-plate-bg{
   background-image: url("../images/Titanium Plate.png");
 }
-
+.furnace-steel-plate-bg{
+  background-image: url("../images/Steel Plate.png");
+}
 .furnace-resource{
   border: solid white;
   border-width: 2px;
