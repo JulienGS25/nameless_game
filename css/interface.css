@@ -572,36 +572,48 @@ grid-column-end
 }
 #furnace-copper{
   grid-area: 8 / 1 / 8 / 2;
-  background-color: #b87333;
   font-size: 1vh;
+}
+.furnace-copper-bg{
+  background-image: url("../images/Copper Ore.png");
 }
 #furnace-tin{
   grid-area: 8 / 2 / 8 / 3;
-  background-color: #d3d4d5;
-  color: black;  
+}
+.furnace-tin-bg{
+  background-image: url("../images/Tin Ore.png");
 }
 #furnace-iron{
   grid-area: 8 / 3 / 8 / 4;
-  background-color: rgb(108, 120, 147);  
+}
+.furnace-iron-bg{
+  background-image: url("../images/Iron Ore.png"); 
 }
 #furnace-coal{
   grid-area: 8 / 4 / 8 / 5;
-  background-color: rgb(111, 111, 111);
+}
+.furnace-coal-bg{
+  background-image: url("../images/Coal Ore.png");
 }
 #furnace-gold{
   grid-area: 8 / 5 / 8 / 6;
-  background-color: rgb(255, 201, 14);
-  color: black;  
 }
+.furnace-gold-bg{
+  background-image: url("../images/Gold Ore.png");
+}
+
 #furnace-sand{
-  grid-area: 8 / 6 / 8 / 7;
-  background-color: rgb(237, 201, 175);
-  color: black;
+  grid-area: 8 / 7 / 8 / 8;  
+}
+.furnace-sand-bg{
+  background-image: url("../images/Sand.png");
 }
 #furnace-titanium{
-  grid-area: 8 / 7 / 8 / 8;
-  background-color: rgb(47, 86, 242);
+  grid-area: 8 / 6 / 8 / 7;
   font-size: 1vh;
+}
+.furnace-titanium-bg{
+  background-image: url("../images/Titanium Ore.png");
 }
 
 .furnace-resource{
@@ -611,7 +623,9 @@ grid-column-end
   transition: transform 0.05s, opacity 0.10s;
   margin-left: 0.25vw;
   margin-right: 0.25vw;
-  opacity: 0.50;
+  opacity: 0.70;
+  background-repeat: no-repeat;
+  background-position: center; 
 }
 
 .furnace-resource:hover{

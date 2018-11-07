@@ -202,13 +202,13 @@ function openFurnace(){
             "<div id='output-resource-name'></div>" +
             "<div id='output-resource-count'></div>" +
             "</div>" +
-            "<div class='furnace-resource' id='furnace-copper'>Copper</div>" +
-            "<div class='furnace-resource' id='furnace-tin'>Tin</div>" +
-            "<div class='furnace-resource' id='furnace-iron'>Iron</div>" +
-            "<div class='furnace-resource' id='furnace-coal'>Coal</div>" +
-            "<div class='furnace-resource' id='furnace-gold'>Gold</div>" +
-            "<div class='furnace-resource' id='furnace-sand'>Sand</div>" +
-            "<div class='furnace-resource' id='furnace-titanium'>Titanium</div>" +
+            "<div class='furnace-resource furnace-copper-bg' id='furnace-copper'>Copper</div>" +
+            "<div class='furnace-resource furnace-tin-bg' id='furnace-tin'>Tin</div>" +
+            "<div class='furnace-resource furnace-iron-bg' id='furnace-iron'>Iron</div>" +
+            "<div class='furnace-resource furnace-coal-bg' id='furnace-coal'>Coal</div>" +
+            "<div class='furnace-resource furnace-gold-bg' id='furnace-gold'>Gold</div>" +
+            "<div class='furnace-resource furnace-sand-bg' id='furnace-sand'>Sand</div>" +
+            "<div class='furnace-resource furnace-titanium-bg' id='furnace-titanium'>Titanium</div>" +
             "</div>");
     }, 100);
 
@@ -271,18 +271,12 @@ function activateFurnace() {
   var endColor = "#c66715";
   if (furnaceMode == "smelt") {
 
-    if (inputOneContent !== ""){
-      smeltAnimation();
-      }
-    if (outputResourceName !== ""){
-      console.log('Please remove contents from output slot.')
-    }
-    if (inputOneContent == "copper" && (outputResourceName == "copper" || outputResourceName == "") ){
+    if (inputOneContent == "copper" && (outputResourceName == "copperBar" || outputResourceName == "") ){
+    smeltAnimation();
       setTimeout(function() {
       outputResourceName = "copperBar";
       $("#output-resource-name").text("Copper Bar");
       $("#output-slot").css("background-color", "#b87333");
-      $("#output-slot").css("color", "white");
       $("#output-slot").addClass("output-slot-filled");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
@@ -293,7 +287,6 @@ function activateFurnace() {
       outputResourceName = "tinBar";
       $("#output-resource-name").text("Tin Bar");
       $("#output-slot").css("background-color", "#d3d4d5");
-      $("#output-slot").css("color", "black");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
@@ -303,7 +296,6 @@ function activateFurnace() {
       outputResourceName = "ironBar";
       $("#output-resource-name").text("Iron Bar");
       $("#output-slot").css("background-color", "rgb(108, 120, 147)");
-      $("#output-slot").css("color", "white");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
@@ -313,7 +305,6 @@ function activateFurnace() {
       outputResourceName = "goldBar";
       $("#output-resource-name").text("Gold Bar");
       $("#output-slot").css("background-color", "rgb(255, 201, 14)");
-      $("#output-slot").css("color", "black");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
@@ -323,7 +314,6 @@ function activateFurnace() {
       outputResourceName = "glassPanel";
       $("#output-resource-name").text("Glass Panel");
       $("#output-slot").css("background-color", "lightblue");
-      $("#output-slot").css("color", "black");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
@@ -333,14 +323,10 @@ function activateFurnace() {
       outputResourceName = "titaniumBar";
       $("#output-resource-name").text("Titanium Bar");
       $("#output-slot").css("background-color", "rgb(47, 86, 242)");
-      $("#output-slot").css("color", "white");
       outputResourceCount++;
       $("#output-resource-count").text(outputResourceCount);
     }, smeltTime);
     }    
-    else{
-      console.log('Furnace is empty!')
-    }
     
   } 
   
@@ -389,19 +375,29 @@ function activateFurnace() {
 function clearInput1() {
   $("#input-slot-1").text("");
   $("#input-slot-1").css("background-color", "black");
-  $("#furnace-copper").css("opacity", "0.5");
-  $("#furnace-tin").css("opacity", "0.5");
-  $("#furnace-iron").css("opacity", "0.5");
-  $("#furnace-gold").css("opacity", "0.5");
-  $("#furnace-sand").css("opacity", "0.5");
-  $("#furnace-titanium").css("opacity", "0.5");
+  $("#furnace-copper").css("opacity", "0.7");
+  $("#furnace-tin").css("opacity", "0.7");
+  $("#furnace-iron").css("opacity", "0.7");
+  $("#furnace-gold").css("opacity", "0.7");
+  $("#furnace-sand").css("opacity", "0.7");
+  $("#furnace-titanium").css("opacity", "0.7");
+  $("#input-slot-1").removeClass("furnace-copper-bg");
+  $("#input-slot-1").removeClass("furnace-tin-bg");
+  $("#input-slot-1").removeClass("furnace-iron-bg");
+  $("#input-slot-1").removeClass("furnace-gold-bg");
+  $("#input-slot-1").removeClass("furnace-sand-bg");
+  $("#input-slot-1").removeClass("furnace-titanium-bg");
+  if (furnaceMode == "smelt"){
+    $("#furnace-coal").css("opacity", "0.7");   
+  }
   inputOneContent = "";
 }
 
 function clearInput2() {
   $("#input-slot-2").text("");
-  $("#input-slot-2").css("background-color", "black");
+  $("#input-slot-2").removeClass("furnace-coal-bg");
   $("#furnace-coal").css("opacity", "0.5");
+  
   inputTwoContent = "";
 }
 
@@ -410,13 +406,19 @@ function clearOutput(){
   $("#output-resource-count").text("");
   $("#output-slot").css("background-color","black");
   outputResourceCount = 0;
+  outputResourceName = "";
+  
 }
 
 function addCopper() {
   $("#input-slot-1").text("Copper");
-  $("#input-slot-1").css("background-color", "#b87333");
   $("#input-slot-1").css("font-size", "1vh");
-  $("#input-slot-1").css("color", "white");
+  $("#input-slot-1").addClass("furnace-copper-bg");
+  $("#input-slot-1").removeClass("furnace-tin-bg");
+  $("#input-slot-1").removeClass("furnace-iron-bg");
+  $("#input-slot-1").removeClass("furnace-gold-bg");
+  $("#input-slot-1").removeClass("furnace-sand-bg");
+  $("#input-slot-1").removeClass("furnace-titanium-bg");
   $("#furnace-copper").css("opacity", "1");
   $("#furnace-tin").css("opacity", "0.5");
   $("#furnace-iron").css("opacity", "0.5");
@@ -424,13 +426,20 @@ function addCopper() {
   $("#furnace-sand").css("opacity", "0.5");
   $("#furnace-titanium").css("opacity", "0.5");
   inputOneContent = "copper";
+  if (inputTwoContent == ""){
+        $("#furnace-coal").css("opacity", "0.5");
+  }
 }
 
 function addTin() {
   $("#input-slot-1").text("Tin");
-  $("#input-slot-1").css("background-color", "#d3d4d5");
   $("#input-slot-1").css("font-size", "1vh");
-  $("#input-slot-1").css("color", "black");
+  $("#input-slot-1").addClass("furnace-tin-bg");
+  $("#input-slot-1").removeClass("furnace-copper-bg");
+  $("#input-slot-1").removeClass("furnace-iron-bg");
+  $("#input-slot-1").removeClass("furnace-gold-bg");
+  $("#input-slot-1").removeClass("furnace-sand-bg");
+  $("#input-slot-1").removeClass("furnace-titanium-bg");
   $("#furnace-tin").css("opacity", "1");
   $("#furnace-copper").css("opacity", "0.5");
   $("#furnace-iron").css("opacity", "0.5");
@@ -438,13 +447,20 @@ function addTin() {
   $("#furnace-sand").css("opacity", "0.5");
   $("#furnace-titanium").css("opacity", "0.5");
   inputOneContent = "tin";
+  if (inputTwoContent == ""){
+    $("#furnace-coal").css("opacity", "0.5");
+}
 }
 
 function addIron() {
   $("#input-slot-1").text("Iron");
-  $("#input-slot-1").css("background-color", "rgb(108, 120, 147)");
   $("#input-slot-1").css("font-size", "1vh");
-  $("#input-slot-1").css("color", "white");
+  $("#input-slot-1").addClass("furnace-iron-bg");
+  $("#input-slot-1").removeClass("furnace-copper-bg");
+  $("#input-slot-1").removeClass("furnace-tin-bg");
+  $("#input-slot-1").removeClass("furnace-gold-bg");
+  $("#input-slot-1").removeClass("furnace-sand-bg");
+  $("#input-slot-1").removeClass("furnace-titanium-bg");
   $("#furnace-iron").css("opacity", "1");
   $("#furnace-copper").css("opacity", "0.5");
   $("#furnace-tin").css("opacity", "0.5");
@@ -452,13 +468,16 @@ function addIron() {
   $("#furnace-sand").css("opacity", "0.5");
   $("#furnace-titanium").css("opacity", "0.5");
   inputOneContent = "iron";
+  if (inputTwoContent == ""){
+    $("#furnace-coal").css("opacity", "0.5");
+}
 }
 
 function addCoal() {
   if (furnaceMode == "alloy") {
     $("#input-slot-2").text("Coal");
-    $("#input-slot-2").css("background-color", "rgb(111, 111, 111)");
     $("#input-slot-2").css("font-size", "1vh");
+    $("#input-slot-2").addClass("furnace-coal-bg");
     $("#input-slot-2").css("color", "white");
     $("#furnace-coal").css("opacity", "1");
     inputTwoContent = "coal";
@@ -467,9 +486,13 @@ function addCoal() {
 
 function addGold() {
   $("#input-slot-1").text("Gold");
-  $("#input-slot-1").css("background-color", "rgb(255, 201, 14)");
   $("#input-slot-1").css("font-size", "1vh");
-  $("#input-slot-1").css("color", "black");
+  $("#input-slot-1").addClass("furnace-gold-bg");
+  $("#input-slot-1").removeClass("furnace-copper-bg");
+  $("#input-slot-1").removeClass("furnace-tin-bg");
+  $("#input-slot-1").removeClass("furnace-iron-bg");
+  $("#input-slot-1").removeClass("furnace-sand-bg");
+  $("#input-slot-1").removeClass("furnace-titanium-bg");
   $("#furnace-gold").css("opacity", "1");
   $("#furnace-copper").css("opacity", "0.5");
   $("#furnace-tin").css("opacity", "0.5");
@@ -477,13 +500,20 @@ function addGold() {
   $("#furnace-sand").css("opacity", "0.5");
   $("#furnace-titanium").css("opacity", "0.5");
   inputOneContent = "gold";
+  if (inputTwoContent == ""){
+    $("#furnace-coal").css("opacity", "0.5");
+}
 }
 
 function addSand() {
   $("#input-slot-1").text("Sand");
-  $("#input-slot-1").css("background-color", "rgb(237, 201, 175)");
   $("#input-slot-1").css("font-size", "1vh");
-  $("#input-slot-1").css("color", "black");
+  $("#input-slot-1").addClass("furnace-sand-bg");
+  $("#input-slot-1").removeClass("furnace-copper-bg");
+  $("#input-slot-1").removeClass("furnace-tin-bg");
+  $("#input-slot-1").removeClass("furnace-gold-bg");
+  $("#input-slot-1").removeClass("furnace-iron-bg");
+  $("#input-slot-1").removeClass("furnace-titanium-bg");
   $("#furnace-sand").css("opacity", "1");
   $("#furnace-copper").css("opacity", "0.5");
   $("#furnace-tin").css("opacity", "0.5");
@@ -491,13 +521,20 @@ function addSand() {
   $("#furnace-gold").css("opacity", "0.5");
   $("#furnace-titanium").css("opacity", "0.5");
   inputOneContent = "sand";
+  if (inputTwoContent == ""){
+    $("#furnace-coal").css("opacity", "0.5");
+}
 }
 
 function addTitanium() {
   $("#input-slot-1").text("Titanium");
-  $("#input-slot-1").css("background-color", "rgb(47, 86, 242)");
   $("#input-slot-1").css("font-size", "1vh");
-  $("#input-slot-1").css("color", "white");
+  $("#input-slot-1").addClass("furnace-titanium-bg");
+  $("#input-slot-1").removeClass("furnace-copper-bg");
+  $("#input-slot-1").removeClass("furnace-tin-bg");
+  $("#input-slot-1").removeClass("furnace-iron-bg");
+  $("#input-slot-1").removeClass("furnace-gold-bg");
+  $("#input-slot-1").removeClass("furnace-sand-bg");
   $("#furnace-titanium").css("opacity", "1");
   $("#furnace-copper").css("opacity", "0.5");
   $("#furnace-tin").css("opacity", "0.5");
@@ -505,4 +542,7 @@ function addTitanium() {
   $("#furnace-gold").css("opacity", "0.5");
   $("#furnace-sand").css("opacity", "0.5");
   inputOneContent = "titanium";
+  if (inputTwoContent == ""){
+    $("#furnace-coal").css("opacity", "0.5");
+}
 }
