@@ -288,7 +288,7 @@ function activateFurnace() {
             logText('Please empty output slot first!')
         }
     }
-    else if (inputOneContent == "tin" && (outputResourceName == "tinBar" || outputResourceName == "") && smeltInProgress == false){
+    if (inputOneContent == "tin" && (outputResourceName == "tinBar" || outputResourceName == "") && smeltInProgress == false){
     smeltAnimation();
       setTimeout(function() {
       outputResourceName = "tinBar";
@@ -304,7 +304,7 @@ function activateFurnace() {
             logText('Please empty output slot first!')
         }
     }
-    else if (inputOneContent == "iron" && (outputResourceName == "ironBar" || outputResourceName == "") && smeltInProgress == false){
+    if (inputOneContent == "iron" && (outputResourceName == "ironBar" || outputResourceName == "") && smeltInProgress == false){
         smeltAnimation();
       setTimeout(function() {
       outputResourceName = "ironBar";
@@ -319,7 +319,7 @@ function activateFurnace() {
             logText('Please empty output slot first!')
         }
     }
-    else if (inputOneContent == "gold" && (outputResourceName == "goldBar" || outputResourceName == "") && smeltInProgress == false){
+    if (inputOneContent == "gold" && (outputResourceName == "goldBar" || outputResourceName == "") && smeltInProgress == false){
         smeltAnimation();
       setTimeout(function() {
       outputResourceName = "goldBar";
@@ -334,7 +334,7 @@ function activateFurnace() {
             logText('Please empty output slot first!')
         }
     }
-    else if (inputOneContent == "sand" && (outputResourceName == "glassPanel" || outputResourceName == "") && smeltInProgress == false){
+    if (inputOneContent == "sand" && (outputResourceName == "glassPanel" || outputResourceName == "") && smeltInProgress == false){
         smeltAnimation();
       setTimeout(function() {
       outputResourceName = "glassPanel";
@@ -349,7 +349,7 @@ function activateFurnace() {
             logText('Please empty output slot first!')
         }
     }
-    else if (inputOneContent == "titanium" && (outputResourceName == "titaniumBar" || outputResourceName == "") && smeltInProgress == false){
+    if (inputOneContent == "titanium" && (outputResourceName == "titaniumBar" || outputResourceName == "") && smeltInProgress == false){
         smeltAnimation();
       setTimeout(function() {
       outputResourceName = "titaniumBar";
