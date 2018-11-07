@@ -193,7 +193,7 @@ function openFurnace(){
             "<i id='smelt-count-more' class='fas fa-plus'></i>" +
             "<div class='furnace-button' id='smelt-button'>Smelt</div>" +
             "</div>" +
-            "<div class='furnace-button' id='burn-wood'>Burn Wood</div>" +
+            "<div class='furnace-button' id='feed-fire'>Feed Fire</div>" +
             "<div id='input-text-1'>Input 1</div>" +
             "<div id='output-text'>Output</div>" +
             "<div class='furnace-slot' id='input-slot-1'></div>" +
