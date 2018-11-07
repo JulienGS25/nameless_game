@@ -183,7 +183,7 @@ function openFurnace(){
             "<div id='furnace-title'>Furnace</div>" +
             "<div id='furnace-description'>The furnace smelts ore into bars.</div>" +
             "<div id='furnace-mode-button' class='furnace-button'>Smelt Mode</div>" +
-            "<div id='furnace-image'>Fire Image</div>" +
+            "<div id='furnace-image'></div>" +
             "<div id='smelt-count-area'>" +
             "<div id='smelt-count-title'>Smelt Count</div>" +
             "<i id='smelt-count-less' class='fas fa-minus'></i>" +
