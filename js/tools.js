@@ -435,7 +435,7 @@ function clearInput1() {
 function clearInput2() {
   $("#input-slot-2").text("");
   $("#input-slot-2").removeClass("furnace-coal-bg");
-  $("#furnace-coal").css("opacity", "0.5");
+  $("#furnace-coal").css("opacity", "0.7");
   
   inputTwoContent = "";
 }
