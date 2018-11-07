@@ -94,6 +94,7 @@ var visible = {
     "exploreButton" : false,
     "researchTitleButton": false,
     "manageTribeButton": false,
+    "furnaceButton": false,
     "leftTabShown": 'buildings', //can be buildings or research
 }
 

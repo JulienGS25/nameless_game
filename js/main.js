@@ -93,6 +93,9 @@ function loadGame(){
         if (visible.manageTribeButton = true){
             show('#manage-tribe-btn', 25);
         }
+        if (visible.furnaceButton = true){
+            show('#furnace-btn', 25);
+        }
 
         //Era
         if (visible.era == true){
@@ -420,3 +423,4 @@ $(document).ready(function(){
 
 //Event handlers
 document.getElementById('manage-tribe-btn').addEventListener("click", manageTribe);
+document.getElementById('furnace-btn').addEventListener("click", openFurnace);

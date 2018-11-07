@@ -1,3 +1,6 @@
+//////////////////////
+///Tribe Management///
+//////////////////////
 function manageTribe() {
     $('.work-area').animate({ opacity: 0 }, { duration: 25 });
     tooltipShown = 1;
@@ -163,3 +166,343 @@ function removeJobFive(){
     }
 }
 
+/////////////
+///Furnace///
+/////////////
+function openFurnace(){
+    $('.work-area').animate({ opacity: 0 }, { duration: 25 });
+    tooltipShown = 1;
+
+    setTimeout(function () {
+        $('.work-area').empty();
+    }, 25)
+
+    //Creates the furnace page
+    setTimeout(function () {
+        $('.work-area').append("<div id='furnace-inside'>" +
+            "<div id='furnace-title'>Furnace</div>" +
+            "<div id='furnace-description'>The furnace smelts ore into bars.</div>" +
+            "<div id='furnace-mode-button' class='furnace-button'>Smelt Mode</div>" +
+            "<div id='furnace-image'>Fire Image</div>" +
+            "<div id='smelt-count-area'>" +
+            "<div id='smelt-count-title'>Smelt Count</div>" +
+            "<i id='smelt-count-less' class='fas fa-minus'></i>" +
+            "<div id='current-smelt-count'>1</div>" +
+            "<div id='smelt-slash'>/</div>" +
+            "<div id='total-smelt-count'>5</div>" +
+            "<i id='smelt-count-more' class='fas fa-plus'></i>" +
+            "<div class='furnace-button' id='smelt-button'>Smelt</div>" +
+            "</div>" +
+            "<div class='furnace-button' id='burn-wood'>Burn Wood</div>" +
+            "<div id='input-text-1'>Input 1</div>" +
+            "<div id='output-text'>Output</div>" +
+            "<div class='furnace-slot' id='input-slot-1'></div>" +
+            "<div class='progress' id='progress-1' value='100'></div>" +
+            "<div  class='furnace-slot' id='output-slot'>" +
+            "<div id='output-resource-name'></div>" +
+            "<div id='output-resource-count'></div>" +
+            "</div>" +
+            "<div class='furnace-resource' id='furnace-copper'>Copper</div>" +
+            "<div class='furnace-resource' id='furnace-tin'>Tin</div>" +
+            "<div class='furnace-resource' id='furnace-iron'>Iron</div>" +
+            "<div class='furnace-resource' id='furnace-coal'>Coal</div>" +
+            "<div class='furnace-resource' id='furnace-gold'>Gold</div>" +
+            "<div class='furnace-resource' id='furnace-sand'>Sand</div>" +
+            "<div class='furnace-resource' id='furnace-titanium'>Titanium</div>" +
+            "</div>");
+    }, 100);
+
+    show('.work-area');
+
+    //Adds event listeners
+    setTimeout(function () {
+    document.getElementById("furnace-mode-button").addEventListener("click", toggleMode);
+    document.getElementById("smelt-button").addEventListener("click", activateFurnace);
+    document.getElementById("furnace-copper").addEventListener("click", addCopper);
+    document.getElementById("furnace-tin").addEventListener("click", addTin);
+    document.getElementById("furnace-iron").addEventListener("click", addIron);
+    document.getElementById("furnace-coal").addEventListener("click", addCoal);
+    document.getElementById("furnace-gold").addEventListener("click", addGold);
+    document.getElementById("furnace-sand").addEventListener("click", addSand);
+    document.getElementById("furnace-titanium").addEventListener("click", addTitanium);
+    document.getElementById("input-slot-1").addEventListener("click", clearInput1);
+    document.getElementById("output-slot").addEventListener("click", clearOutput);
+    },110);
+}
+
+
+
+
+var furnaceMode = "smelt"; //can be alloy or smelt
+var smeltTime = 1500;
+var inputOneContent = "";
+var inputTwoContent = "";
+var outputResourceName = "";
+var outputResourceCount = "";
+
+function toggleMode() {
+  if (furnaceMode == "smelt") {
+    furnaceMode = "alloy";
+    $("#furnace-mode-button").text("Alloy Mode");
+    $("#furnace-inside").append(
+      "<div class='progress' id='progress-2' value='100'></div>"
+    );
+    $("#furnace-inside").append("<div id='input-text-2'>Input 2</div>");
+    $("#furnace-inside").append(
+      "<div class='furnace-slot' id='input-slot-2'></div>"
+    );
+    document
+      .getElementById("input-slot-2")
+      .addEventListener("click", clearInput2);
+  } else if (furnaceMode == "alloy") {
+    furnaceMode = "smelt";
+    $("#furnace-mode-button").text("Smelt Mode");
+    $("#progress-2").remove();
+    document
+      .getElementById("input-slot-2")
+      .removeEventListener("click", clearInput2);
+    $("#input-slot-2").remove();
+    $("#input-text-2").remove();
+  }
+}
+
+function activateFurnace() {
+  var startColor = "#e8d830";
+  var endColor = "#c66715";
+  if (furnaceMode == "smelt") {
+
+    if (inputOneContent !== ""){
+      smeltAnimation();
+      }
+    if (outputResourceName !== ""){
+      console.log('Please remove contents from output slot.')
+    }
+    if (inputOneContent == "copper" && (outputResourceName == "copper" || outputResourceName == "") ){
+      setTimeout(function() {
+      outputResourceName = "copperBar";
+      $("#output-resource-name").text("Copper Bar");
+      $("#output-slot").css("background-color", "#b87333");
+      $("#output-slot").css("color", "white");
+      $("#output-slot").addClass("output-slot-filled");
+      outputResourceCount++;
+      $("#output-resource-count").text(outputResourceCount);
+    }, smeltTime);
+    }
+    else if (inputOneContent == "tin"){
+      setTimeout(function() {
+      outputResourceName = "tinBar";
+      $("#output-resource-name").text("Tin Bar");
+      $("#output-slot").css("background-color", "#d3d4d5");
+      $("#output-slot").css("color", "black");
+      outputResourceCount++;
+      $("#output-resource-count").text(outputResourceCount);
+    }, smeltTime);
+    }
+    else if (inputOneContent == "iron"){
+      setTimeout(function() {
+      outputResourceName = "ironBar";
+      $("#output-resource-name").text("Iron Bar");
+      $("#output-slot").css("background-color", "rgb(108, 120, 147)");
+      $("#output-slot").css("color", "white");
+      outputResourceCount++;
+      $("#output-resource-count").text(outputResourceCount);
+    }, smeltTime);
+    }
+    else if (inputOneContent == "gold"){
+      setTimeout(function() {
+      outputResourceName = "goldBar";
+      $("#output-resource-name").text("Gold Bar");
+      $("#output-slot").css("background-color", "rgb(255, 201, 14)");
+      $("#output-slot").css("color", "black");
+      outputResourceCount++;
+      $("#output-resource-count").text(outputResourceCount);
+    }, smeltTime);
+    }
+    else if (inputOneContent == "sand"){
+      setTimeout(function() {
+      outputResourceName = "glassPanel";
+      $("#output-resource-name").text("Glass Panel");
+      $("#output-slot").css("background-color", "lightblue");
+      $("#output-slot").css("color", "black");
+      outputResourceCount++;
+      $("#output-resource-count").text(outputResourceCount);
+    }, smeltTime);
+    }
+    else if (inputOneContent == "titanium"){
+      setTimeout(function() {
+      outputResourceName = "titaniumBar";
+      $("#output-resource-name").text("Titanium Bar");
+      $("#output-slot").css("background-color", "rgb(47, 86, 242)");
+      $("#output-slot").css("color", "white");
+      outputResourceCount++;
+      $("#output-resource-count").text(outputResourceCount);
+    }, smeltTime);
+    }    
+    else{
+      console.log('Furnace is empty!')
+    }
+    
+  } 
+  
+  else if (furnaceMode == "alloy") {
+    setTimeout(function() {
+      $("#progress-1 svg").remove();
+    }, smeltTime);
+    setTimeout(function() {
+      $("#progress-2 svg").remove();
+    }, smeltTime);
+    smeltAnimation();
+  }
+
+  function smeltAnimation() {
+    //Removes the progress bar after it has finished
+    setTimeout(function() {
+      $("#progress-1 svg").remove();
+    }, smeltTime);
+    
+    //Creates the progress bar
+    $(".progress").each(function(i) {
+      var line = new ProgressBar.Line(this, {
+        color: startColor,
+        easing: "linear",
+        strokeWidth: 10,
+        duration: smeltTime
+      });
+
+      var value = $(this).attr("value") / 100;
+
+      line.animate(value, {
+        from: {
+          color: startColor
+        },
+        to: {
+          color: endColor
+        },
+        step: function(state, line, bar) {
+          line.path.setAttribute("stroke", state.color);
+        }
+      });
+    });
+  }
+}
+
+function clearInput1() {
+  $("#input-slot-1").text("");
+  $("#input-slot-1").css("background-color", "black");
+  $("#furnace-copper").css("opacity", "0.5");
+  $("#furnace-tin").css("opacity", "0.5");
+  $("#furnace-iron").css("opacity", "0.5");
+  $("#furnace-gold").css("opacity", "0.5");
+  $("#furnace-sand").css("opacity", "0.5");
+  $("#furnace-titanium").css("opacity", "0.5");
+  inputOneContent = "";
+}
+
+function clearInput2() {
+  $("#input-slot-2").text("");
+  $("#input-slot-2").css("background-color", "black");
+  $("#furnace-coal").css("opacity", "0.5");
+  inputTwoContent = "";
+}
+
+function clearOutput(){
+  $("#output-resource-name").text("");
+  $("#output-resource-count").text("");
+  $("#output-slot").css("background-color","black");
+  outputResourceCount = 0;
+}
+
+function addCopper() {
+  $("#input-slot-1").text("Copper");
+  $("#input-slot-1").css("background-color", "#b87333");
+  $("#input-slot-1").css("font-size", "1vh");
+  $("#input-slot-1").css("color", "white");
+  $("#furnace-copper").css("opacity", "1");
+  $("#furnace-tin").css("opacity", "0.5");
+  $("#furnace-iron").css("opacity", "0.5");
+  $("#furnace-gold").css("opacity", "0.5");
+  $("#furnace-sand").css("opacity", "0.5");
+  $("#furnace-titanium").css("opacity", "0.5");
+  inputOneContent = "copper";
+}
+
+function addTin() {
+  $("#input-slot-1").text("Tin");
+  $("#input-slot-1").css("background-color", "#d3d4d5");
+  $("#input-slot-1").css("font-size", "1vh");
+  $("#input-slot-1").css("color", "black");
+  $("#furnace-tin").css("opacity", "1");
+  $("#furnace-copper").css("opacity", "0.5");
+  $("#furnace-iron").css("opacity", "0.5");
+  $("#furnace-gold").css("opacity", "0.5");
+  $("#furnace-sand").css("opacity", "0.5");
+  $("#furnace-titanium").css("opacity", "0.5");
+  inputOneContent = "tin";
+}
+
+function addIron() {
+  $("#input-slot-1").text("Iron");
+  $("#input-slot-1").css("background-color", "rgb(108, 120, 147)");
+  $("#input-slot-1").css("font-size", "1vh");
+  $("#input-slot-1").css("color", "white");
+  $("#furnace-iron").css("opacity", "1");
+  $("#furnace-copper").css("opacity", "0.5");
+  $("#furnace-tin").css("opacity", "0.5");
+  $("#furnace-gold").css("opacity", "0.5");
+  $("#furnace-sand").css("opacity", "0.5");
+  $("#furnace-titanium").css("opacity", "0.5");
+  inputOneContent = "iron";
+}
+
+function addCoal() {
+  if (furnaceMode == "alloy") {
+    $("#input-slot-2").text("Coal");
+    $("#input-slot-2").css("background-color", "rgb(111, 111, 111)");
+    $("#input-slot-2").css("font-size", "1vh");
+    $("#input-slot-2").css("color", "white");
+    $("#furnace-coal").css("opacity", "1");
+    inputTwoContent = "coal";
+  }
+}
+
+function addGold() {
+  $("#input-slot-1").text("Gold");
+  $("#input-slot-1").css("background-color", "rgb(255, 201, 14)");
+  $("#input-slot-1").css("font-size", "1vh");
+  $("#input-slot-1").css("color", "black");
+  $("#furnace-gold").css("opacity", "1");
+  $("#furnace-copper").css("opacity", "0.5");
+  $("#furnace-tin").css("opacity", "0.5");
+  $("#furnace-iron").css("opacity", "0.5");
+  $("#furnace-sand").css("opacity", "0.5");
+  $("#furnace-titanium").css("opacity", "0.5");
+  inputOneContent = "gold";
+}
+
+function addSand() {
+  $("#input-slot-1").text("Sand");
+  $("#input-slot-1").css("background-color", "rgb(237, 201, 175)");
+  $("#input-slot-1").css("font-size", "1vh");
+  $("#input-slot-1").css("color", "black");
+  $("#furnace-sand").css("opacity", "1");
+  $("#furnace-copper").css("opacity", "0.5");
+  $("#furnace-tin").css("opacity", "0.5");
+  $("#furnace-iron").css("opacity", "0.5");
+  $("#furnace-gold").css("opacity", "0.5");
+  $("#furnace-titanium").css("opacity", "0.5");
+  inputOneContent = "sand";
+}
+
+function addTitanium() {
+  $("#input-slot-1").text("Titanium");
+  $("#input-slot-1").css("background-color", "rgb(47, 86, 242)");
+  $("#input-slot-1").css("font-size", "1vh");
+  $("#input-slot-1").css("color", "white");
+  $("#furnace-titanium").css("opacity", "1");
+  $("#furnace-copper").css("opacity", "0.5");
+  $("#furnace-tin").css("opacity", "0.5");
+  $("#furnace-iron").css("opacity", "0.5");
+  $("#furnace-gold").css("opacity", "0.5");
+  $("#furnace-sand").css("opacity", "0.5");
+  inputOneContent = "titanium";
+}

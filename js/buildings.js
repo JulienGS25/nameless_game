@@ -97,7 +97,6 @@ function buildHunterPost(){
 
 function buildVillageCenter(){
     show('#manage-tribe-btn',100);
-    //document.getElementById('manage-tribe-btn').addEventListener("click", manageTribe);
     document.getElementById('people-resource').innerHTML = ("Tribespeople: <span id='people'>0</span><span> / </span><span id='people-storage'></span>");
     visible.manageTribeButton = true;
 };
@@ -111,6 +110,10 @@ function buildMinerHut(){
 function buildWheatFarm(){
 };
 
+function buildFurnace(){
+    show('#furnace-btn',100);
+    visible.furnaceButton = true;
+};
 
 //Auto-resource workers purchasing
 /*function hireForager() {
@@ -331,6 +334,32 @@ var buildings = [
         built: 0,
         buildFunction: "buildWheatFarm",
         message: "Prepared Wheat Farm.",
+        unlocks_buildings: undefined,
+        unique: false
+    },
+    furnace = {
+        name: "Furnace",
+        id: 7,
+        description: "Smelts ore into metal bars.",
+        costs_1: "Wood",
+        costs_1_amount: 10,
+        costs_2: "Stone",
+        costs_2_amount: 10,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks the Furnace",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 1,
+        built: 0,
+        buildFunction: "buildFurnace",
+        message: "Built Furnace.",
         unlocks_buildings: undefined,
         unique: false
     },

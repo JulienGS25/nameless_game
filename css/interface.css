@@ -445,3 +445,192 @@ body {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
+
+
+
+
+/* Furnace */
+
+#furnace-inside{
+  border: solid white;
+  border-style: double;
+  border-width: 1vh;
+  border-radius: 200px 200px 5px 5px;
+  padding-left: 10px;
+  height: 50vh;
+  width: 27.5vw;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(7, 14.25%);
+  grid-template-rows: 5vh 3.5vh 3vh 13vh 10vh 3.75vh 6vh 5vh;
+}
+
+.furnace-slot{
+  border: solid white;
+  border-width: 2px;
+  border-radius: 5px;
+  margin-bottom: 1vh;
+}
+/* 
+grid-area is shorthand for: 
+grid-row-start
+grid-column-start
+grid-row-end
+grid-column-end
+*/
+
+#furnace-title{
+  grid-area: 1 / 1 / 1 / 8;
+}
+#furnace-description{
+  grid-area: 2 / 1 / 2 / 8;
+}
+#furnace-mode-button{
+  grid-area: 3 / 3 / 3 / 6;
+}
+#furnace-image{
+  grid-area: 4 / 3 / 6 / 6;
+}
+#smelt-count-area{
+  grid-area: 5 / 1 / 6 / 3;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(3, auto);
+  font-size: 75%;
+  border-top: solid white;
+  border-left: solid white;
+  border-right: solid white;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+#smelt-count-title{
+  grid-area: 1 / 1 / 1 / 6;
+}
+#smelt-button{
+  grid-area: 3 / 1 / 3 / 6;
+  font-size: 100%;
+}
+#burn-wood{
+  grid-area: 5 / 6 / 5 / 8;
+  height: 25%;
+}
+.furnace-button{
+  padding: 5px;
+  border-radius: 5px;
+  border: solid white;
+  background-color: rgba(169, 169, 169, 0.479);
+  transition: background-color 0.25s;
+  user-select: none;
+  font-size: 90%;
+}
+.furnace-button:hover{
+  background-color: darkgrey;
+  cursor: pointer;
+}
+
+.furnace-button:active, .fas:active {
+  transform: translateY(2px);
+}
+
+#input-text-1{
+  grid-area: 6 / 1 / 6 / 2;
+}
+#output-text{
+  grid-area: 6 / 3 / 6 / 6;
+}
+#input-text-2{
+  grid-area: 6 / 7 / 6 / 8;
+}
+#input-slot-1{
+  grid-area: 7 / 1 / 7 / 2;
+}
+#progress-1{
+  grid-area: 7 / 2 / 7 / 4;
+}
+#progress-2{
+  grid-area: 7 / 5 / 7 / 7;
+}
+#output-slot{
+  font-size: 1vh;
+  grid-area: 7 / 4 / 7 / 5;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 75% 25%
+}
+#output-resource-name{
+  grid-area: 1 / 1 / 1 / 2;
+  padding: 10px;
+}
+#output-resource-count{
+  font-style: italic;
+  grid-area: 2 / 3 / 2 / 3;
+}
+
+#input-slot-2{
+  grid-area: 7 / 7 / 7 / 8;
+}
+#furnace-copper{
+  grid-area: 8 / 1 / 8 / 2;
+  background-color: #b87333;
+  font-size: 1vh;
+}
+#furnace-tin{
+  grid-area: 8 / 2 / 8 / 3;
+  background-color: #d3d4d5;
+  color: black;  
+}
+#furnace-iron{
+  grid-area: 8 / 3 / 8 / 4;
+  background-color: rgb(108, 120, 147);  
+}
+#furnace-coal{
+  grid-area: 8 / 4 / 8 / 5;
+  background-color: rgb(111, 111, 111);
+}
+#furnace-gold{
+  grid-area: 8 / 5 / 8 / 6;
+  background-color: rgb(255, 201, 14);
+  color: black;  
+}
+#furnace-sand{
+  grid-area: 8 / 6 / 8 / 7;
+  background-color: rgb(237, 201, 175);
+  color: black;
+}
+#furnace-titanium{
+  grid-area: 8 / 7 / 8 / 8;
+  background-color: rgb(47, 86, 242);
+  font-size: 1vh;
+}
+
+.furnace-resource{
+  border: solid white;
+  border-width: 2px;
+  border-radius: 5px;
+  transition: transform 0.05s, opacity 0.10s;
+  margin-left: 0.25vw;
+  margin-right: 0.25vw;
+  opacity: 0.50;
+}
+
+.furnace-resource:hover{
+  transform: scale(0.95);
+}
+
+.output-slot-filled{
+  transition: transform 0.05s;
+}
+.output-slot-filled:hover{
+  transform: scale(1.05);
+}
+
+.progress > svg{
+  margin-top: 2vh;
+}
+#progress-2 > svg{
+  transform: scale(-1, 1);
+}
+
+
+
