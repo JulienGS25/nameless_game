@@ -507,6 +507,40 @@ function clearOutput(){
   outputResourceName = "";
 }
 
+function disableFurnaceResources(){
+    var copper = "";
+    var tin = "";
+    var iron = "";
+    var coal = "";
+    var gold = "";
+    var sand = "";
+    var titanium = "";
+
+    if (furnaceMode == "smelt"){
+        if (inputOneContent == "copper"){
+            //disable non-copper stuff
+        }
+        if (inputOneContent == "tin"){
+
+        }
+        if (inputOneContent == "iron"){
+
+        }
+        if (inputOneContent == "gold"){
+
+        }
+        if (inputOneContent == "sand"){
+
+        }
+        if (inputOneContent == "titanium"){
+
+        }
+    }
+    if (furnaceMode == "alloy"){
+
+    }
+}
+
 function addCopper() {
     if (furnaceMode == "smelt") {
         $("#input-slot-1").text("Copper");
