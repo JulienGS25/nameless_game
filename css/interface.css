@@ -637,6 +637,9 @@ grid-column-end
 .furnace-steel-plate-bg{
   background-image: url("../images/Steel Plate.png");
 }
+.furnace-bronze-bar-bg{
+  background-image: url("../images/Bronze Bar.png");
+}
 .furnace-resource{
   border: solid white;
   border-width: 2px;

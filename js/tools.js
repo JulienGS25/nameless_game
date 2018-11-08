@@ -361,12 +361,42 @@ function activateFurnace() {
     }
 
     else if (furnaceMode == "alloy") {
-        if (inputOneContent == "copper" && inputTwoContent == "tin" && (outputResourceName == "steelBar" || outputResourceName == "") && smeltInProgress == false) {
+        if (inputOneContent == "iron" && inputTwoContent == "coal" && (outputResourceName == "steelBar" || outputResourceName == "") && smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
                 outputResourceName = "steelBar";
                 $("#output-resource-name").text("Steel Plate");
                 $("#output-slot").addClass("furnace-steel-plate-bg");
+                outputResourceCount++;
+                $("#output-resource-count").text(outputResourceCount);
+            }, smeltTime);
+        }
+        if (inputOneContent == "coal" && inputTwoContent == "iron" && (outputResourceName == "steelBar" || outputResourceName == "") && smeltInProgress == false) {
+            smeltAnimation();
+            setTimeout(function () {
+                outputResourceName = "steelBar";
+                $("#output-resource-name").text("Steel Plate");
+                $("#output-slot").addClass("furnace-steel-plate-bg");
+                outputResourceCount++;
+                $("#output-resource-count").text(outputResourceCount);
+            }, smeltTime);
+        }
+        if (inputOneContent == "copper" && inputTwoContent == "tin" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
+            smeltAnimation();
+            setTimeout(function () {
+                outputResourceName = "bronzeBar";
+                $("#output-resource-name").text("Bronze Bar");
+                $("#output-slot").addClass("furnace-bronze-bar-bg");
+                outputResourceCount++;
+                $("#output-resource-count").text(outputResourceCount);
+            }, smeltTime);
+        }
+        if (inputOneContent == "tin" && inputTwoContent == "copper" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
+            smeltAnimation();
+            setTimeout(function () {
+                outputResourceName = "bronzeBar";
+                $("#output-resource-name").text("Bronze Bar");
+                $("#output-slot").addClass("furnace-bronze-bar-bg");
                 outputResourceCount++;
                 $("#output-resource-count").text(outputResourceCount);
             }, smeltTime);
@@ -468,6 +498,7 @@ function clearOutput(){
   $("#output-slot").removeClass("furnace-glass-panel-bg");
   $("#output-slot").removeClass("furnace-titanium-plate-bg");
   $("#output-slot").removeClass("furnace-steel-plate-bg");
+  $("#output-slot").removeClass("furnace-bronze-bar-bg");
   outputResourceCount = 0;
   outputResourceName = "";
 }
