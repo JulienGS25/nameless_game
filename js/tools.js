@@ -499,6 +499,7 @@ function clearOutput(){
   $("#output-slot").removeClass("furnace-titanium-plate-bg");
   $("#output-slot").removeClass("furnace-steel-plate-bg");
   $("#output-slot").removeClass("furnace-bronze-bar-bg");
+  $("#output-slot").removeClass("output-slot-filled");
   outputResourceCount = 0;
   outputResourceName = "";
 }
