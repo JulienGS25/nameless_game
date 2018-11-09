@@ -451,13 +451,7 @@ function clearInput1() {
     if (inputOneContent !== "") {
         $("#input-slot-1").text("");
         $("#input-slot-1").css("background-color", "black");
-        $("#input-slot-1").removeClass("furnace-copper-bg");
-        $("#input-slot-1").removeClass("furnace-tin-bg");
-        $("#input-slot-1").removeClass("furnace-coal-bg");
-        $("#input-slot-1").removeClass("furnace-iron-bg");
-        $("#input-slot-1").removeClass("furnace-gold-bg");
-        $("#input-slot-1").removeClass("furnace-sand-bg");
-        $("#input-slot-1").removeClass("furnace-titanium-bg");
+        $('#input-slot-1').attr("class", "furnace-slot");
     }
     inputOneContent = "";
     if (inputOneContent == "" && inputTwoContent == ""){
@@ -475,10 +469,7 @@ function clearInput1() {
 
 function clearInput2() {
     $("#input-slot-2").text("");
-    $("#input-slot-2").removeClass("furnace-coal-bg");
-    $("#input-slot-2").removeClass("furnace-copper-bg");
-    $("#input-slot-2").removeClass("furnace-tin-bg");
-    $("#input-slot-2").removeClass("furnace-iron-bg");
+    $('#input-slot-2').attr("class", "furnace-slot");
     inputTwoContent = "";
     if (inputOneContent == "" && inputTwoContent == ""){
         $("#furnace-copper").css("opacity", "0.7");
@@ -494,124 +485,55 @@ function clearInput2() {
 function clearOutput(){
   $("#output-resource-name").text("");
   $("#output-resource-count").text("");
-  $("#output-slot").removeClass("furnace-copper-bar-bg");
-  $("#output-slot").removeClass("furnace-tin-bar-bg");
-  $("#output-slot").removeClass("furnace-iron-bar-bg");
-  $("#output-slot").removeClass("furnace-gold-bar-bg");
-  $("#output-slot").removeClass("furnace-glass-panel-bg");
-  $("#output-slot").removeClass("furnace-titanium-plate-bg");
-  $("#output-slot").removeClass("furnace-steel-plate-bg");
-  $("#output-slot").removeClass("furnace-bronze-bar-bg");
-  $("#output-slot").removeClass("output-slot-filled");
+  $('#output-slot').attr("class", "furnace-slot");
   outputResourceCount = 0;
   outputResourceName = "";
 }
 
-function disableFurnaceResources(){
-    var copper = "";
-    var tin = "";
-    var iron = "";
-    var coal = "";
-    var gold = "";
-    var sand = "";
-    var titanium = "";
-
+function refreshFurnaceUI(ore){
+    var activeOpacity = 1;
+    var disabledOpacity = 0.5;
+    var unavailableOpacity = 0.3;
+    var lowerOre = ore.toLowerCase();
     if (furnaceMode == "smelt"){
-        if (inputOneContent == "copper"){
-            //disable non-copper stuff
+        $("#input-slot-1").text(ore);
+        $("#input-slot-1").attr("class", "furnace-slot");
+        $("#input-slot-1").addClass("furnace-" + ore + "-bg");
+    }
+    else if (furnaceMode == "alloy"){
+        if (inputOneContent == ""){
+            //ore goes into input 1
+            $("#input-slot-1").text(ore);
+            $("#input-slot-1").attr("class", "furnace-slot");
+            $("#input-slot-1").addClass("furnace-" + ore + "-bg");
+            inputOneContent = ore;
         }
-        if (inputOneContent == "tin"){
-
-        }
-        if (inputOneContent == "iron"){
-
-        }
-        if (inputOneContent == "gold"){
-
-        }
-        if (inputOneContent == "sand"){
-
-        }
-        if (inputOneContent == "titanium"){
-
+        else {
+            //ore goes into input 2
+            $("#input-slot-2").text(ore);
+            $("#input-slot-2").attr("class", "furnace-slot");
+            $("#input-slot-2").addClass("furnace-" + ore + "-bg");
+            inputTwoContent = ore;
         }
     }
-    if (furnaceMode == "alloy"){
-
-    }
+    
+    $("#furnace-" + lowerOre).css("opacity", activeOpacity);
+    $(".furnace-resource").not("#furnace-" + lowerOre).css("opacity", disabledOpacity);
 }
 
 function addCopper() {
     if (furnaceMode == "smelt") {
-        $("#input-slot-1").text("Copper");
         $("#input-slot-1").css("font-size", "1vh");
-        $("#input-slot-1").addClass("furnace-copper-bg");
-        $("#input-slot-1").removeClass("furnace-tin-bg");
-        $("#input-slot-1").removeClass("furnace-iron-bg");
-        $("#input-slot-1").removeClass("furnace-gold-bg");
-        $("#input-slot-1").removeClass("furnace-sand-bg");
-        $("#input-slot-1").removeClass("furnace-titanium-bg");
-        $("#furnace-copper").css("opacity", "1");
-        $("#furnace-iron").css("opacity", "0.5");
-        $("#furnace-gold").css("opacity", "0.5");
-        $("#furnace-sand").css("opacity", "0.5");
-        $("#furnace-titanium").css("opacity", "0.5");
         inputOneContent = "copper";
+        refreshFurnaceUI("Copper");
     }
     if (furnaceMode == "alloy" && inputOneContent == "") {
-        $("#input-slot-1").text("Copper");
         $("#input-slot-1").css("font-size", "1vh");
-        $("#input-slot-1").addClass("furnace-copper-bg");
-        $("#input-slot-1").removeClass("furnace-tin-bg");
-        $("#input-slot-1").removeClass("furnace-iron-bg");
-        $("#input-slot-1").removeClass("furnace-gold-bg");
-        $("#input-slot-1").removeClass("furnace-sand-bg");
-        $("#input-slot-1").removeClass("furnace-titanium-bg");
-        $("#furnace-copper").css("opacity", "1");
-        $("#furnace-iron").css("opacity", "0.5");
-        $("#furnace-gold").css("opacity", "0.5");
-        $("#furnace-sand").css("opacity", "0.5");
-        $("#furnace-titanium").css("opacity", "0.5");
-        inputOneContent = "copper";
+        refreshFurnaceUI("Copper");
     }
-    else if (furnaceMode == "alloy" && inputOneContent == "copper") {
-        $("#input-slot-2").text("Copper");
+    else if (furnaceMode == "alloy" && inputOneContent !== "") {
         $("#input-slot-2").css("font-size", "1vh");
-        $("#input-slot-2").addClass("furnace-copper-bg");
-        $("#input-slot-2").removeClass("furnace-tin-bg");
-        $("#input-slot-2").removeClass("furnace-iron-bg");
-        $("#input-slot-2").removeClass("furnace-gold-bg");
-        $("#input-slot-2").removeClass("furnace-sand-bg");
-        $("#input-slot-2").removeClass("furnace-titanium-bg");
-        $("#furnace-copper").css("opacity", "1");
-        $("#furnace-iron").css("opacity", "0.5");
-        $("#furnace-gold").css("opacity", "0.5");
-        $("#furnace-sand").css("opacity", "0.5");
-        $("#furnace-titanium").css("opacity", "0.5");
-        inputTwoContent = "copper";
-    }
-    else if (furnaceMode == "alloy" && inputOneContent == "tin") {
-        $("#input-slot-2").text("Copper");
-        $("#input-slot-2").css("font-size", "1vh");
-        $("#input-slot-2").addClass("furnace-copper-bg");
-        $("#input-slot-2").removeClass("furnace-tin-bg");
-        $("#input-slot-2").removeClass("furnace-iron-bg");
-        $("#input-slot-2").removeClass("furnace-gold-bg");
-        $("#input-slot-2").removeClass("furnace-sand-bg");
-        $("#input-slot-2").removeClass("furnace-titanium-bg");
-        $("#furnace-copper").css("opacity", "1");
-        $("#furnace-iron").css("opacity", "0.5");
-        $("#furnace-gold").css("opacity", "0.5");
-        $("#furnace-sand").css("opacity", "0.5");
-        $("#furnace-titanium").css("opacity", "0.5");
-        inputTwoContent = "copper";
-    }
-
-    if (inputTwoContent == "") {
-        $("#furnace-coal").css("opacity", "0.5");
-    }
-    if (furnaceMode == "smelt") {
-        $("#furnace-tin").css("opacity", "0.5");
+        refreshFurnaceUI("Copper");
     }
 }
 
