@@ -210,7 +210,6 @@ function openFurnace(){
             "<div class='furnace-resource furnace-sand-bg' id='furnace-sand'>Sand</div>" +
             "<div class='furnace-resource furnace-titanium-bg' id='furnace-titanium'>Titanium</div>" +
             "</div>");
-            $("#furnace-coal").css("opacity", "0.5");
             furnaceMode == "smelt";
     }, 100);
     
@@ -265,9 +264,9 @@ function toggleMode() {
         $("#furnace-inside").append("<div id='input-text-2'>Input 2</div>");
         $("#furnace-inside").append("<div class='furnace-slot' id='input-slot-2'></div>");
         document.getElementById("input-slot-2").addEventListener("click", clearInput2);
-        $("#furnace-gold").css("opacity", "0.5");
-        $("#furnace-sand").css("opacity", "0.5");
-        $("#furnace-titanium").css("opacity", "0.5");
+        $("#furnace-gold").css("opacity", "0.7");
+        $("#furnace-sand").css("opacity", "0.7");
+        $("#furnace-titanium").css("opacity", "0.7");
         $("#furnace-coal").css("opacity", "0.7");
     }
     else if (furnaceMode == "alloy") {
@@ -280,7 +279,7 @@ function toggleMode() {
         $("#furnace-gold").css("opacity", "0.7");
         $("#furnace-sand").css("opacity", "0.7");
         $("#furnace-titanium").css("opacity", "0.7");
-        $("#furnace-coal").css("opacity", "0.5");
+        $("#furnace-coal").css("opacity", "0.7");
     }
 }
 
@@ -473,9 +472,7 @@ function clearInput1() {
         $("#furnace-gold").css("opacity", "0.7");
         $("#furnace-sand").css("opacity", "0.7");
         $("#furnace-titanium").css("opacity", "0.7");
-        if (furnaceMode == "smelt"){
-            $("#furnace-coal").css("opacity", "0.5");
-        }
+        $("#furnace-coal").css("opacity", "0.7");
     }
 }
 
@@ -502,10 +499,24 @@ function clearOutput(){
   outputResourceName = "";
 }
 
+
+function addOre(ore){
+    if (furnaceMode == "smelt") {
+        $("#input-slot-1").css("font-size", "1vh");
+        refreshFurnaceUI(ore);
+    }
+    if (furnaceMode == "alloy" && inputOneContent == "") {
+        $("#input-slot-1").css("font-size", "1vh");
+        refreshFurnaceUI(ore);
+        
+    }
+    else if (furnaceMode == "alloy" && inputOneContent !== "") {
+        $("#input-slot-2").css("font-size", "1vh");
+        refreshFurnaceUI(ore);
+    }
+}
+
 function refreshFurnaceUI(ore){
-    var activeOpacity = 1;
-    var disabledOpacity = 0.5;
-    var unavailableOpacity = 0.3;
     var lowerOre = ore.toLowerCase();
     if (furnaceMode == "smelt"){
         $("#input-slot-1").text(ore);
@@ -530,22 +541,6 @@ function refreshFurnaceUI(ore){
         }
     }
     
-    $("#furnace-" + lowerOre).css("opacity", activeOpacity);
-    $(".furnace-resource").not("#furnace-" + lowerOre).css("opacity", disabledOpacity);
+    $("#furnace-" + lowerOre).css("opacity", 1);
 }
 
-
-function addOre(ore){
-    if (furnaceMode == "smelt") {
-        $("#input-slot-1").css("font-size", "1vh");
-        refreshFurnaceUI(ore);
-    }
-    if (furnaceMode == "alloy" && inputOneContent == "") {
-        $("#input-slot-1").css("font-size", "1vh");
-        refreshFurnaceUI(ore);
-    }
-    else if (furnaceMode == "alloy" && inputOneContent !== "") {
-        $("#input-slot-2").css("font-size", "1vh");
-        refreshFurnaceUI(ore);
-    }
-}
