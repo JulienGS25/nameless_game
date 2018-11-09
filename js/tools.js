@@ -333,6 +333,7 @@ function activateFurnace() {
             }, smeltTime);
         }
         if (inputOneContent == "Coal") {
+            $("#input-slot-1").effect("shake",{distance:3}, 250);
             logText('Coal cannot be smelted on its own!')
         }
         if (inputOneContent == "Gold" && (outputResourceName == "goldBar" || outputResourceName == "") && smeltInProgress == false) {
@@ -369,22 +370,22 @@ function activateFurnace() {
         }
 
         if (outputResourceName !== "") {
-            if (inputOneContent == "copper" && outputResourceName !== "copperBar") {
+            if (inputOneContent == "Copper" && outputResourceName !== "copperBar") {
                 logText('Please empty output slot first!')
             }
-            if (inputOneContent == "tin" && outputResourceName !== "tinBar") {
+            if (inputOneContent == "Tin" && outputResourceName !== "tinBar") {
                 logText('Please empty output slot first!')
             }
-            if (inputOneContent == "iron" && outputResourceName !== "ironBar") {
+            if (inputOneContent == "Iron" && outputResourceName !== "ironBar") {
                 logText('Please empty output slot first!')
             }
-            if (inputOneContent == "gold" && outputResourceName !== "goldBar") {
+            if (inputOneContent == "Gold" && outputResourceName !== "goldBar") {
                 logText('Please empty output slot first!')
             }
-            if (inputOneContent == "sand" && outputResourceName !== "glassPanel") {
+            if (inputOneContent == "Sand" && outputResourceName !== "glassPanel") {
                 logText('Please empty output slot first!')
             }
-            if (inputOneContent == "titanium" && outputResourceName !== "titaniumBar") {
+            if (inputOneContent == "Titanium" && outputResourceName !== "titaniumBar") {
                 logText('Please empty output slot first!')
             }
         }
@@ -402,7 +403,7 @@ function activateFurnace() {
                 $("#output-resource-count").text(outputResourceCount);
             }, smeltTime);
         }
-        if (inputOneContent == "Coal" && inputTwoContent == "Iron" && (outputResourceName == "steelBar" || outputResourceName == "") && smeltInProgress == false) {
+        else if (inputOneContent == "Coal" && inputTwoContent == "Iron" && (outputResourceName == "steelBar" || outputResourceName == "") && smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
                 outputResourceName = "steelBar";
@@ -412,7 +413,7 @@ function activateFurnace() {
                 $("#output-resource-count").text(outputResourceCount);
             }, smeltTime);
         }
-        if (inputOneContent == "Copper" && inputTwoContent == "Tin" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
+        else if (inputOneContent == "Copper" && inputTwoContent == "Tin" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
                 outputResourceName = "bronzeBar";
@@ -422,7 +423,7 @@ function activateFurnace() {
                 $("#output-resource-count").text(outputResourceCount);
             }, smeltTime);
         }
-        if (inputOneContent == "Tin" && inputTwoContent == "Copper" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
+        else if (inputOneContent == "Tin" && inputTwoContent == "Copper" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
                 outputResourceName = "bronzeBar";
@@ -431,6 +432,11 @@ function activateFurnace() {
                 outputResourceCount++;
                 $("#output-resource-count").text(outputResourceCount);
             }, smeltTime);
+        }
+        else{
+            logText("Invalid alloy!");
+            $("#input-slot-1").effect("shake",{distance:3}, 250);
+            $("#input-slot-2").effect("shake",{distance:3}, 250);
         }
 
         setTimeout(function () {
