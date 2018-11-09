@@ -661,10 +661,12 @@ grid-column-end
 }
 
 .output-slot-filled{
-  transition: transform 0.05s;
+  transition: transform 0.05s, border 0.25s;;
 }
 .output-slot-filled:hover{
   transform: scale(1.05);
+  border: solid gold;
+  border-width: 2px;
 }
 
 .progress > svg{
