@@ -349,6 +349,7 @@ function gameLoop(){
     window.setInterval(function(){
         passedTime++;
         fluctuateTemp();
+        furnaceTemperature();
         tempCheck();
         manageResources();
 

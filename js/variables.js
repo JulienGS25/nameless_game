@@ -111,6 +111,17 @@ var jobs = {
 var devMode = 1;
 var disableLightningEffect = 1;
 
+//Furnace
+var furnaceObj = {
+    "furnaceMode": "smelt", // can be smelt or alloy
+    "smeltTime": 0,
+    "inputOneContent": "",
+    "inputTwoContent": "",
+    "outputResourceName": "",
+    "outputResourceCount": "",
+    "smeltInProgress": false,
+    "furnaceTemp": 0.0,
+}
 
 //Other
 var exploredArea = 0;

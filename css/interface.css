@@ -578,7 +578,7 @@ grid-column-end
 }
 #furnace-copper{
   grid-area: 8 / 1 / 8 / 2;
-  font-size: 1vh;
+  /*font-size: 1vh;*/
 }
 .furnace-copper-bg{
   background-image: url("../images/Copper Ore.png");
@@ -654,8 +654,17 @@ grid-column-end
   opacity: 0.70;
   background-repeat: no-repeat;
   background-position: center; 
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 75% 25%;
 }
-
+.furnace-resource-name{
+  grid-area: 1 / 1 / 1 / 4;
+}
+.furnace-resource-count{
+  font-style: italic;
+  grid-area: 2 / 3 / 2 / 3;
+}
 .furnace-resource:hover{
   transform: scale(0.95);
 }

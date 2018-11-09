@@ -69,7 +69,7 @@ function researchScience(input) {
         displayResearch();
 
         //Runs the corresponding function specific to this building
-        var rscFunc = eval(buildings[input.id].buildFunction);
+        var rscFunc = eval(research[input.id].researchFunction);
         rscFunc();
 
     }
@@ -78,11 +78,17 @@ function researchScience(input) {
 
 
 function researchStoneWorking(){
-
+    console.log('TEST')
 };
 
 function researchPrimitiveConstruction(){
 
+};
+
+function researchSmelting(){
+    console.log('TEST')
+    show("#furnace-btn",100);
+    visible.furnaceButton = true;
 };
 
 
@@ -145,7 +151,7 @@ var research = [
     },
     smelting = {
         name: "Smelting",
-        id: 6,
+        id: 2,
         description: "Using the harnessed power of the fire, you can smelt metals for various purposes.",
         costs_1: "Science",
         costs_1_amount: 100,
@@ -164,8 +170,8 @@ var research = [
         effects_5: "",
         displayable: 1,
         researched: 0,
-        researchFunction: "researchPrimitiveConstruction",
-        message: "You gather wood, light it on fire and bring it to a very hot temperature to be able to smelt metals.",
+        researchFunction: "researchSmelting",
+        message: "You gather wood, light it on fire and bring it to a very hot temperature able to melt metals.",
         unlocks_research: [],
         unlocks_buildings: [4, 5],
         unique: true
