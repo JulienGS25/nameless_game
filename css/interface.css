@@ -462,7 +462,7 @@ body {
   text-align: center;
   display: grid;
   grid-template-columns: repeat(7, 14.25%);
-  grid-template-rows: 5vh 3.5vh 3vh 13vh 10vh 3.75vh 6vh 5vh;
+  grid-template-rows: 5vh 3.5vh 3vh 7vh 16vh 3.75vh 6vh 5vh;
 }
 
 .furnace-slot{
@@ -493,9 +493,13 @@ grid-column-end
 #furnace-mode-button{
   grid-area: 3 / 3 / 3 / 6;
 }
-#furnace-image{
-  grid-area: 4 / 3 / 6 / 6;
+#furnace-temp{
+  grid-area: 4 / 3 / 5 / 6;
 }
+#furnace-image{
+  grid-area: 5 / 3 / 6 / 6;
+}
+
 #smelt-count-area{
   grid-area: 5 / 1 / 6 / 3;
   display: grid;

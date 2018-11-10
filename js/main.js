@@ -310,12 +310,12 @@ function manageResources() {
         var currResourceNm = Object.keys(resource)[j];
         //If resources went over their storage limit, resets them to the storage limit
         if (resource[currResourceNm] > storage[currResourceNm]){
-            console.log('Resource ' + currResourceNm + ' went over maximum. Resetting.');
+            //console.log('Resource ' + currResourceNm + ' went over maximum. Resetting.');
             resource[currResourceNm] = storage[currResourceNm];
         };
         //If resources go below zero, resets them to zero.
         if (resource[currResourceNm] < 0){
-            console.log('Resource ' + currResourceNm + ' went below zero. Resetting.');
+            //console.log('Resource ' + currResourceNm + ' went below zero. Resetting.');
             resource[currResourceNm] = 0;
         }
     }

@@ -183,6 +183,7 @@ function openFurnace(){
             "<div id='furnace-title'>Furnace</div>" +
             "<div id='furnace-description'>Current mode: Smelt</div>" +
             "<div id='furnace-mode-button' class='furnace-button'>Smelt Mode</div>" +
+            "<div id='furnace-temp'></div>" +
             "<div id='furnace-image'></div>" +
             "<div id='smelt-count-area'>" +
             "<div id='smelt-count-title'>Smelt Count</div>" +
@@ -319,10 +320,9 @@ function toggleMode() {
 }
 
 function activateFurnace() {
-    var startColor = "#e8d830";
-    var endColor = "#c66715";
+
     if (smeltTime < 0){
-        logText('You need to light a fire under the furnace first!');
+        logText('The furnace is cold!');
         $("#feed-fire").effect("shake",{distance:3}, 250);
     }
     else{
@@ -483,7 +483,8 @@ function activateFurnace() {
             $("#progress-1 svg").remove();
             smeltInProgress = false;
         }, smeltTime);
-
+        var startColor = "#e8d830";
+        var endColor = "#c66715";
         //Creates the progress bar
         $(".progress").each(function (i) {
             var line = new ProgressBar.Line(this, {
@@ -511,18 +512,28 @@ function activateFurnace() {
 }
 
 function clearInput1() {
-    $("#input-slot-1").text("");
-    $("#input-slot-1").css("background-color", "black");
-    $('#input-slot-1').attr("class", "furnace-slot");
-    $("#furnace-" + inputOneContent.toLowerCase()).css("opacity", 0.7);
-    inputOneContent = "";    
+    if (smeltInProgress == false){
+        $("#input-slot-1").text("");
+        $("#input-slot-1").css("background-color", "black");
+        $('#input-slot-1').attr("class", "furnace-slot");
+        $("#furnace-" + inputOneContent.toLowerCase()).css("opacity", 0.7);
+        inputOneContent = "";    
+    }
+    else{
+        logText("You must wait until smelting has completed!");
+    }
 }
 
 function clearInput2() {
-    $("#input-slot-2").text("");
-    $('#input-slot-2').attr("class", "furnace-slot");
-    $("#furnace-" + inputTwoContent.toLowerCase()).css("opacity", 0.7);
-    inputTwoContent = "";
+    if (smeltInProgress == false){
+        $("#input-slot-2").text("");
+        $('#input-slot-2').attr("class", "furnace-slot");
+        $("#furnace-" + inputTwoContent.toLowerCase()).css("opacity", 0.7);
+        inputTwoContent = "";
+    }
+    else{
+        logText("You must wait until smelting has completed!");
+    }
 }
 
 function clearOutput(){
@@ -583,7 +594,7 @@ function furnaceTemperature(){
         smeltTime = 100000 / furnaceTemp;
     }
     
-    $("#furnace-image").text('Furnace Temperature: ' + prettify(furnaceTemp));
+    $("#furnace-temp").text('Furnace Temperature: ' + prettify(furnaceTemp));
 }
 
 function feedFurnace(){
@@ -603,7 +614,55 @@ function feedFurnace(){
         furnaceTemp = furnaceTemp + 20;
     }
     furnaceTemperature();
+    animateFurnace();
 }
+var tempGaugeCreated = false;
 
+function animateFurnace() {
+    console.log('Animation called.');
+    var container = document.getElementById("furnace-image");
+    //Creates the temperature bar
+    if (tempGaugeCreated == false) {
+        var bar = new ProgressBar.SemiCircle(container, {
+            strokeWidth: 6,
+            color: '#FFEA82',
+            trailColor: '#eee',
+            trailWidth: 1,
+            duration: 1000,
+            svgStyle: null,
+            text: {
+                value: 'Temp: ',
+                alignToBottom: false,
+                style: {
+                    // Text color.
+                    // Default: same as stroke color (options.color)
+                    position: 'relative',
+                    left: '50%',
+                    top: '50%',
+                    padding: 0,
+                    margin: 0,
+                },
+            },
+            from: { color: '#e8d830' },
+            to: { color: '#c66715' },
+            // Set default step function for all animate calls
+            step: (state, bar) => {
+                bar.path.setAttribute('stroke', state.color);
+                var value = Math.round(bar.value() * 100);
+                if (value === 0) {
+                    bar.setText('');
+                } else {
+                    bar.setText(value);
+                }
+
+                bar.text.style.color = state.color;
+            }
+        });
+        bar.text.style.fontSize = '2rem';
+
+        bar.animate(1.0);  // Number from 0.0 to 1.0
+        tempGaugeCreated = true;
+    }
+}
 //This allows selecting all of a class but not two IDs
 //$(".furnace-resource").not("#furnace-copper, #furnace-tin").text("TEST");
