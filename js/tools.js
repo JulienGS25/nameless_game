@@ -614,55 +614,9 @@ function feedFurnace(){
         furnaceTemp = furnaceTemp + 20;
     }
     furnaceTemperature();
-    animateFurnace();
 }
 var tempGaugeCreated = false;
 
-function animateFurnace() {
-    console.log('Animation called.');
-    var container = document.getElementById("furnace-image");
-    //Creates the temperature bar
-    if (tempGaugeCreated == false) {
-        var bar = new ProgressBar.SemiCircle(container, {
-            strokeWidth: 6,
-            color: '#FFEA82',
-            trailColor: '#eee',
-            trailWidth: 1,
-            duration: 1000,
-            svgStyle: null,
-            text: {
-                value: 'Temp: ',
-                alignToBottom: false,
-                style: {
-                    // Text color.
-                    // Default: same as stroke color (options.color)
-                    position: 'relative',
-                    left: '50%',
-                    top: '50%',
-                    padding: 0,
-                    margin: 0,
-                },
-            },
-            from: { color: '#e8d830' },
-            to: { color: '#c66715' },
-            // Set default step function for all animate calls
-            step: (state, bar) => {
-                bar.path.setAttribute('stroke', state.color);
-                var value = Math.round(bar.value() * 100);
-                if (value === 0) {
-                    bar.setText('');
-                } else {
-                    bar.setText(value);
-                }
 
-                bar.text.style.color = state.color;
-            }
-        });
-        bar.text.style.fontSize = '2rem';
-
-        bar.animate(1.0);  // Number from 0.0 to 1.0
-        tempGaugeCreated = true;
-    }
-}
 //This allows selecting all of a class but not two IDs
 //$(".furnace-resource").not("#furnace-copper, #furnace-tin").text("TEST");

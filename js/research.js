@@ -78,18 +78,37 @@ function researchScience(input) {
 
 
 function researchStoneWorking(){
-    console.log('TEST')
+    
 };
 
 function researchPrimitiveConstruction(){
 
 };
+function researchStoneTools(){
 
+}
+function researchStonePickaxe(){
+
+}
+function researchStoneAxe(){
+
+}
+function researchStoneSpear(){
+
+}
 function researchSmelting(){
-    console.log('TEST')
     show("#furnace-btn",100);
     visible.furnaceButton = true;
 };
+
+function researchCopperSmelting(){
+
+}
+function researchMetalWorking(){
+
+}
+
+
 
 
 
@@ -118,7 +137,7 @@ var research = [
         researched: 0,
         researchFunction: "researchStoneWorking",
         message: "By hitting stones together, you can shape them into useful objects.",
-        unlocks_research: [],
+        unlocks_research: [2],
         unlocks_buildings: [],
         unique: true
     },
@@ -149,10 +168,118 @@ var research = [
         unlocks_buildings: [4, 5],
         unique: true
     },
+    stoneTools = {
+        name: "Stone Tools",
+        id: 2,
+        description: "Tools made of stone. Very weak and primitive, but it's better than nothing..",
+        costs_1: "Science",
+        costs_1_amount: 100,
+        costs_2: undefined,
+        costs_2_amount: undefined,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks research: Stone Pickaxe",
+        effects_2: "Unlocks research: Stone Axe",
+        effects_3: "Unlocks research: Stone Spear",
+        effects_4: "Unlocks research: Early Writing",
+        effects_5: "",
+        displayable: 0,
+        researched: 0,
+        researchFunction: "researchStoneTools",
+        message: "You can use stones as basic tools to improve your tasks.",
+        unlocks_research: [3, 4, 5], //add ID 15 later
+        unlocks_buildings: [],
+        unique: true
+    },
+    stonePickaxe = {
+        name: "Stone Pickaxe",
+        id: 3,
+        description: "A pointy stone tied at the end of a stick to smash rocks.",
+        costs_1: "Science",
+        costs_1_amount: 100,
+        costs_2: undefined,
+        costs_2_amount: undefined,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Improves mining speed",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        researched: 0,
+        researchFunction: "researchStonePickaxe",
+        message: "By attaching a stone at the end of a stick, you may be able to use this to improve your ability to gather stones.",
+        unlocks_research: [],
+        unlocks_buildings: [],
+        unique: false
+    },
+    stoneAxe = {
+        name: "Stone Axe",
+        id: 4,
+        description: "A sharp stone tied at the end of a stick to cut trees.",
+        costs_1: "Science",
+        costs_1_amount: 100,
+        costs_2: undefined,
+        costs_2_amount: undefined,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Improves wood gathering",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        researched: 0,
+        researchFunction: "researchStoneAxe",
+        message: "By sharpening a stone and attaching it at the end of a stick, you can use this to cut down trees.",
+        unlocks_research: [],
+        unlocks_buildings: [],
+        unique: false
+    },
+    stoneSpear = {
+        name: "Stone Spear",
+        id: 5,
+        description: "A long stick with a pointy stone at the end to improve hunting.",
+        costs_1: "Science",
+        costs_1_amount: 100,
+        costs_2: undefined,
+        costs_2_amount: undefined,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Improves hunters' food gathering",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        researched: 0,
+        researchFunction: "researchStoneSpear",
+        message: "By attaching this pointy stone to a stick, you can hunt bigger animals for more meat to feed your tribe.",
+        unlocks_research: [],
+        unlocks_buildings: [],
+        unique: false
+    },
     smelting = {
         name: "Smelting",
-        id: 2,
-        description: "Using the harnessed power of the fire, you can smelt metals for various purposes.",
+        id: 6,
+        description: "Using the harnessed power of fire, you can smelt metals for various purposes.",
         costs_1: "Science",
         costs_1_amount: 100,
         costs_2: undefined,
@@ -174,6 +301,60 @@ var research = [
         message: "You gather wood, light it on fire and bring it to a very hot temperature able to melt metals.",
         unlocks_research: [],
         unlocks_buildings: [4, 5],
+        unique: true
+    },
+    copperSmelting = {
+        name: "Copper Smelting",
+        id: 7,
+        description: "Copper is a soft metal but it won't wear as fast as stone.",
+        costs_1: "Science",
+        costs_1_amount: 100,
+        costs_2: undefined,
+        costs_2_amount: undefined,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks reseach: Metal Working",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        researched: 0,
+        researchFunction: "researchCopperSmelting",
+        message: "You can throw copper ore into the orange glow of the fire and smelt it into bars.",
+        unlocks_research: [8],
+        unlocks_buildings: [],
+        unique: true
+    },
+    metalWorking = {
+        name: "Metal Working",
+        id: 8,
+        description: "By striking hot metal, you can work it to improve your tribe's equipment.",
+        costs_1: "Science",
+        costs_1_amount: 100,
+        costs_2: undefined,
+        costs_2_amount: undefined,
+        costs_3: undefined,
+        costs_3_amount: undefined,
+        costs_4: undefined,
+        costs_4_amount: undefined,
+        costs_5: undefined,
+        costs_5_amount: undefined,
+        effects_1: "Unlocks reseach: Copper Pickaxe",
+        effects_2: "",
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
+        displayable: 0,
+        researched: 0,
+        researchFunction: "researchMetalWorking",
+        message: "After hammering day and night at this anvil, the metal starts to take shape into something useful.",
+        unlocks_research: [8],
+        unlocks_buildings: [],
         unique: true
     },
 ]
