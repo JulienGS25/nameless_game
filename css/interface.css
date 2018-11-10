@@ -549,6 +549,11 @@ grid-column-end
 }
 #input-slot-1{
   grid-area: 7 / 1 / 7 / 2;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;  
 }
 #progress-1{
   grid-area: 7 / 2 / 7 / 4;
@@ -562,6 +567,11 @@ grid-column-end
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 75% 25%;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;  
 }
 #output-resource-name{
   grid-area: 1 / 1 / 1 / 2;
@@ -575,6 +585,11 @@ grid-column-end
 #input-slot-2{
   grid-area: 7 / 7 / 7 / 8;
   opacity: 0;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;  
 }
 #furnace-copper{
   grid-area: 8 / 1 / 8 / 2;
@@ -630,8 +645,8 @@ grid-column-end
 }
 #furnace-titanium{
   grid-area: 8 / 6 / 8 / 7;
-  font-size: 1vh;
 }
+
 .furnace-titanium-bg{
   background-image: url("../images/Titanium Ore.png");
 }
@@ -660,10 +675,23 @@ grid-column-end
 }
 .furnace-resource-name{
   grid-area: 1 / 1 / 1 / 4;
+  font-size: 1.5vh;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;  
 }
 .furnace-resource-count{
   font-style: italic;
   grid-area: 2 / 3 / 2 / 3;
+  position: relative;
+  bottom: 1vh;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;  
 }
 .furnace-resource:hover{
   transform: scale(0.95);
