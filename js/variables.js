@@ -129,13 +129,14 @@ var disableLightningEffect = 1;
 //Furnace
 var furnaceObj = {
     "furnaceMode": "smelt", // can be smelt or alloy
-    "smeltTime": 0,
+    "smeltTime": -1,
     "inputOneContent": "",
     "inputTwoContent": "",
     "outputResourceName": "",
     "outputResourceCount": "",
     "smeltInProgress": false,
     "furnaceTemp": 0.0,
+    "maxTemp": 150,
 }
 
 //Other

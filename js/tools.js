@@ -272,13 +272,13 @@ function openFurnace(){
 
 
 //var furnaceMode = "smelt"; //can be alloy or smelt
-var smeltTime = -1;
-var inputOneContent = "";
-var inputTwoContent = "";
-var outputResourceName = "";
-var outputResourceCount = "";
-var smeltInProgress = false;
-var furnaceTemp = 0.0;
+//var furnaceObj.smeltTime = -1;
+//var furnaceObj.inputOneContent = "";
+//var furnaceObj.inputTwoContent = "";
+//var furnaceObj.outputResourceName = "";
+//var furnaceObj.outputResourceCount = "";
+//var furnaceObj.smeltInProgress = false;
+//var furnaceObj.furnaceTemp = 0.0;
 
 function toggleMode() {
     if (furnaceObj.furnaceMode == "smelt") {
@@ -321,145 +321,155 @@ function toggleMode() {
 
 function activateFurnace() {
 
-    if (smeltTime < 0){
-        logText('The furnace is cold!');
+    if (furnaceObj.smeltTime < 0){
+        logWarn('The furnace is cold!');
         $("#feed-fire").effect("shake",{distance:3}, 250);
     }
     else{
     if (furnaceObj.furnaceMode == "smelt") {
 
-        if (inputOneContent == "Copper" && (outputResourceName == "copperBar" || outputResourceName == "") && smeltInProgress == false) {
+        if (furnaceObj.inputOneContent == "Copper" && (furnaceObj.outputResourceName == "copperBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "copperBar";
+                furnaceObj.outputResourceName = "copperBar";
                 $("#output-resource-name").text("Copper Bar");
                 $("#output-slot").addClass("furnace-copper-bar-bg");
                 $("#output-slot").addClass("output-slot-filled");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
-        if (inputOneContent == "Tin" && (outputResourceName == "tinBar" || outputResourceName == "") && smeltInProgress == false) {
+        if (furnaceObj.inputOneContent == "Tin" && (furnaceObj.outputResourceName == "tinBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "tinBar";
+                furnaceObj.outputResourceName = "tinBar";
                 $("#output-resource-name").text("Tin Bar");
                 $("#output-slot").addClass("furnace-tin-bar-bg");
                 $("#output-slot").addClass("output-slot-filled");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
-        if (inputOneContent == "Iron" && (outputResourceName == "ironBar" || outputResourceName == "") && smeltInProgress == false) {
+        if (furnaceObj.inputOneContent == "Iron" && (furnaceObj.outputResourceName == "ironBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "ironBar";
+                furnaceObj.outputResourceName = "ironBar";
                 $("#output-resource-name").text("Iron Bar");
                 $("#output-slot").addClass("furnace-iron-bar-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                $("#output-slot").addClass("output-slot-filled");
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
-        if (inputOneContent == "Coal") {
+        if (furnaceObj.inputOneContent == "Coal") {
             $("#input-slot-1").effect("shake",{distance:3}, 250);
             logText('Coal cannot be smelted on its own!')
         }
-        if (inputOneContent == "Gold" && (outputResourceName == "goldBar" || outputResourceName == "") && smeltInProgress == false) {
+        if (furnaceObj.inputOneContent == "Gold" && (furnaceObj.outputResourceName == "goldBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "goldBar";
+                furnaceObj.outputResourceName = "goldBar";
                 $("#output-resource-name").text("Gold Bar");
                 $("#output-slot").addClass("furnace-gold-bar-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                $("#output-slot").addClass("output-slot-filled");
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
 
-        if (inputOneContent == "Sand" && (outputResourceName == "glassPanel" || outputResourceName == "") && smeltInProgress == false) {
+        if (furnaceObj.inputOneContent == "Sand" && (furnaceObj.outputResourceName == "glassPanel" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "glassPanel";
+                furnaceObj.outputResourceName = "glassPanel";
                 $("#output-resource-name").text("Glass Panel");
                 $("#output-slot").addClass("furnace-glass-panel-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                $("#output-slot").addClass("output-slot-filled");
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
 
-        if (inputOneContent == "Titanium" && (outputResourceName == "titaniumBar" || outputResourceName == "") && smeltInProgress == false) {
+        if (furnaceObj.inputOneContent == "Titanium" && (furnaceObj.outputResourceName == "titaniumBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "titaniumBar";
+                furnaceObj.outputResourceName = "titaniumBar";
                 $("#output-resource-name").text("Titanium Plate");
                 $("#output-slot").addClass("furnace-titanium-plate-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                $("#output-slot").addClass("output-slot-filled");
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
 
-        if (outputResourceName !== "") {
-            if (inputOneContent == "Copper" && outputResourceName !== "copperBar") {
-                logText('Please empty output slot first!')
+        if (furnaceObj.outputResourceName !== "") {
+            if (furnaceObj.inputOneContent == "Copper" && furnaceObj.outputResourceName !== "copperBar") {
+                logText('Please empty output slot first!');
+                $("#output-slot").effect("shake",{distance:3}, 250);
             }
-            if (inputOneContent == "Tin" && outputResourceName !== "tinBar") {
-                logText('Please empty output slot first!')
+            if (furnaceObj.inputOneContent == "Tin" && furnaceObj.outputResourceName !== "tinBar") {
+                logText('Please empty output slot first!');
+                $("#output-slot").effect("shake",{distance:3}, 250);
             }
-            if (inputOneContent == "Iron" && outputResourceName !== "ironBar") {
-                logText('Please empty output slot first!')
+            if (furnaceObj.inputOneContent == "Iron" && furnaceObj.outputResourceName !== "ironBar") {
+                logText('Please empty output slot first!');
+                $("#output-slot").effect("shake",{distance:3}, 250);
             }
-            if (inputOneContent == "Gold" && outputResourceName !== "goldBar") {
-                logText('Please empty output slot first!')
+            if (furnaceObj.inputOneContent == "Gold" && furnaceObj.outputResourceName !== "goldBar") {
+                logText('Please empty output slot first!');
+                $("#output-slot").effect("shake",{distance:3}, 250);
             }
-            if (inputOneContent == "Sand" && outputResourceName !== "glassPanel") {
-                logText('Please empty output slot first!')
+            if (furnaceObj.inputOneContent == "Sand" && furnaceObj.outputResourceName !== "glassPanel") {
+                logText('Please empty output slot first!');
+                $("#output-slot").effect("shake",{distance:3}, 250);
             }
-            if (inputOneContent == "Titanium" && outputResourceName !== "titaniumBar") {
-                logText('Please empty output slot first!')
+            if (furnaceObj.inputOneContent == "Titanium" && furnaceObj.outputResourceName !== "titaniumBar") {
+                logText('Please empty output slot first!');
+                $("#output-slot").effect("shake",{distance:3}, 250);
             }
         }
 
     }
 
     else if (furnaceObj.furnaceMode == "alloy") {
-        if (inputOneContent == "Iron" && inputTwoContent == "Coal" && (outputResourceName == "steelBar" || outputResourceName == "") && smeltInProgress == false) {
+        if (furnaceObj.inputOneContent == "Iron" && furnaceObj.inputTwoContent == "Coal" && (furnaceObj.outputResourceName == "steelBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "steelBar";
+                furnaceObj.outputResourceName = "steelBar";
                 $("#output-resource-name").text("Steel Plate");
                 $("#output-slot").addClass("furnace-steel-plate-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
-        else if (inputOneContent == "Coal" && inputTwoContent == "Iron" && (outputResourceName == "steelBar" || outputResourceName == "") && smeltInProgress == false) {
+        else if (furnaceObj.inputOneContent == "Coal" && furnaceObj.inputTwoContent == "Iron" && (furnaceObj.outputResourceName == "steelBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "steelBar";
+                furnaceObj.outputResourceName = "steelBar";
                 $("#output-resource-name").text("Steel Plate");
                 $("#output-slot").addClass("furnace-steel-plate-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
-        else if (inputOneContent == "Copper" && inputTwoContent == "Tin" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
+        else if (furnaceObj.inputOneContent == "Copper" && furnaceObj.inputTwoContent == "Tin" && (furnaceObj.outputResourceName == "bronzeBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "bronzeBar";
+                furnaceObj.outputResourceName = "bronzeBar";
                 $("#output-resource-name").text("Bronze Bar");
                 $("#output-slot").addClass("furnace-bronze-bar-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
-        else if (inputOneContent == "Tin" && inputTwoContent == "Copper" && (outputResourceName == "bronzeBar" || outputResourceName == "") && smeltInProgress == false) {
+        else if (furnaceObj.inputOneContent == "Tin" && furnaceObj.inputTwoContent == "Copper" && (furnaceObj.outputResourceName == "bronzeBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();
             setTimeout(function () {
-                outputResourceName = "bronzeBar";
+                furnaceObj.outputResourceName = "bronzeBar";
                 $("#output-resource-name").text("Bronze Bar");
                 $("#output-slot").addClass("furnace-bronze-bar-bg");
-                outputResourceCount++;
-                $("#output-resource-count").text(outputResourceCount);
-            }, smeltTime);
+                furnaceObj.outputResourceCount++;
+                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+            }, furnaceObj.smeltTime);
         }
         else{
             logText("Invalid alloy!");
@@ -469,20 +479,20 @@ function activateFurnace() {
 
         setTimeout(function () {
             $("#progress-1 svg").remove();
-        }, smeltTime);
+        }, furnaceObj.smeltTime);
         setTimeout(function () {
             $("#progress-2 svg").remove();
-        }, smeltTime);
+        }, furnaceObj.smeltTime);
     }
 }
 
     function smeltAnimation() {
         //Removes the progress bar after it has finished
-        smeltInProgress = true;
+        furnaceObj.smeltInProgress = true;
         setTimeout(function () {
             $("#progress-1 svg").remove();
-            smeltInProgress = false;
-        }, smeltTime);
+            furnaceObj.smeltInProgress = false;
+        }, furnaceObj.smeltTime);
         var startColor = "#e8d830";
         var endColor = "#c66715";
         //Creates the progress bar
@@ -491,7 +501,7 @@ function activateFurnace() {
                 color: startColor,
                 easing: "linear",
                 strokeWidth: 10,
-                duration: smeltTime
+                duration: furnaceObj.smeltTime
             });
 
             var value = $(this).attr("value") / 100;
@@ -512,12 +522,12 @@ function activateFurnace() {
 }
 
 function clearInput1() {
-    if (smeltInProgress == false){
+    if (furnaceObj.smeltInProgress == false){
         $("#input-slot-1").text("");
         $("#input-slot-1").css("background-color", "black");
         $('#input-slot-1').attr("class", "furnace-slot");
-        $("#furnace-" + inputOneContent.toLowerCase()).css("opacity", 0.7);
-        inputOneContent = "";    
+        $("#furnace-" + furnaceObj.inputOneContent.toLowerCase()).css("opacity", 0.7);
+        furnaceObj.inputOneContent = "";    
     }
     else{
         logText("You must wait until smelting has completed!");
@@ -525,11 +535,11 @@ function clearInput1() {
 }
 
 function clearInput2() {
-    if (smeltInProgress == false){
+    if (furnaceObj.smeltInProgress == false){
         $("#input-slot-2").text("");
         $('#input-slot-2').attr("class", "furnace-slot");
-        $("#furnace-" + inputTwoContent.toLowerCase()).css("opacity", 0.7);
-        inputTwoContent = "";
+        $("#furnace-" + furnaceObj.inputTwoContent.toLowerCase()).css("opacity", 0.7);
+        furnaceObj.inputTwoContent = "";
     }
     else{
         logText("You must wait until smelting has completed!");
@@ -540,8 +550,8 @@ function clearOutput(){
   $("#output-resource-name").text("");
   $("#output-resource-count").text("");
   $('#output-slot').attr("class", "furnace-slot");
-  outputResourceCount = 0;
-  outputResourceName = "";
+  furnaceObj.outputResourceCount = 0;
+  furnaceObj.outputResourceName = "";
 }
 
 function addOre(ore){
@@ -549,11 +559,11 @@ function addOre(ore){
         $("#input-slot-1").css("font-size", "1vh");
         refreshFurnaceUI(ore);
     }
-    if (furnaceObj.furnaceMode == "alloy" && inputOneContent == "") {
+    if (furnaceObj.furnaceMode == "alloy" && furnaceObj.inputOneContent == "") {
         $("#input-slot-1").css("font-size", "1vh");
         refreshFurnaceUI(ore);
     }
-    else if (furnaceObj.furnaceMode == "alloy" && inputOneContent !== "") {
+    else if (furnaceObj.furnaceMode == "alloy" && furnaceObj.inputOneContent !== "") {
         $("#input-slot-2").css("font-size", "1vh");
         refreshFurnaceUI(ore);
     }
@@ -566,22 +576,22 @@ function refreshFurnaceUI(ore) {
         $("#input-slot-1").text(ore);
         $("#input-slot-1").attr("class", "furnace-slot");
         $("#input-slot-1").addClass("furnace-" + lowerOre + "-bg");
-        inputOneContent = ore;
+        furnaceObj.inputOneContent = ore;
     }
     else if (furnaceObj.furnaceMode == "alloy") {
-        if (inputOneContent == "") {
+        if (furnaceObj.inputOneContent == "") {
             //Ore goes into input 1
             $("#input-slot-1").text(ore);
             $("#input-slot-1").attr("class", "furnace-slot");
             $("#input-slot-1").addClass("furnace-" + lowerOre + "-bg");
-            inputOneContent = ore;
+            furnaceObj.inputOneContent = ore;
         }
         else {
             //Ore goes into input 2
             $("#input-slot-2").text(ore);
             $("#input-slot-2").attr("class", "furnace-slot");
             $("#input-slot-2").addClass("furnace-" + lowerOre + "-bg");
-            inputTwoContent = ore;
+            furnaceObj.inputTwoContent = ore;
         }
     }
 
@@ -589,29 +599,31 @@ function refreshFurnaceUI(ore) {
 }
 
 function furnaceTemperature(){
-    if (furnaceTemp > 0){
-        furnaceTemp = furnaceTemp - (currentTemp * 0.005);
-        smeltTime = 100000 / furnaceTemp;
+    if (furnaceObj.furnaceTemp > 0){
+        furnaceObj.furnaceTemp = furnaceObj.furnaceTemp - (currentTemp * 0.005);
+        furnaceObj.smeltTime = 100000 / furnaceObj.furnaceTemp;
     }
     
-    $("#furnace-temp").text('Furnace Temperature: ' + prettify(furnaceTemp));
+    $("#furnace-temp").text('Furnace Temperature: ' + prettify(furnaceObj.furnaceTemp));
 }
 
-function feedFurnace(){
-    if (furnaceTemp < 10){
-        furnaceTemp = furnaceTemp + 5;
-    }
-    else if (furnaceTemp < 40){
-        furnaceTemp = furnaceTemp + 10;
-    }
-    else if (furnaceTemp < 80){
-        furnaceTemp = furnaceTemp + 15;
-    }
-    else if (furnaceTemp < 150){
-        furnaceTemp = furnaceTemp + 20
-    }
-    else{
-        furnaceTemp = furnaceTemp + 20;
+function feedFurnace() {
+    if (furnaceObj.furnaceTemp < furnaceObj.maxTemp) {
+        if (furnaceObj.furnaceTemp < 10) {
+            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 5;
+        }
+        else if (furnaceObj.furnaceTemp < 40) {
+            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 10;
+        }
+        else if (furnaceObj.furnaceTemp < 80) {
+            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 15;
+        }
+        else if (furnaceObj.furnaceTemp < 150) {
+            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 20
+        }
+        else {
+            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 20;
+        }
     }
     furnaceTemperature();
 }

@@ -106,7 +106,6 @@ function showTooltip(input) {
         $('.work-area').append("<div id='tooltip-title'>" + input.name + "</div>" +
             "<div id='tooltip-desc'>" + input.description + "</div>");
         if (input.unique == false && input.hasOwnProperty("built")){
-            console.log(input)
             $('.work-area').append("<div id='tooltip-built'>Built: " + input.built + "</div>"); 
         }
         $('.work-area').append("<div id='tooltip-costs-container'>" +
