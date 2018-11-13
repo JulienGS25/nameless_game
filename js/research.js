@@ -537,7 +537,7 @@ var research = [
         message: "By carefully planting seeds into the ground, you realize you can grow them into crops. This is the beginning of a stable civilization!",
         unlocks_research: [13], 
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     domestication = {
         name: "Domestication",
@@ -564,7 +564,7 @@ var research = [
         message: "After approaching various animals with food you find out that some of them can be domesticated and used for various tasks.",
         unlocks_research: [14], 
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     animalHusbandry = {
         name: "Animal Husbandry",
@@ -591,7 +591,7 @@ var research = [
         message: "The cow, sheep and pig are the easiest to handle and provide the most resources. You can slaughter them for meat for your tribe.",
         unlocks_research: [14], 
         unlocks_buildings: [8, 9, 10],
-        unique: false
+        unique: true
     },
     earlyWriting = {
         name: "Early Writing",
@@ -618,7 +618,7 @@ var research = [
         message: "By writing things down, you can transmit knowledge through generations. This is the primordial research which will carry your civilization into the future.",
         unlocks_research: [16], 
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     wheel = {
         name: "Wheel",
@@ -645,7 +645,7 @@ var research = [
         message: "The wheel allows you to carry materials much heavier than before, improving various aspects of life.",
         unlocks_research: [23],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     tinSmelting = {
         name: "Tin Smelting",
@@ -670,9 +670,9 @@ var research = [
         researched: 0,
         researchFunction: "researchTinSmelting",
         message: "This soft, silver-looking metal may be useful by combining it with other metals.",
-        unlocks_research: [],
+        unlocks_research: [18],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     bronzeAlloy = {
         name: "Bronze Alloy",
@@ -699,7 +699,7 @@ var research = [
         message: "By mixing copper and tin, you can create this strong and useful alloy.",
         unlocks_research: [19, 20, 21, 22],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     bronzeArmor = {
         name: "Bronze Armor",
@@ -744,9 +744,9 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Unlocks resource: Iron Ore",
         effects_2: "Unlocks research: Iron Smelting",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchBronzePickaxe",
@@ -771,9 +771,9 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves wood gathering efficiency",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchBronzeAxe",
@@ -798,9 +798,9 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves hunting efficiency",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchBronzeSpear",
@@ -825,16 +825,16 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves hunting efficiency",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchImprovedConstruction",
         message: "With the use of wheels of various tools, you are able to improve your buildings considerably.",
         unlocks_research: [24],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     animalEngine = {
         name: "Animal Engine",
@@ -852,16 +852,16 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Unlocks research: Flour Milling",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchAnimalEngine",
         message: "By attaching a large animal to a wheel, you may be able to use its strength to further your own goals.",
         unlocks_research: [25],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     flourMilling = {
         name: "Flour Milling",
@@ -879,16 +879,16 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Unlocks research: Bread",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchFlourMilling",
         message: "By milling wheat using the animal engine, you get a fine white powder called flour.",
-        unlocks_research: [25],
+        unlocks_research: [26],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     bread = {
         name: "Bread",
@@ -906,16 +906,16 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves food production",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchBread",
         message: "This bread will be useful to fill up your stocks during the cold season.",
         unlocks_research: [],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     ironSmelting = {
         name: "Iron Smelting",
@@ -935,14 +935,14 @@ var research = [
         effects_2: "Unlocks research: Iron Pickaxe",
         effects_3: "Unlocks research: Iron Axe",
         effects_4: "Unlocks research: Iron Spear",
-        effects_5: undefined,
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchIronSmelting",
         message: "",
         unlocks_research: [28, 29, 30, 31],
         unlocks_buildings: [],
-        unique: false
+        unique: true
     },
     ironArmor = {
         name: "Iron Armor",
@@ -960,9 +960,9 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves exploration",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchIronArmo",
@@ -987,9 +987,9 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves mining efficiency",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchIronPickaxe",
@@ -1014,9 +1014,9 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves hunting efficiency",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchIronSpear",
@@ -1041,9 +1041,9 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves wood gathering efficiency",
         effects_2: "",
-        effects_3: undefined,
-        effects_4: undefined,
-        effects_5: undefined,
+        effects_3: "",
+        effects_4: "",
+        effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchIronAxe",

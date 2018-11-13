@@ -113,9 +113,11 @@ body {
   grid-auto-flow: row;
   text-align: center;
 }
+
 #grid-left-col-1 > div, #grid-left-col-2 > div{
   height: 2.5vh;
 }
+
 #grid-left-col-2{
   grid-template-rows: repeat(7, 5vh);
   grid-template-columns: 100%;
