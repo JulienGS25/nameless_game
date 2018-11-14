@@ -161,6 +161,7 @@ function researchBronzeSpear(){
 function researchImprovedConstruction(){
 
 }
+
 function researchAnimalEngine(){
 
 }
@@ -284,15 +285,15 @@ var research = [
         costs_5: undefined,
         costs_5_amount: undefined,
         effects_1: "Improves mining speed",
-        effects_2: "",
-        effects_3: "",
+        effects_2: "Unlocks resource: Copper Ore",
+        effects_3: "Unlocks research: Copper Smelting",
         effects_4: "",
         effects_5: "",
         displayable: 0,
         researched: 0,
         researchFunction: "researchStonePickaxe",
         message: "By attaching a stone at the end of a stick, you may be able to use this to improve your ability to gather stones.",
-        unlocks_research: [],
+        unlocks_research: [7],
         unlocks_buildings: [],
         unique: false
     },
@@ -590,7 +591,7 @@ var research = [
         researchFunction: "researchAnimalHusbandry",
         message: "The cow, sheep and pig are the easiest to handle and provide the most resources. You can slaughter them for meat for your tribe.",
         unlocks_research: [14], 
-        unlocks_buildings: [8, 9, 10],
+        unlocks_buildings: [], // add 8, 9, 10 later
         unique: true
     },
     earlyWriting = {
@@ -751,7 +752,7 @@ var research = [
         researched: 0,
         researchFunction: "researchBronzePickaxe",
         message: "",
-        unlocks_research: [],
+        unlocks_research: [27],
         unlocks_buildings: [],
         unique: false
     },
@@ -965,7 +966,7 @@ var research = [
         effects_5: "",
         displayable: 0,
         researched: 0,
-        researchFunction: "researchIronArmo",
+        researchFunction: "researchIronArmor",
         message: "",
         unlocks_research: [],
         unlocks_buildings: [],

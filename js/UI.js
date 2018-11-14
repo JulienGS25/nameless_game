@@ -38,7 +38,7 @@ function displayResearch() {
     hide('.left-tab-cell',10);
     $('.left-tab-cell').remove();
     for (let j = 0; j < research.length; j++){
-        if (research[j].displayable == 1){
+        if (research[j].displayable == 1 && research[j].researched == 0){
             if (research[j].unique == true){
                 $('#grid-left-col-1').append("<div class='game-button left-tab-cell' id='left-tab-cell-" + j + "'>" + research[j].name + "</div>");
             }
