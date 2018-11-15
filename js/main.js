@@ -92,6 +92,7 @@ function loadGame(){
         }
         if (visible.manageTribeButton = true){
             show('#manage-tribe-btn', 25);
+            document.getElementById('people-resource').innerHTML = ("Tribespeople: <span id='people'>0</span><span> / </span><span id='people-storage'></span>");
         }
         if (visible.furnaceButton = true){
             show('#furnace-btn', 25);
@@ -126,6 +127,18 @@ function loadGame(){
         }
         if (visible.scienceResource == true){
             showScience();
+        }
+        if (visible.copperOreResource == true){
+            showCopperOre();
+        }
+        if (visible.tinOreResource == true){
+            showTinOre();
+        }
+        if (visible.ironOreResource == true){
+            showIronOre();
+        }
+        if (visible.goldOreResource == true){
+            showGoldOre();
         }
 
     }
@@ -348,10 +361,18 @@ function manageResources() {
 function gameLoop(){
     window.setInterval(function(){
         passedTime++;
+        //Handles world temperature
         fluctuateTemp();
+        //Handles furnace temperature
         furnaceTemperature();
+        //Handles temperature message displays
         tempCheck();
+        //Handles automatic food spending and people growth
         manageResources();
+        //Handles automatic resource gathering
+        autoResource();
+        //Updates resource displays
+        updateResourceDisplay();
 
         if (passedTime == 5 && events.wakeUp == 0){
             wakeUp();
@@ -398,20 +419,9 @@ function gameLoop(){
             document.getElementById("total-farmers").innerHTML = buildings[6].built;;
         }
 
-        autoResource();
 
-        document.getElementById('time').innerHTML = passedTime + ' seconds.';
-        document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
-        document.getElementById("people").innerHTML = prettify(resource.people);
-        document.getElementById("people-storage").innerHTML = prettify(storage.people);
-        document.getElementById("p-res-1-amt").innerHTML = prettify(resource.food);
-        document.getElementById("p-res-1-storage").innerHTML = prettify(storage.food);
-        document.getElementById("p-res-2-amt").innerHTML = prettify(resource.wood);
-        document.getElementById("p-res-2-storage").innerHTML = prettify(storage.wood);
-        document.getElementById("p-res-3-amt").innerHTML = prettify(resource.stone);
-        document.getElementById("p-res-3-storage").innerHTML = prettify(storage.stone);
-        document.getElementById("p-res-4-amt").innerHTML = prettify(resource.science);
-        document.getElementById("p-res-4-storage").innerHTML = prettify(storage.science);
+
+
 
     }, gameSpeed)
 };

@@ -92,7 +92,7 @@ function researchStoneTools(){
 
 }
 function researchStonePickaxe(){
-
+    showCopperOre();
 }
 function researchStoneAxe(){
 
@@ -113,7 +113,7 @@ function researchMetalWorking(){
 }
 
 function researchCopperPickaxe(){
-
+    showTinOre();
 }
 
 function researchCopperAxe(){
@@ -146,11 +146,8 @@ function researchBronzeAlloy(){
 function researchBronzeArmor(){
 
 }
-function researchBronzeArmor(){
-
-}
 function researchBronzePickaxe(){
-
+    showIronOre();
 }
 function researchBronzeAxe(){
 
@@ -178,7 +175,7 @@ function researchIronArmor(){
 
 }
 function researchIronPickaxe(){
-
+    showGoldOre();
 }
 function researchIronSpear(){
 

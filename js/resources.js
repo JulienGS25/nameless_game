@@ -45,8 +45,58 @@ function showScience(){
     document.getElementById("p-res-4-name").innerHTML = "Science: ";
     visible.scienceResource = true;
 }
+function showCopperOre(){
+    show('#primary-res-6',150);
+    document.getElementById("primary-res-6").classList.add("CopperColorText");
+    document.getElementById("p-res-6-img").src = "images/Copper Ore.png";
+    document.getElementById("p-res-6-name").innerHTML = "Copper Ore: ";
+    visible.copperOreResource = true;
+}
+function showTinOre(){
+    show('#primary-res-7',150);
+    document.getElementById("primary-res-7").classList.add("TinColorText");
+    document.getElementById("p-res-7-img").src = "images/Tin Ore.png";
+    document.getElementById("p-res-7-name").innerHTML = "Tin Ore: ";
+    visible.tinOreResource = true;
+}
+function showIronOre(){
+    show('#primary-res-8',150);
+    document.getElementById("primary-res-8").classList.add("IronColorText");
+    document.getElementById("p-res-8-img").src = "images/Iron Ore.png";
+    document.getElementById("p-res-8-name").innerHTML = "Iron Ore: ";
+    visible.ironOreResource = true;
+}
+function showGoldOre(){
+    show('#primary-res-9',150);
+    document.getElementById("primary-res-9").classList.add("GoldColorText");
+    document.getElementById("p-res-9-img").src = "images/Gold Ore.png";
+    document.getElementById("p-res-9-name").innerHTML = "Gold Ore: ";
+    visible.goldOreResource = true;
+}
 
 
+function updateResourceDisplay(){
+    document.getElementById('time').innerHTML = passedTime + ' seconds.';
+    document.getElementById('temp').innerHTML = prettify(currentTemp) + '°C.';
+    document.getElementById("people").innerHTML = prettify(resource.people);
+    document.getElementById("people-storage").innerHTML = prettify(storage.people);
+    document.getElementById("p-res-1-amt").innerHTML = prettify(resource.food);
+    document.getElementById("p-res-1-storage").innerHTML = prettify(storage.food);
+    document.getElementById("p-res-2-amt").innerHTML = prettify(resource.wood);
+    document.getElementById("p-res-2-storage").innerHTML = prettify(storage.wood);
+    document.getElementById("p-res-3-amt").innerHTML = prettify(resource.stone);
+    document.getElementById("p-res-3-storage").innerHTML = prettify(storage.stone);
+    document.getElementById("p-res-4-amt").innerHTML = prettify(resource.science);
+    document.getElementById("p-res-4-storage").innerHTML = prettify(storage.science);
+    document.getElementById("p-res-6-amt").innerHTML = prettify(resource.copperOre);
+    document.getElementById("p-res-6-storage").innerHTML = prettify(storage.copperOre);
+    document.getElementById("p-res-7-amt").innerHTML = prettify(resource.tinOre);
+    document.getElementById("p-res-7-storage").innerHTML = prettify(storage.tinOre);
+    document.getElementById("p-res-8-amt").innerHTML = prettify(resource.ironOre);
+    document.getElementById("p-res-8-storage").innerHTML = prettify(storage.ironOre);
+    document.getElementById("p-res-9-amt").innerHTML = prettify(resource.goldOre);
+    document.getElementById("p-res-9-storage").innerHTML = prettify(storage.goldOre);
+}
 //Automatic resource gathering
 function autoResource(){
     if (jobs.shaman > 0){
@@ -139,9 +189,38 @@ function getStone(eff, mode) {
         speed.stoneGather = speed.stoneGather * 1.1;
     }
     else if (mode == 'auto') {
+        //Gathers stone
         if (resource.stone < storage.stone) {
             resource.stone = resource.stone + eff;
             document.getElementById("p-res-3-amt").innerHTML = resource.stone;
+        }
+        //Gathers copper ore
+        if (research[3].researched == 1){
+            if(resource.copperOre < storage.copperOre){
+                resource.copperOre = resource.copperOre + eff;
+                document.getElementById("p-res-6-amt").innerHTML = resource.copperOre;
+            }
+        }
+        //Gathers tin ore
+        if (research[9].researched == 1){
+            if(resource.tinOre < storage.tinOre){
+                resource.tinOre = resource.tinOre + eff;
+                document.getElementById("p-res-7-amt").innerHTML = resource.tinOre;
+            }
+        }
+        //Gathers iron ore
+        if (research[20].researched == 1){
+            if(resource.ironOre < storage.ironOre){
+                resource.ironOre = resource.ironOre + eff;
+                document.getElementById("p-res-8-amt").innerHTML = resource.ironOre;
+            }
+        }
+        //Gathers gold ore
+        if (research[29].researched == 1){
+            if(resource.goldOre < storage.goldOre){
+                resource.goldOre = resource.goldOre + eff;
+                document.getElementById("p-res-9-amt").innerHTML = resource.goldOre;
+            }
         }
     }
 };
