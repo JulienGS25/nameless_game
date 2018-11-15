@@ -291,17 +291,6 @@ function openFurnace(){
 }
 
 
-
-
-//var furnaceMode = "smelt"; //can be alloy or smelt
-//var furnaceObj.smeltTime = -1;
-//var furnaceObj.inputOneContent = "";
-//var furnaceObj.inputTwoContent = "";
-//var furnaceObj.outputResourceName = "";
-//var furnaceObj.outputResourceCount = "";
-//var furnaceObj.smeltInProgress = false;
-//var furnaceObj.furnaceTemp = 0.0;
-
 function toggleMode() {
     if (furnaceObj.furnaceMode == "smelt") {
         furnaceObj.furnaceMode = "alloy";
@@ -359,6 +348,8 @@ function activateFurnace() {
                 $("#output-slot").addClass("output-slot-filled");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.copperOre--;
+                $("#furnace-copper-count").text(resource.copperOre);
             }, furnaceObj.smeltTime);
         }
         if (furnaceObj.inputOneContent == "Tin" && (furnaceObj.outputResourceName == "tinBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
@@ -370,6 +361,8 @@ function activateFurnace() {
                 $("#output-slot").addClass("output-slot-filled");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.tinOre--;
+                $("#furnace-tin-count").text(resource.tinOre);
             }, furnaceObj.smeltTime);
         }
         if (furnaceObj.inputOneContent == "Iron" && (furnaceObj.outputResourceName == "ironBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
@@ -381,6 +374,8 @@ function activateFurnace() {
                 $("#output-slot").addClass("output-slot-filled");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.ironOre--;
+                $("#furnace-iron-count").text(resource.ironOre);
             }, furnaceObj.smeltTime);
         }
         if (furnaceObj.inputOneContent == "Coal") {
@@ -396,6 +391,8 @@ function activateFurnace() {
                 $("#output-slot").addClass("output-slot-filled");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.goldOre--;
+                $("#furnace-gold-count").text(resource.goldOre);
             }, furnaceObj.smeltTime);
         }
 
@@ -461,6 +458,10 @@ function activateFurnace() {
                 $("#output-slot").addClass("furnace-steel-plate-bg");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.ironOre--;
+                $("#furnace-iron-count").text(resource.ironOre);
+                resource.coal--;
+                $("#furnace-coal-count").text(resource.coal);
             }, furnaceObj.smeltTime);
         }
         else if (furnaceObj.inputOneContent == "Coal" && furnaceObj.inputTwoContent == "Iron" && (furnaceObj.outputResourceName == "steelBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
@@ -471,6 +472,10 @@ function activateFurnace() {
                 $("#output-slot").addClass("furnace-steel-plate-bg");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.ironOre--;
+                $("#furnace-iron-count").text(resource.ironOre);
+                resource.coal--;
+                $("#furnace-coal-count").text(resource.coal);
             }, furnaceObj.smeltTime);
         }
         else if (furnaceObj.inputOneContent == "Copper" && furnaceObj.inputTwoContent == "Tin" && (furnaceObj.outputResourceName == "bronzeBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
@@ -481,6 +486,10 @@ function activateFurnace() {
                 $("#output-slot").addClass("furnace-bronze-bar-bg");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.copperOre--;
+                $("#furnace-copper-count").text(resource.copperOre);
+                resource.tinOre--;
+                $("#furnace-tin-count").text(resource.tinOre);
             }, furnaceObj.smeltTime);
         }
         else if (furnaceObj.inputOneContent == "Tin" && furnaceObj.inputTwoContent == "Copper" && (furnaceObj.outputResourceName == "bronzeBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
@@ -491,6 +500,10 @@ function activateFurnace() {
                 $("#output-slot").addClass("furnace-bronze-bar-bg");
                 furnaceObj.outputResourceCount++;
                 $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                resource.copperOre--;
+                $("#furnace-copper-count").text(resource.copperOre);
+                resource.tinOre--;
+                $("#furnace-tin-count").text(resource.tinOre);
             }, furnaceObj.smeltTime);
         }
         else{
