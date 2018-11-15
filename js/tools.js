@@ -202,36 +202,79 @@ function openFurnace(){
             "<div class='furnace-slot' id='output-slot'>" +
             "<div id='output-resource-name'></div>" +
             "<div id='output-resource-count'></div>" +
-            "</div>" +
-            "<div class='furnace-resource furnace-copper-bg' id='furnace-copper'>" +
-            "<div class='furnace-resource-name' id='furnace-copper-name'>Copper</div>" + 
-            "<div class='furnace-resource-count' id='furnace-copper-count'>0</div>" + 
-            "</div>" +
-            "<div class='furnace-resource furnace-tin-bg' id='furnace-tin'>" +
-            "<div class='furnace-resource-name' id='furnace-tin-name'>Tin</div>" + 
-            "<div class='furnace-resource-count' id='furnace-tin-count'>0</div>" + 
-            "</div>" +
-            "<div class='furnace-resource furnace-iron-bg' id='furnace-iron'>" +
-            "<div class='furnace-resource-name' id='furnace-iron-name'>Iron</div>" + 
-            "<div class='furnace-resource-count' id='furnace-iron-count'>0</div>" + 
-            "</div>" +
-            "<div class='furnace-resource furnace-coal-bg' id='furnace-coal'>" +
-            "<div class='furnace-resource-name' id='furnace-coal-name'>Coal</div>" + 
-            "<div class='furnace-resource-count' id='furnace-coal-count'>0</div>" + 
-            "</div>" +
-            "<div class='furnace-resource furnace-gold-bg' id='furnace-gold'>" +
-            "<div class='furnace-resource-name' id='furnace-gold-name'>Gold</div>" + 
-            "<div class='furnace-resource-count' id='furnace-gold-count'>0</div>" + 
-            "</div>" +
-            "<div class='furnace-resource furnace-sand-bg' id='furnace-sand'>" +
-            "<div class='furnace-resource-name' id='furnace-sand-name'>Sand</div>" + 
-            "<div class='furnace-resource-count' id='furnace-sand-count'>0</div>" + 
-            "</div>" +
-            "<div class='furnace-resource furnace-titanium-bg' id='furnace-titanium'>" +
-            "<div class='furnace-resource-name' id='furnace-titanium-name'>Titanium</div>" + 
-            "<div class='furnace-resource-count' id='furnace-titanium-count'>0</div>" + 
-            "</div>" +
             "</div>");
+            if (visible.copperOreResource == true){
+                $('#furnace-inside').append("<div class='furnace-resource furnace-copper-bg' id='furnace-copper'>" +
+                "<div class='furnace-resource-name' id='furnace-copper-name'>Copper</div>" + 
+                "<div class='furnace-resource-count' id='furnace-copper-count'>0</div>" + 
+                "</div>");
+                document.getElementById("furnace-copper").addEventListener("click", function(){
+                    addOre('Copper')
+                });
+                $("#furnace-copper-count").text(resource.copperOre);
+            }
+            if (visible.tinOreResource == true){
+                $('#furnace-inside').append("<div class='furnace-resource furnace-tin-bg' id='furnace-tin'>" +
+                "<div class='furnace-resource-name' id='furnace-tin-name'>Tin</div>" + 
+                "<div class='furnace-resource-count' id='furnace-tin-count'>0</div>" + 
+                "</div>");
+                document.getElementById("furnace-tin").addEventListener("click", function(){
+                    addOre('Tin')
+                });
+                $("#furnace-tin-count").text(resource.tinOre);
+            }
+            if (visible.ironOreResource == true){
+                $('#furnace-inside').append("<div class='furnace-resource furnace-iron-bg' id='furnace-iron'>" +
+                "<div class='furnace-resource-name' id='furnace-iron-name'>Iron</div>" + 
+                "<div class='furnace-resource-count' id='furnace-iron-count'>0</div>" + 
+                "</div>");
+                document.getElementById("furnace-iron").addEventListener("click", function(){
+                    addOre('Iron')
+                });
+                $("#furnace-iron-count").text(resource.ironOre);
+            }
+            if (visible.goldOreResource == true){
+                $('#furnace-inside').append("<div class='furnace-resource furnace-gold-bg' id='furnace-gold'>" +
+                "<div class='furnace-resource-name' id='furnace-gold-name'>Gold</div>" + 
+                "<div class='furnace-resource-count' id='furnace-gold-count'>0</div>" + 
+                "</div>");
+                document.getElementById("furnace-gold").addEventListener("click", function(){
+                    addOre('Gold')
+                });
+                $("#furnace-gold-count").text(resource.goldOre);
+            }
+            if (visible.coalOreResource == true){
+                $('#furnace-inside').append("<div class='furnace-resource furnace-coal-bg' id='furnace-coal'>" +
+                "<div class='furnace-resource-name' id='furnace-coal-name'>Coal</div>" + 
+                "<div class='furnace-resource-count' id='furnace-coal-count'>0</div>" + 
+                "</div>");
+                document.getElementById("furnace-coal").addEventListener("click", function(){
+                    addOre('Coal')
+                });
+                $("#furnace-coal-count").text(resource.coal);
+            }
+            if (visible.sandResource == true){
+                $('#furnace-inside').append("<div class='furnace-resource furnace-sand-bg' id='furnace-sand'>" +
+                "<div class='furnace-resource-name' id='furnace-sand-name'>Sand</div>" + 
+                "<div class='furnace-resource-count' id='furnace-sand-count'>0</div>" + 
+                "</div>");
+                document.getElementById("furnace-sand").addEventListener("click", function(){
+                    addOre('Sand')
+                });
+                $("#furnace-coal-count").text(resource.sand);
+            }
+            if (visible.titaniumOreResource == true){
+                $('#furnace-inside').append("<div class='furnace-resource furnace-titanium-bg' id='furnace-titanium'>" +
+                "<div class='furnace-resource-name' id='furnace-titanium-name'>Titanium</div>" + 
+                "<div class='furnace-resource-count' id='furnace-titanium-count'>0</div>" + 
+                "</div>");
+                document.getElementById("furnace-titanium").addEventListener("click", function(){
+                    addOre('Titanium')
+                });
+                $("#furnace-titanium-count").text(resource.titaniumOre);
+            }
+            $('#furnace-inside').append("</div>");
+
             furnaceObj.furnaceMode == "smelt";
     }, 100);
     
@@ -241,27 +284,6 @@ function openFurnace(){
     setTimeout(function () {
     document.getElementById("furnace-mode-button").addEventListener("click", toggleMode);
     document.getElementById("smelt-button").addEventListener("click", activateFurnace);
-    document.getElementById("furnace-copper").addEventListener("click", function(){
-        addOre('Copper')
-    });
-    document.getElementById("furnace-tin").addEventListener("click", function(){
-        addOre('Tin')
-    });
-    document.getElementById("furnace-iron").addEventListener("click", function(){
-        addOre('Iron')
-    });
-    document.getElementById("furnace-coal").addEventListener("click", function(){
-        addOre('Coal')
-    });
-    document.getElementById("furnace-gold").addEventListener("click", function(){
-        addOre('Gold')
-    });
-    document.getElementById("furnace-sand").addEventListener("click", function(){
-        addOre('Sand')
-    });
-    document.getElementById("furnace-titanium").addEventListener("click", function(){
-        addOre('Titanium')
-    });
     document.getElementById("input-slot-1").addEventListener("click", clearInput1);
     document.getElementById("output-slot").addEventListener("click", clearOutput);
     document.getElementById("feed-fire").addEventListener("click", feedFurnace);

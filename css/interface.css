@@ -626,13 +626,13 @@ grid-column-end
   background-image: url("../images/Iron Bar.png");
 }
 #furnace-coal{
-  grid-area: 8 / 4 / 8 / 5;
+  grid-area: 8 / 5 / 8 / 6;
 }
 .furnace-coal-bg{
   background-image: url("../images/Coal Ore.png");
 }
 #furnace-gold{
-  grid-area: 8 / 5 / 8 / 6;
+  grid-area: 8 / 4 / 8 / 5;
 }
 .furnace-gold-bg{
   background-image: url("../images/Gold Ore.png");
