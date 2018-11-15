@@ -340,17 +340,23 @@ function activateFurnace() {
     if (furnaceObj.furnaceMode == "smelt") {
 
         if (furnaceObj.inputOneContent == "Copper" && (furnaceObj.outputResourceName == "copperBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
-            smeltAnimation();
-            setTimeout(function () {
-                furnaceObj.outputResourceName = "copperBar";
-                $("#output-resource-name").text("Copper Bar");
-                $("#output-slot").addClass("furnace-copper-bar-bg");
-                $("#output-slot").addClass("output-slot-filled");
-                furnaceObj.outputResourceCount++;
-                $("#output-resource-count").text(furnaceObj.outputResourceCount);
-                resource.copperOre--;
-                $("#furnace-copper-count").text(resource.copperOre);
-            }, furnaceObj.smeltTime);
+            if (resource.copperOre > 0) {
+                smeltAnimation();
+                setTimeout(function () {
+                    furnaceObj.outputResourceName = "copperBar";
+                    $("#output-resource-name").text("Copper Bar");
+                    $("#output-slot").addClass("furnace-copper-bar-bg");
+                    $("#output-slot").addClass("output-slot-filled");
+                    furnaceObj.outputResourceCount++;
+                    $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                    resource.copperOre--;
+                    $("#furnace-copper-count").text(resource.copperOre);
+                }, furnaceObj.smeltTime);
+            }
+            else if (resource.copperOre == 0) {
+                $("#furnace-copper").effect("shake", { distance: 3 }, 250);
+                logWarn("Not enough Copper!");
+            }
         }
         if (furnaceObj.inputOneContent == "Tin" && (furnaceObj.outputResourceName == "tinBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             smeltAnimation();

@@ -96,7 +96,30 @@ function updateResourceDisplay(){
     document.getElementById("p-res-8-storage").innerHTML = prettify(storage.ironOre);
     document.getElementById("p-res-9-amt").innerHTML = prettify(resource.goldOre);
     document.getElementById("p-res-9-storage").innerHTML = prettify(storage.goldOre);
+
+    if (document.getElementById("furnace-copper") !== null) {
+        $("#furnace-copper-count").text(resource.copperOre);
+    }
+    if (document.getElementById("furnace-tin") !== null) {
+        $("#furnace-tin-count").text(resource.tinOre);
+    }
+    if (document.getElementById("furnace-iron") !== null) {
+        $("#furnace-iron-count").text(resource.ironOre);
+    }
+    if (document.getElementById("furnace-coal") !== null) {
+        $("#furnace-coal-count").text(resource.coal);
+    }
+    if (document.getElementById("furnace-gold") !== null) {
+        $("#furnace-gold-count").text(resource.goldOre);
+    }
+    if (document.getElementById("furnace-sand") !== null) {
+        $("#furnace-sand-count").text(resource.sand);
+    }
+    if (document.getElementById("furnace-titanium") !== null) {
+        $("#furnace-titanium-count").text(resource.titaniumOre);
+    }
 }
+
 //Automatic resource gathering
 function autoResource(){
     if (jobs.shaman > 0){
