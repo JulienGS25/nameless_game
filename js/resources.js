@@ -123,19 +123,19 @@ function updateResourceDisplay(){
 //Automatic resource gathering
 function autoResource(){
     if (jobs.shaman > 0){
-        getScience(efficiency.shaman, 'auto')
+        getScience(efficiency.shaman, 'auto');
     }
     if (jobs.woodchopper > 0){
-        getWood(efficiency.woodChopper, 'auto')
+        getWood(efficiency.woodChopper, 'auto');
     }
     if (jobs.hunter > 0){
-        getFood(efficiency.hunter, 'auto')
+        getFood(efficiency.hunter, 'auto', 'hunter');
     }
     if (jobs.miner > 0){
-        getStone(efficiency.miner, 'auto')
+        getStone(efficiency.miner, 'auto');
     }
     if (jobs.farmer > 0){
-        getFood(efficiency.farmer, 'auto')
+        getFood(efficiency.farmer, 'auto', 'farmer');
     }
 }
 

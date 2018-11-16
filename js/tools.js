@@ -666,22 +666,28 @@ function furnaceTemperature(){
 }
 
 function feedFurnace() {
-    if (furnaceObj.furnaceTemp < furnaceObj.maxTemp) {
-        if (furnaceObj.furnaceTemp < 10) {
-            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 5;
+    if (resource.wood > 0) {
+        if (furnaceObj.furnaceTemp < furnaceObj.maxTemp) {
+            resource.wood--;
+            if (furnaceObj.furnaceTemp < 10) {
+                furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 5;
+            }
+            else if (furnaceObj.furnaceTemp < 40) {
+                furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 10;
+            }
+            else if (furnaceObj.furnaceTemp < 80) {
+                furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 15;
+            }
+            else if (furnaceObj.furnaceTemp < 150) {
+                furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 20
+            }
+            else {
+                furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 30;
+            }
         }
-        else if (furnaceObj.furnaceTemp < 40) {
-            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 10;
-        }
-        else if (furnaceObj.furnaceTemp < 80) {
-            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 15;
-        }
-        else if (furnaceObj.furnaceTemp < 150) {
-            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 20
-        }
-        else {
-            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp + 20;
-        }
+    }
+    else{
+        logWarn("Not enough Wood!");
     }
     furnaceTemperature();
 }
