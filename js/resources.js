@@ -220,28 +220,28 @@ function getStone(eff, mode) {
         //Gathers copper ore
         if (research[3].researched == 1){
             if(resource.copperOre < storage.copperOre){
-                resource.copperOre = resource.copperOre + eff;
+                resource.copperOre = (resource.copperOre + (eff * 0.1));
                 document.getElementById("p-res-6-amt").innerHTML = resource.copperOre;
             }
         }
         //Gathers tin ore
         if (research[9].researched == 1){
             if(resource.tinOre < storage.tinOre){
-                resource.tinOre = resource.tinOre + eff;
+                resource.tinOre = (resource.tinOre + (eff * 0.1));
                 document.getElementById("p-res-7-amt").innerHTML = resource.tinOre;
             }
         }
         //Gathers iron ore
         if (research[20].researched == 1){
             if(resource.ironOre < storage.ironOre){
-                resource.ironOre = resource.ironOre + eff;
+                resource.ironOre = (resource.ironOre + (eff * 0.1));
                 document.getElementById("p-res-8-amt").innerHTML = resource.ironOre;
             }
         }
         //Gathers gold ore
         if (research[29].researched == 1){
             if(resource.goldOre < storage.goldOre){
-                resource.goldOre = resource.goldOre + eff;
+                resource.goldOre = (resource.goldOre + (eff * 0.01));
                 document.getElementById("p-res-9-amt").innerHTML = resource.goldOre;
             }
         }
