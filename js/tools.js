@@ -2,11 +2,14 @@
 ///Tribe Management///
 //////////////////////
 function manageTribe() {
+    
     $('.work-area').animate({ opacity: 0 }, { duration: 25 });
+    
     tooltipShown = 1;
 
     setTimeout(function () {
         $('.work-area').empty();
+        $('.work-area').css("border","solid white");
     }, 25)
 
     //Creates the work area tribe management page
@@ -115,53 +118,53 @@ function manageTribe() {
     show('.work-area');
 }
 
-function addJobOne(){
-    if (jobs.shaman < buildings[1].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+function addJobOne() {
+    if (jobs.shaman < buildings[1].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0) {
         jobs.shaman++;
     }
 }
-function removeJobOne(){
-    if (jobs.shaman > 0){
+function removeJobOne() {
+    if (jobs.shaman > 0) {
         jobs.shaman--;
     }
 }
-function addJobTwo(){
-    if (jobs.hunter < buildings[2].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
-    jobs.hunter++;
+function addJobTwo() {
+    if (jobs.hunter < buildings[2].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0) {
+        jobs.hunter++;
     }
 }
-function removeJobTwo(){
-    if (jobs.hunter > 0){
+function removeJobTwo() {
+    if (jobs.hunter > 0) {
         jobs.hunter--;
     }
 }
-function addJobThree(){
-    if (jobs.woodchopper < buildings[4].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+function addJobThree() {
+    if (jobs.woodchopper < buildings[4].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0) {
         jobs.woodchopper++
     }
 }
-function removeJobThree(){
-    if (jobs.woodchopper > 0){
+function removeJobThree() {
+    if (jobs.woodchopper > 0) {
         jobs.woodchopper--
     }
 }
-function addJobFour(){
-    if (jobs.miner < buildings[5].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+function addJobFour() {
+    if (jobs.miner < buildings[5].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0) {
         jobs.miner++;
     }
 }
-function removeJobFour(){
-    if (jobs.miner > 0){
+function removeJobFour() {
+    if (jobs.miner > 0) {
         jobs.miner--;
     }
 }
-function addJobFive(){
-    if (jobs.farmer < buildings[6].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0){
+function addJobFive() {
+    if (jobs.farmer < buildings[6].built && (resource.people - (jobs.shaman + jobs.hunter + jobs.woodchopper + jobs.miner + jobs.farmer)) > 0) {
         jobs.farmer++;
     }
 }
-function removeJobFive(){
-    if (jobs.farmer > 0){
+function removeJobFive() {
+    if (jobs.farmer > 0) {
         jobs.farmer--;
     }
 }
@@ -170,6 +173,7 @@ function removeJobFive(){
 ///Furnace///
 /////////////
 function openFurnace(){
+    $('.work-area').css("border","none");
     $('.work-area').animate({ opacity: 0 }, { duration: 25 });
     tooltipShown = 1;
 
@@ -187,11 +191,11 @@ function openFurnace(){
             "<div id='furnace-image'></div>" +
             "<div id='smelt-count-area'>" +
             "<div id='smelt-count-title'>Smelt Count</div>" +
-            "<i id='smelt-count-less' class='fas fa-minus'></i>" +
-            "<div id='current-smelt-count'>1</div>" +
+            "<i id='smelt-count-minus' class='fas fa-minus'></i>" +
+            "<div id='current-smelt-count'>"+ furnaceObj.smeltCount + "</div>" +
             "<div id='smelt-slash'>/</div>" +
-            "<div id='total-smelt-count'>5</div>" +
-            "<i id='smelt-count-more' class='fas fa-plus'></i>" +
+            "<div id='total-smelt-count'>" + furnaceObj.maxSmeltCount + "</div>" +
+            "<i id='smelt-count-plus' class='fas fa-plus'></i>" +
             "<div class='furnace-button' id='smelt-button'>Smelt</div>" +
             "</div>" +
             "<div class='furnace-button' id='feed-fire'>Feed Fire</div>" +
@@ -287,6 +291,8 @@ function openFurnace(){
     document.getElementById("input-slot-1").addEventListener("click", clearInput1);
     document.getElementById("output-slot").addEventListener("click", clearOutput);
     document.getElementById("feed-fire").addEventListener("click", feedFurnace);
+    document.getElementById("smelt-count-plus").addEventListener("click", smeltPlus);
+    document.getElementById("smelt-count-minus").addEventListener("click", smeltMinus);
     },110);
 }
 
@@ -334,31 +340,59 @@ function activateFurnace() {
 
     if (furnaceObj.smeltTime < 0){
         logWarn('The furnace is cold!');
-        $("#feed-fire").effect("shake",{distance:3}, 250);
+        $("#feed-fire").effect("shake", { distance: 3 }, 250);
     }
-    else{
-    if (furnaceObj.furnaceMode == "smelt") {
+    else {
+        if (furnaceObj.furnaceMode == "smelt") {
 
-        if (furnaceObj.inputOneContent == "Copper" && (furnaceObj.outputResourceName == "copperBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
-            if (resource.copperOre > 0) {
-                smeltAnimation();
-                setTimeout(function () {
-                    furnaceObj.outputResourceName = "copperBar";
-                    $("#output-resource-name").text("Copper Bar");
-                    $("#output-slot").addClass("furnace-copper-bar-bg");
-                    $("#output-slot").addClass("output-slot-filled");
-                    furnaceObj.outputResourceCount++;
-                    $("#output-resource-count").text(furnaceObj.outputResourceCount);
-                    resource.copperOre--;
-                    $("#furnace-copper-count").text(resource.copperOre);
-                }, furnaceObj.smeltTime);
+            if (furnaceObj.inputOneContent == "Copper" && (furnaceObj.outputResourceName == "copperBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
+                if (resource.copperOre > 0) {
+                    //All conditions reached, begin smelt
+                    var currCounter = furnaceObj.smeltCount;
+                    var endCounter = 1;
+                    //Smelts as many as are queued
+                    //TODO add check to ensure we have enough of the resource
+                    function smeltQueue() {
+
+
+                            var interval = furnaceObj.smeltTime;
+                            //Triggers the progress bar
+                            smeltAnimation();
+
+                            //Handles the resource transfer
+                            setTimeout(function () {
+                                furnaceObj.outputResourceName = "copperBar";
+                                $("#output-resource-name").text("Copper Bar");
+                                $("#output-slot").addClass("furnace-copper-bar-bg");
+                                $("#output-slot").addClass("output-slot-filled");
+                                furnaceObj.outputResourceCount++;
+                                $("#output-resource-count").text(furnaceObj.outputResourceCount);
+                                resource.copperOre--;
+                            }, furnaceObj.smeltTime);
+
+                            
+
+                            if (currCounter > resource.copperOre) {
+                                console.log('endCounter is: ' + endCounter);
+                                console.log('currCounter is: ' + currCounter);
+                                currCounter--;
+                                furnaceObj.smeltCount--;
+                                $("#current-smelt-count").text(furnaceObj.smeltCount);
+                                window.setTimeout(smeltQueue, interval);
+                            }
+                            else {
+                                currCounter = 1;
+                            }
+
+                    }
+                    smeltQueue();
+                }
+                else if (resource.copperOre == 0) {
+                    $("#furnace-copper").effect("shake", { distance: 3 }, 250);
+                    logWarn("Not enough Copper!");
+                }
             }
-            else if (resource.copperOre == 0) {
-                $("#furnace-copper").effect("shake", { distance: 3 }, 250);
-                logWarn("Not enough Copper!");
-            }
-        }
-        if (furnaceObj.inputOneContent == "Tin" && (furnaceObj.outputResourceName == "tinBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
+            if (furnaceObj.inputOneContent == "Tin" && (furnaceObj.outputResourceName == "tinBar" || furnaceObj.outputResourceName == "") && furnaceObj.smeltInProgress == false) {
             if (resource.tinOre > 0) {
                 smeltAnimation();
                 setTimeout(function () {
@@ -369,7 +403,6 @@ function activateFurnace() {
                     furnaceObj.outputResourceCount++;
                     $("#output-resource-count").text(furnaceObj.outputResourceCount);
                     resource.tinOre--;
-                    $("#furnace-tin-count").text(resource.tinOre);
                 }, furnaceObj.smeltTime);
             }
             else if (resource.tinOre == 0) {
@@ -388,7 +421,6 @@ function activateFurnace() {
                     furnaceObj.outputResourceCount++;
                     $("#output-resource-count").text(furnaceObj.outputResourceCount);
                     resource.ironOre--;
-                    $("#furnace-iron-count").text(resource.ironOre);
                 }, furnaceObj.smeltTime);
             }
             else if (resource.ironOre == 0) {
@@ -411,7 +443,6 @@ function activateFurnace() {
                     furnaceObj.outputResourceCount++;
                     $("#output-resource-count").text(furnaceObj.outputResourceCount);
                     resource.goldOre--;
-                    $("#furnace-gold-count").text(resource.goldOre);
                 }, furnaceObj.smeltTime);
             }
             else if (resource.goldOre == 0) {
@@ -658,7 +689,7 @@ function refreshFurnaceUI(ore) {
 
 function furnaceTemperature(){
     if (furnaceObj.furnaceTemp > 0){
-        furnaceObj.furnaceTemp = furnaceObj.furnaceTemp - (currentTemp * 0.005);
+            furnaceObj.furnaceTemp = furnaceObj.furnaceTemp - 0.1;
         furnaceObj.smeltTime = 100000 / furnaceObj.furnaceTemp;
     }
     
@@ -691,7 +722,22 @@ function feedFurnace() {
     }
     furnaceTemperature();
 }
-var tempGaugeCreated = false;
+
+function smeltPlus(){
+    if (furnaceObj.smeltCount < furnaceObj.maxSmeltCount){
+        furnaceObj.smeltCount++;
+        $("#current-smelt-count").text(furnaceObj.smeltCount);
+    }
+}
+function smeltMinus(){
+    if (furnaceObj.smeltCount > 1){
+        furnaceObj.smeltCount--;
+        $("#current-smelt-count").text(furnaceObj.smeltCount);
+    }
+}
+
+
+
 
 
 //This allows selecting all of a class but not two IDs

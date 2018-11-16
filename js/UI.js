@@ -102,6 +102,7 @@ function displayBuildings() {
 function showTooltip(input) {
     if (tooltipShown == 0) {
         tooltipShown = 1;
+        $('.work-area').css("border","solid white");
         show('.work-area');
         $('.work-area').append("<div id='tooltip-title'>" + input.name + "</div>" +
             "<div id='tooltip-desc'>" + input.description + "</div>");

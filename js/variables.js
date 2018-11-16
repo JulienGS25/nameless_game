@@ -145,6 +145,8 @@ var furnaceObj = {
     "smeltInProgress": false,
     "furnaceTemp": 0.0,
     "maxTemp": 150,
+    "smeltCount": 1,
+    "maxSmeltCount": 5,
 }
 
 //Other

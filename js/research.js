@@ -829,7 +829,7 @@ var research = [
         displayable: 0,
         researched: 0,
         researchFunction: "researchImprovedConstruction",
-        message: "With the use of wheels of various tools, you are able to improve your buildings considerably.",
+        message: "With the use of wheels and various tools, you are able to improve your buildings considerably.",
         unlocks_research: [24],
         unlocks_buildings: [],
         unique: true
