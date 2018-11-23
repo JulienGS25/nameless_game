@@ -237,7 +237,7 @@ var research = [
         researchFunction: "researchPrimitiveConstruction",
         message: "With logs and stones, you can assemble primitive buildings to provide shelter for your tribe.",
         unlocks_research: [6, 12],
-        unlocks_buildings: [4, 5],
+        unlocks_buildings: [3, 4, 5],
         unique: true
     },
     stoneTools = {
@@ -263,7 +263,7 @@ var research = [
         researched: 0,
         researchFunction: "researchStoneTools",
         message: "You can use stones as basic tools to improve your tasks.",
-        unlocks_research: [3, 4, 5, 15],
+        unlocks_research: [4, 5, 15],
         unlocks_buildings: [],
         unique: true
     },
@@ -283,7 +283,7 @@ var research = [
         costs_5_amount: undefined,
         effects_1: "Improves mining speed",
         effects_2: "Unlocks resource: Copper Ore",
-        effects_3: "Unlocks research: Copper Smelting",
+        effects_3: "",
         effects_4: "",
         effects_5: "",
         displayable: 0,
